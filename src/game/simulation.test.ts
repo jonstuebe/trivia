@@ -100,4 +100,47 @@ describe("phoneAFriend", () => {
       expect([1, 3]).toContain(answer);
     }
   });
+
+  function calls(tier: Tier, seed: number, count = 2000) {
+    const random = createSeededRandom(seed);
+    return Array.from({ length: count }, () =>
+      phoneAFriend({ shown: shownQuestion(tier, 3, "history"), friend: "history", random }),
+    );
+  }
+  const mean = (values: readonly number[]) => sum(values) / values.length;
+
+  it("gives one line naming the answer's letter and a confidence", () => {
+    for (const call of calls(3, 4, 200)) {
+      expect(Number.isInteger(call.confidence) && call.confidence > 0 && call.confidence < 100).toBe(true);
+      // The named letter stands alone in the line, and no other answer's letter does.
+      expect(call.line.match(/\b[ABCD]\b/g)).toEqual(["ABCD"[call.answer]]);
+      expect(call.line).toContain(`${call.confidence}%`);
+    }
+  });
+
+  it("sounds less sure on harder Tiers", () => {
+    const byTier = ([1, 2, 3, 4, 5] as const).map((tier) => mean(calls(tier, 20 + tier).map((c) => c.confidence)));
+    for (let i = 1; i < byTier.length; i++) expect(byTier[i]!).toBeLessThan(byTier[i - 1]!);
+  });
+
+  it("sounds surer when right, but is sometimes confidently wrong", () => {
+    const all = calls(3, 5, 5000);
+    const right = all.filter((c) => c.answer === 3).map((c) => c.confidence);
+    const wrong = all.filter((c) => c.answer !== 3).map((c) => c.confidence);
+    expect(mean(right)).toBeGreaterThan(mean(wrong) + 5);
+    const surestRight = Math.max(...right);
+    expect(wrong.some((confidence) => confidence >= surestRight - 15)).toBe(true);
+  });
+
+  it("on Tier 5 sometimes admits they're guessing, and never before", () => {
+    const tier5 = calls(5, 6);
+    const guesses = tier5.filter((c) => c.guessing);
+    expect(guesses.length / tier5.length).toBeGreaterThan(0.15);
+    expect(guesses.length / tier5.length).toBeLessThan(0.5);
+    for (const guess of guesses) {
+      expect(guess.confidence).toBeLessThanOrEqual(35);
+      expect(guess.line.toLowerCase()).toContain("guess");
+    }
+    for (const tier of [1, 2, 3, 4] as const) expect(calls(tier, 7, 500).some((c) => c.guessing)).toBe(false);
+  });
 });

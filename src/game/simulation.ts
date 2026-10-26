@@ -52,6 +52,12 @@ export interface FriendResult {
   friend: Friend;
   /** The answer they named. */
   answer: AnswerPosition;
+  /** How sure they said they were, as a whole percentage. */
+  confidence: number;
+  /** Whether they admitted they're guessing, which only happens on Tier 5. */
+  guessing: boolean;
+  /** What they said, e.g. "I'm pretty sure it's B, maybe 80%." */
+  line: string;
 }
 
 export function phoneAFriend({ shown, remaining = ALL_POSITIONS, friend, random }: FriendInput): FriendResult {
@@ -59,9 +65,31 @@ export function phoneAFriend({ shown, remaining = ALL_POSITIONS, friend, random 
   const { tier, subject } = shown.question;
   // On their own Subject a Friend is 15 points likelier to be right, never above 95%; off it, 10 points less.
   const odds = friend === subject ? Math.min(RIGHT_ODDS[tier] + 0.15, 0.95) : RIGHT_ODDS[tier] - 0.1;
-  const answer =
-    random.next() < odds ? shown.correct : pickOne(positions.filter((position) => position !== shown.correct), random);
-  return { friend, answer };
+  const right = random.next() < odds;
+  const answer = right ? shown.correct : pickOne(positions.filter((position) => position !== shown.correct), random);
+
+  // On Tier 5 they sometimes own up to guessing, more often when they're wrong.
+  const guessing = tier === 5 && random.next() < (right ? 0.15 : 0.45);
+  const confidence = guessing
+    ? roundToFive(20 + random.next() * 15)
+    : // Surer when right, but the spread is wide enough that they're sometimes confidently wrong.
+      Math.min(95, Math.max(10, roundToFive(FRIEND_CONFIDENCE[tier] - (right ? 0 : 10) + (random.next() * 2 - 1) * 15)));
+  return { friend, answer, confidence, guessing, line: friendLine(answer, confidence, guessing) };
+}
+
+/** A Friend's usual confidence when right, by Tier. */
+const FRIEND_CONFIDENCE: Record<Tier, number> = { 1: 90, 2: 80, 3: 70, 4: 60, 5: 50 };
+
+function roundToFive(value: number): number {
+  return Math.round(value / 5) * 5;
+}
+
+function friendLine(answer: AnswerPosition, confidence: number, guessing: boolean): string {
+  const letter = "ABCD"[answer];
+  if (guessing) return `Honestly, I'm just guessing here. Maybe ${letter}? Call it ${confidence}%.`;
+  if (confidence >= 80) return `I'm pretty sure it's ${letter}, maybe ${confidence}%.`;
+  if (confidence >= 60) return `I think it's ${letter}. I'd say ${confidence}%.`;
+  return `I'm not certain, but I'd go with ${letter}, about ${confidence}%.`;
 }
 
 /** How often the audience or a Friend (before their Subject bonus) points at the right answer, by Tier. */
