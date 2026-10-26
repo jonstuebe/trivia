@@ -39,6 +39,8 @@ test("a whole Game won by keyboard alone, from Start to Share and Play again", a
     await browser.keyboard.press(await rightAnswerKey(screen));
     await expect(screen.getByRole("button", "Final answer")).toBeFocused();
     await browser.keyboard.press("Enter");
+    // Enter can't skip the reveal wait: Next takes focus once the reveal shows.
+    await expect(screen.getByRole("button", /^(Next question|See result)$/)).toBeFocused();
     await browser.keyboard.press("Enter");
   }
 

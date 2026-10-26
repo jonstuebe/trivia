@@ -47,7 +47,7 @@ export interface GameContext {
   questions: ShownQuestion[];
   /** The Rung being played, 1–15. */
   rung: number;
-  /** The answer waiting on "Final answer / Cancel", or the confirmed one while revealing. */
+  /** The answer waiting on "Final answer / Cancel", or the confirmed one while locked in and revealing. */
   picked: AnswerPosition | null;
   /** The Lifelines used so far, in the order used. */
   lifelinesUsed: Lifeline[];
@@ -83,8 +83,14 @@ function resultFor(context: GameContext, ending: GameEnding): GameResult {
 export type GameEvent =
   /** Picks an answer, opening "Final answer / Cancel". A 50:50-removed answer can't be picked. */
   | { type: "pick"; answer: AnswerPosition }
-  /** Confirms the picked answer. */
+  /** Confirms the picked answer, locking it in for the reveal wait. */
   | { type: "finalAnswer" }
+  /**
+   * Ends the reveal wait, showing right or wrong. Not a player move: the
+   * screen sends it once `revealWait` has passed, and nothing the player
+   * does can send it sooner.
+   */
+  | { type: "reveal" }
   /** Backs out of "Final answer", "Walk away" or the pick of a Friend to choosing. */
   | { type: "cancel" }
   /** Asks "Walk away with $X? / Cancel". Offered from question 2. */
@@ -237,7 +243,14 @@ function gameMachineWith({ random, topicQuestions, readSeen }: GameDependencies)
       confirmingAnswer: {
         on: {
           cancel: { target: "choosing", actions: assign({ picked: null }) },
-          finalAnswer: [{ guard: "pickedRight", target: "revealing.right" }, { target: "revealing.wrong" }],
+          finalAnswer: { target: "lockedIn" },
+        },
+      },
+      // The reveal wait: the answer is locked in and nothing else is offered
+      // until the screen sends `reveal`.
+      lockedIn: {
+        on: {
+          reveal: [{ guard: "pickedRight", target: "revealing.right" }, { target: "revealing.wrong" }],
         },
       },
       revealing: {
@@ -291,12 +304,20 @@ export type SavedGameSnapshot = Snapshot<GameResult> & {
 /**
  * The Game's state now, ready to save. A picked answer isn't saved until it's
  * confirmed, so a Game waiting on "Final answer?" is saved back at the
- * Question with nothing picked.
+ * Question with nothing picked. A locked-in answer is saved as revealed, so
+ * a Game saved during the reveal wait comes back at the reveal: never lost,
+ * never answered again.
  */
 export function saveGame(game: GameActor): SavedGameSnapshot {
   const saved = game.getPersistedSnapshot() as SavedGameSnapshot;
-  if (saved.value !== "confirmingAnswer") return saved;
-  return { ...saved, value: "choosing", context: { ...saved.context, picked: null } };
+  if (saved.value === "confirmingAnswer") {
+    return { ...saved, value: "choosing", context: { ...saved.context, picked: null } };
+  }
+  if (saved.value === "lockedIn") {
+    const right = saved.context.picked === shownNow(saved.context).correct;
+    return { ...saved, value: { revealing: right ? "right" : "wrong" } };
+  }
+  return saved;
 }
 
 /** Picks a saved Game back up exactly where it was. Lifeline results come from the save, never rerolled. */

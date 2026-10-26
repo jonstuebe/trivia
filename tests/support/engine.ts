@@ -13,5 +13,18 @@ export const chromium = web({
   browser: "chromium",
   // axe-core in every document, before the app's scripts, so
   // `checkA11y` (tests/support/axe.ts) can run it on any screen.
-  initScripts: [{ path: "node_modules/axe-core/axe.min.js" }],
+  // Then instant reveals (INSTANT_REVEAL_KEY in src/app/reveal-pacing.ts), so
+  // journeys that climb the Ladder skip the reveal wait. Set again on every
+  // page load; reveal-wait.e2e.ts clears it with `realRevealWait` to time the
+  // real wait.
+  initScripts: [
+    { path: "node_modules/axe-core/axe.min.js" },
+    () => {
+      try {
+        localStorage.setItem("trivia.fixtures.instantReveal", "on");
+      } catch {
+        // A document without storage (about:blank) has no reveal to wait for.
+      }
+    },
+  ],
 });

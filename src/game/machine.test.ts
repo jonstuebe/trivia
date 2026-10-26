@@ -70,6 +70,7 @@ describe("Final answer", () => {
     game.send({ type: "cancel" });
     game.send({ type: "pick", answer: current(game).correct });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     expect(game.getSnapshot().value).toEqual({ revealing: "right" });
   });
 
@@ -80,9 +81,11 @@ describe("Final answer", () => {
   });
 });
 
+/** Picks `position`, confirms it, and lets the reveal wait run out. */
 function answer(game: GameActor, position: AnswerPosition) {
   game.send({ type: "pick", answer: position });
   game.send({ type: "finalAnswer" });
+  game.send({ type: "reveal" });
 }
 
 /** Answers right and presses Next until the Game is on `rung`. */
@@ -94,6 +97,54 @@ function climbTo(game: GameActor, rung: number) {
     if (game.getSnapshot().context.rung !== before + 1) throw new Error(`Stuck on question ${before}`);
   }
 }
+
+describe("the reveal wait", () => {
+  it("locks the answer in after Final answer, until the reveal", () => {
+    const game = newGame();
+    game.send({ type: "pick", answer: current(game).correct });
+    game.send({ type: "finalAnswer" });
+    expect(game.getSnapshot().value).toBe("lockedIn");
+    expect(game.getSnapshot().context.picked).toBe(current(game).correct);
+
+    game.send({ type: "reveal" });
+    expect(game.getSnapshot().value).toEqual({ revealing: "right" });
+  });
+
+  it("can't be skipped or backed out of", () => {
+    const game = newGame();
+    climbTo(game, 2);
+    const wrong = aWrongAnswer(game);
+    game.send({ type: "pick", answer: wrong });
+    game.send({ type: "finalAnswer" });
+    for (const event of [
+      { type: "next" },
+      { type: "cancel" },
+      { type: "finalAnswer" },
+      { type: "pick", answer: current(game).correct },
+      { type: "walkAway" },
+      { type: "fiftyFifty" },
+      { type: "askTheAudience" },
+      { type: "phoneAFriend" },
+    ] as const) {
+      expect(game.getSnapshot().can(event)).toBe(false);
+      game.send(event);
+    }
+    expect(game.getSnapshot().value).toBe("lockedIn");
+    expect(game.getSnapshot().context).toMatchObject({ picked: wrong, lifelinesUsed: [] });
+
+    game.send({ type: "reveal" });
+    expect(game.getSnapshot().value).toEqual({ revealing: "wrong" });
+  });
+
+  it("is only ever ended by the reveal while an answer is locked in", () => {
+    const game = newGame();
+    game.send({ type: "reveal" });
+    expect(game.getSnapshot().value).toBe("choosing");
+    game.send({ type: "pick", answer: 0 });
+    game.send({ type: "reveal" });
+    expect(game.getSnapshot().value).toBe("confirmingAnswer");
+  });
+});
 
 describe("the reveal", () => {
   it("shows right with the correct answer, and waits for Next", () => {
@@ -242,6 +293,23 @@ describe("saving and restoring a Game", () => {
     expect(restored.getSnapshot().context.rung).toBe(4);
     // The Game itself is left as it was.
     expect(game.getSnapshot().value).toBe("confirmingAnswer");
+  });
+
+  it("brings a Game saved during the reveal wait back at the reveal, with the answer still locked in", () => {
+    const game = newGame();
+    climbTo(game, 4);
+    const wrong = aWrongAnswer(game);
+    game.send({ type: "pick", answer: wrong });
+    game.send({ type: "finalAnswer" });
+    const restored = saveAndRestore(game);
+    expect(restored.getSnapshot().value).toEqual({ revealing: "wrong" });
+    expect(restored.getSnapshot().context).toMatchObject({ picked: wrong, rung: 4 });
+    expect(game.getSnapshot().value).toBe("lockedIn");
+
+    const right = newGame();
+    right.send({ type: "pick", answer: current(right).correct });
+    right.send({ type: "finalAnswer" });
+    expect(saveAndRestore(right).getSnapshot().value).toEqual({ revealing: "right" });
   });
 
   it("keeps the step within a question", () => {

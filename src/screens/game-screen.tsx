@@ -13,6 +13,7 @@ import { ladderView } from "./ladder-view";
 import { KeysDialog, Lifelines, PickFriendDialog } from "./lifelines";
 import { lifelinesView } from "./lifelines-view";
 import { useGameKeys, useShowKeysKey } from "./use-game-keys";
+import { useRevealWait } from "./use-reveal-wait";
 
 /**
  * The Game at `/game`, from question 1 to Game over. Every move goes to the
@@ -24,6 +25,12 @@ import { useGameKeys, useShowKeysKey } from "./use-game-keys";
  * or the Walk away and Main menu links. The desktop Ladder is the second
  * column. The confirm dialogs, Pick a friend and the `?` list of keys sit
  * over it all.
+ *
+ * After Final answer comes the reveal wait: the stage dims, the locked-in
+ * answer stays lit, and a line in the reveal's place says the answer is
+ * coming, until `useRevealWait` reveals it. A right answer then flashes and
+ * the Ladder steps up; under reduced motion nothing flashes or slides
+ * (studio.css).
  */
 export function GameScreen({ game }: { game: PlayingGame }) {
   const snapshot = useSyncExternalStore(game.subscribe, game.snapshot);
@@ -31,19 +38,25 @@ export function GameScreen({ game }: { game: PlayingGame }) {
   const [showingKeys, setShowingKeys] = useState(false);
   useShowKeysKey(() => setShowingKeys(true));
   const navigate = useNavigate();
+  const { rung } = snapshot.context;
+  const { question } = snapshot.context.questions[rung - 1]!;
+  useRevealWait(game, snapshot.matches("lockedIn"), question.tier);
 
   const over = game.gameOver();
   if (snapshot.status === "done" && over) return <GameOverScreen over={over} snapshot={snapshot} />;
 
   const view = gameView(snapshot);
   const lifelines = lifelinesView(snapshot);
-  const { rung } = snapshot.context;
-  const { question } = snapshot.context.questions[rung - 1]!;
   const choosing = snapshot.matches("choosing");
-  const ladder = ladderView(rung);
+  const ladder = ladderView(view.ladderRung);
+  const stepping = view.ladderRung !== rung;
+  // The reveal wait dims the Ladder, the Lifelines and the Title label, and
+  // makes them inert: nothing there can be used until the reveal. The
+  // heading, the Question and the locked-in answer stay lit.
+  const dimmed = view.lockedIn !== undefined;
 
   return (
-    <main className="screen game">
+    <main className={`screen game${dimmed ? " is-locked-in" : ""}`}>
       <div className="game__main">
         <header className="game__top">
           {/* Keyed by the Question, so each new one (a switched one too) takes focus at its heading. */}
@@ -52,14 +65,18 @@ export function GameScreen({ game }: { game: PlayingGame }) {
           </ScreenHeading>
         </header>
 
-        <LadderStrip rows={ladder} />
+        <LadderStrip rows={ladder} stepping={stepping} inert={dimmed} />
 
-        <Lifelines view={lifelines} onUse={(event) => game.send(event)} />
+        <Lifelines view={lifelines} onUse={(event) => game.send(event)} inert={dimmed} />
 
-        {view.titleLabel && <p className="game__title-label">{view.titleLabel}</p>}
+        {view.titleLabel && (
+          <p className="game__title-label" inert={dimmed}>
+            {view.titleLabel}
+          </p>
+        )}
         <QuestionLozenge>{question.prompt}</QuestionLozenge>
 
-        <ul className="answers" aria-label="Answers">
+        <ul className={`answers${view.reveal?.right ? " is-won" : ""}`} aria-label="Answers">
           {ANSWER_POSITIONS.map((position) => {
             const answer = view.answers[position]!;
             // Taken away by the 50:50: its place stays, empty, so the others don't move.
@@ -80,6 +97,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
           })}
         </ul>
 
+        {view.lockedIn && <LockedIn key={rung} text={view.lockedIn} />}
         {view.reveal && (
           <Reveal key={rung} reveal={view.reveal} onNext={() => game.send({ type: "next" })} />
         )}
@@ -102,7 +120,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
           </Button>
         )}
       </div>
-      <LadderColumn rows={ladder} />
+      <LadderColumn rows={ladder} stepping={stepping} inert={dimmed} />
 
       <Announcer text={view.announcement} />
 
@@ -153,6 +171,23 @@ function Reveal({ reveal, onNext }: { reveal: NonNullable<ReturnType<typeof game
         {reveal.next}
       </Button>
     </div>
+  );
+}
+
+/**
+ * Through the reveal wait: the locked-in answer in words, and that the
+ * reveal is coming. It takes focus, so screen readers say it and focus isn't
+ * left on a disabled answer; the reveal then moves focus to Next.
+ */
+function LockedIn({ text }: { text: string }) {
+  const line = useRef<HTMLParagraphElement>(null);
+  useEffect(() => {
+    line.current?.focus();
+  }, []);
+  return (
+    <p ref={line} tabIndex={-1} className="locked-in">
+      {text}
+    </p>
   );
 }
 

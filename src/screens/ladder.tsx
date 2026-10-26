@@ -9,10 +9,21 @@ const rowClass = (row: RungView) => [row.safe && "is-safe", row.state === "done"
  * words as well as shown.
  */
 
+/**
+ * Both shapes take `stepping` while a right answer is revealed, the current
+ * Rung having just moved up one, so the gold steps up into it (studio.css),
+ * and `inert` while the stage is dimmed for the reveal wait.
+ */
+interface LadderProps {
+  rows: RungView[];
+  stepping?: boolean;
+  inert?: boolean;
+}
+
 /** Desktop: a column on the right, Rung 15 at the top, the current Rung gold, the Safe levels white and bold. */
-export function LadderColumn({ rows }: { rows: RungView[] }) {
+export function LadderColumn({ rows, stepping = false, inert = false }: LadderProps) {
   return (
-    <ol className="ladder" aria-label="Ladder">
+    <ol className={`ladder${stepping ? " is-stepping" : ""}`} aria-label="Ladder" inert={inert}>
       {rows.map((row) => (
         <li key={row.rung} className={rowClass(row)} aria-current={row.state === "current" ? "step" : undefined}>
           <span>{row.rung}</span>
@@ -27,7 +38,7 @@ export function LadderColumn({ rows }: { rows: RungView[] }) {
 }
 
 /** Phones: a strip across the top, centred on the current Rung, short amounts, the Safe levels underlined. */
-export function LadderStrip({ rows }: { rows: RungView[] }) {
+export function LadderStrip({ rows, stepping = false, inert = false }: LadderProps) {
   const strip = useRef<HTMLOListElement>(null);
   const current = rows.find((row) => row.state === "current")?.rung;
 
@@ -41,7 +52,13 @@ export function LadderStrip({ rows }: { rows: RungView[] }) {
 
   return (
     // Scrollable, so it takes focus for keyboard scrolling.
-    <ol ref={strip} className="ladder-strip" aria-label="Ladder" tabIndex={0}>
+    <ol
+      ref={strip}
+      className={`ladder-strip${stepping ? " is-stepping" : ""}`}
+      aria-label="Ladder"
+      tabIndex={0}
+      inert={inert}
+    >
       {rows.map((row) => (
         <li key={row.rung} className={rowClass(row)} aria-current={row.state === "current" ? "step" : undefined}>
           <small>{row.rung}</small>

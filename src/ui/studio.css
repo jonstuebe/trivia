@@ -648,6 +648,84 @@ button.lozenge:focus-visible {
   color: var(--bad);
 }
 
+/* ---- The reveal wait: the stage dims, only the locked-in answer stays lit ---- */
+
+.stage:has(.game.is-locked-in) {
+  background-color: #020310;
+  background-image: var(--spotlight-dim);
+}
+/* What's dimmed is inert (game-screen.tsx) or a disabled answer: out of use until the reveal. */
+.game.is-locked-in [inert],
+.game.is-locked-in .answer:not(.is-picked) {
+  opacity: 0.35;
+}
+
+.locked-in {
+  margin: 0;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+  color: var(--gold);
+}
+.locked-in:focus {
+  outline: none;
+}
+
+/*
+ * Motion, only for players who haven't asked for less: the dimming fades in,
+ * the locked-in line breathes, a right answer flashes green and the gold
+ * steps up the Ladder. Under reduced motion all of it shows at once, still.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .game__main > *,
+  .answer,
+  .ladder {
+    transition: opacity 0.4s ease;
+  }
+
+  .locked-in {
+    animation: locked-in-breathe 1.6s ease-in-out infinite;
+  }
+
+  .answers.is-won .answer.is-right {
+    animation: answer-flash 0.3s ease-in-out 4 alternate;
+  }
+
+  .ladder.is-stepping > li[aria-current="step"],
+  .ladder-strip.is-stepping > li[aria-current="step"] {
+    animation: rung-step-up 0.5s ease-out;
+  }
+  .ladder-strip.is-stepping > li[aria-current="step"] {
+    animation-name: rung-step-across;
+  }
+}
+
+@keyframes locked-in-breathe {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes answer-flash {
+  to {
+    filter: brightness(1.6);
+  }
+}
+
+/* The column runs bottom to top, so the gold comes up from the Rung below. */
+@keyframes rung-step-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* The strip runs left to right, so the gold comes across from the Rung before. */
+@keyframes rung-step-across {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
 /* ---- The Ladder: a strip on phones, a column on desktop ---- */
 
 .ladder {
