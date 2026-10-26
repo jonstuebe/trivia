@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 /**
- * The format every Topic file follows (issue #3). There is one JSON file per
+ * The format every Topic file follows. There is one JSON file per
  * Title in a folder per Category, plus `general.json` for General:
  *
  *   content/general.json

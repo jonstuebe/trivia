@@ -3,8 +3,7 @@ import { ID_ALPHABET, ID_LENGTH } from "./schema";
 import type { ContentFile } from "./types";
 
 /**
- * Gives every Question without an ID a short random one (issue #3, "Question
- * IDs"). An ID is written once and never changed after, so a Seen question
+ * Gives every Question without an ID a short random one. An ID is written once and never changed after, so a Seen question
  * stays seen across content edits. A new ID never matches one already in any
  * Topic file, and a run with nothing to fill in changes nothing.
  */

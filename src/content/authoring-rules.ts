@@ -2,8 +2,8 @@ import { describeQuestion, type ContentError } from "./schema";
 import type { CheckedTopic } from "./types";
 
 /**
- * The Question authoring rules that fail the build (issue #9, "Build
- * checks"), run on Topic files that already passed the schema.
+ * The Question authoring rules that fail the build, run on Topic files that
+ * already passed the schema.
  */
 
 /** Checks the authoring rules across every Topic file, in the order given. */

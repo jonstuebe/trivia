@@ -2,7 +2,7 @@ import { resolve } from "node:path";
 import type { Plugin } from "vite";
 
 /**
- * The test build (issue #24): the app built on the fixture Topic set in
+ * The test build: the app built on the fixture Topic set in
  * `src/content/fixtures/` instead of the real content, for whole-Game tests
  * and the e2e journeys. Build it with `bun run build:fixtures`, which runs
  * `vite build --mode fixtures` into `dist-fixtures/`.

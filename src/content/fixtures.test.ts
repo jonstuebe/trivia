@@ -6,7 +6,7 @@ import { generalFileSchema } from "./schema";
 
 /**
  * The fixture Topic set: Topic files with known answers that the test build
- * plays instead of the real content (issue #24). Every correct answer is
+ * plays instead of the real content. Every correct answer is
  * "Right answer", so a test or an e2e journey can always pick it.
  */
 const fixtures = join(import.meta.dirname, "fixtures");

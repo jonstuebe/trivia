@@ -14,7 +14,7 @@ import {
 import type { CheckedTopic } from "./types";
 
 /**
- * The content checks that inform rather than fail (issue #9, "Build checks"):
+ * The content checks that inform rather than fail:
  * a warning when a right answer gives itself away by its length, and a report
  * of how each Topic's Questions spread across Tiers and, for General, Subjects.
  */
