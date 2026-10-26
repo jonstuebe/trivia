@@ -9,11 +9,12 @@
  * the PNG, and commit it. It renders in the Chromium the e2e journeys use, with
  * Cinzel and Inter from @fontsource, so the card matches the app's type.
  */
+import { writeFileSync } from "node:fs";
 import { join } from "node:path";
-import sharp from "sharp";
 import { LINK_PREVIEW_IMAGE } from "../src/link-preview";
 import { SITE_TAGLINE } from "../src/site";
-import { asset, FONT_FACES, root, screenshots } from "./render";
+import { SPOTLIGHT, STUDIO_BACKGROUND } from "../src/ui/studio-colours";
+import { asset, compress, FONT_FACES, root, screenshots } from "./render";
 
 const disc = asset("logo-disc.svg");
 // "Fifteen questions." on one line, the million on the next, in gold.
@@ -34,8 +35,8 @@ const card = `<!doctype html>
         align-items: center;
         gap: 52px;
         /* The app's spotlight (src/ui/studio.css), centred on the disc. */
-        background-color: #05061a;
-        background-image: radial-gradient(ellipse 70% 95% at 28% 50%, #2a2f9e 0%, #0b0e3a 50%, #05061a 85%);
+        background-color: ${STUDIO_BACKGROUND};
+        background-image: radial-gradient(ellipse 70% 95% at 28% 50%, ${SPOTLIGHT.centre} 0%, ${SPOTLIGHT.middle} 50%, ${STUDIO_BACKGROUND} 85%);
         font-family: "Inter", sans-serif;
         font-weight: 700;
       }
@@ -52,7 +53,5 @@ const card = `<!doctype html>
 
 const [png] = await screenshots([{ html: card, width: LINK_PREVIEW_IMAGE.width, height: LINK_PREVIEW_IMAGE.height }]);
 const out = join(root, "public", LINK_PREVIEW_IMAGE.path);
-// Recompressed losslessly: about a third the size, well under the limits
-// some chat apps put on preview images.
-await sharp(png).png({ compressionLevel: 9, effort: 10 }).toFile(out);
+writeFileSync(out, await compress(png!));
 console.log(`Wrote ${out}`);

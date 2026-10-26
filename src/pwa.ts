@@ -1,5 +1,6 @@
 import type { VitePWAOptions } from "vite-plugin-pwa";
 import { SITE_NAME, SITE_TAGLINE } from "./site.ts";
+import { STUDIO_BACKGROUND } from "./ui/studio-colours.ts";
 
 /**
  * The PWA: a web app manifest so the game installs on a phone, and a service
@@ -15,9 +16,6 @@ import { SITE_NAME, SITE_TAGLINE } from "./site.ts";
  * (`registerSW.js`, a plain `<script>` in index.html, so no app code imports
  * it). The dev server and the unit tests never register one.
  */
-
-/** The Studio background (`--bg` in src/ui/studio.css): the splash screen and the browser bar. */
-export const STUDIO_BACKGROUND = "#05061a";
 
 /**
  * The app icons, all drawn from the logo disc by `bun run render-icons` into

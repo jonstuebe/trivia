@@ -12,9 +12,9 @@
  */
 import { writeFileSync } from "node:fs";
 import { join } from "node:path";
-import sharp from "sharp";
-import { APP_ICONS, APPLE_TOUCH_ICON, FAVICON, STUDIO_BACKGROUND } from "../src/pwa";
-import { asset, FONT_FACES, root, screenshots, type Shot } from "./render";
+import { APP_ICONS, APPLE_TOUCH_ICON, FAVICON } from "../src/pwa";
+import { SPOTLIGHT, STUDIO_BACKGROUND } from "../src/ui/studio-colours";
+import { asset, compress, FONT_FACES, root, screenshots, type Shot } from "./render";
 
 const disc = asset("logo-disc.svg");
 
@@ -38,7 +38,7 @@ function icon(svg: string, size: number, { scale = 1, tile = false } = {}): Shot
           tile
             ? // The Main menu's spotlight (src/ui/studio.css), centred on the disc.
               `background-color: ${STUDIO_BACKGROUND};
-        background-image: radial-gradient(circle at 50% 45%, #2a2f9e 0%, #0b0e3a 55%, ${STUDIO_BACKGROUND} 90%);`
+        background-image: radial-gradient(circle at 50% 45%, ${SPOTLIGHT.centre} 0%, ${SPOTLIGHT.middle} 55%, ${STUDIO_BACKGROUND} 90%);`
             : "background: transparent;"
         }
       }
@@ -68,8 +68,7 @@ const shots: { file: string; shot: Shot }[] = [
 ];
 
 const pngs = await screenshots(shots.map(({ shot }) => shot));
-// Recompressed losslessly, as the link preview is.
-const compressed = await Promise.all(pngs.map((png) => sharp(png).png({ compressionLevel: 9, effort: 10 }).toBuffer()));
+const compressed = await Promise.all(pngs.map(compress));
 
 const favicons: Buffer[] = [];
 shots.forEach(({ file }, i) => {

@@ -1,11 +1,12 @@
 /**
  * What the dev-only render scripts share (`render-link-preview.ts`,
  * `render-icons.ts`): the app's fonts, inlined for a page set from a string,
- * and screenshots in the Chromium the e2e journeys use.
+ * screenshots in the Chromium the e2e journeys use, and their compression.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright-core";
+import sharp from "sharp";
 
 export const root = join(import.meta.dirname, "..");
 
@@ -47,3 +48,10 @@ export async function screenshots(shots: Shot[]): Promise<Buffer[]> {
     await browser.close();
   }
 }
+
+/**
+ * A screenshot recompressed losslessly: about a third the size, well under
+ * the limits some chat apps put on link preview images.
+ */
+export const compress = (png: Buffer): Promise<Buffer> =>
+  sharp(png).png({ compressionLevel: 9, effort: 10 }).toBuffer();
