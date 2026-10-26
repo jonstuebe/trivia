@@ -6,8 +6,8 @@ import { checkContentDir, readContentDir } from "./read";
 import { reportContent } from "./report";
 
 /** One small Title file. */
-const show = {
-  title: "Fixture Show",
+const title = {
+  title: "Fixture Title",
   questions: [
     {
       id: "fx1a2b3c",
@@ -19,7 +19,7 @@ const show = {
     {
       id: "fx4d5e6f",
       tier: 1,
-      prompt: "Which city is the show set in?",
+      prompt: "Which city is the story set in?",
       correct: "Springfield",
       wrong: ["Shelbyville", "Capital City", "Ogdenville"],
       source: "S1E1",
@@ -51,11 +51,11 @@ describe("checking a content folder", () => {
     }
 
     it("builds the topic index from the Topic files in it", async () => {
-      expect(await checkContentDir(await contentFolder({ "tv/fixture-show.json": JSON.stringify(show) }))).toEqual({
+      expect(await checkContentDir(await contentFolder({ "tv/fixture-title.json": JSON.stringify(title) }))).toEqual({
         errors: [],
         index: {
           general: null,
-          tv: [{ name: "Fixture Show", slug: "fixture-show", questionCounts: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
+          tv: [{ name: "Fixture Title", slug: "fixture-title", questionCounts: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
           movies: [],
         },
       });
@@ -63,15 +63,15 @@ describe("checking a content folder", () => {
 
     it("reads the Topic files for the report", async () => {
       const { files, unreadable } = await readContentDir(
-        await contentFolder({ "tv/fixture-show.json": JSON.stringify(show) }),
+        await contentFolder({ "tv/fixture-title.json": JSON.stringify(title) }),
       );
       expect(unreadable).toEqual([]);
       expect(reportContent(files)).toEqual({
-        topics: [{ file: "tv/fixture-show.json", name: "Fixture Show", tiers: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
+        topics: [{ file: "tv/fixture-title.json", name: "Fixture Title", tiers: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
         // "The Daily Grind" is 15 characters against "Brew Haven"'s 10.
         warnings: [
           {
-            file: "tv/fixture-show.json",
+            file: "tv/fixture-title.json",
             question: "fx7g8h9i (question 3)",
             message: "the right answer (15 characters) is much longer than the longest wrong one (10), which gives it away",
           },
