@@ -10,11 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GameRouteImport } from './routes/game'
+import { Route as GeneralRouteImport } from './routes/general'
 import { Route as TopicsRouteImport } from './routes/topics'
+import { Route as CategoryIndexRouteImport } from './routes/$category.index'
+import { Route as CategorySlugRouteImport } from './routes/$category.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GameRoute = GameRouteImport.update({
+  id: '/game',
+  path: '/game',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GeneralRoute = GeneralRouteImport.update({
+  id: '/general',
+  path: '/general',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TopicsRoute = TopicsRouteImport.update({
@@ -22,31 +36,65 @@ const TopicsRoute = TopicsRouteImport.update({
   path: '/topics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoryIndexRoute = CategoryIndexRouteImport.update({
+  id: '/$category/',
+  path: '/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategorySlugRoute = CategorySlugRouteImport.update({
+  id: '/$category/$slug',
+  path: '/$category/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/game': typeof GameRoute
+  '/general': typeof GeneralRoute
   '/topics': typeof TopicsRoute
+  '/$category/$slug': typeof CategorySlugRoute
+  '/$category/': typeof CategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/game': typeof GameRoute
+  '/general': typeof GeneralRoute
   '/topics': typeof TopicsRoute
+  '/$category/$slug': typeof CategorySlugRoute
+  '/$category': typeof CategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/game': typeof GameRoute
+  '/general': typeof GeneralRoute
   '/topics': typeof TopicsRoute
+  '/$category/$slug': typeof CategorySlugRoute
+  '/$category/': typeof CategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/topics'
+  fullPaths:
+    '/' | '/game' | '/general' | '/topics' | '/$category/$slug' | '/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/topics'
-  id: '__root__' | '/' | '/topics'
+  to: '/' | '/game' | '/general' | '/topics' | '/$category/$slug' | '/$category'
+  id:
+    | '__root__'
+    | '/'
+    | '/game'
+    | '/general'
+    | '/topics'
+    | '/$category/$slug'
+    | '/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GameRoute: typeof GameRoute
+  GeneralRoute: typeof GeneralRoute
   TopicsRoute: typeof TopicsRoute
+  CategorySlugRoute: typeof CategorySlugRoute
+  CategoryIndexRoute: typeof CategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +106,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/game': {
+      id: '/game'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/general': {
+      id: '/general'
+      path: '/general'
+      fullPath: '/general'
+      preLoaderRoute: typeof GeneralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/topics': {
       id: '/topics'
       path: '/topics'
@@ -65,12 +127,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TopicsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$category/': {
+      id: '/$category/'
+      path: '/$category'
+      fullPath: '/$category/'
+      preLoaderRoute: typeof CategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$category/$slug': {
+      id: '/$category/$slug'
+      path: '/$category/$slug'
+      fullPath: '/$category/$slug'
+      preLoaderRoute: typeof CategorySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GameRoute: GameRoute,
+  GeneralRoute: GeneralRoute,
   TopicsRoute: TopicsRoute,
+  CategorySlugRoute: CategorySlugRoute,
+  CategoryIndexRoute: CategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

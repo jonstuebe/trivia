@@ -238,3 +238,91 @@ button.lozenge:focus-visible::before {
   gap: 10px;
   width: min(320px, 100%);
 }
+
+/* ---- Topic picker and Ready to play ---- */
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 520px) {
+  .tiles--titles {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tile {
+  display: block;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-tile);
+  background: rgba(12, 17, 70, 0.7);
+  color: var(--txt);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.tile small {
+  display: block;
+  margin-top: 3px;
+  color: var(--mut);
+  font-size: 13px;
+  font-weight: 400;
+}
+.tile:hover {
+  border-color: var(--gold);
+}
+.tile:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.ready {
+  align-items: center;
+  text-align: center;
+}
+
+.ready-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 400;
+}
+.ready-title__kicker {
+  color: var(--mut);
+  font-size: 15px;
+}
+.ready-title__topic {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1.1;
+  color: var(--gold);
+  text-shadow: var(--glow-gold);
+}
+
+.money {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.notice {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-tile);
+  background: rgba(12, 17, 70, 0.7);
+}
