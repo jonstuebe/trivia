@@ -1,0 +1,240 @@
+/*
+ * The Studio look (Visual direction, direction A): a navy spotlight, blue
+ * lozenge outlines, gold for money and answer letters, amber for the picked
+ * answer, green for the right one. Cinzel for money and headings, Inter for
+ * text, both served with the app (see fonts.ts).
+ */
+:root {
+  --bg: #05061a;
+  --panel: #0c1146;
+  --line: #5b6cff;
+  --gold: #f5c542;
+  --txt: #eef1ff;
+  --mut: #8e96d6;
+  --ok: #2fd27a;
+  --bad: #ff4d5e;
+  --amber-top: #ffb52e;
+  --amber-bottom: #d9850a;
+  --amber-edge: #ffd27a;
+  --green-top: #36e388;
+  --green-bottom: #16a85a;
+  --green-edge: #9cf5c3;
+  --green-ink: #04210f;
+  --ink: #111;
+  --lozenge-top: #16206b;
+  --lozenge-bottom: #0a0f45;
+  --focus: #fff;
+
+  --spotlight: radial-gradient(ellipse 80% 55% at 50% 0%, #2a2f9e 0%, #0b0e3a 45%, var(--bg) 80%);
+  --spotlight-dim: radial-gradient(ellipse 50% 40% at 50% 30%, #1b1f6e 0%, #070926 60%, #020310 90%);
+
+  --font-display: "Cinzel", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --r-pill: 999px;
+  --r-tile: 10px;
+  --r-rung: 4px;
+  --r-chip: 8px;
+
+  --glow-gold: 0 0 30px rgba(245, 197, 66, 0.5);
+  --glow-chip: 0 0 18px rgba(245, 197, 66, 0.6);
+  --logo-ring: 0 0 0 4px var(--gold), 0 0 60px rgba(91, 108, 255, 0.6);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: var(--spotlight);
+  background-attachment: fixed;
+  color: var(--txt);
+  font-family: var(--font-body);
+  line-height: 1.4;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+/* A screen's heading takes focus on arrival; it isn't a control, so no ring. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/* The page under every screen. */
+.stage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+.screen-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.muted {
+  color: var(--mut);
+}
+
+/* ---- Lozenges: the Question, an answer, a button ---- */
+
+.lozenge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 14px 22px;
+  color: var(--txt);
+  text-align: left;
+  background: linear-gradient(180deg, var(--lozenge-top), var(--lozenge-bottom));
+  border: 2px solid var(--line);
+  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
+}
+
+/* clip-path clips the border, so the visible outline is drawn inside it. */
+.lozenge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  box-shadow: inset 0 0 0 2px var(--line);
+  pointer-events: none;
+}
+
+button.lozenge {
+  cursor: pointer;
+}
+
+/* clip-path also clips an outline, so the focus ring is drawn inside too. */
+button.lozenge:focus-visible {
+  outline: none;
+}
+button.lozenge:focus-visible::before {
+  box-shadow: inset 0 0 0 3px var(--focus);
+}
+
+.lozenge--question {
+  justify-content: center;
+  padding: 22px 26px;
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 600;
+  text-align: center;
+}
+
+.answer__letter {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.lozenge--button {
+  justify-content: center;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.lozenge--primary {
+  background: linear-gradient(180deg, #ffd666, var(--gold));
+  color: var(--ink);
+  border-color: var(--amber-edge);
+}
+.lozenge--primary::before {
+  box-shadow: inset 0 0 0 2px var(--amber-edge);
+}
+.lozenge--primary:focus-visible::before {
+  box-shadow:
+    inset 0 0 0 2px var(--amber-edge),
+    inset 0 0 0 5px var(--ink);
+}
+
+.link-quiet {
+  align-self: center;
+  padding: 4px 8px;
+  border: 0;
+  background: none;
+  color: var(--mut);
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.link-quiet:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (min-width: 760px) {
+  .lozenge--question {
+    padding: 34px 40px;
+    font-size: 24px;
+  }
+}
+
+/* ---- Main menu ---- */
+
+.hero {
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  text-align: center;
+}
+
+.logo {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 35%, #3a46ff, #0b0e3a 70%);
+  box-shadow: var(--logo-ring);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt);
+}
+
+.logo h1 {
+  font-size: inherit;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(320px, 100%);
+}
