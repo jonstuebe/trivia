@@ -1,4 +1,4 @@
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { PlayingGame } from "../game/game-controller";
 import { ANSWER_POSITIONS } from "../game/types";
 import { Dialog } from "../ui/dialog";
@@ -8,27 +8,33 @@ import { GameOverScreen } from "./game-over";
 import { gameView } from "./game-view";
 import { LadderColumn, LadderStrip } from "./ladder";
 import { ladderView } from "./ladder-view";
-import { useGameKeys } from "./use-game-keys";
+import { KeysDialog, Lifelines, PickFriendDialog } from "./lifelines";
+import { lifelinesView } from "./lifelines-view";
+import { useGameKeys, useShowKeysKey } from "./use-game-keys";
 
 /**
  * The Game at `/game`, from question 1 to Game over. Every move goes to the
  * Game controller; this only lays out what `gameView` says and moves focus.
  *
  * Top to bottom in the main column: the header ("Question n of 15 · for $X",
- * banked and safe), the phone Ladder strip, the Lifelines (#37), the Title
- * label in a Mixed game, the Question, the answers, then the reveal or the
- * Walk away link. The desktop Ladder is the second column. The confirm
- * dialogs sit over it all.
+ * banked and safe), the phone Ladder strip, the Lifelines and their results,
+ * the Title label in a Mixed game, the Question, the answers, then the reveal
+ * or the Walk away link. The desktop Ladder is the second column. The confirm
+ * dialogs, Pick a friend and the `?` list of keys sit over it all.
  */
 export function GameScreen({ game }: { game: PlayingGame }) {
   const snapshot = useSyncExternalStore(game.subscribe, game.snapshot);
   useGameKeys(game);
+  const [showingKeys, setShowingKeys] = useState(false);
+  useShowKeysKey(() => setShowingKeys(true));
 
   const over = game.gameOver();
   if (snapshot.status === "done" && over) return <GameOverScreen over={over} snapshot={snapshot} />;
 
   const view = gameView(snapshot);
+  const lifelines = lifelinesView(snapshot);
   const { rung } = snapshot.context;
+  const { question } = snapshot.context.questions[rung - 1]!;
   const choosing = snapshot.matches("choosing");
   const ladder = ladderView(rung);
 
@@ -36,8 +42,8 @@ export function GameScreen({ game }: { game: PlayingGame }) {
     <main className="screen game">
       <div className="game__main">
         <header className="game__top">
-          {/* Keyed by Rung, so each new Question takes focus at its heading. */}
-          <ScreenHeading key={rung} className="game__heading">
+          {/* Keyed by the Question, so each new one (a switched one too) takes focus at its heading. */}
+          <ScreenHeading key={`${rung}:${question.id}`} className="game__heading">
             {view.heading}
           </ScreenHeading>
           <p className="game__banked">
@@ -47,14 +53,16 @@ export function GameScreen({ game }: { game: PlayingGame }) {
 
         <LadderStrip rows={ladder} />
 
-        {/* #37: the Lifeline ovals go here, above the Question. */}
+        <Lifelines view={lifelines} onUse={(event) => game.send(event)} />
 
         {view.titleLabel && <p className="game__title-label">{view.titleLabel}</p>}
-        <QuestionLozenge>{snapshot.context.questions[rung - 1]!.question.prompt}</QuestionLozenge>
+        <QuestionLozenge>{question.prompt}</QuestionLozenge>
 
         <ul className="answers" aria-label="Answers">
           {ANSWER_POSITIONS.map((position) => {
             const answer = view.answers[position]!;
+            // Taken away by the 50:50: its place stays, empty, so the others don't move.
+            if (answer.removed) return <li key={position} className="answers__gone" />;
             return (
               <li key={position}>
                 <AnswerLozenge
@@ -104,6 +112,14 @@ export function GameScreen({ game }: { game: PlayingGame }) {
           </div>
         </Dialog>
       )}
+      {lifelines.pickFriend && (
+        <PickFriendDialog
+          pick={lifelines.pickFriend}
+          onCall={(friend) => game.send({ type: "callFriend", friend })}
+          onCancel={() => game.send({ type: "cancel" })}
+        />
+      )}
+      {showingKeys && <KeysDialog onClose={() => setShowingKeys(false)} />}
     </main>
   );
 }

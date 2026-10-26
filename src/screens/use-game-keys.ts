@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { PlayingGame } from "../game/game-controller";
-import { GAME_KEYS, gameKeyEvent, type GameKey } from "./game-keys";
+import { GAME_KEYS, gameKeyEvent, SHOW_KEYS_KEY, type GameKey } from "./game-keys";
 
 const CONTROLS = "button, a[href], input, select, textarea, summary";
 
@@ -26,4 +26,27 @@ export function useGameKeys(game: PlayingGame, keys: readonly GameKey[] = GAME_K
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [game, keys]);
+}
+
+/**
+ * Calls `onShow` when `?` is pressed outside a dialog, to show the list of
+ * keys. It's not a Game move, so it works on every step of the Game.
+ */
+export function useShowKeysKey(onShow: () => void): void {
+  const show = useRef(onShow);
+  useEffect(() => {
+    show.current = onShow;
+  });
+  useEffect(() => {
+    function onKeyDown(press: KeyboardEvent) {
+      if (press.defaultPrevented || press.repeat || press.key !== SHOW_KEYS_KEY) return;
+      if (press.ctrlKey || press.metaKey || press.altKey) return;
+      const target = press.target instanceof Element ? press.target : null;
+      if (target?.closest("dialog[open], input, textarea, select")) return;
+      press.preventDefault();
+      show.current();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 }

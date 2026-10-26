@@ -428,6 +428,163 @@ button.lozenge:focus-visible::before {
   cursor: default;
 }
 
+/* A place the 50:50 emptied: kept, so the answers left don't move. */
+.answers__gone {
+  min-height: 52px;
+}
+
+/* ---- Lifelines ---- */
+
+.lifelines-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lifelines {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* An oval: "50:50" or an emoji, its name in text for screen readers. */
+.lifeline {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 40px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: var(--lozenge-bottom);
+  color: var(--txt);
+  font: inherit;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+.lifeline[aria-disabled="true"] {
+  cursor: default;
+}
+.lifeline:not([aria-disabled="true"]):hover {
+  border-color: var(--gold);
+}
+.lifeline:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+.lifeline.is-used {
+  opacity: 0.3;
+}
+/* The strike through a used Lifeline. */
+.lifeline.is-used::after {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 2px;
+  background: var(--bad);
+  transform: rotate(-30deg);
+}
+/* Switch through question 10. */
+.lifeline.is-locked {
+  opacity: 0.45;
+  border-style: dashed;
+}
+
+.audience,
+.friend-line {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-tile);
+  background: rgba(12, 17, 70, 0.7);
+}
+.audience:focus-visible,
+.friend-line:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.audience__caption {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.audience__chart {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 8px 0;
+}
+
+.audience__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.audience__track {
+  display: flex;
+  align-items: flex-end;
+  width: 22px;
+  height: 80px;
+  border-radius: var(--r-rung);
+  background: rgba(91, 108, 255, 0.2);
+}
+
+.audience__bar {
+  width: 100%;
+  border-radius: var(--r-rung);
+  background: var(--gold);
+}
+
+.audience__letter {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.audience__text {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* ---- Pick a friend and the list of keys ---- */
+
+.dialog__note {
+  margin: -8px 0 16px;
+  color: var(--mut);
+}
+
+.keys {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 18px;
+  text-align: left;
+}
+
+.keys__row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+}
+
+.keys dt,
+.keys dd {
+  margin: 0;
+}
+
+.keys kbd {
+  color: var(--gold);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 700;
+}
+
 .answer__text {
   flex: 1;
 }
