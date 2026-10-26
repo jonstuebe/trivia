@@ -30,9 +30,20 @@ export function drawSwitch(
   seen: SeenQuestions,
   random: Random,
 ): GameQuestion | undefined {
+  return drawOrder(switchCandidates(questions, tier, inGame), seen, random)[0];
+}
+
+/**
+ * What Switch the Question could draw from: the Tier's Questions not already
+ * in this Game. Empty when the Tier has nothing left to switch to.
+ */
+export function switchCandidates(
+  questions: readonly GameQuestion[],
+  tier: Tier,
+  inGame: readonly GameQuestion[],
+): GameQuestion[] {
   const used = new Set(inGame.map((q) => q.id));
-  const candidates = questions.filter((q) => q.tier === tier && !used.has(q.id));
-  return drawOrder(candidates, seen, random)[0];
+  return questions.filter((q) => q.tier === tier && !used.has(q.id));
 }
 
 /** The order to draw from: unseen Questions first, at random, then repeats oldest-seen first. */

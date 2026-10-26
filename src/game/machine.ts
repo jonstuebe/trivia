@@ -1,19 +1,20 @@
 import { assign, createActor, setup, type Actor, type Snapshot, type StateValueFrom } from "xstate";
 import { shuffle, type Random } from "../random/random";
 import { LADDER_LENGTH, prizeForRung, winningsAfterMiss, winningsBeforeRung } from "./ladder";
-import type {
-  AnswerPosition,
-  Friend,
-  GameEnding,
-  GameQuestion,
-  GameResult,
-  Lifeline,
-  QuestionOutcome,
-  SeenQuestions,
-  ShownQuestion,
-  Topic,
+import {
+  ANSWER_POSITIONS,
+  type AnswerPosition,
+  type Friend,
+  type GameEnding,
+  type GameQuestion,
+  type GameResult,
+  type Lifeline,
+  type QuestionOutcome,
+  type SeenQuestions,
+  type ShownQuestion,
+  type Topic,
 } from "./types";
-import { drawSwitch } from "./selection";
+import { drawSwitch, switchCandidates } from "./selection";
 import { askTheAudience, phoneAFriend, type AudienceResult, type FriendResult } from "./simulation";
 
 /**
@@ -109,7 +110,8 @@ export function showQuestion(question: GameQuestion, random: Random): ShownQuest
   return { question, answers, correct: answers.indexOf(question.correct) as AnswerPosition };
 }
 
-function shownNow(context: GameContext): ShownQuestion {
+/** The Question on screen now: the one on the Rung being played. */
+export function shownNow(context: Pick<GameContext, "questions" | "rung">): ShownQuestion {
   return context.questions[context.rung - 1]!;
 }
 
@@ -119,7 +121,7 @@ function unused(context: GameContext, lifeline: Lifeline): boolean {
 
 /** The answers not taken away by a 50:50. */
 function remaining(context: GameContext): AnswerPosition[] {
-  return ([0, 1, 2, 3] as const).filter((position) => !context.removed.includes(position));
+  return ANSWER_POSITIONS.filter((position) => !context.removed.includes(position));
 }
 
 /** What the next question starts with: no answer picked and no Lifeline results showing. */
@@ -135,12 +137,8 @@ function gameMachineWith({ random, topicQuestions, seen }: GameDependencies) {
   const drawReplacement = (context: GameContext) =>
     drawSwitch(topicQuestions, shownNow(context).question.tier, inGame(context), seen(), random);
   /** Whether the Tier has a Question left to switch to, without rolling anything. */
-  const canDrawReplacement = (context: GameContext) => {
-    const drawn = new Set(inGame(context).map((question) => question.id));
-    const { tier } = shownNow(context).question;
-    return topicQuestions.some((question) => question.tier === tier && !drawn.has(question.id));
-  };
-
+  const canDrawReplacement = (context: GameContext) =>
+    switchCandidates(topicQuestions, shownNow(context).question.tier, inGame(context)).length > 0;
 
   return setup({
     types: {
@@ -165,7 +163,7 @@ function gameMachineWith({ random, topicQuestions, seen }: GameDependencies) {
       finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
       useFiftyFifty: assign(({ context }) => {
         const { correct } = shownNow(context);
-        const wrong = ([0, 1, 2, 3] as const).filter((position) => position !== correct);
+        const wrong = ANSWER_POSITIONS.filter((position) => position !== correct);
         return {
           removed: shuffle(wrong, random).slice(0, 2).sort(),
           lifelinesUsed: [...context.lifelinesUsed, "fiftyFifty" as const],

@@ -1,14 +1,12 @@
 import type { Tier } from "../content/schema";
 import type { Random } from "../random/random";
-import type { AnswerPosition, Friend, ShownQuestion } from "./types";
+import { ANSWER_POSITIONS, type AnswerPosition, type Friend, type ShownQuestion } from "./types";
 
 /**
  * The simulated Ask the Audience vote and Phone a Friend line. Each takes the
  * shown Question and a random source and returns plain data, so the Game can
  * save the result and a refresh or Resume shows it again without rerolling.
  */
-
-const ALL_POSITIONS: readonly AnswerPosition[] = [0, 1, 2, 3];
 
 export interface SimulationInput {
   shown: ShownQuestion;
@@ -22,7 +20,7 @@ export interface AudienceResult {
   votes: readonly [number, number, number, number];
 }
 
-export function askTheAudience({ shown, remaining = ALL_POSITIONS, random }: SimulationInput): AudienceResult {
+export function askTheAudience({ shown, remaining = ANSWER_POSITIONS, random }: SimulationInput): AudienceResult {
   const positions = checkRemaining(shown, remaining);
   const leader =
     random.next() < RIGHT_ODDS[shown.question.tier]
@@ -60,7 +58,7 @@ export interface FriendResult {
   line: string;
 }
 
-export function phoneAFriend({ shown, remaining = ALL_POSITIONS, friend, random }: FriendInput): FriendResult {
+export function phoneAFriend({ shown, remaining = ANSWER_POSITIONS, friend, random }: FriendInput): FriendResult {
   const positions = checkRemaining(shown, remaining);
   const { tier, subject } = shown.question;
   // On their own Subject a Friend is 15 points likelier to be right, never above 95%; off it, 10 points less.

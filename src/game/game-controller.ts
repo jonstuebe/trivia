@@ -1,7 +1,7 @@
 import type { Random } from "../random/random";
 import type { DeviceStorage } from "../storage";
 import { loadTopic } from "./load-topic";
-import { restoreGame, saveGame, startGame, type GameActor, type GameEvent, type SavedGameSnapshot } from "./machine";
+import { restoreGame, saveGame, shownNow, startGame, type GameActor, type GameEvent, type SavedGameSnapshot } from "./machine";
 import { canFillGame, drawGame } from "./selection";
 import type { GameResult, Topic } from "./types";
 
@@ -49,7 +49,7 @@ export function createGameController({ storage, random }: GameControllerOptions)
       if (over) return;
       const snapshot = actor.getSnapshot();
       const { context } = snapshot;
-      const showing = context.questions[context.rung - 1]!.question.id;
+      const showing = shownNow(context).question.id;
       if (!marked.has(showing)) {
         storage.markSeen(showing);
         marked.add(showing);

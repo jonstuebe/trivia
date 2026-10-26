@@ -29,6 +29,9 @@ export type SeenQuestions = Readonly<Record<string, number>>;
 /** One of the four answer positions, A to D. */
 export type AnswerPosition = 0 | 1 | 2 | 3;
 
+/** All four answer positions, A to D, in order. */
+export const ANSWER_POSITIONS: readonly AnswerPosition[] = [0, 1, 2, 3];
+
 /** A Question as shown in a Game: its four answers in the order shown, A to D. */
 export interface ShownQuestion {
   question: GameQuestion;
