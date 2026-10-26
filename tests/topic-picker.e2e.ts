@@ -69,7 +69,7 @@ test("a shared Title link opens that Title's Ready to play", async ({ app, scree
 
 test("a bad Title link opens the Topic picker with a note, gone after a refresh", async ({ app, screen, browser }) => {
   // An unknown Title, and one below the picker's threshold.
-  for (const path of ["/tv/not-a-show", "/tv/fixture-drama"]) {
+  for (const path of ["/tv/not-a-title", "/tv/fixture-drama"]) {
     await app.open(path);
     await expect(browser).toHaveURL("/topics");
     await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
