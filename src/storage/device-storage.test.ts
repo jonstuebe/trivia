@@ -4,7 +4,7 @@ import type { Topic } from "../game/types";
 import { createMemoryBackend } from "./backend";
 import { createDeviceStorage, type SavedGameFormat } from "./device-storage";
 
-// A stand-in for the Game machine's Saved game record, which #31 supplies.
+// A stand-in for the Game machine's Saved game record, which the Game supplies in the app.
 const savedGameFormat: SavedGameFormat<{ rung: number }> = {
   version: 1,
   schema: z.object({ rung: z.int() }),
