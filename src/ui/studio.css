@@ -239,6 +239,25 @@ button.lozenge:focus-visible::before {
   width: min(320px, 100%);
 }
 
+/* The Personal bests box, one line per Topic. */
+.bests {
+  width: min(320px, 100%);
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-tile);
+  background: rgba(12, 17, 70, 0.7);
+  font-size: 14px;
+}
+
+.bests__list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 /* ---- Topic picker and Ready to play ---- */
 
 .section-title {
