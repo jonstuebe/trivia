@@ -130,12 +130,11 @@ describe("the Lifeline results", () => {
     expect(view(game).audience!.text).toMatch(new RegExp(`^The audience voted ${left[0]}: \\d+%, ${left[1]}: \\d+%\\.$`));
   });
 
-  it("offer the four Friends, with the Question's subject, while picking one", () => {
+  it("offer the four Friends while picking one", () => {
     const game = newGame();
     game.send({ type: "phoneAFriend" });
     expect(view(game).pickFriend).toEqual({
       title: "Who do you call?",
-      subject: "This question's subject: pop culture",
       friends: [
         { friend: "history", name: "History buff" },
         { friend: "science", name: "Science buff" },

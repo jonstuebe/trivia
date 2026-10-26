@@ -573,12 +573,7 @@ button.lozenge:focus-visible::before {
   font-size: 14px;
 }
 
-/* ---- Pick a friend and the list of keys ---- */
-
-.dialog__note {
-  margin: -8px 0 16px;
-  color: var(--mut);
-}
+/* ---- The list of keys ---- */
 
 .keys {
   display: grid;

@@ -51,7 +51,6 @@ test("every Lifeline in one Game, by keyboard and by mouse, each result readable
   await browser.keyboard.press("p");
   const pick = screen.getByRole("dialog", "Who do you call?");
   await expect(pick).toBeVisible();
-  await expect(pick.getByText("This question's subject: pop culture")).toBeVisible();
   await expect(screen.getByRole("button", "History buff")).toBeFocused();
   await checkA11y(browser, "Pick a friend");
   await screen.getByRole("button", "Cancel").tap();

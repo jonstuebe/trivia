@@ -101,7 +101,6 @@ export function PickFriendDialog({
 }) {
   return (
     <Dialog title={pick.title} onCancel={onCancel}>
-      <p className="dialog__note">{pick.subject}</p>
       <div className="dialog__buttons">
         {pick.friends.map(({ friend, name }) => (
           <Button key={friend} onClick={() => onCall(friend)}>

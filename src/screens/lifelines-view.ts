@@ -1,9 +1,7 @@
-import { shownNow, type GameEvent } from "../game/machine";
+import { FIRST_SWITCH_RUNG, type GameEvent } from "../game/machine";
 import { ANSWER_POSITIONS, FRIENDS, LIFELINES, type Friend, type Lifeline } from "../game/types";
+import { keyFor } from "./game-keys";
 import { ANSWER_LETTERS, type GameSnapshot } from "./game-view";
-
-/** Switch the Question is offered from this question on. */
-const FIRST_SWITCH_RUNG = 11;
 
 /**
  * How an oval looks: `ready` to use (or waiting while a dialog is up),
@@ -21,8 +19,8 @@ export interface LifelineOval {
   state: LifelineState;
   /** The state in words, for its accessible name: "used", "locked until question 11". */
   status?: string;
-  /** Its key, as the list of keys shows it. */
-  key: string;
+  /** Its key, as the list of keys shows it (from `GAME_KEYS`). */
+  key: string | undefined;
   event: GameEvent;
   /** Whether pressing it does anything now. */
   enabled: boolean;
@@ -42,7 +40,7 @@ export interface LifelinesView {
   /** The audience's vote on the answers left, as bars and in words. */
   audience: { bars: AudienceBar[]; text: string } | undefined;
   /** The Pick a friend dialog, while it's open. */
-  pickFriend: { title: string; subject: string; friends: { friend: Friend; name: string }[] } | undefined;
+  pickFriend: { title: string; friends: { friend: Friend; name: string }[] } | undefined;
   /** The Friend's line: "Sports fan: “I'm pretty sure it's B, maybe 80%.”" */
   friend: string | undefined;
 }
@@ -55,11 +53,11 @@ export const FRIEND_NAMES: Record<Friend, string> = {
   "pop culture": "Pop-culture fan",
 };
 
-const OVALS: Record<Lifeline, { name: string; label: string; key: string }> = {
-  fiftyFifty: { name: "50:50", label: "50:50", key: "F" },
-  askTheAudience: { name: "Ask the Audience", label: "👥", key: "Q" },
-  phoneAFriend: { name: "Phone a Friend", label: "📞", key: "P" },
-  switchTheQuestion: { name: "Switch the Question", label: "🔄", key: "S" },
+const OVALS: Record<Lifeline, { name: string; label: string }> = {
+  fiftyFifty: { name: "50:50", label: "50:50" },
+  askTheAudience: { name: "Ask the Audience", label: "👥" },
+  phoneAFriend: { name: "Phone a Friend", label: "📞" },
+  switchTheQuestion: { name: "Switch the Question", label: "🔄" },
 };
 
 function stateOf(snapshot: GameSnapshot, lifeline: Lifeline): Pick<LifelineOval, "state" | "status"> {
@@ -91,15 +89,21 @@ export function lifelinesView(snapshot: GameSnapshot): LifelinesView {
   const gone = context.removed.map((position) => ANSWER_LETTERS[position]);
   return {
     ovals: LIFELINES.map((lifeline) => {
-      const event = { type: lifeline } as GameEvent;
-      return { lifeline, ...OVALS[lifeline], ...stateOf(snapshot, lifeline), event, enabled: snapshot.can(event) };
+      const event: GameEvent = { type: lifeline };
+      return {
+        lifeline,
+        ...OVALS[lifeline],
+        ...stateOf(snapshot, lifeline),
+        key: keyFor(lifeline),
+        event,
+        enabled: snapshot.can(event),
+      };
     }),
     fiftyFifty: gone.length === 2 ? `50:50 took away ${gone[0]} and ${gone[1]}.` : undefined,
     audience: audienceFor(snapshot),
     pickFriend: snapshot.matches("pickingFriend")
       ? {
           title: "Who do you call?",
-          subject: `This question's subject: ${shownNow(context).question.subject}`,
           friends: FRIENDS.map((friend) => ({ friend, name: FRIEND_NAMES[friend] })),
         }
       : undefined,
