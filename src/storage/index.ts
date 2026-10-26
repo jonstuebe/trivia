@@ -3,7 +3,6 @@ export { createMemoryBackend, type StorageBackend } from "./backend";
 export {
   createDeviceStorage,
   STORAGE_KEYS,
-  topicKey,
   type DeviceStorage,
   type DeviceStorageOptions,
   type SavedGameFormat,

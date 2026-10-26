@@ -1,3 +1,4 @@
+import { topicKey } from "./topic";
 import { LIFELINES, type GameResult, type Lifeline, type QuestionOutcome, type Topic } from "./types";
 
 /** The Share result: the copyable text summary of a finished Game. */
@@ -18,14 +19,7 @@ const GROUP = 5;
 
 /** The Topic's own path: `/general`, `/tv`, `/movies`, `/tv/<slug>` or `/movies/<slug>`. */
 export function topicPath(topic: Topic): string {
-  switch (topic.kind) {
-    case "general":
-      return "/general";
-    case "category":
-      return `/${topic.category}`;
-    case "title":
-      return `/${topic.category}/${topic.slug}`;
-  }
+  return `/${topicKey(topic)}`;
 }
 
 /**

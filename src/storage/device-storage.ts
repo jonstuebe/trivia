@@ -1,4 +1,5 @@
 import * as z from "zod";
+import { topicKey } from "../game/topic";
 import type { SeenQuestions, Topic } from "../game/types";
 import type { StorageBackend } from "./backend";
 import { createVersionedKey, type Migration } from "./versioned-key";
@@ -34,23 +35,11 @@ export const STORAGE_KEYS = {
 /** Question ID → the running counter from when it was last shown. */
 const seenSchema = z.record(z.string(), z.int().min(1));
 
-/** Topic key → the best winnings from a finished Game in that Topic as picked. */
+/** Topic key (`general`, `tv`, `tv/friends`) → the best winnings from a finished Game in that Topic as picked. */
 const personalBestsSchema = z.record(z.string(), z.int().min(0));
 
 /** The player's settings: for now, just the remembered mute. */
 const settingsSchema = z.object({ muted: z.boolean() });
-
-/** The key a Topic's Personal best is kept under: `general`, `tv`, `tv/friends`. */
-export function topicKey(topic: Topic): string {
-  switch (topic.kind) {
-    case "general":
-      return "general";
-    case "category":
-      return topic.category;
-    case "title":
-      return `${topic.category}/${topic.slug}`;
-  }
-}
 
 /** Everything the game remembers on this device. */
 export function createDeviceStorage<T>(backend: StorageBackend, options: DeviceStorageOptions<T>) {

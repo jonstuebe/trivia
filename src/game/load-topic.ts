@@ -1,5 +1,6 @@
 import { formatContentError, parseTopicFile } from "../content/schema";
 import { topicFiles } from "../content/topic-files";
+import { topicKey } from "./topic";
 import type { GameQuestion, Topic } from "./types";
 
 /**
@@ -14,16 +15,10 @@ export async function loadTopic(topic: Topic): Promise<GameQuestion[]> {
 }
 
 function pathsFor(topic: Topic): string[] {
-  switch (topic.kind) {
-    case "general":
-      return ["general.json"];
-    case "title":
-      return [`${topic.category}/${topic.slug}.json`];
-    case "category":
-      return Object.keys(topicFiles)
-        .filter((path) => path.startsWith(`${topic.category}/`))
-        .sort();
-  }
+  if (topic.kind !== "category") return [`${topicKey(topic)}.json`];
+  return Object.keys(topicFiles)
+    .filter((path) => path.startsWith(`${topicKey(topic)}/`))
+    .sort();
 }
 
 async function loadFile(path: string): Promise<GameQuestion[]> {
