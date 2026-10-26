@@ -373,3 +373,72 @@ describe("Phone a Friend", () => {
     expect(game.getSnapshot().context.friend).toBeNull();
   });
 });
+
+describe("Switch the Question", () => {
+  it("is unavailable through question 10", () => {
+    const game = newGame();
+    expect(game.getSnapshot().can({ type: "switchTheQuestion" })).toBe(false);
+    climbTo(game, 10);
+    game.send({ type: "switchTheQuestion" });
+    expect(game.getSnapshot().context.lifelinesUsed).toEqual([]);
+    climbTo(game, 11);
+    expect(game.getSnapshot().can({ type: "switchTheQuestion" })).toBe(true);
+  });
+
+  it("swaps in a Question from the same Tier, once per Game, keeping the one switched away from", () => {
+    const game = newGame();
+    climbTo(game, 11);
+    const before = current(game).question;
+    game.send({ type: "switchTheQuestion" });
+    const { context } = game.getSnapshot();
+    expect(current(game).question.prompt).toBe("Spare 4");
+    expect([...current(game).answers].sort()).toEqual([
+      "Spare right 4",
+      "Spare wrong 4a",
+      "Spare wrong 4b",
+      "Spare wrong 4c",
+    ]);
+    expect(current(game).answers[current(game).correct]).toBe("Spare right 4");
+    expect(context.switchedAway).toEqual([before]);
+    expect(context.lifelinesUsed).toEqual(["switchTheQuestion"]);
+    expect(game.getSnapshot().can({ type: "switchTheQuestion" })).toBe(false);
+
+    answer(game, current(game).correct);
+    expect(game.getSnapshot().value).toEqual({ revealing: "right" });
+  });
+
+  it("is unavailable when the Tier has no other Question left", () => {
+    const game = startGame({ topic, questions: fifteenQuestions(), ...dependencies(1), topicQuestions: fifteenQuestions() });
+    climbTo(game, 11);
+    expect(game.getSnapshot().can({ type: "switchTheQuestion" })).toBe(false);
+  });
+
+  it("after a 50:50 brings back all four answers, and clears the audience and the Friend", () => {
+    const game = newGame(2);
+    climbTo(game, 13);
+    game.send({ type: "fiftyFifty" });
+    game.send({ type: "askTheAudience" });
+    game.send({ type: "phoneAFriend" });
+    game.send({ type: "callFriend", friend: "science" });
+    game.send({ type: "switchTheQuestion" });
+    const { context } = game.getSnapshot();
+    expect(current(game).question.prompt).toBe("Spare 5");
+    expect(context.removed).toEqual([]);
+    expect(context.audience).toBeNull();
+    expect(context.friend).toBeNull();
+    expect(context.lifelinesUsed).toEqual(["fiftyFifty", "askTheAudience", "phoneAFriend", "switchTheQuestion"]);
+    for (const lifeline of ["fiftyFifty", "askTheAudience", "phoneAFriend", "switchTheQuestion"] as const) {
+      expect(game.getSnapshot().can({ type: lifeline })).toBe(false);
+    }
+
+    answer(game, current(game).correct);
+    game.send({ type: "next" });
+    climbTo(game, 15);
+    answer(game, current(game).correct);
+    game.send({ type: "next" });
+    expect(game.getSnapshot().output).toMatchObject({
+      ending: "won",
+      lifelinesUsed: ["fiftyFifty", "askTheAudience", "phoneAFriend", "switchTheQuestion"],
+    });
+  });
+});

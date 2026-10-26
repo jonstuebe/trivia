@@ -13,6 +13,7 @@ import type {
   ShownQuestion,
   Topic,
 } from "./types";
+import { drawSwitch } from "./selection";
 import { askTheAudience, phoneAFriend, type AudienceResult, type FriendResult } from "./simulation";
 
 /**
@@ -52,6 +53,8 @@ export interface GameContext {
   audience: AudienceResult | null;
   /** What the Friend said on this question's Phone a Friend call, rolled once. */
   friend: FriendResult | null;
+  /** The Question Switch the Question swapped out, if used: shown, so it counts as a Seen question. */
+  switchedAway: GameQuestion[];
   /** Set once the Game ends; also the machine's output. */
   result: GameResult | null;
 }
@@ -93,7 +96,9 @@ export type GameEvent =
   /** Phone a Friend: opens the pick of the four Friends. Cancel backs out without spending it. */
   | { type: "phoneAFriend" }
   /** Calls the chosen Friend, spending Phone a Friend. */
-  | { type: "callFriend"; friend: Friend };
+  | { type: "callFriend"; friend: Friend }
+  /** Switch the Question: after question 10, swaps in another Question from the same Tier. */
+  | { type: "switchTheQuestion" };
 
 /** A Question with its answers shuffled into the order shown. */
 export function showQuestion(question: GameQuestion, random: Random): ShownQuestion {
@@ -117,8 +122,23 @@ function remaining(context: GameContext): AnswerPosition[] {
 /** What the next question starts with: no answer picked and no Lifeline results showing. */
 const freshQuestion = { picked: null, removed: [], audience: null, friend: null } satisfies Partial<GameContext>;
 
+/** Switch the Question is only offered after question 10. */
+const LAST_RUNG_WITHOUT_SWITCH = 10;
+
 /** The Game machine, with its outside dependencies closed over so the context stays plain data. */
-function gameMachineWith({ random }: GameDependencies) {
+function gameMachineWith({ random, topicQuestions, seen }: GameDependencies) {
+  /** Every Question this Game has drawn, so Switch never brings one back. */
+  const inGame = (context: GameContext) => [...context.questions.map((shown) => shown.question), ...context.switchedAway];
+  const drawReplacement = (context: GameContext) =>
+    drawSwitch(topicQuestions, shownNow(context).question.tier, inGame(context), seen, random);
+  /** Whether the Tier has a Question left to switch to, without rolling anything. */
+  const canDrawReplacement = (context: GameContext) => {
+    const drawn = new Set(inGame(context).map((question) => question.id));
+    const { tier } = shownNow(context).question;
+    return topicQuestions.some((question) => question.tier === tier && !drawn.has(question.id));
+  };
+
+
   return setup({
     types: {
       input: {} as Omit<GameInput, keyof GameDependencies>,
@@ -135,6 +155,8 @@ function gameMachineWith({ random }: GameDependencies) {
       fiftyFiftyUnused: ({ context }) => unused(context, "fiftyFifty"),
       askTheAudienceUnused: ({ context }) => unused(context, "askTheAudience"),
       phoneAFriendUnused: ({ context }) => unused(context, "phoneAFriend"),
+      switchAvailable: ({ context }) =>
+        unused(context, "switchTheQuestion") && context.rung > LAST_RUNG_WITHOUT_SWITCH && canDrawReplacement(context),
     },
     actions: {
       finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
@@ -158,6 +180,15 @@ function gameMachineWith({ random }: GameDependencies) {
           lifelinesUsed: [...context.lifelinesUsed, "phoneAFriend" as const],
         };
       }),
+      // A switch brings back all four answers, because the 50:50 is spent, and clears the audience and the Friend.
+      useSwitch: assign(({ context }) => ({
+        ...freshQuestion,
+        questions: context.questions.map((shown, i) =>
+          i === context.rung - 1 ? showQuestion(drawReplacement(context)!, random) : shown,
+        ),
+        switchedAway: [...context.switchedAway, shownNow(context).question],
+        lifelinesUsed: [...context.lifelinesUsed, "switchTheQuestion" as const],
+      })),
     },
   }).createMachine({
     id: "game",
@@ -170,6 +201,7 @@ function gameMachineWith({ random }: GameDependencies) {
       removed: [],
       audience: null,
       friend: null,
+      switchedAway: [],
       result: null,
     }),
     output: ({ context }) => context.result!,
@@ -186,6 +218,7 @@ function gameMachineWith({ random }: GameDependencies) {
           fiftyFifty: { guard: "fiftyFiftyUnused", actions: "useFiftyFifty" },
           askTheAudience: { guard: "askTheAudienceUnused", actions: "useAskTheAudience" },
           phoneAFriend: { guard: "phoneAFriendUnused", target: "pickingFriend" },
+          switchTheQuestion: { guard: "switchAvailable", actions: "useSwitch" },
         },
       },
       pickingFriend: {
