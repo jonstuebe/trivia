@@ -43,6 +43,7 @@ function playTo(game: GameActor, rung: number) {
   while (game.getSnapshot().context.rung < rung) {
     game.send({ type: "pick", answer: correct(game) });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     game.send({ type: "next" });
   }
 }

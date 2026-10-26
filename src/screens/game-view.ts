@@ -22,10 +22,20 @@ export interface GameView {
   announcement: string;
   /** "B: is that your final answer?", while an answer waits on Final answer / Cancel. */
   finalAnswer?: string;
+  /**
+   * "B: Monica is locked in. The answer is coming…", through the reveal wait
+   * after Final answer, when the stage dims and nothing can be picked.
+   */
+  lockedIn?: string;
   /** Right or wrong, said in words with a ✓ or ✗, and what Next does. Only while revealing. */
   reveal?: { right: boolean; message: string; next: "Next question" | "See result" };
   /** Walk away, when it's offered now (choosing, from question 2). */
   walkAway?: { link: string; confirm: string };
+  /**
+   * The Rung the Ladder shows as current: the one being played, stepping up
+   * to the next as soon as a right answer is revealed (past 15 on the win).
+   */
+  ladderRung: number;
 }
 
 export interface AnswerView {
@@ -79,6 +89,7 @@ export function gameView(snapshot: GameSnapshot): GameView {
   const { context } = snapshot;
   const { rung, topic, picked } = context;
   const { question, answers } = shownNow(context);
+  const lockedIn = snapshot.matches("lockedIn") && picked !== null;
   const prize = formatMoney(prizeForRung(rung));
   const banked = formatMoney(winningsBeforeRung(rung));
   const lettered = ANSWER_POSITIONS.map((position) => `${ANSWER_LETTERS[position]}: ${answers[position]}.`);
@@ -87,7 +98,7 @@ export function gameView(snapshot: GameSnapshot): GameView {
       const letter = ANSWER_LETTERS[position];
       const text = answers[position];
       const mark = markFor(snapshot, position);
-      const label = `${letter}: ${text}${MARK_SUFFIX[mark]}`;
+      const label = `${letter}: ${text}${lockedIn && position === picked ? ", locked in" : MARK_SUFFIX[mark]}`;
       return context.removed.includes(position) ? { letter, text, mark, label, removed: true } : { letter, text, mark, label };
     }),
     announcement: `Question ${rung} for ${prize}. ${question.prompt} ${lettered.join(" ")}`,
@@ -95,6 +106,7 @@ export function gameView(snapshot: GameSnapshot): GameView {
       snapshot.matches("confirmingAnswer") && picked !== null
         ? `${ANSWER_LETTERS[picked]}: is that your final answer?`
         : undefined,
+    lockedIn: lockedIn ? `${ANSWER_LETTERS[picked]}: ${answers[picked]} is locked in. The answer is coming…` : undefined,
     reveal: revealFor(snapshot),
     walkAway:
       snapshot.can({ type: "walkAway" }) || snapshot.matches("confirmingWalkAway")
@@ -102,5 +114,6 @@ export function gameView(snapshot: GameSnapshot): GameView {
         : undefined,
     heading: `Question ${rung} of ${LADDER_LENGTH} · for ${prize}`,
     titleLabel: topic.kind === "category" ? question.titleName : undefined,
+    ladderRung: snapshot.matches({ revealing: "right" }) ? rung + 1 : rung,
   };
 }

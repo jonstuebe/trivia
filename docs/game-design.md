@@ -59,7 +59,7 @@ Everything below is kept in the browser on that device.
 - **Seen questions:** a question counts as seen once shown, including one switched away from. Seen questions are tracked by question, so a question seen in a mixed game counts as seen when playing its title alone, and vice versa. New games prefer unseen questions.
 - **A topic runs out:** once a topic can't fill a whole game (3 questions per tier) with unseen questions, tell the player and offer to reset that topic. Until they do, repeats are allowed, oldest-seen first.
 - **Reset:** the main menu has a single "reset all" that clears every seen question, but not personal bests or a saved game. Resetting one topic from the run-out screen clears just that topic's questions; for TV Shows or Movies that includes every title in it.
-- **Game in progress:** a refresh drops the player straight back into the game. A refresh during "Final answer?" comes back to the question with nothing picked. Leaving through the main menu pauses it, and the menu offers Resume. Starting a new game instead discards the saved one: it doesn't count toward a personal best, and its questions stay seen.
+- **Game in progress:** a refresh drops the player straight back into the game. A refresh during "Final answer?" comes back to the question with nothing picked; one during the wait after "Final answer" comes back at the reveal, the answer still locked in. Leaving through the main menu pauses it, and the menu offers Resume. Starting a new game instead discards the saved one: it doesn't count toward a personal best, and its questions stay seen.
 - **Personal best:** best winnings per topic as picked, so "TV Shows" and "Friends" each have their own. Every finished game counts, including a walk away.
 
 ## End of game
