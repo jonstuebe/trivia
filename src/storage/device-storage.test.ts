@@ -132,6 +132,55 @@ describe("the Saved game", () => {
   });
 });
 
+describe("Reset all", () => {
+  it("clears every seen Question but keeps Personal bests, the Saved game and the mute", () => {
+    const storage = open();
+    const friends: Topic = { kind: "title", category: "tv", slug: "friends" };
+    storage.markSeen("aaaaaaaa");
+    storage.markSeen("bbbbbbbb");
+    storage.recordWinnings(friends, 1000);
+    storage.saveGame({ rung: 3 });
+    storage.setMuted(true);
+
+    storage.resetAll();
+
+    expect(storage.seenQuestions()).toEqual(new Map());
+    expect(storage.personalBest(friends)).toBe(1000);
+    expect(storage.savedGame()).toEqual({ rung: 3 });
+    expect(storage.muted()).toBe(true);
+  });
+});
+
+describe("Reset this Topic", () => {
+  it("clears the seen entries for just the Topic's Questions", () => {
+    const storage = open();
+    for (const id of ["friends1", "friends2", "general1"]) storage.markSeen(id);
+
+    storage.resetTopic(["friends1", "friends2"]);
+
+    expect(storage.seenQuestions()).toEqual(new Map([["general1", 3]]));
+  });
+
+  it("for a Category, clears every Title's Questions in it, freeing them for the Title alone too", () => {
+    const storage = open();
+    // TV Shows' Questions are every TV Title's: here Friends and Modern Family.
+    for (const id of ["friends1", "modfam01", "harrypt1"]) storage.markSeen(id);
+
+    storage.resetTopic(["friends1", "friends2", "modfam01"]);
+
+    expect(storage.seenQuestions()).toEqual(new Map([["harrypt1", 3]]));
+  });
+
+  it("keeps later Questions newer than the ones still seen", () => {
+    const storage = open();
+    for (const id of ["aaaaaaaa", "bbbbbbbb", "cccccccc"]) storage.markSeen(id);
+    storage.resetTopic(["cccccccc"]);
+    storage.markSeen("dddddddd");
+    const seen = storage.seenQuestions();
+    expect(seen.get("dddddddd")).toBeGreaterThan(seen.get("bbbbbbbb")!);
+  });
+});
+
 describe("settings", () => {
   it("has sound on by default", () => {
     expect(open().muted()).toBe(false);

@@ -89,6 +89,21 @@ export function createDeviceStorage<T>(backend: StorageBackend, options: DeviceS
       seen.write({ ...counters, [questionId]: newest + 1 });
     },
 
+    /** Reset all, from the Main menu: clears every seen Question, and nothing else. */
+    resetAll(): void {
+      seen.clear();
+    },
+
+    /**
+     * Reset this Topic, from Not enough new questions: clears the seen entries
+     * for the Topic's Questions. For a Category, pass every Title's Questions.
+     */
+    resetTopic(questionIds: Iterable<string>): void {
+      const counters = seen.read();
+      for (const id of questionIds) delete counters[id];
+      seen.write(counters);
+    },
+
     /** The best winnings in this Topic as picked, or `undefined` if no Game in it has finished. */
     personalBest(topic: Topic): number | undefined {
       return personalBests.read()[topicKey(topic)];
