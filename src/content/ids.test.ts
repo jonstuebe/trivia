@@ -13,7 +13,8 @@ function titleFile(path: string, questions: unknown[]): ContentFile {
 }
 
 function ids(file: ContentFile | undefined): unknown[] {
-  return (file?.data as { questions: { id?: unknown }[] }).questions.map((q) => q.id);
+  if (!file) throw new Error("expected a changed file");
+  return (file.data as { questions: { id?: unknown }[] }).questions.map((q) => q.id);
 }
 
 describe("assigning Question IDs", () => {
