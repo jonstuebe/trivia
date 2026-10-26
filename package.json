@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "bun run check-content && vite build",
     "check-content": "bun scripts/check-content.ts",
+    "assign-ids": "bun scripts/assign-ids.ts",
     "preview": "vite preview",
     "lint": "oxlint --disable-nested-config",
     "typecheck": "tsc --noEmit",
