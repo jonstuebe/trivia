@@ -1,21 +1,24 @@
-import { checkAuthoringRules, type CheckedTopic } from "./authoring-rules";
+import { checkAuthoringRules } from "./authoring-rules";
+import { reportContent, type ContentReport } from "./report";
 import { countByTier, describeQuestion, parseTopicFile, type ContentError, type TopicFile } from "./schema";
-import type { ContentFile, TitleEntry, TopicIndex } from "./types";
+import type { CheckedTopic, ContentFile, TitleEntry, TopicIndex } from "./types";
 
 export interface ContentCheckResult {
   /** Built from the files that passed; a file with errors is left out. */
   index: TopicIndex;
   /** Empty when every file passed. */
   errors: ContentError[];
+  /** Warnings and Question counts for the files that passed the schema. */
+  report: ContentReport;
 }
 
 /**
  * Checks every Topic file against the schema and against each other (Question
- * IDs are unique across all files) and the authoring rules, and builds the topic index from them.
+ * IDs are unique across all files) and the authoring rules, and builds the
+ * topic index and the report from them. Each file is parsed once.
  */
 export function checkContent(files: readonly ContentFile[]): ContentCheckResult {
   const errors: ContentError[] = [];
-  const topics: TopicFile[] = [];
   const checked: CheckedTopic[] = [];
   const firstUse = new Map<string, string>();
 
@@ -35,12 +38,11 @@ export function checkContent(files: readonly ContentFile[]): ContentCheckResult 
         firstUse.set(id, where);
       }
     });
-    topics.push(result.topic);
     checked.push({ path, topic: result.topic });
   }
   errors.push(...checkAuthoringRules(checked));
 
-  return { index: buildIndex(topics), errors };
+  return { index: buildIndex(checked.map(({ topic }) => topic)), errors, report: reportContent(checked) };
 }
 
 function buildIndex(topics: readonly TopicFile[]): TopicIndex {

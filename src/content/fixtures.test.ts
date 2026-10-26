@@ -15,8 +15,9 @@ const each = (count: number) => ({ 1: count, 2: count, 3: count, 4: count, 5: co
 
 describe("the fixture Topic set", () => {
   it("passes every content check and builds into a topic index", async () => {
-    expect(await checkContentDir(fixtures)).toEqual({
+    expect(await checkContentDir(fixtures)).toMatchObject({
       errors: [],
+      report: { warnings: [] },
       index: {
         // Exactly one Game's worth: 3 per Tier.
         general: { questionCounts: each(3) },

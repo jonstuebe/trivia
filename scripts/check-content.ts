@@ -14,9 +14,8 @@
  */
 import { writeFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
-import { checkContent } from "../src/content/check";
-import { readContentDir } from "../src/content/read";
-import { formatReport, reportContent } from "../src/content/report";
+import { checkContentDir } from "../src/content/read";
+import { formatReport } from "../src/content/report";
 import { formatContentError, plural } from "../src/content/schema";
 
 const { values } = parseArgs({
@@ -26,12 +25,9 @@ const { values } = parseArgs({
   },
 });
 
-const { files, unreadable } = await readContentDir(values.content);
-const checked = checkContent(files);
-const { index } = checked;
-const errors = [...unreadable, ...checked.errors];
+const { index, errors, report } = await checkContentDir(values.content);
 
-console.log(`${formatReport(reportContent(files))}\n`);
+console.log(`${formatReport(report)}\n`);
 
 if (errors.length > 0) {
   for (const error of errors) console.error(formatContentError(error));

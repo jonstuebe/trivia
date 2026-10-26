@@ -2,8 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { checkContentDir, readContentDir } from "./read";
-import { reportContent } from "./report";
+import { checkContentDir } from "./read";
 
 /** One small Title file. */
 const title = {
@@ -51,7 +50,7 @@ describe("checking a content folder", () => {
     }
 
     it("builds the topic index from the Topic files in it", async () => {
-      expect(await checkContentDir(await contentFolder({ "tv/fixture-title.json": JSON.stringify(title) }))).toEqual({
+      expect(await checkContentDir(await contentFolder({ "tv/fixture-title.json": JSON.stringify(title) }))).toMatchObject({
         errors: [],
         index: {
           general: null,
@@ -61,12 +60,9 @@ describe("checking a content folder", () => {
       });
     });
 
-    it("reads the Topic files for the report", async () => {
-      const { files, unreadable } = await readContentDir(
-        await contentFolder({ "tv/fixture-title.json": JSON.stringify(title) }),
-      );
-      expect(unreadable).toEqual([]);
-      expect(reportContent(files)).toEqual({
+    it("reports on the Topic files in it, from the same read", async () => {
+      const { report } = await checkContentDir(await contentFolder({ "tv/fixture-title.json": JSON.stringify(title) }));
+      expect(report).toEqual({
         topics: [{ file: "tv/fixture-title.json", name: "Fixture Title", tiers: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
         // "The Daily Grind" is 15 characters against "Brew Haven"'s 10.
         warnings: [

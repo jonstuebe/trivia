@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { formatReport, reportContent, type ContentReport } from "./report";
+import { checkContent } from "./check";
+import { formatReport, type ContentReport } from "./report";
 
 let nextId = 0;
 function question(tier: number, extra: Record<string, unknown> = {}) {
@@ -21,7 +22,7 @@ function title(questions: unknown[]) {
 describe("the long-answer warning", () => {
   it("warns when the right answer is 1.5 times and 5 characters longer than the longest wrong one", () => {
     const q = question(1, { correct: "Central Perk Coffee", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
-    expect(reportContent(title([q])).warnings).toEqual([
+    expect(checkContent(title([q])).report.warnings).toEqual([
       {
         file: "tv/friends.json",
         question: { id: q.id, position: 1 },
@@ -33,36 +34,36 @@ describe("the long-answer warning", () => {
   it("doesn't warn when the right answer is just under 1.5 times the longest wrong one", () => {
     // 14 characters against 10: 5+ longer, but under 1.5 times.
     const q = question(1, { correct: "Central Perk 1", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
-    expect(reportContent(title([q])).warnings).toEqual([]);
+    expect(checkContent(title([q])).report.warnings).toEqual([]);
   });
 
   it("warns at exactly 1.5 times and 5 characters longer", () => {
     // 15 characters against 10.
     const q = question(1, { correct: "Central Perk 12", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
-    expect(reportContent(title([q])).warnings).toHaveLength(1);
+    expect(checkContent(title([q])).report.warnings).toHaveLength(1);
   });
 
   it("doesn't warn about short answers that differ by fewer than 5 characters", () => {
     // 6 characters against 2: three times as long, but only 4 more.
     const q = question(1, { correct: "Rachel", wrong: ["Al", "Bo", "Cy"] });
-    expect(reportContent(title([q])).warnings).toEqual([]);
+    expect(checkContent(title([q])).report.warnings).toEqual([]);
   });
 
   it("counts characters as a player sees them, so an emoji or accented letter is one", () => {
     // 9 characters against 10, though the family emoji alone is 8 UTF-16 code units.
     const family = question(1, { correct: "Central \u{1F468}\u200D\u{1F469}\u200D\u{1F467}", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
-    expect(reportContent(title([family])).warnings).toEqual([]);
+    expect(checkContent(title([family])).report.warnings).toEqual([]);
 
     // "Crème Brûlée Café" with its accents as combining marks: 17 characters, 20 code units.
     const accented = question(1, { correct: "Cre\u0300me Bru\u0302le\u0301e Cafe\u0301", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
-    expect(reportContent(title([accented])).warnings.map((warning) => warning.message)).toEqual([
+    expect(checkContent(title([accented])).report.warnings.map((warning) => warning.message)).toEqual([
       "the right answer (17 characters) is much longer than the longest wrong one (10), which gives it away",
     ]);
   });
 
   it("skips files that fail the schema, which the check reports", () => {
     const broken = { path: "tv/friends.json", data: { questions: [question(1, { correct: "A very long right answer" })] } };
-    expect(reportContent([broken]).warnings).toEqual([]);
+    expect(checkContent([broken]).report.warnings).toEqual([]);
   });
 });
 
@@ -72,12 +73,12 @@ describe("the per-Tier and per-Subject report", () => {
   }
 
   it("counts every Topic's Questions per Tier, General first, then TV and Movies by name", () => {
-    const { topics } = reportContent([
+    const { topics } = checkContent([
       { path: "movies/pixar.json", data: { title: "Pixar", questions: inTiers([0, 0, 0, 0, 1]) } },
       { path: "tv/the-big-bang-theory.json", data: { title: "The Big Bang Theory", questions: inTiers([1, 0, 2]) } },
       { path: "tv/friends.json", data: { title: "Friends", questions: inTiers([3, 3, 3, 4, 5]) } },
       { path: "general.json", data: { questions: inTiers([1], { subject: "sports" }) } },
-    ]);
+    ]).report;
     expect(topics.map(({ file, name, tiers }) => ({ file, name, tiers }))).toEqual([
       { file: "general.json", name: "General", tiers: { 1: 1, 2: 0, 3: 0, 4: 0, 5: 0 } },
       { file: "tv/friends.json", name: "Friends", tiers: { 1: 3, 2: 3, 3: 3, 4: 4, 5: 5 } },
@@ -87,7 +88,7 @@ describe("the per-Tier and per-Subject report", () => {
   });
 
   it("counts General's Questions per Subject and Tier, listing every Subject even with none", () => {
-    const { topics } = reportContent([
+    const { topics } = checkContent([
       {
         path: "general.json",
         data: {
@@ -98,7 +99,7 @@ describe("the per-Tier and per-Subject report", () => {
           ],
         },
       },
-    ]);
+    ]).report;
     expect(topics[0]?.subjects).toEqual({
       history: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 },
       science: { 1: 0, 2: 1, 3: 0, 4: 0, 5: 3 },
@@ -108,11 +109,11 @@ describe("the per-Tier and per-Subject report", () => {
   });
 
   it("gives a Title no Subjects, since its Questions are all pop culture", () => {
-    expect(reportContent(title([question(1)])).topics[0]?.subjects).toBeUndefined();
+    expect(checkContent(title([question(1)])).report.topics[0]?.subjects).toBeUndefined();
   });
 
   it("leaves out files that fail the schema", () => {
-    expect(reportContent([{ path: "tv/friends.json", data: { questions: [] } }]).topics).toEqual([]);
+    expect(checkContent([{ path: "tv/friends.json", data: { questions: [] } }]).report.topics).toEqual([]);
   });
 });
 

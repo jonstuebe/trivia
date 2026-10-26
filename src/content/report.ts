@@ -4,7 +4,6 @@ import {
   countByTier,
   formatContentError,
   plural,
-  parseTopicFile,
   subjectSchema,
   type ContentError,
   type Question,
@@ -12,7 +11,7 @@ import {
   type Subject,
   type TopicFile,
 } from "./schema";
-import type { ContentFile } from "./types";
+import type { CheckedTopic } from "./types";
 
 /**
  * The content checks that inform rather than fail (issue #9, "Build checks"):
@@ -50,17 +49,15 @@ export interface ContentReport {
 }
 
 /**
- * Warns and reports on every Topic file that passes the schema. A file that
- * fails it is skipped: `checkContent` reports its errors.
+ * Warns and reports on Topic files that passed the schema. `checkContent`
+ * calls it with the files it parsed, so each file is parsed once.
  */
-export function reportContent(files: readonly ContentFile[]): ContentReport {
+export function reportContent(checked: readonly CheckedTopic[]): ContentReport {
   const warnings: ContentWarning[] = [];
   const topics: { order: number; summary: TopicSummary }[] = [];
-  for (const { path, data } of files) {
-    const result = parseTopicFile(path, data);
-    if (!result.ok) continue;
-    warnings.push(...longAnswerWarnings(path, result.topic));
-    topics.push({ order: CATEGORY_ORDER[result.topic.category], summary: summarize(path, result.topic) });
+  for (const { path, topic } of checked) {
+    warnings.push(...longAnswerWarnings(path, topic));
+    topics.push({ order: CATEGORY_ORDER[topic.category], summary: summarize(path, topic) });
   }
   topics.sort(
     (a, b) =>

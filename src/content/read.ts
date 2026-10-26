@@ -5,7 +5,8 @@ import type { ContentFile } from "./types";
 import type { ContentError } from "./schema";
 
 /**
- * Reads every Topic file in a content folder from disk and checks them.
+ * Reads every Topic file in a content folder from disk and checks and
+ * reports on them, from one read and one parse of each file.
  * For build scripts and tests only: it uses Node's file system, so app code
  * imports the generated topic index instead. Hidden files are skipped; any
  * other file in the wrong place is reported. Throws if the folder is missing.
@@ -13,7 +14,7 @@ import type { ContentError } from "./schema";
 export async function checkContentDir(dir: string): Promise<ContentCheckResult> {
   const { files, unreadable } = await readContentDir(dir);
   const result = checkContent(files);
-  return { index: result.index, errors: [...unreadable, ...result.errors] };
+  return { ...result, errors: [...unreadable, ...result.errors] };
 }
 
 /**

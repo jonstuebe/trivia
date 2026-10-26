@@ -38,7 +38,11 @@ describe("building the topic index", () => {
   });
 
   it("gives an empty index when there are no Topic files", () => {
-    expect(checkContent([])).toEqual({ index: { general: null, tv: [], movies: [] }, errors: [] });
+    expect(checkContent([])).toEqual({
+      index: { general: null, tv: [], movies: [] },
+      errors: [],
+      report: { topics: [], warnings: [] },
+    });
   });
 
   it("lists the same index whatever order the files are read in", () => {

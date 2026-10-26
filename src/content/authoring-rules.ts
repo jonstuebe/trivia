@@ -1,15 +1,10 @@
-import { describeQuestion, type ContentError, type TopicFile } from "./schema";
+import { describeQuestion, type ContentError } from "./schema";
+import type { CheckedTopic } from "./types";
 
 /**
  * The Question authoring rules that fail the build (issue #9, "Build
  * checks"), run on Topic files that already passed the schema.
  */
-
-/** A Topic file that passed the schema, with its path inside the content folder. */
-export interface CheckedTopic {
-  path: string;
-  topic: TopicFile;
-}
 
 /** Checks the authoring rules across every Topic file, in the order given. */
 export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentError[] {
