@@ -150,3 +150,21 @@ test("the Game screen with no Game in the tab goes to the Main menu", async ({ a
   await app.open("/game");
   await expect(browser).toHaveURL("/");
 });
+
+test("a finished Game doesn't come back: Back from Game over, then forward to the Game screen, goes to the Main menu", async ({
+  app,
+  screen,
+  browser,
+}) => {
+  await startGame(browser, screen, "/tv/fixture-sitcom");
+  await playToRung(screen, 1, 2);
+  await screen.getByRole("button", "Walk away with $100").tap();
+  await screen.getByRole("button", "Walk away").tap();
+  await expect(screen.getByRole("heading", "You walked away.", { level: 1 })).toBeFocused();
+
+  await app.back();
+  await expect(browser).toHaveURL("/tv/fixture-sitcom");
+  await browser.evaluate(() => history.forward());
+  await expect(browser).toHaveURL("/");
+  await expect(screen.getByRole("heading", "Trivia", { level: 1 })).toBeFocused();
+});
