@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "bun run check-content && vite build",
+    "build:fixtures": "bun run check-fixtures && vite build --mode fixtures",
     "check-content": "bun scripts/check-content.ts",
+    "check-fixtures": "bun scripts/check-content.ts --content src/content/fixtures --out src/content/topic-index.fixtures.gen.json",
     "assign-ids": "bun scripts/assign-ids.ts",
     "preview": "vite preview",
     "lint": "oxlint --disable-nested-config",
