@@ -18,8 +18,29 @@ function fifteenQuestions(): GameQuestion[] {
   }));
 }
 
+/** The Topic's whole pool: the Game's 15 plus a spare in each Tier, for Switch to draw. */
+function topicQuestions(): GameQuestion[] {
+  const spares = Array.from({ length: 5 }, (_, i) => ({
+    id: `s${String(i + 1).padStart(7, "0")}`,
+    tier: (i + 1) as Tier,
+    subject: "history" as const,
+    prompt: `Spare ${i + 1}`,
+    correct: `Spare right ${i + 1}`,
+    wrong: [`Spare wrong ${i + 1}a`, `Spare wrong ${i + 1}b`, `Spare wrong ${i + 1}c`] as [string, string, string],
+  }));
+  return [...fifteenQuestions(), ...spares];
+}
+
+function dependencies(seed: number) {
+  return { random: createSeededRandom(seed), topicQuestions: topicQuestions(), seen: {} };
+}
+
 function newGame(seed = 1): GameActor {
-  return startGame({ topic, questions: fifteenQuestions(), random: createSeededRandom(seed) });
+  return startGame({ topic, questions: fifteenQuestions(), ...dependencies(seed) });
+}
+
+function saveAndRestore(game: GameActor, seed = 99): GameActor {
+  return restoreGame(JSON.parse(JSON.stringify(saveGame(game))) as SavedGameSnapshot, dependencies(seed));
 }
 
 function current(game: GameActor) {
@@ -202,9 +223,7 @@ describe("saving and restoring a Game", () => {
   it("round-trips through JSON as plain data and plays on from where it was", () => {
     const game = newGame(3);
     climbTo(game, 6);
-    const saved = JSON.parse(JSON.stringify(saveGame(game))) as SavedGameSnapshot;
-
-    const restored = restoreGame(saved);
+    const restored = saveAndRestore(game);
     expect(restored.getSnapshot().value).toBe("choosing");
     expect(restored.getSnapshot().context).toEqual(game.getSnapshot().context);
 
@@ -217,7 +236,7 @@ describe("saving and restoring a Game", () => {
     const game = newGame();
     climbTo(game, 2);
     game.send({ type: "walkAway" });
-    const restored = restoreGame(JSON.parse(JSON.stringify(saveGame(game))) as SavedGameSnapshot);
+    const restored = saveAndRestore(game);
     expect(restored.getSnapshot().value).toBe("confirmingWalkAway");
   });
 });
@@ -244,7 +263,46 @@ describe("starting a Game", () => {
 
   it("needs exactly 15 Questions", () => {
     expect(() =>
-      startGame({ topic, questions: fifteenQuestions().slice(0, 14), random: createSeededRandom(1) }),
+      startGame({ topic, questions: fifteenQuestions().slice(0, 14), ...dependencies(1) }),
     ).toThrow(RangeError);
+  });
+});
+
+describe("50:50", () => {
+  function removedWith(seed: number) {
+    const game = newGame(seed);
+    game.send({ type: "fiftyFifty" });
+    return game.getSnapshot().context.removed;
+  }
+
+  it("removes two wrong answers, the same two for the same seed", () => {
+    const game = newGame(4);
+    game.send({ type: "fiftyFifty" });
+    const { removed, lifelinesUsed } = game.getSnapshot().context;
+    expect(removed).toHaveLength(2);
+    expect(new Set(removed).size).toBe(2);
+    expect(removed).not.toContain(current(game).correct);
+    expect(lifelinesUsed).toEqual(["fiftyFifty"]);
+    expect(game.getSnapshot().value).toBe("choosing");
+    expect(removedWith(4)).toEqual(removed);
+    const bySeed = new Set(Array.from({ length: 20 }, (_, i) => removedWith(i + 1).join()));
+    expect(bySeed.size).toBeGreaterThan(1);
+  });
+
+  it("can be used once, and a removed answer can't be picked", () => {
+    const game = newGame();
+    game.send({ type: "fiftyFifty" });
+    const { removed } = game.getSnapshot().context;
+    expect(game.getSnapshot().can({ type: "fiftyFifty" })).toBe(false);
+    game.send({ type: "pick", answer: removed[0]! });
+    expect(game.getSnapshot().value).toBe("choosing");
+  });
+
+  it("brings back all four answers on the next question", () => {
+    const game = newGame();
+    game.send({ type: "fiftyFifty" });
+    climbTo(game, 2);
+    expect(game.getSnapshot().context.removed).toEqual([]);
+    expect(game.getSnapshot().can({ type: "fiftyFifty" })).toBe(false);
   });
 });
