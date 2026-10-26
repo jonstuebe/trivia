@@ -1,4 +1,6 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { FIXTURE_MODE } from "../content/fixture-mode";
 import { beaconScript } from "./beacon";
 
 const noSignals = { globalPrivacyControl: false, doNotTrack: null, onLine: true };
@@ -36,5 +38,12 @@ describe("beaconScript", () => {
 
   it("takes the beacon's address from the caller, for the test build's stand-in", () => {
     expect(beaconScript("fixture-token", noSignals, "/fixture-beacon.js")?.src).toBe("/fixture-beacon.js");
+  });
+});
+
+describe("the test build check", () => {
+  it("names the same mode as FIXTURE_MODE", () => {
+    const source = readFileSync(new URL("./beacon.ts", import.meta.url), "utf8");
+    expect(source).toContain(`import.meta.env.MODE === "${FIXTURE_MODE}"`);
   });
 });
