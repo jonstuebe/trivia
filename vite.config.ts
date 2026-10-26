@@ -2,7 +2,7 @@
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import { FIXTURE_MODE, fixtureContent } from "./src/content/fixture-build";
+import { FIXTURE_MODE, fixtureContent } from "./src/content/fixture-build.ts";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
