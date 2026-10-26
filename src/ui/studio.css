@@ -790,6 +790,7 @@ button.lozenge:focus-visible::before {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
   text-align: left;
-  white-space: pre;
-  overflow-x: auto;
+  /* Wraps rather than scrolls on a phone, so the long Topic link never needs a scrollable region. */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
