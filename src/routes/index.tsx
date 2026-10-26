@@ -32,7 +32,7 @@ function MainMenu() {
   return (
     <main className="screen hero">
       <div className="logo">
-        <ScreenHeading className="">Trivia</ScreenHeading>
+        <ScreenHeading className="logo__title">Trivia</ScreenHeading>
       </div>
       <p className="muted">Fifteen questions. One million dollars.</p>
       <div className="menu">

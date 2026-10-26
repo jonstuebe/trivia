@@ -228,7 +228,7 @@ button.lozenge:focus-visible::before {
   color: var(--txt);
 }
 
-.logo h1 {
+.logo__title {
   font-size: inherit;
 }
 
