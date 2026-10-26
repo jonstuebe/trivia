@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { TIERS } from "../content/schema";
 import { createSeededRandom } from "../random/random";
 import { loadTopic } from "./load-topic";
-import { canFillGame, drawGame } from "./selection";
+import { canFillGame, drawGame, drawSwitch } from "./selection";
+import type { GameQuestion } from "./types";
 
 const sitcom = await loadTopic({ kind: "title", category: "tv", slug: "fixture-sitcom" });
 
@@ -52,6 +53,41 @@ describe("drawGame", () => {
     expect(ids(7)).toEqual(ids(7));
     const games = new Set([1, 2, 3, 4, 5, 6, 7, 8].map((seed) => ids(seed).join()));
     expect(games.size).toBeGreaterThan(1);
+  });
+});
+
+describe("drawSwitch", () => {
+  it("draws a replacement from the same Tier that isn't already in this Game", () => {
+    const game = drawGame(sitcom, {}, createSeededRandom(1));
+    // The Sitcom has 4 Questions per Tier and the Game uses 3, so one is left.
+    const left = sitcom.find((q) => q.tier === 4 && !game.includes(q))!;
+    for (const seed of [1, 2, 3]) {
+      expect(drawSwitch(sitcom, 4, game, {}, createSeededRandom(seed))).toEqual(left);
+    }
+  });
+
+  it("never gives back a Question switched away from earlier", async () => {
+    const tv = await loadTopic({ kind: "category", category: "tv" });
+    const game = drawGame(tv, {}, createSeededRandom(2));
+    const first = drawSwitch(tv, 5, game, {}, createSeededRandom(2))!;
+    const second = drawSwitch(tv, 5, [...game, first], {}, createSeededRandom(2))!;
+    expect(second.tier).toBe(5);
+    expect([...game, first]).not.toContainEqual(second);
+  });
+
+  it("prefers an unseen replacement, then the oldest-seen", async () => {
+    const tv = await loadTopic({ kind: "category", category: "tv" });
+    const tier3 = tv.filter((q) => q.tier === 3);
+    const game = tier3.slice(0, 2);
+    const [a, b, c] = tier3.slice(2) as [GameQuestion, GameQuestion, GameQuestion];
+    expect(drawSwitch(tv, 3, game, { [a.id]: 5, [b.id]: 6 }, createSeededRandom(1))).toEqual(c);
+    expect(drawSwitch(tv, 3, game, { [a.id]: 9, [b.id]: 6, [c.id]: 7 }, createSeededRandom(1))).toEqual(b);
+  });
+
+  it("gives nothing when the Tier has no Question left outside this Game", async () => {
+    const general = await loadTopic({ kind: "general" });
+    const game = drawGame(general, {}, createSeededRandom(1));
+    expect(drawSwitch(general, 2, game, {}, createSeededRandom(1))).toBeUndefined();
   });
 });
 

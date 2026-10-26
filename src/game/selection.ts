@@ -17,6 +17,24 @@ export function drawGame(questions: readonly GameQuestion[], seen: SeenQuestions
   });
 }
 
+/**
+ * Switch the Question: draws a replacement from `tier`, never one already in
+ * this Game. `inGame` is every Question the Game has drawn, including any
+ * switched away from. Unseen first, at random, then oldest-seen. Undefined
+ * when the Tier has nothing left.
+ */
+export function drawSwitch(
+  questions: readonly GameQuestion[],
+  tier: Tier,
+  inGame: readonly GameQuestion[],
+  seen: SeenQuestions,
+  random: Random,
+): GameQuestion | undefined {
+  const used = new Set(inGame.map((q) => q.id));
+  const candidates = questions.filter((q) => q.tier === tier && !used.has(q.id));
+  return drawOrder(candidates, seen, random)[0];
+}
+
 /** The order to draw from: unseen Questions first, at random, then repeats oldest-seen first. */
 function drawOrder(candidates: readonly GameQuestion[], seen: SeenQuestions, random: Random): GameQuestion[] {
   const unseen = candidates.filter((q) => seen[q.id] === undefined);
