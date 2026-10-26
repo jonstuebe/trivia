@@ -92,7 +92,7 @@ describe("weighted pick", () => {
     return new Map([...counts].map(([value, count]) => [value, count / rolls]));
   }
 
-  // The 95/85/70/55/40% odds from the testing approach (issue #10).
+  // The 95/85/70/55/40% right-answer odds the Lifeline simulation rolls against, one per Tier.
   it.each([0.95, 0.85, 0.7, 0.55, 0.4])(
     "lands on odds of %s over 10,000 rolls, within 2 points",
     (odds) => {

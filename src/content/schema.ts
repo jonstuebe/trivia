@@ -74,7 +74,9 @@ export const titleFileSchema = z.strictObject({
 });
 export type TitleFile = z.infer<typeof titleFileSchema>;
 
-export type TitleCategory = "tv" | "movies";
+/** The Categories made of Titles, each a folder of Title files. */
+export const TITLE_CATEGORIES = ["tv", "movies"] as const;
+export type TitleCategory = (typeof TITLE_CATEGORIES)[number];
 
 /** A checked Topic file, with what its path says about it. */
 export type TopicFile =
