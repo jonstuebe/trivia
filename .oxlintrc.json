@@ -7,5 +7,5 @@
   "options": {
     "denyWarnings": true
   },
-  "ignorePatterns": ["dist", "src/routeTree.gen.ts"]
+  "ignorePatterns": ["dist", "src/routeTree.gen.ts", ".claude"]
 }
