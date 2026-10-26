@@ -1,14 +1,14 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { setCurrentGame } from "../app/game-services";
+import { browserShareDevice, shareOut } from "../app/share-out";
 import type { GameOver } from "../game/game-controller";
 import { shownNow } from "../game/machine";
 import { topicRoute } from "../game/topic";
 import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
-import { gameOverView } from "./game-over-view";
+import { gameOverView, shareNote } from "./game-over-view";
 import type { GameSnapshot } from "./game-view";
-import { browserShareDevice, shareOut, type ShareOutcome } from "./share-out";
 
 /**
  * Game over: how it ended, the correct answer after a miss, the winnings,
@@ -55,12 +55,6 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
   );
 }
 
-/** What Share says after it's pressed; the share sheet speaks for itself. */
-const SHARE_NOTE: Partial<Record<ShareOutcome, string>> = {
-  copied: "Copied",
-  copyFailed: "Couldn't copy. Select the text above to copy it.",
-};
-
 /**
  * Share: the share sheet on phones and tablets, a copy elsewhere. The note
  * is a status region, so screen readers announce "Copied".
@@ -72,7 +66,7 @@ function ShareButton({ text }: { text: string }) {
     // Cleared first, so a second "Copied" is announced again.
     setNote("");
     const outcome = await shareOut(text, browserShareDevice());
-    setNote(SHARE_NOTE[outcome] ?? "");
+    setNote(shareNote(outcome));
   }
 
   return (

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { GameResult } from "../game/types";
-import { gameOverView } from "./game-over-view";
+import { gameOverView, shareNote } from "./game-over-view";
 
 const topic = { kind: "title", category: "tv", slug: "fixture-sitcom" } as const;
 
@@ -50,5 +50,20 @@ describe("Game over", () => {
       newPersonalBest: true,
     });
     expect(view).toMatchObject({ headline: "You walked away.", correctAnswer: undefined, winnings: "$200" });
+  });
+});
+
+describe("the note under Share", () => {
+  it("says Copied after a copy", () => {
+    expect(shareNote("copied")).toBe("Copied");
+  });
+
+  it("after a failed copy, says to select the text by hand", () => {
+    expect(shareNote("copyFailed")).toBe("Couldn't copy. Select the text above to copy it.");
+  });
+
+  it("says nothing after the share sheet, which speaks for itself, or after it's cancelled", () => {
+    expect(shareNote("shared")).toBe("");
+    expect(shareNote("cancelled")).toBe("");
   });
 });
