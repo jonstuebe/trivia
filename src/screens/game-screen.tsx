@@ -12,7 +12,9 @@ import { LadderColumn, LadderStrip } from "./ladder";
 import { ladderView } from "./ladder-view";
 import { KeysDialog, Lifelines, PickFriendDialog } from "./lifelines";
 import { lifelinesView } from "./lifelines-view";
-import { useGameKeys, useShowKeysKey } from "./use-game-keys";
+import { MuteButton } from "./mute-button";
+import { useGameKeys, useMuteKey, useShowKeysKey } from "./use-game-keys";
+import { useGameSounds } from "./use-game-sounds";
 import { useRevealWait } from "./use-reveal-wait";
 
 /**
@@ -22,7 +24,7 @@ import { useRevealWait } from "./use-reveal-wait";
  * Top to bottom in the main column: the header ("Question n of 15 · for $X"),
  * the phone Ladder strip, the Lifelines and their results,
  * the Title label in a Mixed game, the Question, the answers, then the reveal
- * or the Walk away and Main menu links. The desktop Ladder is the second
+ * or the Walk away and Main menu links, then the Sound switch. The desktop Ladder is the second
  * column. The confirm dialogs, Pick a friend and the `?` list of keys sit
  * over it all.
  *
@@ -35,6 +37,8 @@ import { useRevealWait } from "./use-reveal-wait";
 export function GameScreen({ game }: { game: PlayingGame }) {
   const snapshot = useSyncExternalStore(game.subscribe, game.snapshot);
   useGameKeys(game);
+  useMuteKey();
+  useGameSounds(game);
   const [showingKeys, setShowingKeys] = useState(false);
   useShowKeysKey(() => setShowingKeys(true));
   const navigate = useNavigate();
@@ -119,6 +123,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
             Main menu
           </Button>
         )}
+        <MuteButton />
       </div>
       <LadderColumn rows={ladder} stepping={stepping} inert={dimmed} />
 

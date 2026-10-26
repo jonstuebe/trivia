@@ -2,6 +2,7 @@ import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { startBeacon } from "./analytics/beacon";
+import { startSound } from "./app/sound";
 import { routeTree } from "./routeTree.gen";
 import "./ui/fonts";
 import "./ui/studio.css";
@@ -25,3 +26,6 @@ createRoot(rootElement).render(
 
 // Anonymous page-visit counts, only when the browser sends no privacy signal.
 startBeacon();
+
+// The sound starts on the first tap or key press.
+startSound();

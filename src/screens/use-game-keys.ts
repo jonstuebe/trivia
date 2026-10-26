@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+import { sound } from "../app/sound";
 import type { PlayingGame } from "../game/game-controller";
-import { gameKeyEvent, SHOW_KEYS_KEY } from "./game-keys";
+import { gameKeyEvent, isMuteKey, SHOW_KEYS_KEY } from "./game-keys";
 
 /**
  * Plays the Game from the keyboard: a key in `GAME_KEYS` sends its move when the
@@ -23,6 +24,24 @@ export function useGameKeys(game: PlayingGame): void {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [game]);
+}
+
+/**
+ * Turns the sound on or off when M is pressed outside a dialog. It's not a
+ * Game move, so it works on every step of the Game.
+ */
+export function useMuteKey(): void {
+  useEffect(() => {
+    function onKeyDown(press: KeyboardEvent) {
+      if (press.defaultPrevented || press.repeat || !isMuteKey(press)) return;
+      const target = press.target instanceof Element ? press.target : null;
+      if (target?.closest("dialog[open], input, textarea, select")) return;
+      press.preventDefault();
+      sound.toggleMuted();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 }
 
 /**

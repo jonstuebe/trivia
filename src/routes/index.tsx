@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useId, useState } from "react";
 import { storage } from "../app/game-services";
 import { mainMenuView } from "../screens/main-menu-view";
+import { MuteButton } from "../screens/mute-button";
 import { SITE_TAGLINE } from "../site";
 import { Dialog } from "../ui/dialog";
 import { Button } from "../ui/lozenge";
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/")({
 /**
  * The Main menu: Resume when a Game is saved (then Play steps back), Play,
  * the Personal bests, Reset all seen questions behind a confirm, and the
- * link to the privacy note.
+ * link to the privacy note, and the Sound switch.
  */
 function MainMenu() {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ function MainMenu() {
       <Link className="link-quiet" to="/privacy">
         Privacy
       </Link>
+      <MuteButton />
 
       {confirmingReset && (
         <Dialog

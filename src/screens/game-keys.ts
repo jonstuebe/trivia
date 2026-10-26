@@ -42,6 +42,9 @@ export const GAME_KEYS: readonly GameKey[] = [
 /** The key that shows the list of keys. It isn't a Game move, so it has its own listener. */
 export const SHOW_KEYS_KEY = "?";
 
+/** The key that turns the sound on or off. It isn't a Game move either, so it has its own listener too. */
+export const MUTE_KEY = "m";
+
 /** One row of the list of keys: "A or 1" · "Pick answer A". */
 export interface KeyListRow {
   keys: string;
@@ -55,10 +58,11 @@ function keyName(key: string): string {
   return KEY_NAMES[key] ?? (key.length === 1 ? key.toUpperCase() : key);
 }
 
-/** Every Game key as it's pressed, then `?` itself, for the list of keys. */
+/** Every Game key as it's pressed, then M and `?` itself, for the list of keys. */
 export function keyList(): KeyListRow[] {
   return [
     ...GAME_KEYS.map((shortcut) => ({ keys: shortcut.keys.map(keyName).join(" or "), description: shortcut.description })),
+    { keys: keyName(MUTE_KEY), description: "Sound on or off" },
     { keys: SHOW_KEYS_KEY, description: "Show the keys" },
   ];
 }
@@ -88,4 +92,10 @@ export function gameKeyEvent(press: KeyPress): GameEvent | undefined {
   const key = press.key.length === 1 ? press.key.toLowerCase() : press.key;
   const shortcut = GAME_KEYS.find((row) => row.keys.includes(key));
   return shortcut && "event" in shortcut ? shortcut.event : undefined;
+}
+
+/** Whether a key press is M, to turn the sound on or off. Ctrl, Cmd and Alt combinations are the browser's. */
+export function isMuteKey(press: KeyPress): boolean {
+  if (press.ctrlKey || press.metaKey || press.altKey) return false;
+  return press.key.toLowerCase() === MUTE_KEY;
 }

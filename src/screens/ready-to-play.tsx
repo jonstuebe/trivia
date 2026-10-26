@@ -6,6 +6,7 @@ import type { Topic } from "../game/types";
 import { Button } from "../ui/lozenge";
 import { formatMoney } from "../ui/money";
 import { ScreenHeading } from "../ui/screen-heading";
+import { MuteButton } from "./mute-button";
 
 /**
  * The screen at a Topic's own URL: Ready to play, or Not enough new questions
@@ -98,6 +99,7 @@ export function ReadyToPlayOrNotEnough({ topic, enoughNew }: { topic: Topic; eno
           ← Back
         </Button>
       </div>
+      <MuteButton />
     </main>
   );
 }

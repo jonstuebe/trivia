@@ -7,13 +7,14 @@ import { shownNow } from "../game/machine";
 import { topicRoute } from "../game/topic";
 import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
+import { MuteButton } from "./mute-button";
 import { gameOverView, shareNote } from "./game-over-view";
 import type { GameSnapshot } from "./game-view";
 
 /**
  * Game over: how it ended, the correct answer after a miss, the winnings,
  * the Personal best and the Share result, then Play again (the Topic's Ready
- * to play, or Not enough new questions) and Main menu.
+ * to play, or Not enough new questions) and Main menu, then the Sound switch.
  */
 export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: GameSnapshot }) {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
           Main menu
         </Button>
       </div>
+      <MuteButton />
     </main>
   );
 }

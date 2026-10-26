@@ -16,7 +16,7 @@ test("every Lifeline in one Game, by keyboard and by mouse, each result readable
   await browser.keyboard.press("?");
   const keys = screen.getByRole("dialog", "Keys");
   await expect(keys).toBeVisible();
-  for (const row of ["A or 1", "Enter", "Esc", "W", "F", "Q", "P", "S", "?"]) {
+  for (const row of ["A or 1", "Enter", "Esc", "W", "F", "Q", "P", "S", "M", "?"]) {
     await expect(keys.getByText(row, { exact: true })).toBeVisible();
   }
   await expect(keys.getByText("Phone a Friend", { exact: true })).toBeVisible();
