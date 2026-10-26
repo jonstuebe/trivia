@@ -19,6 +19,13 @@ export interface GameQuestion extends Question {
   titleName?: string;
 }
 
+/**
+ * The Seen questions on this device: Question ID → a running counter that
+ * goes up by one every time a Question is shown. A lower counter is
+ * older-seen. IDs no longer in the content are ignored.
+ */
+export type SeenQuestions = Readonly<Record<string, number>>;
+
 /** One of the four answer positions, A to D. */
 export type AnswerPosition = 0 | 1 | 2 | 3;
 
