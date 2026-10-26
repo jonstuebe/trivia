@@ -10,7 +10,7 @@ export interface Random {
 }
 
 /** The source for real play: unseeded, so every Game is different. */
-export function createRandom(): Random {
+export function createUnseededRandom(): Random {
   return { next: () => Math.random() };
 }
 

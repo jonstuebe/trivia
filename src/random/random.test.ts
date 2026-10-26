@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createRandom, createSeededRandom, shuffle, weightedPick, type Random } from "./random";
+import { createUnseededRandom, createSeededRandom, shuffle, weightedPick, type Random } from "./random";
 
 function take(random: Random, count: number): number[] {
   return Array.from({ length: count }, () => random.next());
@@ -26,8 +26,8 @@ describe("seeded random source", () => {
 
 describe("unseeded random source", () => {
   it("gives numbers in [0, 1) that differ between sources", () => {
-    const a = take(createRandom(), 20);
-    const b = take(createRandom(), 20);
+    const a = take(createUnseededRandom(), 20);
+    const b = take(createUnseededRandom(), 20);
     for (const value of [...a, ...b]) {
       expect(value).toBeGreaterThanOrEqual(0);
       expect(value).toBeLessThan(1);
