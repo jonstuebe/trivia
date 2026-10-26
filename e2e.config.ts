@@ -6,7 +6,6 @@ import { chromium } from "./tests/support/engine";
  * agent, no model and no API key. Chromium only, against the fixture build
  * that `bun run build:fixtures` puts in dist-fixtures/.
  */
-
 export default {
   targets: [
     {
