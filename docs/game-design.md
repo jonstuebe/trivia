@@ -39,7 +39,7 @@ There are two levels: a **category**, then optionally a **title** within it.
 - **General:** its own general-knowledge set (history, science, geography, sports and so on), like the show. It has no titles.
 - **TV Shows** and **Movies:** pick the whole category for a mixed game, or one specific show or movie. A mixed game draws from every title in the category, and shows each question's show or movie as a label above it. The question text itself doesn't name the title.
 
-A movie title can be a single film or a franchise. A mixed game is offered only when the category has 2 or more titles. The launch titles are:
+A movie title can be a single film or a franchise (its theatrical films only). A mixed game is offered only when the category has 2 or more titles. The launch titles are:
 
 - **TV Shows:** Friends, The Big Bang Theory, Modern Family.
 - **Movies:** Star Wars, Harry Potter, Marvel Cinematic Universe, Jurassic Park, Pixar (one title covering all Pixar films).
@@ -47,7 +47,8 @@ A movie title can be a single film or a franchise. A mixed game is offered only 
 ## Questions
 
 - Claude writes the questions. They ship as **one JSON file per topic** (General, or one title), loaded only when that topic is picked. A mixed category game loads every title file in that category.
-- Each question has one of **5 difficulty tiers**, matching ladder rungs 1–3, 4–6, 7–9, 10–12 and 13–15.
+- Each question has one of **5 difficulty tiers**, matching ladder rungs 1–3, 4–6, 7–9, 10–12 and 13–15, placed by roughly how many fans of the topic would know it: about 90%, 70%, 50%, 25% and 10%.
+- General questions spread evenly over four subjects, matching the friends: history, science, sports and pop culture.
 - Each topic aims for about **75 questions**, 15 per tier, which is about 5 games before repeats.
 - A title appears in the topic picker once it has about **20 questions**: enough for one game, plus spares in the top tiers for Switch the Question.
 
