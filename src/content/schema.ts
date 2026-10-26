@@ -21,6 +21,16 @@ export const tierSchema = z.union([z.literal(1), z.literal(2), z.literal(3), z.l
 export type Tier = z.infer<typeof tierSchema>;
 export const TIERS: readonly Tier[] = [1, 2, 3, 4, 5];
 
+/** How many Questions a Topic has in each Tier. */
+export type QuestionCounts = Record<Tier, number>;
+
+/** Counts Questions per Tier, listing every Tier even with none. */
+export function countByTier(questions: readonly { tier: Tier }[]): QuestionCounts {
+  const counts = Object.fromEntries(TIERS.map((tier) => [tier, 0])) as QuestionCounts;
+  for (const { tier } of questions) counts[tier]++;
+  return counts;
+}
+
 /** The area of general knowledge a General Question belongs to, matching a Friend. */
 export const subjectSchema = z.enum(["history", "science", "sports", "pop culture"]);
 export type Subject = z.infer<typeof subjectSchema>;
@@ -142,4 +152,9 @@ export function describeQuestion({ id, position }: QuestionRef): string {
 /** One line for a person reading the check's output. */
 export function formatContentError({ file, question, message }: ContentError): string {
   return question ? `${file}, ${describeQuestion(question)}: ${message}` : `${file}: ${message}`;
+}
+
+/** A count with its noun, like `1 warning` or `3 warnings`. */
+export function plural(count: number, noun: string): string {
+  return `${count} ${noun}${count === 1 ? "" : "s"}`;
 }

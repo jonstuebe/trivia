@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
-import { checkContent, type ContentCheckResult, type ContentFile } from "./check";
+import { checkContent, type ContentCheckResult } from "./check";
+import type { ContentFile } from "./types";
 import type { ContentError } from "./schema";
 
 /**

@@ -1,35 +1,6 @@
 import { checkAuthoringRules, type CheckedTopic } from "./authoring-rules";
-import { TIERS, describeQuestion, parseTopicFile, type ContentError, type Question, type Tier, type TopicFile } from "./schema";
-
-/** A Topic file as read from disk: its path inside the content folder and its parsed JSON. */
-export interface ContentFile {
-  /** Like `tv/friends.json`, with `/` separators. */
-  path: string;
-  data: unknown;
-}
-
-/** How many Questions a Topic has in each Tier. */
-export type QuestionCounts = Record<Tier, number>;
-
-/** One Title in the topic index. */
-export interface TitleEntry {
-  name: string;
-  slug: string;
-  questionCounts: QuestionCounts;
-}
-
-/**
- * What the topic picker reads to list Topics, without loading every Topic
- * file. It's generated from the files by the content check, never by hand.
- */
-export interface TopicIndex {
-  /** Null when there's no `general.json`. */
-  general: { questionCounts: QuestionCounts } | null;
-  /** Sorted by name. */
-  tv: TitleEntry[];
-  /** Sorted by name. */
-  movies: TitleEntry[];
-}
+import { countByTier, describeQuestion, parseTopicFile, type ContentError, type TopicFile } from "./schema";
+import type { ContentFile, TitleEntry, TopicIndex } from "./types";
 
 export interface ContentCheckResult {
   /** Built from the files that passed; a file with errors is left out. */
@@ -86,10 +57,4 @@ function buildIndex(topics: readonly TopicFile[]): TopicIndex {
   index.tv.sort(byName);
   index.movies.sort(byName);
   return index;
-}
-
-function countByTier(questions: readonly Question[]): QuestionCounts {
-  const counts = Object.fromEntries(TIERS.map((tier) => [tier, 0])) as QuestionCounts;
-  for (const { tier } of questions) counts[tier]++;
-  return counts;
 }

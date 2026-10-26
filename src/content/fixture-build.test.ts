@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { createServer } from "vite";
 import { describe, expect, it } from "vitest";
-import type { TopicIndex } from "./check";
+import type { TopicIndex } from "./types";
 
 const root = join(import.meta.dirname, "../..");
 

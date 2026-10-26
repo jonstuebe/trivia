@@ -1,4 +1,4 @@
-import type { TopicIndex } from "./check";
+import type { TopicIndex } from "./types";
 import generated from "./topic-index.gen.json";
 
 /**

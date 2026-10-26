@@ -1,14 +1,17 @@
-import type { ContentFile, QuestionCounts } from "./check";
 import {
   TIERS,
+  countByTier,
   formatContentError,
+  plural,
   parseTopicFile,
   subjectSchema,
   type ContentError,
   type Question,
+  type QuestionCounts,
   type Subject,
   type TopicFile,
 } from "./schema";
+import type { ContentFile } from "./types";
 
 /**
  * The content checks that inform rather than fail (issue #9, "Build checks"):
@@ -70,12 +73,11 @@ export function reportContent(files: readonly ContentFile[]): ContentReport {
 /** The report as text for a person reading the content check's output. */
 export function formatReport({ topics, warnings }: ContentReport): string {
   const table = topics.length > 0 ? formatTable(topics) : ["No Topic files to report on."];
-  const plural = warnings.length === 1 ? "" : "s";
   const warningLines =
     warnings.length > 0
       ? [
           ...warnings.map((warning) => `Warning: ${formatContentError(warning)}`),
-          `${warnings.length} warning${plural}. Warnings don't fail the check.`,
+          `${plural(warnings.length, "warning")}. Warnings don't fail the check.`,
         ]
       : ["No warnings."];
   return [...table, "", ...warningLines].join("\n");
@@ -132,10 +134,4 @@ function summarize(file: string, topic: TopicFile): TopicSummary {
     subjectSchema.options.map((subject) => [subject, countByTier(topic.questions.filter((q) => q.subject === subject))]),
   ) as Record<Subject, QuestionCounts>;
   return { file, name: "General", tiers, subjects };
-}
-
-function countByTier(questions: readonly Question[]): QuestionCounts {
-  const counts = Object.fromEntries(TIERS.map((tier) => [tier, 0])) as QuestionCounts;
-  for (const { tier } of questions) counts[tier]++;
-  return counts;
 }

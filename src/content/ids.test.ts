@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createSeededRandom } from "../random/random";
-import type { ContentFile } from "./check";
+import type { ContentFile } from "./types";
 import { assignQuestionIds } from "./ids";
 import { questionIdSchema } from "./schema";
 

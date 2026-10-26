@@ -10,7 +10,7 @@
  */
 import { parseArgs } from "node:util";
 import { createUnseededRandom } from "../src/random/random";
-import { formatContentError } from "../src/content/schema";
+import { formatContentError, plural } from "../src/content/schema";
 import { assignQuestionIdsInDir } from "../src/content/write-ids";
 
 const { values } = parseArgs({
@@ -30,5 +30,5 @@ if (errors.length > 0) {
 if (assigned === 0) {
   console.log("Every Question already has an ID. Nothing changed.");
 } else {
-  console.log(`Wrote ${assigned} new ID${assigned === 1 ? "" : "s"} into ${changedFiles.join(", ")}.`);
+  console.log(`Wrote ${plural(assigned, "new ID")} into ${changedFiles.join(", ")}.`);
 }

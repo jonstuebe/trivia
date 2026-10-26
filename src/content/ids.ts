@@ -1,5 +1,5 @@
 import type { Random } from "../random/random";
-import type { ContentFile } from "./check";
+import type { ContentFile } from "./types";
 
 /**
  * Gives every Question without an ID a short random one (issue #3, "Question

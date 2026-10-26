@@ -17,7 +17,7 @@ import { parseArgs } from "node:util";
 import { checkContent } from "../src/content/check";
 import { readContentDir } from "../src/content/read";
 import { formatReport, reportContent } from "../src/content/report";
-import { formatContentError } from "../src/content/schema";
+import { formatContentError, plural } from "../src/content/schema";
 
 const { values } = parseArgs({
   options: {
@@ -35,10 +35,10 @@ console.log(`${formatReport(reportContent(files))}\n`);
 
 if (errors.length > 0) {
   for (const error of errors) console.error(formatContentError(error));
-  console.error(`\nContent check failed: ${errors.length} error${errors.length === 1 ? "" : "s"}.`);
+  console.error(`\nContent check failed: ${plural(errors.length, "error")}.`);
   process.exit(1);
 }
 
 await writeFile(values.out, `${JSON.stringify(index, null, 2)}\n`);
 const titles = index.tv.length + index.movies.length;
-console.log(`Content check passed. Wrote ${values.out} (${titles} Title${titles === 1 ? "" : "s"}${index.general ? " and General" : ""}).`);
+console.log(`Content check passed. Wrote ${values.out} (${plural(titles, "Title")}${index.general ? " and General" : ""}).`);
