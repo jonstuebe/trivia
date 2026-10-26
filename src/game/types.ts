@@ -38,7 +38,7 @@ export interface ShownQuestion {
   correct: AnswerPosition;
 }
 
-/** The four Lifelines, in ladder order. */
+/** The four Lifelines, in the order they're shown. */
 export const LIFELINES = ["fiftyFifty", "askTheAudience", "phoneAFriend", "switchTheQuestion"] as const;
 export type Lifeline = (typeof LIFELINES)[number];
 
@@ -58,7 +58,7 @@ export type GameEnding = "won" | "missed" | "walkedAway";
 /** What happened on one question reached, in Ladder order: ✅, ❌ or 🚶 in the Share result. */
 export type QuestionOutcome = "right" | "miss" | "walkedAway";
 
-/** A finished Game: what the end screen, the Personal best and the Share result are built from. */
+/** A finished Game: what the Game over screen, the Personal best and the Share result are built from. */
 export interface GameResult {
   topic: Topic;
   ending: GameEnding;

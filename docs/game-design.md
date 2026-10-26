@@ -64,7 +64,7 @@ Everything below is kept in the browser on that device.
 
 ## End of game
 
-A game ends when the player wins, misses or walks away. The end screen shows the final winnings, the personal best, and a **shareable result** to copy as text, Wordle style:
+A game ends when the player wins, misses or walks away. The Game over screen shows the final winnings, the personal best, and a **shareable result** to copy as text, Wordle style:
 
 - The topic and the winnings.
 - One emoji per question reached: ✅ right, ❌ the miss, 🚶 walked away.

@@ -21,7 +21,7 @@ describe("shareResult", () => {
     );
   });
 
-  it("puts 🏆 after the winnings of a full win, and lists every Lifeline in ladder order", () => {
+  it("puts 🏆 after the winnings of a full win, and lists every Lifeline in the order they're shown", () => {
     const text = shareResult(
       {
         topic: { kind: "general" },
