@@ -50,8 +50,6 @@ function icon(svg: string, size: number, { scale = 1, tile = false } = {}): Shot
   return { html, width: size, height: size, transparent: !tile };
 }
 
-const square = (sizes: string) => Number(sizes.split("x")[0]);
-
 const shots: { file: string; shot: Shot }[] = [
   ...APP_ICONS.map((entry) => ({
     file: entry.src,
@@ -60,8 +58,8 @@ const shots: { file: string; shot: Shot }[] = [
     // so at 80% it fits inside with room to spare.
     shot:
       entry.purpose === "maskable"
-        ? icon(disc, square(entry.sizes), { scale: 0.8, tile: true })
-        : icon(disc, square(entry.sizes)),
+        ? icon(disc, entry.size, { scale: 0.8, tile: true })
+        : icon(disc, entry.size),
   })),
   // iOS rounds the corners itself and paints see-through pixels black, so
   // the disc sits on the tile, a little in from the rounded corners.

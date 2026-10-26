@@ -25,9 +25,9 @@ export const STUDIO_BACKGROUND = "#05061a";
  * full-bleed background, for launchers that crop icons to their own shape.
  */
 export const APP_ICONS = [
-  { src: "/pwa-192x192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-  { src: "/pwa-512x512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-  { src: "/maskable-icon-512x512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
+  { src: "/pwa-192x192.png", size: 192, purpose: "any" },
+  { src: "/pwa-512x512.png", size: 512, purpose: "any" },
+  { src: "/maskable-icon-512x512.png", size: 512, purpose: "maskable" },
 ] as const;
 
 /** The home-screen icon iOS uses, which ignores the manifest's icons. */
@@ -51,7 +51,7 @@ export const PWA_OPTIONS: Partial<VitePWAOptions> = {
     theme_color: STUDIO_BACKGROUND,
     background_color: STUDIO_BACKGROUND,
     lang: "en",
-    icons: APP_ICONS.map((icon) => ({ ...icon })),
+    icons: APP_ICONS.map(({ src, size, purpose }) => ({ src, sizes: `${size}x${size}`, type: "image/png", purpose })),
   },
   // The icons are in public/, so the glob below already takes them in.
   includeManifestIcons: false,
