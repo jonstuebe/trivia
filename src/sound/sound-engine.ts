@@ -158,8 +158,13 @@ export function createSoundEngine<C extends string = CueName, B extends string =
       syncBed();
     },
 
-    /** Stops the bed playing, and forgets it. */
-    stopBed(): void {
+    /**
+     * Stops the bed playing, and forgets it. Given `only`, it does so only
+     * if that's the bed asked for, so it can't stop one a screen has just
+     * started.
+     */
+    stopBed(only?: B): void {
+      if (only !== undefined && wantedBed !== only) return;
       wantedBed = undefined;
       syncBed();
     },

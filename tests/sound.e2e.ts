@@ -15,10 +15,13 @@ async function expectSound(screen: Screen, state: "on" | "off"): Promise<void> {
 
 /**
  * What the sound engine shows on `<html>`, since the journeys can't hear:
- * `sound` ("on" or "off"), `soundCues` (how many cues have played) and
- * `soundLastCue`.
+ * `sound` ("on" or "off"), `soundCues` (how many cues have played),
+ * `soundLastCue` and `soundBed` (the bed playing).
  */
-function soundData(browser: Browser, key: "sound" | "soundCues" | "soundLastCue"): Promise<string | null> {
+function soundData(
+  browser: Browser,
+  key: "sound" | "soundCues" | "soundLastCue" | "soundBed",
+): Promise<string | null> {
   return browser.evaluate<string | null, string>((name) => document.documentElement.dataset[name] ?? null, key);
 }
 
@@ -85,4 +88,39 @@ test("Final answer plays the lock-in sting, and a muted page plays nothing", asy
   await expect(questionHeading(screen, 3)).toBeFocused();
   expect(await soundData(browser, "sound")).toBe("off");
   expect(await soundData(browser, "soundCues")).toBe("1");
+});
+
+test("the menu theme plays from the first tap through to Ready to play, stops for the Game and comes back on the Main menu", async ({
+  app,
+  screen,
+  browser,
+}) => {
+  await app.open("/");
+  // Nothing plays before the first tap or key press.
+  expect(await soundData(browser, "soundBed")).toBeNull();
+
+  await screen.getByRole("button", "Play").tap();
+  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("theme");
+
+  await screen.getByRole("link", "TV Shows").tap();
+  await screen.getByRole("link", "Fixture Sitcom").tap();
+  await expect(browser).toHaveURL("/tv/fixture-sitcom");
+  expect(await soundData(browser, "soundBed")).toBe("theme");
+
+  // The mute on Ready to play stops it, and turning the mute off brings it back.
+  await soundSwitch(screen).tap();
+  await expectSound(screen, "off");
+  expect(await soundData(browser, "soundBed")).toBeNull();
+  await soundSwitch(screen).tap();
+  await expectSound(screen, "on");
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("theme");
+
+  await screen.getByRole("button", "Start").tap();
+  await expect(questionHeading(screen, 1)).toBeFocused();
+  expect(await soundData(browser, "soundBed")).not.toBe("theme");
+
+  await screen.getByRole("button", "Main menu").tap();
+  await expect(browser).toHaveURL("/");
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("theme");
 });

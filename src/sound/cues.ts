@@ -9,6 +9,8 @@
  * by adding it to `CUES` or `BEDS`.
  */
 
+import { theme } from "./theme";
+
 /** Where a cue plays: the engine's AudioContext, the node to connect to (the mute sits after it), and the time to start at. */
 export interface SoundOutput {
   context: BaseAudioContext;
@@ -70,8 +72,8 @@ const lockIn: Cue = ({ context, destination, now }) => {
 
 export const CUES = { lockIn } satisfies Record<string, Cue>;
 
-/** No beds yet: the Tier beds and the menu theme add theirs here. */
-export const BEDS = {} satisfies Record<string, Bed>;
+/** The menu theme (theme.ts); the Tier beds add theirs here. */
+export const BEDS = { theme } satisfies Record<string, Bed>;
 
 export type CueName = keyof typeof CUES;
 export type BedName = keyof typeof BEDS;
