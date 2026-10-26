@@ -258,6 +258,13 @@ button.lozenge:focus-visible::before {
   gap: 4px;
 }
 
+/* ---- Privacy note ---- */
+
+.privacy p {
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
 /* ---- Topic picker and Ready to play ---- */
 
 .section-title {
