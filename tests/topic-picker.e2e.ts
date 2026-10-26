@@ -58,6 +58,14 @@ test("the Topic picker lists each Category's Titles and Back returns to the Cate
   await expect(screen.getByRole("heading", "Trivia", { level: 1 })).toBeFocused();
 });
 
+test("a shared Title link opens that Title's Ready to play", async ({ app, screen, browser }) => {
+  await app.open("/movies/fixture-heist");
+  await expect(browser).toHaveURL("/movies/fixture-heist");
+  await expect(screen.getByRole("heading", "Ready to play: Fixture Heist", { level: 1 })).toBeFocused();
+  await expect(screen.getByRole("button", "Start")).toBeVisible();
+  await checkA11y(browser, "Ready to play, from a shared link");
+});
+
 test("a link to a Topic the picker doesn't list goes to the Topic picker", async ({ app, screen, browser }) => {
   await app.open("/tv/fixture-drama");
   await expect(browser).toHaveURL("/topics");
