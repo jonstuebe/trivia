@@ -3,6 +3,7 @@ import { shuffle, type Random } from "../random/random";
 import { LADDER_LENGTH, prizeForRung, winningsAfterMiss, winningsBeforeRung } from "./ladder";
 import type {
   AnswerPosition,
+  Friend,
   GameEnding,
   GameQuestion,
   GameResult,
@@ -12,7 +13,7 @@ import type {
   ShownQuestion,
   Topic,
 } from "./types";
-import { askTheAudience, type AudienceResult } from "./simulation";
+import { askTheAudience, phoneAFriend, type AudienceResult, type FriendResult } from "./simulation";
 
 /**
  * What a Game needs from outside that isn't plain data: given when a Game
@@ -49,6 +50,8 @@ export interface GameContext {
   removed: AnswerPosition[];
   /** The Ask the Audience vote on this question, rolled once. */
   audience: AudienceResult | null;
+  /** What the Friend said on this question's Phone a Friend call, rolled once. */
+  friend: FriendResult | null;
   /** Set once the Game ends; also the machine's output. */
   result: GameResult | null;
 }
@@ -75,7 +78,7 @@ export type GameEvent =
   | { type: "pick"; answer: AnswerPosition }
   /** Confirms the picked answer. */
   | { type: "finalAnswer" }
-  /** Backs out of "Final answer" or "Walk away" to choosing. */
+  /** Backs out of "Final answer", "Walk away" or the pick of a Friend to choosing. */
   | { type: "cancel" }
   /** Asks "Walk away with $X? / Cancel". Offered from question 2. */
   | { type: "walkAway" }
@@ -86,7 +89,11 @@ export type GameEvent =
   /** 50:50: removes two wrong answers. */
   | { type: "fiftyFifty" }
   /** Ask the Audience: shows their vote, over only the answers still in play. */
-  | { type: "askTheAudience" };
+  | { type: "askTheAudience" }
+  /** Phone a Friend: opens the pick of the four Friends. Cancel backs out without spending it. */
+  | { type: "phoneAFriend" }
+  /** Calls the chosen Friend, spending Phone a Friend. */
+  | { type: "callFriend"; friend: Friend };
 
 /** A Question with its answers shuffled into the order shown. */
 export function showQuestion(question: GameQuestion, random: Random): ShownQuestion {
@@ -108,7 +115,7 @@ function remaining(context: GameContext): AnswerPosition[] {
 }
 
 /** What the next question starts with: no answer picked and no Lifeline results showing. */
-const freshQuestion = { picked: null, removed: [], audience: null } satisfies Partial<GameContext>;
+const freshQuestion = { picked: null, removed: [], audience: null, friend: null } satisfies Partial<GameContext>;
 
 /** The Game machine, with its outside dependencies closed over so the context stays plain data. */
 function gameMachineWith({ random }: GameDependencies) {
@@ -127,6 +134,7 @@ function gameMachineWith({ random }: GameDependencies) {
       stillInPlay: ({ context, event }) => event.type === "pick" && !context.removed.includes(event.answer),
       fiftyFiftyUnused: ({ context }) => unused(context, "fiftyFifty"),
       askTheAudienceUnused: ({ context }) => unused(context, "askTheAudience"),
+      phoneAFriendUnused: ({ context }) => unused(context, "phoneAFriend"),
     },
     actions: {
       finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
@@ -142,6 +150,14 @@ function gameMachineWith({ random }: GameDependencies) {
         audience: askTheAudience({ shown: shownNow(context), remaining: remaining(context), random }),
         lifelinesUsed: [...context.lifelinesUsed, "askTheAudience" as const],
       })),
+      callFriend: assign(({ context, event }) => {
+        if (event.type !== "callFriend") return {};
+        const shown = shownNow(context);
+        return {
+          friend: phoneAFriend({ shown, remaining: remaining(context), friend: event.friend, random }),
+          lifelinesUsed: [...context.lifelinesUsed, "phoneAFriend" as const],
+        };
+      }),
     },
   }).createMachine({
     id: "game",
@@ -153,6 +169,7 @@ function gameMachineWith({ random }: GameDependencies) {
       lifelinesUsed: [],
       removed: [],
       audience: null,
+      friend: null,
       result: null,
     }),
     output: ({ context }) => context.result!,
@@ -168,6 +185,13 @@ function gameMachineWith({ random }: GameDependencies) {
           walkAway: { guard: "pastFirstRung", target: "confirmingWalkAway" },
           fiftyFifty: { guard: "fiftyFiftyUnused", actions: "useFiftyFifty" },
           askTheAudience: { guard: "askTheAudienceUnused", actions: "useAskTheAudience" },
+          phoneAFriend: { guard: "phoneAFriendUnused", target: "pickingFriend" },
+        },
+      },
+      pickingFriend: {
+        on: {
+          cancel: { target: "choosing" },
+          callFriend: { target: "choosing", actions: "callFriend" },
         },
       },
       confirmingWalkAway: {

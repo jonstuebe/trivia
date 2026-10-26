@@ -335,3 +335,41 @@ describe("Ask the Audience", () => {
     expect(game.getSnapshot().context.audience).toBeNull();
   });
 });
+
+describe("Phone a Friend", () => {
+  it("opens a pick of the four Friends, and Cancel goes back without spending it", () => {
+    const game = newGame();
+    game.send({ type: "phoneAFriend" });
+    expect(game.getSnapshot().value).toBe("pickingFriend");
+    game.send({ type: "pick", answer: 0 });
+    expect(game.getSnapshot().value).toBe("pickingFriend");
+
+    game.send({ type: "cancel" });
+    expect(game.getSnapshot().value).toBe("choosing");
+    expect(game.getSnapshot().context.lifelinesUsed).toEqual([]);
+    expect(game.getSnapshot().context.friend).toBeNull();
+    expect(game.getSnapshot().can({ type: "phoneAFriend" })).toBe(true);
+  });
+
+  it("calls the chosen Friend, who names an answer still in play, once per Game", () => {
+    const game = newGame(6);
+    game.send({ type: "fiftyFifty" });
+    game.send({ type: "phoneAFriend" });
+    game.send({ type: "callFriend", friend: "sports" });
+    const { friend, removed, lifelinesUsed } = game.getSnapshot().context;
+    expect(game.getSnapshot().value).toBe("choosing");
+    expect(friend).toMatchObject({ friend: "sports" });
+    expect(removed).not.toContain(friend!.answer);
+    expect(friend!.line).toContain("ABCD"[friend!.answer]);
+    expect(lifelinesUsed).toEqual(["fiftyFifty", "phoneAFriend"]);
+    expect(game.getSnapshot().can({ type: "phoneAFriend" })).toBe(false);
+  });
+
+  it("is gone on the next question", () => {
+    const game = newGame();
+    game.send({ type: "phoneAFriend" });
+    game.send({ type: "callFriend", friend: "history" });
+    climbTo(game, 2);
+    expect(game.getSnapshot().context.friend).toBeNull();
+  });
+});
