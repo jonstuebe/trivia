@@ -15,7 +15,7 @@ const LIFELINE_EMOJI: Record<Lifeline, string> = {
 };
 
 /** Questions per group on the outcome line, so each break falls on a Safe level. */
-const GROUP = 5;
+const QUESTIONS_PER_GROUP = 5;
 
 /** The Topic's own path: `/general`, `/tv`, `/movies`, `/tv/<slug>` or `/movies/<slug>`. */
 export function topicPath(topic: Topic): string {
@@ -31,10 +31,10 @@ export function shareResult(result: GameResult, topicName: string): string {
   const winnings = `$${result.winnings.toLocaleString("en-US")}${result.ending === "won" ? " 🏆" : ""}`;
 
   const groups: string[] = [];
-  for (let i = 0; i < result.reached.length; i += GROUP) {
+  for (let i = 0; i < result.reached.length; i += QUESTIONS_PER_GROUP) {
     groups.push(
       result.reached
-        .slice(i, i + GROUP)
+        .slice(i, i + QUESTIONS_PER_GROUP)
         .map((outcome) => OUTCOME_EMOJI[outcome])
         .join(""),
     );

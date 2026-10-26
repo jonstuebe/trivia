@@ -105,7 +105,7 @@ export function createGameController({ storage, random }: GameControllerOptions)
       const questions = drawGame(topicQuestions, storage.seenQuestions(), random);
       storage.clearSavedGame();
       void storage.gameStarted();
-      const actor = startGame({ topic, questions, random, topicQuestions, seen: storage.seenQuestions });
+      const actor = startGame({ topic, questions, random, topicQuestions, readSeen: storage.seenQuestions });
       return play(actor, new Set());
     },
 
@@ -125,7 +125,7 @@ export function createGameController({ storage, random }: GameControllerOptions)
       if (!saved) return undefined;
       const { topic, questions, rung, switchedAway } = saved.context;
       const topicQuestions = await loadTopic(topic).catch(() => []);
-      const actor = restoreGame(saved, { random, topicQuestions, seen: storage.seenQuestions });
+      const actor = restoreGame(saved, { random, topicQuestions, readSeen: storage.seenQuestions });
       // Everything shown before the save was marked seen then.
       const marked = new Set([
         ...questions.slice(0, rung).map((shown) => shown.question.id),

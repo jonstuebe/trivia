@@ -15,7 +15,7 @@ async function aGameWithEveryLifelineResult() {
     questions,
     random: createSeededRandom(4),
     topicQuestions: questions,
-    seen: () => ({}),
+    readSeen: () => ({}),
   });
   game.send({ type: "fiftyFifty" });
   game.send({ type: "askTheAudience" });
@@ -36,7 +36,7 @@ describe("the Saved game format", () => {
 
     const saved = createDeviceStorage(backend, { savedGame: savedGameFormat }).savedGame();
     expect(saved).toBeDefined();
-    const restored = restoreGame(saved!, { random: createSeededRandom(9), topicQuestions: questions, seen: () => ({}) });
+    const restored = restoreGame(saved!, { random: createSeededRandom(9), topicQuestions: questions, readSeen: () => ({}) });
     expect(restored.getSnapshot().value).toBe("choosing");
     expect(restored.getSnapshot().context).toEqual(game.getSnapshot().context);
   });

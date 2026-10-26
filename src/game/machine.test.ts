@@ -32,7 +32,7 @@ function topicQuestions(): GameQuestion[] {
 }
 
 function dependencies(seed: number) {
-  return { random: createSeededRandom(seed), topicQuestions: topicQuestions(), seen: () => ({}) };
+  return { random: createSeededRandom(seed), topicQuestions: topicQuestions(), readSeen: () => ({}) };
 }
 
 function newGame(seed = 1): GameActor {
@@ -461,7 +461,7 @@ describe("Switch the Question", () => {
         questions: fifteenQuestions(),
         ...dependencies(seed),
         topicQuestions: [...topicQuestions(), extra],
-        seen: () => ({ s0000004: 1 }),
+        readSeen: () => ({ s0000004: 1 }),
       });
       climbTo(game, 11);
       game.send({ type: "switchTheQuestion" });
@@ -478,7 +478,7 @@ describe("Switch the Question", () => {
         questions: fifteenQuestions(),
         ...dependencies(seed),
         topicQuestions: [...topicQuestions(), extra],
-        seen: () => seen,
+        readSeen: () => seen,
       });
       climbTo(game, 11);
       seen = { s0000004: 1 };

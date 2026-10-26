@@ -30,7 +30,7 @@ export interface GameDependencies {
    * Reads the Seen questions on this device as they are now, so Switch draws
    * unseen first even after Questions shown during this Game were marked.
    */
-  seen: () => SeenQuestions;
+  readSeen: () => SeenQuestions;
 }
 
 /** What a new Game is started from. */
@@ -131,11 +131,11 @@ const freshQuestion = { picked: null, removed: [], audience: null, friend: null 
 const LAST_RUNG_WITHOUT_SWITCH = 10;
 
 /** The Game machine, with its outside dependencies closed over so the context stays plain data. */
-function gameMachineWith({ random, topicQuestions, seen }: GameDependencies) {
+function gameMachineWith({ random, topicQuestions, readSeen }: GameDependencies) {
   /** Every Question this Game has drawn, so Switch never brings one back. */
   const inGame = (context: GameContext) => [...context.questions.map((shown) => shown.question), ...context.switchedAway];
   const drawReplacement = (context: GameContext) =>
-    drawSwitch(topicQuestions, shownNow(context).question.tier, inGame(context), seen(), random);
+    drawSwitch(topicQuestions, shownNow(context).question.tier, inGame(context), readSeen(), random);
   /** Whether the Tier has a Question left to switch to, without rolling anything. */
   const canDrawReplacement = (context: GameContext) =>
     switchCandidates(topicQuestions, shownNow(context).question.tier, inGame(context)).length > 0;
