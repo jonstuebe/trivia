@@ -1,4 +1,5 @@
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import { setCurrentGame } from "../app/game-services";
 import type { GameOver } from "../game/game-controller";
 import { shownNow } from "../game/machine";
@@ -7,12 +8,12 @@ import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
 import { gameOverView } from "./game-over-view";
 import type { GameSnapshot } from "./game-view";
+import { browserShareDevice, shareOut, type ShareOutcome } from "./share-out";
 
 /**
  * Game over: how it ended, the correct answer after a miss, the winnings,
  * the Personal best and the Share result, then Play again (the Topic's Ready
- * to play, or Not enough new questions) and Main menu. The Share button is
- * Phase 5.
+ * to play, or Not enough new questions) and Main menu.
  */
 export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: GameSnapshot }) {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
       <figure className="share">
         <figcaption className="muted">Share result</figcaption>
         <pre className="share__text">{view.share}</pre>
+        <ShareButton text={view.share} />
       </figure>
       <div className="menu">
         <Button variant="primary" onClick={() => leave("playAgain")}>
@@ -50,5 +52,35 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
         </Button>
       </div>
     </main>
+  );
+}
+
+/** What Share says after it's pressed; the share sheet speaks for itself. */
+const SHARE_NOTE: Partial<Record<ShareOutcome, string>> = {
+  copied: "Copied",
+  copyFailed: "Couldn't copy. Select the text above to copy it.",
+};
+
+/**
+ * Share: the share sheet on phones and tablets, a copy elsewhere. The note
+ * is a status region, so screen readers announce "Copied".
+ */
+function ShareButton({ text }: { text: string }) {
+  const [note, setNote] = useState("");
+
+  async function share() {
+    // Cleared first, so a second "Copied" is announced again.
+    setNote("");
+    const outcome = await shareOut(text, browserShareDevice());
+    setNote(SHARE_NOTE[outcome] ?? "");
+  }
+
+  return (
+    <div className="share__actions">
+      <Button onClick={() => void share()}>Share</Button>
+      <p role="status" className="share__note">
+        {note}
+      </p>
+    </div>
   );
 }
