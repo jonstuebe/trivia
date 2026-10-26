@@ -21,7 +21,7 @@ describe("Game over", () => {
         "$1,000,000 🏆",
         "✅✅✅✅✅ ✅✅✅✅✅ ✅✅✅✅✅",
         "No lifelines",
-        "trivia.jonstuebe.com/tv/fixture-sitcom",
+        "trivia.jonstuebe.workers.dev/tv/fixture-sitcom",
       ].join("\n"),
     });
   });

@@ -17,7 +17,7 @@ describe("shareResult", () => {
       "Movies",
     );
     expect(text).toBe(
-      ["Trivia · Movies", "$32,000", "✅✅✅✅✅ ✅✅✅✅✅ ✅❌", "✂️ 👥 🔄", "trivia.jonstuebe.com/movies"].join("\n"),
+      ["Trivia · Movies", "$32,000", "✅✅✅✅✅ ✅✅✅✅✅ ✅❌", "✂️ 👥 🔄", "trivia.jonstuebe.workers.dev/movies"].join("\n"),
     );
   });
 
@@ -38,7 +38,7 @@ describe("shareResult", () => {
         "$1,000,000 🏆",
         "✅✅✅✅✅ ✅✅✅✅✅ ✅✅✅✅✅",
         "✂️ 👥 📞 🔄",
-        "trivia.jonstuebe.com/general",
+        "trivia.jonstuebe.workers.dev/general",
       ].join("\n"),
     );
   });
@@ -55,7 +55,7 @@ describe("shareResult", () => {
       "Friends",
     );
     expect(text).toBe(
-      ["Trivia · Friends", "$2,000", "✅✅✅✅✅ ✅🚶", "📞", "trivia.jonstuebe.com/tv/friends"].join("\n"),
+      ["Trivia · Friends", "$2,000", "✅✅✅✅✅ ✅🚶", "📞", "trivia.jonstuebe.workers.dev/tv/friends"].join("\n"),
     );
   });
 
@@ -70,6 +70,6 @@ describe("shareResult", () => {
       },
       "TV Shows",
     );
-    expect(text).toBe(["Trivia · TV Shows", "$0", "❌", "No lifelines", "trivia.jonstuebe.com/tv"].join("\n"));
+    expect(text).toBe(["Trivia · TV Shows", "$0", "❌", "No lifelines", "trivia.jonstuebe.workers.dev/tv"].join("\n"));
   });
 });
