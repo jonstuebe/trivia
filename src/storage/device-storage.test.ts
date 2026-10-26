@@ -14,7 +14,7 @@ const open = (backend = createMemoryBackend()) => createDeviceStorage(backend, {
 
 describe("seen Questions", () => {
   it("starts with nothing seen", () => {
-    expect(open().seenQuestions()).toEqual(new Map());
+    expect(open().seenQuestions()).toEqual({});
   });
 
   it("gives each shown Question the next running counter, so the latest is the newest", () => {
@@ -23,11 +23,7 @@ describe("seen Questions", () => {
     storage.markSeen("bbbbbbbb");
     storage.markSeen("cccccccc");
     expect(storage.seenQuestions()).toEqual(
-      new Map([
-        ["aaaaaaaa", 1],
-        ["bbbbbbbb", 2],
-        ["cccccccc", 3],
-      ]),
+      { aaaaaaaa: 1, bbbbbbbb: 2, cccccccc: 3 },
     );
   });
 
@@ -37,17 +33,14 @@ describe("seen Questions", () => {
     storage.markSeen("bbbbbbbb");
     storage.markSeen("aaaaaaaa");
     expect(storage.seenQuestions()).toEqual(
-      new Map([
-        ["aaaaaaaa", 3],
-        ["bbbbbbbb", 2],
-      ]),
+      { aaaaaaaa: 3, bbbbbbbb: 2 },
     );
   });
 
   it("is remembered on the device", () => {
     const backend = createMemoryBackend();
     open(backend).markSeen("aaaaaaaa");
-    expect(open(backend).seenQuestions()).toEqual(new Map([["aaaaaaaa", 1]]));
+    expect(open(backend).seenQuestions()).toEqual({ aaaaaaaa: 1 });
   });
 });
 
@@ -144,7 +137,7 @@ describe("Reset all", () => {
 
     storage.resetAll();
 
-    expect(storage.seenQuestions()).toEqual(new Map());
+    expect(storage.seenQuestions()).toEqual({});
     expect(storage.personalBest(friends)).toBe(1000);
     expect(storage.savedGame()).toEqual({ rung: 3 });
     expect(storage.muted()).toBe(true);
@@ -158,7 +151,7 @@ describe("Reset this Topic", () => {
 
     storage.resetTopic(["friends1", "friends2"]);
 
-    expect(storage.seenQuestions()).toEqual(new Map([["general1", 3]]));
+    expect(storage.seenQuestions()).toEqual({ general1: 3 });
   });
 
   it("for a Category, clears every Title's Questions in it, freeing them for the Title alone too", () => {
@@ -168,7 +161,7 @@ describe("Reset this Topic", () => {
 
     storage.resetTopic(["friends1", "friends2", "modfam01"]);
 
-    expect(storage.seenQuestions()).toEqual(new Map([["harrypt1", 3]]));
+    expect(storage.seenQuestions()).toEqual({ harrypt1: 3 });
   });
 
   it("keeps later Questions newer than the ones still seen", () => {
@@ -177,7 +170,7 @@ describe("Reset this Topic", () => {
     storage.resetTopic(["cccccccc"]);
     storage.markSeen("dddddddd");
     const seen = storage.seenQuestions();
-    expect(seen.get("dddddddd")).toBeGreaterThan(seen.get("bbbbbbbb")!);
+    expect(seen["dddddddd"]).toBeGreaterThan(seen["bbbbbbbb"]!);
   });
 });
 
@@ -210,7 +203,7 @@ describe("persistent storage", () => {
 describe("an unreadable key", () => {
   it("is backed up and starts fresh", () => {
     const backend = createMemoryBackend({ "trivia.seen": JSON.stringify({ version: 99, data: {} }) });
-    expect(open(backend).seenQuestions()).toEqual(new Map());
+    expect(open(backend).seenQuestions()).toEqual({});
     expect(backend.getItem("trivia.seen.backup")).toBe(JSON.stringify({ version: 99, data: {} }));
   });
 });

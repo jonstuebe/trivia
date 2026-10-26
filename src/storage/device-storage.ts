@@ -1,5 +1,5 @@
 import * as z from "zod";
-import type { Topic } from "../game/types";
+import type { SeenQuestions, Topic } from "../game/types";
 import type { StorageBackend } from "./backend";
 import { createVersionedKey, type Migration } from "./versioned-key";
 
@@ -100,8 +100,8 @@ export function createDeviceStorage<T>(backend: StorageBackend, options: DeviceS
     },
 
     /** Each seen Question's counter: the higher, the more recently shown. */
-    seenQuestions(): ReadonlyMap<string, number> {
-      return new Map(Object.entries(seen.read()));
+    seenQuestions(): SeenQuestions {
+      return seen.read();
     },
 
     /** Records a Question as shown, making it the newest seen. */
