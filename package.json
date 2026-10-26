@@ -14,7 +14,8 @@
     "preview": "vite preview",
     "lint": "oxlint --disable-nested-config",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "e2e": "E2E_TELEMETRY_DISABLED=1 e2e run"
   },
   "dependencies": {
     "@fontsource/cinzel": "5.3.0",

@@ -29,3 +29,6 @@ dist-fixtures/
 
 # Agent worktrees
 .claude/worktrees/
+
+# e2e runner output (reports, traces, logs, cache)
+.e2e/

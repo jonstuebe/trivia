@@ -1,12 +1,12 @@
 /** One axe violation, reduced to plain data so it can leave the page. */
-export interface AxeFinding {
+export type AxeFinding = {
   id: string;
   impact: "minor" | "moderate" | "serious" | "critical" | null;
   help: string;
   helpUrl: string;
   /** A CSS selector per offending node. */
   targets: string[];
-}
+};
 
 /**
  * Splits axe's findings on one screen into what fails the journey (serious
