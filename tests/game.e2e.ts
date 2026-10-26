@@ -63,7 +63,9 @@ test("a whole Game won by keyboard alone, from Start to Play again", async ({ ap
   await expect(screen.getByRole("heading", "Not enough new questions", { level: 1 })).toBeFocused();
   await screen.getByRole("button", "Play anyway").focus();
   await browser.keyboard.press("Enter");
-  await expect(screen.getByText("Personal best: $1,000,000")).toBeVisible();
+  await expect(questionHeading(screen, 1)).toBeFocused();
+  await screen.getByRole("button", "Main menu").tap();
+  await expect(screen.getByRole("region", "Personal bests")).toContainText("Fixture Sitcom: $1,000,000");
 });
 
 test("a miss in a Mixed game drops to the Safe level, by mouse", async ({ screen, browser }) => {
@@ -139,7 +141,9 @@ test("a walk away on a phone, by touch, keeps the winnings", async ({ screen, br
   await expect(browser).toHaveURL("/tv/fixture-sitcom");
   await expect(screen.getByRole("heading", "Not enough new questions", { level: 1 })).toBeFocused();
   await screen.getByRole("button", "Play anyway").tap();
-  await expect(screen.getByText("Personal best: $200")).toBeVisible();
+  await expect(questionHeading(screen, 1)).toBeFocused();
+  await screen.getByRole("button", "Main menu").tap();
+  await expect(screen.getByRole("region", "Personal bests")).toContainText("Fixture Sitcom: $200");
 });
 
 test("the Game screen with no Game in the tab goes to the Main menu", async ({ app, browser }) => {

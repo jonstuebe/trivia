@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { controller, startGame, storage } from "../app/game-services";
-import { questionCount, topicName } from "../game/topic";
+import { topicName } from "../game/topic";
 import type { Topic } from "../game/types";
 import { Button } from "../ui/lozenge";
 import { formatMoney } from "../ui/money";
@@ -10,11 +10,11 @@ import { ScreenHeading } from "../ui/screen-heading";
 /**
  * The screen at a Topic's own URL: Ready to play, or Not enough new questions
  * when the Topic can't fill a Game with unseen Questions (`enoughNew` from
- * the controller's run-out check). Reset this topic or Play anyway turn it
- * into Ready to play.
+ * the controller's run-out check). Reset this topic turns it into Ready to
+ * play; Play anyway starts the Game straight away, with repeats.
  */
-export function TopicScreen({ topic, enoughNew }: { topic: Topic; enoughNew: boolean }) {
-  const [view, setView] = useState<"ready" | "notEnough">(enoughNew ? "ready" : "notEnough");
+export function ReadyToPlayOrNotEnough({ topic, enoughNew }: { topic: Topic; enoughNew: boolean }) {
+  const [showing, setShowing] = useState<"readyToPlay" | "notEnough">(enoughNew ? "readyToPlay" : "notEnough");
   const [notice, setNotice] = useState<string>();
   const [busy, setBusy] = useState(false);
   const navigate = useNavigate();
@@ -25,34 +25,46 @@ export function TopicScreen({ topic, enoughNew }: { topic: Topic; enoughNew: boo
 
   async function reset() {
     setBusy(true);
-    await controller.resetTopic(topic);
-    setBusy(false);
+    try {
+      await controller.resetTopic(topic);
+    } finally {
+      setBusy(false);
+    }
     setNotice(`Seen questions for ${name} cleared.`);
-    setView("ready");
+    setShowing("readyToPlay");
   }
 
   async function start() {
     setBusy(true);
-    await startGame(topic);
-    await navigate({ to: "/game" });
+    try {
+      await startGame(topic);
+      await navigate({ to: "/game" });
+    } finally {
+      setBusy(false);
+    }
   }
 
-  if (view === "notEnough") {
+  const saved = storage.savedGame()?.context;
+  const savedWarning = saved && (
+    <p className="muted">
+      ⚠ Starting will discard your saved {topicName(saved.topic)} game (question {saved.rung}).
+    </p>
+  );
+
+  if (showing === "notEnough") {
     return (
       <main className="screen ready" key="notEnough">
         <ScreenHeading>Not enough new questions</ScreenHeading>
-        <p>
-          You've seen almost all {questionCount(topic)} {name} questions.
-        </p>
-        <p className="muted">
-          There aren't enough new ones left for a whole game. Reset this topic to see them all as new, or play anyway
-          (repeats come oldest-seen first).
-        </p>
+        <p>There aren't enough new {name} questions left for a whole game.</p>
+        <p className="muted">Reset this topic to see them all as new, or play anyway (repeats come oldest-seen first).</p>
+        {savedWarning}
         <div className="menu">
           <Button variant="primary" disabled={busy} onClick={() => void reset()}>
             Reset this topic
           </Button>
-          <Button onClick={() => setView("ready")}>Play anyway</Button>
+          <Button disabled={busy} onClick={() => void start()}>
+            Play anyway
+          </Button>
           <Button variant="quiet" onClick={back}>
             ← Back
           </Button>
@@ -62,9 +74,8 @@ export function TopicScreen({ topic, enoughNew }: { topic: Topic; enoughNew: boo
   }
 
   const best = storage.personalBest(topic);
-  const saved = storage.savedGame()?.context;
   return (
-    <main className="screen ready" key="ready">
+    <main className="screen ready" key="readyToPlay">
       <ScreenHeading className="ready-title">
         <span className="ready-title__kicker">Ready to play: </span>
         <span className="ready-title__topic">{name}</span>
@@ -78,11 +89,7 @@ export function TopicScreen({ topic, enoughNew }: { topic: Topic; enoughNew: boo
         Personal best:{" "}
         {best === undefined ? <span className="muted">none yet</span> : <span className="money">{formatMoney(best)}</span>}
       </p>
-      {saved && (
-        <p className="muted">
-          ⚠ Starting will discard your saved {topicName(saved.topic)} game (question {saved.rung}).
-        </p>
-      )}
+      {savedWarning}
       <div className="menu">
         <Button variant="primary" disabled={busy} onClick={() => void start()}>
           Start

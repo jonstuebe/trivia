@@ -2,7 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { setCurrentGame } from "../app/game-services";
 import type { GameOver } from "../game/game-controller";
 import { shownNow } from "../game/machine";
-import type { Topic } from "../game/types";
+import { topicRoute } from "../game/topic";
 import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
 import { gameOverView } from "./game-over-view";
@@ -51,11 +51,4 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
       </div>
     </main>
   );
-}
-
-/** The route of a Topic's own screen. */
-function topicRoute(topic: Topic) {
-  if (topic.kind === "general") return { to: "/general" } as const;
-  if (topic.kind === "category") return { to: "/$category", params: { category: topic.category } } as const;
-  return { to: "/$category/$slug", params: { category: topic.category, slug: topic.slug } } as const;
 }

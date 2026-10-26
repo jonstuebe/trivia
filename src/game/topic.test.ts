@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { TopicIndex } from "../content/types";
-import { listedTitles, offersMixedGame, questionCount, topicFromPath, topicName } from "./topic";
+import { listedTitles, offersMixedGame, topicFromPath, topicName, topicRoute } from "./topic";
 
 const counts = { 1: 3, 2: 3, 3: 3, 4: 3, 5: 3 };
 const index: TopicIndex = {
@@ -75,24 +75,6 @@ describe("offersMixedGame", () => {
   });
 });
 
-describe("questionCount", () => {
-  const countIndex: TopicIndex = {
-    general: { questionCounts: tiers(3, 3, 3, 3, 3) },
-    tv: [
-      { name: "Friends", slug: "friends", questionCounts: tiers(4, 4, 4, 4, 4) },
-      { name: "Lost", slug: "lost", questionCounts: tiers(1, 1, 1, 1, 1) },
-    ],
-    movies: [],
-  };
-
-  it("counts a Topic's Questions, every Title's for a Category", () => {
-    expect(questionCount({ kind: "general" }, countIndex)).toBe(15);
-    expect(questionCount({ kind: "title", category: "tv", slug: "friends" }, countIndex)).toBe(20);
-    // A Mixed game draws from every Title file, listed or not.
-    expect(questionCount({ kind: "category", category: "tv" }, countIndex)).toBe(25);
-  });
-});
-
 describe("topicFromPath", () => {
   const full = tiers(4, 4, 4, 4, 4);
   const pathIndex: TopicIndex = {
@@ -139,5 +121,16 @@ describe("topicFromPath", () => {
     expect(topicFromPath("/books", pathIndex)).toBeUndefined();
     expect(topicFromPath("/general/friends", pathIndex)).toBeUndefined();
     expect(topicFromPath("/tv/friends/extra", pathIndex)).toBeUndefined();
+  });
+});
+
+describe("topicRoute", () => {
+  it("routes to each kind of Topic's own screen", () => {
+    expect(topicRoute({ kind: "general" })).toEqual({ to: "/general" });
+    expect(topicRoute({ kind: "category", category: "movies" })).toEqual({ to: "/$category", params: { category: "movies" } });
+    expect(topicRoute({ kind: "title", category: "tv", slug: "friends" })).toEqual({
+      to: "/$category/$slug",
+      params: { category: "tv", slug: "friends" },
+    });
   });
 });

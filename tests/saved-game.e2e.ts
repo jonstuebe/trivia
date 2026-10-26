@@ -71,7 +71,7 @@ test("the Main menu shows the Personal bests, and Reset all asks first, then cle
   // Then a Game left in progress.
   await screen.getByRole("button", "Play again").tap();
   await screen.getByRole("button", "Play anyway").tap();
-  await screen.getByRole("button", "Start").tap();
+  await expect(questionHeading(screen, 1)).toBeFocused();
   await screen.getByRole("button", "Main menu").tap();
 
   await expect(screen.getByRole("region", "Personal bests")).toContainText("Fixture Sitcom: $200");

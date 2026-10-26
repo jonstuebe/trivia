@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { topicKey } from "../game/topic";
 import { topicRouteOptions } from "../app/topic-route";
-import { TopicScreen } from "../screens/ready-to-play";
+import { ReadyToPlayOrNotEnough } from "../screens/ready-to-play";
 
 // `/tv` and `/movies`: the Category's Mixed game.
 export const Route = createFileRoute("/$category/")({
@@ -12,5 +12,5 @@ export const Route = createFileRoute("/$category/")({
 function Category() {
   const { topic } = Route.useRouteContext();
   const { enoughNew } = Route.useLoaderData();
-  return <TopicScreen key={topicKey(topic)} topic={topic} enoughNew={enoughNew} />;
+  return <ReadyToPlayOrNotEnough key={topicKey(topic)} topic={topic} enoughNew={enoughNew} />;
 }

@@ -1,6 +1,7 @@
 import { test } from "@e2e-dev/web";
 import { expect } from "e2e";
 import { checkA11y } from "./support/axe";
+import { questionHeading } from "./support/game";
 
 // The fixture build lists Fixture Heist and Fixture Saga under Movies (so
 // "All Movies (mixed)" too), only Fixture Sitcom under TV, and leaves Fixture
@@ -81,13 +82,14 @@ test("a Topic runs out, shows Not enough new questions, and Reset this topic mak
 
   await app.open("/general");
   await expect(screen.getByRole("heading", "Not enough new questions", { level: 1 })).toBeFocused();
-  await expect(screen.getByText("You've seen almost all 15 General questions.")).toBeVisible();
+  await expect(screen.getByText("There aren't enough new General questions left for a whole game.")).toBeVisible();
   await checkA11y(browser, "Not enough new questions");
 
-  // Play anyway goes to Ready, repeats and all.
+  // Play anyway starts the Game straight away, repeats and all.
   await screen.getByRole("button", "Play anyway").focus();
   await browser.keyboard.press("Enter");
-  await expect(screen.getByRole("heading", "Ready to play: General", { level: 1 })).toBeFocused();
+  await expect(browser).toHaveURL("/game");
+  await expect(questionHeading(screen, 1)).toBeFocused();
 
   await app.open("/general");
   await screen.getByRole("button", "Reset this topic").focus();

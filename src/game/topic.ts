@@ -11,23 +11,6 @@ function total(counts: QuestionCounts): number {
   return TIERS.reduce((sum, tier) => sum + counts[tier], 0);
 }
 
-/**
- * How many Questions a Game in `topic` draws from, as in "You've seen almost
- * all 15 General questions": every Title's, listed or not, for a Category.
- */
-export function questionCount(topic: Topic, index: TopicIndex = topicIndex): number {
-  switch (topic.kind) {
-    case "general":
-      return index.general ? total(index.general.questionCounts) : 0;
-    case "category":
-      return index[topic.category].reduce((sum, title) => sum + total(title.questionCounts), 0);
-    case "title": {
-      const title = index[topic.category].find((entry) => entry.slug === topic.slug);
-      return title ? total(title.questionCounts) : 0;
-    }
-  }
-}
-
 /** Whether the counts can fill one Game: 3 in every Tier. */
 function fillsAGame(counts: QuestionCounts): boolean {
   return TIERS.every((tier) => counts[tier] >= QUESTIONS_PER_TIER);
@@ -55,7 +38,7 @@ function isCategory(segment: string | undefined): segment is TitleCategory {
 
 /**
  * The Topic at a URL path (`/general`, `/tv`, `/movies/<slug>`, the reverse of
- * `topicPath`), or undefined when the path isn't a Topic the picker offers: an
+ * `topicPath` in share.ts), or undefined when the path isn't a Topic the picker offers: an
  * unknown or unlisted Title, a Mixed game the Category doesn't offer, or a
  * General with no Questions to fill a Game.
  */
@@ -70,6 +53,21 @@ export function topicFromPath(path: string, index: TopicIndex = topicIndex): Top
   return listedTitles(first, index).some((title) => title.slug === slug)
     ? { kind: "title", category: first, slug }
     : undefined;
+}
+
+/**
+ * The router's route to a Topic's own screen (Ready to play, or Not enough
+ * new questions), for `navigate`: the way back to the path `topicFromPath` reads.
+ */
+export function topicRoute(topic: Topic) {
+  switch (topic.kind) {
+    case "general":
+      return { to: "/general" } as const;
+    case "category":
+      return { to: "/$category", params: { category: topic.category } } as const;
+    case "title":
+      return { to: "/$category/$slug", params: { category: topic.category, slug: topic.slug } } as const;
+  }
 }
 
 /**
