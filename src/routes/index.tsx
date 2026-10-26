@@ -34,7 +34,7 @@ function MainMenu() {
       <div className="logo">
         <ScreenHeading className="logo__title">Trivia</ScreenHeading>
       </div>
-      <p className="muted">Fifteen questions. One million (pretend) dollars.</p>
+      <p className="muted">Fifteen questions. One million imaginary dollars.</p>
       <div className="menu">
         {/* /game brings the Saved game back. */}
         {view.resume && (
