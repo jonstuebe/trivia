@@ -45,6 +45,8 @@ export interface AnswerView {
   mark: AnswerMark;
   /** Its accessible name: "B: Monica", with the reveal said in words, never colour alone. */
   label: string;
+  /** Taken away by the 50:50: out of view and out of picking. Set only when true. */
+  removed?: true;
 }
 
 export const ANSWER_LETTERS = ["A", "B", "C", "D"] as const;
@@ -98,7 +100,8 @@ export function gameView(snapshot: GameSnapshot): GameView {
       const letter = ANSWER_LETTERS[position];
       const text = answers[position];
       const mark = markFor(snapshot, position);
-      return { letter, text, mark, label: `${letter}: ${text}${MARK_SUFFIX[mark]}` };
+      const label = `${letter}: ${text}${MARK_SUFFIX[mark]}`;
+      return context.removed.includes(position) ? { letter, text, mark, label, removed: true } : { letter, text, mark, label };
     }),
     announcement: `Question ${rung} for ${prize}. ${question.prompt} ${lettered.join(" ")}`,
     finalAnswer:

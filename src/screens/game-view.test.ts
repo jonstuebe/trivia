@@ -64,6 +64,15 @@ describe("the answers", () => {
     );
   });
 
+  it("are taken away two at a time by the 50:50, never the correct one", () => {
+    const game = newGame();
+    expect(view(game).answers.some((answer) => answer.removed)).toBe(false);
+    game.send({ type: "fiftyFifty" });
+    const removed = view(game).answers.flatMap((answer, position) => (answer.removed ? [position] : []));
+    expect(removed).toHaveLength(2);
+    expect(removed).not.toContain(correct(game));
+  });
+
   it("marks the picked one while waiting on Final answer", () => {
     const game = newGame();
     game.send({ type: "pick", answer: 2 });
