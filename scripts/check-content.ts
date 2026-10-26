@@ -3,6 +3,10 @@
  * the topic index the app imports. Any error fails it, naming the file and
  * the Question, and leaves the index as it was.
  *
+ * Every run, pass or fail, first prints the report of Questions per Tier (and
+ * per Subject for General) and any warnings, for the files that passed the
+ * schema. Warnings never fail the check.
+ *
  *   bun run check-content [--content <dir>] [--out <file>]
  *
  * Defaults to `content/` and `src/content/topic-index.gen.json`. Run it after
@@ -10,7 +14,9 @@
  */
 import { writeFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
-import { checkContentDir } from "../src/content/read";
+import { checkContent } from "../src/content/check";
+import { readContentDir } from "../src/content/read";
+import { formatReport, reportContent } from "../src/content/report";
 import { formatContentError } from "../src/content/schema";
 
 const { values } = parseArgs({
@@ -20,7 +26,12 @@ const { values } = parseArgs({
   },
 });
 
-const { index, errors } = await checkContentDir(values.content);
+const { files, unreadable } = await readContentDir(values.content);
+const checked = checkContent(files);
+const { index } = checked;
+const errors = [...unreadable, ...checked.errors];
+
+console.log(`${formatReport(reportContent(files))}\n`);
 
 if (errors.length > 0) {
   for (const error of errors) console.error(formatContentError(error));
