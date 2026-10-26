@@ -1,4 +1,5 @@
 import type { Random } from "../random/random";
+import { ID_ALPHABET, ID_LENGTH } from "./schema";
 import type { ContentFile } from "./types";
 
 /**
@@ -7,9 +8,6 @@ import type { ContentFile } from "./types";
  * stays seen across content edits. A new ID never matches one already in any
  * Topic file, and a run with nothing to fill in changes nothing.
  */
-
-const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789";
-const ID_LENGTH = 8;
 
 export interface AssignIdsResult {
   /** Only the files that gained an ID, with their new contents. Empty when every Question has one. */

@@ -35,8 +35,15 @@ export function countByTier(questions: readonly { tier: Tier }[]): QuestionCount
 export const subjectSchema = z.enum(["history", "science", "sports", "pop culture"]);
 export type Subject = z.infer<typeof subjectSchema>;
 
+/** The characters a Question ID is made of: lowercase letters and digits. */
+export const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789";
+/** How many characters a Question ID has. */
+export const ID_LENGTH = 8;
+
 /** A Question ID: a short random ID, written into the file once and never changed. */
-export const questionIdSchema = z.string().regex(/^[a-z0-9]{8}$/, "must be 8 lowercase letters or digits");
+export const questionIdSchema = z
+  .string()
+  .regex(new RegExp(`^[${ID_ALPHABET}]{${ID_LENGTH}}$`), `must be ${ID_LENGTH} lowercase letters or digits`);
 
 /** A TV or Movies Question. Every one counts as pop culture, so it has no Subject. */
 export const questionSchema = z.strictObject({
