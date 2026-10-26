@@ -59,7 +59,6 @@ export type Question = z.infer<typeof questionSchema>;
 
 /** A General Question also names its Subject, which picks the Phone a Friend specialist. */
 export const generalQuestionSchema = questionSchema.extend({ subject: subjectSchema });
-export type GeneralQuestion = z.infer<typeof generalQuestionSchema>;
 
 /** `content/general.json`. */
 export const generalFileSchema = z.strictObject({
