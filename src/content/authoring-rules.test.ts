@@ -56,3 +56,21 @@ describe("no duplicate prompts", () => {
     expect(errors).toEqual([]);
   });
 });
+
+describe("the four answers are all different", () => {
+  it("rejects a wrong answer that matches the right one, ignoring case and punctuation", () => {
+    const repeated = question({ correct: "Ross", wrong: ["Joey", "ross.", "Chandler"] });
+    const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [repeated] } }]);
+    expect(errors).toEqual([
+      { file: "tv/friends.json", question: `${repeated.id} (question 1)`, message: 'the answers must all be different: "ross." repeats "Ross"' },
+    ]);
+  });
+
+  it("rejects two wrong answers that match each other", () => {
+    const repeated = question({ correct: "Ross", wrong: ["Joey", "Chandler", "JOEY"] });
+    const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [repeated] } }]);
+    expect(errors).toEqual([
+      { file: "tv/friends.json", question: `${repeated.id} (question 1)`, message: 'the answers must all be different: "JOEY" repeats "Joey"' },
+    ]);
+  });
+});

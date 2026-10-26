@@ -17,13 +17,20 @@ export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentErr
   const firstPrompt = new Map<string, string>();
 
   for (const { path, topic } of topics) {
-    topic.questions.forEach(({ id, prompt }, i) => {
+    topic.questions.forEach(({ id, prompt, correct, wrong }, i) => {
       const fail = (message: string) => errors.push({ file: path, question: `${id} (question ${i + 1})`, message });
 
       const key = normalize(prompt);
       const earlier = firstPrompt.get(key);
       if (earlier) fail(`the prompt repeats the one in ${earlier}`);
       else firstPrompt.set(key, `${path}, question ${i + 1}`);
+
+      const seenAnswers = new Map<string, string>();
+      for (const answer of [correct, ...wrong]) {
+        const same = seenAnswers.get(normalize(answer));
+        if (same !== undefined) fail(`the answers must all be different: "${answer}" repeats "${same}"`);
+        else seenAnswers.set(normalize(answer), answer);
+      }
     });
   }
 
