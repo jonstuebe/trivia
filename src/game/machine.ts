@@ -1,4 +1,4 @@
-import { createActor, setup, type Actor } from "xstate";
+import { assign, createActor, setup, type Actor } from "xstate";
 import { shuffle, type Random } from "../random/random";
 import { LADDER_LENGTH } from "./ladder";
 import type { AnswerPosition, GameQuestion, ShownQuestion, Topic } from "./types";
@@ -19,7 +19,18 @@ export interface GameContext {
   questions: ShownQuestion[];
   /** The Rung being played, 1–15. */
   rung: number;
+  /** The answer waiting on "Final answer / Cancel", or the confirmed one while revealing. */
+  picked: AnswerPosition | null;
 }
+
+/** What the player can do in a Game. Events that don't fit the current step are ignored. */
+export type GameEvent =
+  /** Picks an answer, opening "Final answer / Cancel". */
+  | { type: "pick"; answer: AnswerPosition }
+  /** Confirms the picked answer. */
+  | { type: "finalAnswer" }
+  /** Backs out of "Final answer" or "Walk away" to choosing. */
+  | { type: "cancel" };
 
 /** A Question with its answers shuffled into the order shown. */
 export function showQuestion(question: GameQuestion, random: Random): ShownQuestion {
@@ -31,6 +42,10 @@ export const gameMachine = setup({
   types: {
     input: {} as GameInput,
     context: {} as GameContext,
+    events: {} as GameEvent,
+  },
+  guards: {
+    pickedRight: ({ context }) => context.picked === context.questions[context.rung - 1]!.correct,
   },
 }).createMachine({
   id: "game",
@@ -38,10 +53,28 @@ export const gameMachine = setup({
     topic: input.topic,
     questions: input.questions.map((question) => showQuestion(question, input.random)),
     rung: 1,
+    picked: null,
   }),
   initial: "choosing",
   states: {
-    choosing: {},
+    choosing: {
+      on: {
+        pick: { target: "confirmingAnswer", actions: assign({ picked: ({ event }) => event.answer }) },
+      },
+    },
+    confirmingAnswer: {
+      on: {
+        cancel: { target: "choosing", actions: assign({ picked: null }) },
+        finalAnswer: [{ guard: "pickedRight", target: "revealing.right" }, { target: "revealing.wrong" }],
+      },
+    },
+    revealing: {
+      initial: "right",
+      states: {
+        right: {},
+        wrong: {},
+      },
+    },
   },
 });
 

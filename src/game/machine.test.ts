@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { createSeededRandom } from "../random/random";
 import type { Tier } from "../content/schema";
 import { startGame, type GameActor } from "./machine";
-import type { GameQuestion, Topic } from "./types";
+import type { AnswerPosition, GameQuestion, Topic } from "./types";
 
 const topic: Topic = { kind: "general" };
 
@@ -21,6 +21,43 @@ function fifteenQuestions(): GameQuestion[] {
 function newGame(seed = 1): GameActor {
   return startGame({ topic, questions: fifteenQuestions(), random: createSeededRandom(seed) });
 }
+
+function current(game: GameActor) {
+  const { context } = game.getSnapshot();
+  return context.questions[context.rung - 1]!;
+}
+
+function aWrongAnswer(game: GameActor): AnswerPosition {
+  return ([0, 1, 2, 3] as const).find((position) => position !== current(game).correct)!;
+}
+
+describe("Final answer", () => {
+  it("opens on picking an answer, and Cancel goes back to choosing with nothing picked", () => {
+    const game = newGame();
+    game.send({ type: "pick", answer: 2 });
+    expect(game.getSnapshot().value).toBe("confirmingAnswer");
+    expect(game.getSnapshot().context.picked).toBe(2);
+
+    game.send({ type: "cancel" });
+    expect(game.getSnapshot().value).toBe("choosing");
+    expect(game.getSnapshot().context.picked).toBeNull();
+  });
+
+  it("counts only a confirmed answer", () => {
+    const game = newGame();
+    game.send({ type: "pick", answer: aWrongAnswer(game) });
+    game.send({ type: "cancel" });
+    game.send({ type: "pick", answer: current(game).correct });
+    game.send({ type: "finalAnswer" });
+    expect(game.getSnapshot().value).toEqual({ revealing: "right" });
+  });
+
+  it("ignores Final answer before an answer is picked", () => {
+    const game = newGame();
+    game.send({ type: "finalAnswer" });
+    expect(game.getSnapshot().value).toBe("choosing");
+  });
+});
 
 describe("starting a Game", () => {
   it("shows question 1, for $100, with its four answers", () => {
