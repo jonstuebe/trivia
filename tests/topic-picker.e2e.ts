@@ -7,7 +7,7 @@ import { questionHeading } from "./support/game";
 // "All Movies (mixed)" too), only Fixture Sitcom under TV, and leaves Fixture
 // Drama out: it can't fill a Game.
 
-test("the Topic picker lists each Category's Titles and goes up one level with Back, by keyboard", async ({
+test("the Topic picker lists each Category's Titles and Back returns to the Categories, by keyboard", async ({
   app,
   screen,
   browser,
