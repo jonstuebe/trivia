@@ -14,5 +14,5 @@ export const SITE_URL = `https://${SITE_HOST}`;
 /** The game's name, as the page title and the link preview show it. */
 export const SITE_NAME = "Trivia";
 
-/** The tagline: the page's description and the link preview's text. */
+/** The tagline: under the Main menu's title, and the page's description and the link preview's text. */
 export const SITE_TAGLINE = "Fifteen questions. One million imaginary dollars.";
