@@ -62,7 +62,7 @@ The game leaves the tab: shared, linked, installed and played offline.
 
 - The Share button: the share sheet on phones, copy elsewhere. Topic links open Ready to play, and a bad link goes to the Topic picker with a note ([Share result and topic links](https://github.com/jonstuebe/trivia/issues/8)).
 - The PWA: installable and playable offline ([Tech stack and hosting](https://github.com/jonstuebe/trivia/issues/2)).
-- The site-wide link preview: the Studio logo disc with "Fifteen questions. One million dollars." ([Visual direction](https://github.com/jonstuebe/trivia/issues/11)).
+- The site-wide link preview: the Studio logo disc with "Fifteen questions. One million (pretend) dollars." ([Visual direction](https://github.com/jonstuebe/trivia/issues/11)).
 - The Cloudflare Web Analytics beacon, loaded only when the browser sends no GPC or DNT signal, and the privacy note on the Main menu ([Analytics and error reporting](https://github.com/jonstuebe/trivia/issues/13)).
 
 **Done when:** a shared result opens the right Topic, the app installs on a phone and plays a Game offline, and the link preview shows when the preview URL is pasted into a chat.
