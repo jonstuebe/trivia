@@ -17,6 +17,6 @@ export default defineConfig(({ mode }) => ({
   test: {
     // Unit tests cover pure logic only, so they run in Node with no browser.
     environment: "node",
-    include: ["src/**/*.test.ts"],
+    include: ["src/**/*.test.ts", "tests/**/*.test.ts"],
   },
 }));
