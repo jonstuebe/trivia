@@ -11,9 +11,9 @@ import type { AnswerPosition, Topic } from "./types";
 const general: Topic = { kind: "general" };
 const tvShows: Topic = { kind: "category", category: "tv" };
 
-function aDevice(backend: StorageBackend = createMemoryBackend()) {
+function aDevice(backend: StorageBackend = createMemoryBackend(), seed = 7) {
   const storage = createDeviceStorage(backend, { savedGame: savedGameFormat });
-  return { backend, storage, controller: createGameController({ storage, random: createSeededRandom(7) }) };
+  return { storage, controller: createGameController({ storage, random: createSeededRandom(seed) }) };
 }
 
 function current(game: PlayingGame) {
@@ -166,6 +166,81 @@ describe("a Topic running out", () => {
   });
 });
 
+describe("a restored Saved game", () => {
+  it("resumes after a refresh exactly where it was, Lifeline results as rolled, and plays on to Game over", async () => {
+    const backend = createMemoryBackend();
+    const before = aDevice(backend);
+    const game = await before.controller.startGame(tvShows);
+    climbTo(game, 11);
+    game.send({ type: "fiftyFifty" });
+    game.send({ type: "askTheAudience" });
+    game.send({ type: "phoneAFriend" });
+    game.send({ type: "callFriend", friend: "history" });
+    game.send({ type: "switchTheQuestion" });
+    const seen = before.storage.seenQuestions();
+
+    // A refresh: a fresh controller on the same device, with a different random source.
+    const after = aDevice(backend, 1234);
+    expect(after.controller.savedTopic()).toEqual(tvShows);
+    const resumed = (await after.controller.resumeGame())!;
+    expect(resumed.snapshot().value).toBe("choosing");
+    expect(resumed.snapshot().context).toEqual(game.snapshot().context);
+    // Resuming shows nothing new, so nothing is marked again.
+    expect(after.storage.seenQuestions()).toEqual(seen);
+
+    climbTo(resumed, 13);
+    answer(resumed, wrongAnswer(resumed));
+    expect(resumed.gameOver()?.result).toMatchObject({
+      ending: "missed",
+      winnings: 32_000,
+      lifelinesUsed: ["fiftyFifty", "askTheAudience", "phoneAFriend", "switchTheQuestion"],
+    });
+    expect(after.storage.personalBest(tvShows)).toBe(32_000);
+    expect(after.controller.savedTopic()).toBeUndefined();
+    expect(await after.controller.resumeGame()).toBeUndefined();
+  });
+
+  it("comes back from Final answer to the Question with nothing picked", async () => {
+    const backend = createMemoryBackend();
+    const game = await aDevice(backend).controller.startGame(general);
+    climbTo(game, 3);
+    game.send({ type: "pick", answer: wrongAnswer(game) });
+    expect(game.snapshot().value).toBe("confirmingAnswer");
+
+    const resumed = (await aDevice(backend).controller.resumeGame())!;
+    expect(resumed.snapshot().value).toBe("choosing");
+    expect(resumed.snapshot().context).toMatchObject({ rung: 3, picked: null });
+  });
+
+  it("resumes the Question shown, even one the Topic no longer has", async () => {
+    const backend = createMemoryBackend();
+    const game = await aDevice(backend).controller.startGame(general);
+    climbTo(game, 2);
+    const { storage } = aDevice(backend);
+    const saved = storage.savedGame()!;
+    const gone: Topic = { kind: "title", category: "tv", slug: "cancelled-show" };
+    storage.saveGame({ ...saved, context: { ...saved.context, topic: gone } });
+
+    const resumed = (await aDevice(backend).controller.resumeGame())!;
+    expect(current(resumed)).toEqual(current(game));
+    answer(resumed, current(resumed).correct);
+    expect(resumed.snapshot().context.rung).toBe(3);
+  });
+
+  it("is discarded by starting a new Game: no Personal best from it, and its Questions stay seen", async () => {
+    const { storage, controller } = aDevice();
+    const abandoned = await controller.startGame(general);
+    climbTo(abandoned, 7);
+    const abandonedIds = abandoned.snapshot().context.questions.slice(0, 7).map((q) => q.question.id);
+
+    const next = await controller.startGame(tvShows);
+    expect(storage.savedGame()?.context.topic).toEqual(tvShows);
+    expect(storage.savedGame()?.context.questions).toEqual(next.snapshot().context.questions);
+    expect(storage.personalBest(general)).toBeUndefined();
+    for (const id of abandonedIds) expect(storage.seenQuestions()[id]).toBeDefined();
+  });
+});
+
 describe("a missed Game", () => {
   it("missing question 5, just before the first Safe level, leaves with $0", async () => {
     const { storage, controller } = aDevice();
@@ -222,6 +297,18 @@ describe("a walked-away Game", () => {
     expect(storage.personalBest({ kind: "title", category: "tv", slug: "fixture-sitcom" })).toBeUndefined();
     expect(storage.savedGame()).toBeUndefined();
     expect(Object.keys(storage.seenQuestions())).toHaveLength(8);
+  });
+
+  it("tells subscribers after each step, once it's saved, until they unsubscribe", async () => {
+    const { storage, controller } = aDevice();
+    const game = await controller.startGame(general);
+    const steps: unknown[] = [];
+    const unsubscribe = game.subscribe(() => steps.push(storage.savedGame()?.value));
+    game.send({ type: "pick", answer: current(game).correct });
+    game.send({ type: "finalAnswer" });
+    unsubscribe();
+    game.send({ type: "next" });
+    expect(steps).toEqual(["choosing", { revealing: "right" }]);
   });
 
   it("ignores moves sent after Game over", async () => {

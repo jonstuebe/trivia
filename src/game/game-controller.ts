@@ -1,7 +1,7 @@
 import type { Random } from "../random/random";
 import type { DeviceStorage } from "../storage";
 import { loadTopic } from "./load-topic";
-import { saveGame, startGame, type GameActor, type GameEvent, type SavedGameSnapshot } from "./machine";
+import { restoreGame, saveGame, startGame, type GameActor, type GameEvent, type SavedGameSnapshot } from "./machine";
 import { canFillGame, drawGame } from "./selection";
 import type { GameResult, Topic } from "./types";
 
@@ -107,6 +107,31 @@ export function createGameController({ storage, random }: GameControllerOptions)
       void storage.gameStarted();
       const actor = startGame({ topic, questions, random, topicQuestions, seen: storage.seenQuestions });
       return play(actor, new Set());
+    },
+
+    /** The Saved game's Topic, for the Main menu's Resume, or `undefined` when there's no Game in progress. */
+    savedTopic(): Topic | undefined {
+      return storage.savedGame()?.context.topic;
+    },
+
+    /**
+     * Picks the Saved game back up exactly where it was; one saved during
+     * "Final answer?" is back at the Question with nothing picked. Its
+     * Questions are the saved copies, so it resumes even if an update changed
+     * or removed the Topic; Switch then has nothing to draw from.
+     */
+    async resumeGame(): Promise<PlayingGame | undefined> {
+      const saved = storage.savedGame();
+      if (!saved) return undefined;
+      const { topic, questions, rung, switchedAway } = saved.context;
+      const topicQuestions = await loadTopic(topic).catch(() => []);
+      const actor = restoreGame(saved, { random, topicQuestions, seen: storage.seenQuestions });
+      // Everything shown before the save was marked seen then.
+      const marked = new Set([
+        ...questions.slice(0, rung).map((shown) => shown.question.id),
+        ...switchedAway.map((question) => question.id),
+      ]);
+      return play(actor, marked);
     },
   };
 }
