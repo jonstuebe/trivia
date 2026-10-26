@@ -25,8 +25,14 @@ export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentErr
       if (earlier) fail(`the prompt repeats the one in ${earlier}`);
       else firstPrompt.set(key, `${path}, question ${i + 1}`);
 
+      const promptLength = characters(prompt);
+      if (promptLength > MAX_PROMPT) fail(`the prompt is ${promptLength} characters, over the limit of ${MAX_PROMPT}`);
+
       const seenAnswers = new Map<string, string>();
       for (const answer of [correct, ...wrong]) {
+        const length = characters(answer);
+        if (length > MAX_ANSWER) fail(`the answer "${answer}" is ${length} characters, over the limit of ${MAX_ANSWER}`);
+
         const same = seenAnswers.get(normalize(answer));
         if (same !== undefined) fail(`the answers must all be different: "${answer}" repeats "${same}"`);
         else seenAnswers.set(normalize(answer), answer);
@@ -35,6 +41,20 @@ export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentErr
   }
 
   return errors;
+}
+
+/** The longest a prompt may be, in characters. */
+export const MAX_PROMPT = 120;
+/** The longest any answer may be, in characters. */
+export const MAX_ANSWER = 40;
+
+const graphemes = new Intl.Segmenter("en", { granularity: "grapheme" });
+
+/** Characters as a player sees them, so an emoji or accented letter counts as one. */
+function characters(text: string): number {
+  let count = 0;
+  for (const _ of graphemes.segment(text)) count++;
+  return count;
 }
 
 /** Lowercase, with punctuation and symbols dropped and spaces collapsed. */

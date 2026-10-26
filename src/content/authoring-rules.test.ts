@@ -74,3 +74,32 @@ describe("the four answers are all different", () => {
     ]);
   });
 });
+
+describe("length limits", () => {
+  it("accepts a prompt of exactly 120 characters and answers of exactly 40", () => {
+    const atLimit = question({ prompt: `${"a".repeat(119)}?`, correct: "b".repeat(40) });
+    expect(checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [atLimit] } }]).errors).toEqual([]);
+  });
+
+  it("rejects a prompt over 120 characters", () => {
+    const long = question({ prompt: `${"a".repeat(120)}?` });
+    const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [long] } }]);
+    expect(errors).toEqual([
+      { file: "tv/friends.json", question: `${long.id} (question 1)`, message: "the prompt is 121 characters, over the limit of 120" },
+    ]);
+  });
+
+  it("rejects each answer over 40 characters, right or wrong", () => {
+    const long = question({ correct: "c".repeat(41), wrong: ["Short", "w".repeat(45), "Fine"] });
+    const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [long] } }]);
+    expect(errors.map((error) => error.message)).toEqual([
+      `the answer "${"c".repeat(41)}" is 41 characters, over the limit of 40`,
+      `the answer "${"w".repeat(45)}" is 45 characters, over the limit of 40`,
+    ]);
+  });
+
+  it("counts an emoji or accented letter as one character", () => {
+    const atLimit = question({ correct: `${"é".repeat(39)}🎬` });
+    expect(checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [atLimit] } }]).errors).toEqual([]);
+  });
+});
