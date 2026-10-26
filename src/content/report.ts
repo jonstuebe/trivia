@@ -1,6 +1,7 @@
 import type { ContentFile, QuestionCounts } from "./check";
 import {
   TIERS,
+  formatContentError,
   parseTopicFile,
   subjectSchema,
   type ContentError,
@@ -64,6 +65,45 @@ export function reportContent(files: readonly ContentFile[]): ContentReport {
       a.summary.file.localeCompare(b.summary.file, "en"),
   );
   return { warnings, topics: topics.map(({ summary }) => summary) };
+}
+
+/** The report as text for a person reading the content check's output. */
+export function formatReport({ topics, warnings }: ContentReport): string {
+  const table = topics.length > 0 ? formatTable(topics) : ["No Topic files to report on."];
+  const plural = warnings.length === 1 ? "" : "s";
+  const warningLines =
+    warnings.length > 0
+      ? [
+          ...warnings.map((warning) => `Warning: ${formatContentError(warning)}`),
+          `${warnings.length} warning${plural}. Warnings don't fail the check.`,
+        ]
+      : ["No warnings."];
+  return [...table, "", ...warningLines].join("\n");
+}
+
+function formatTable(topics: readonly TopicSummary[]): string[] {
+  const rows: [string, QuestionCounts][] = topics.flatMap((topic) => [
+    [topic.name, topic.tiers] as [string, QuestionCounts],
+    ...Object.entries(topic.subjects ?? {}).map(([subject, counts]) => [`  ${subject}`, counts] as [string, QuestionCounts]),
+  ]);
+  const heading = "Questions per Tier";
+  const width = Math.max(heading.length, ...rows.map(([label]) => label.length)) + 4;
+  const line = (label: string, cells: (string | number)[], total: string | number) =>
+    label.padEnd(width) + cells.map((cell) => String(cell).padStart(4)).join("") + String(total).padStart(7);
+  return [
+    line(
+      heading,
+      TIERS.map((tier) => `T${tier}`),
+      "Total",
+    ),
+    ...rows.map(([label, counts]) =>
+      line(
+        label,
+        TIERS.map((tier) => counts[tier]),
+        TIERS.reduce((sum, tier) => sum + counts[tier], 0),
+      ),
+    ),
+  ];
 }
 
 function longAnswerWarnings(file: string, topic: TopicFile): ContentWarning[] {

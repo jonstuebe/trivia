@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { reportContent } from "./report";
+import { formatReport, reportContent, type ContentReport } from "./report";
 
 let nextId = 0;
 function question(tier: number, extra: Record<string, unknown> = {}) {
@@ -101,5 +101,46 @@ describe("the per-Tier and per-Subject report", () => {
 
   it("leaves out files that fail the schema", () => {
     expect(reportContent([{ path: "tv/friends.json", data: { questions: [] } }]).topics).toEqual([]);
+  });
+});
+
+describe("printing the report", () => {
+  it("prints a table of Questions per Tier, with General's Subjects under it, then the warnings", () => {
+    const counts = (t1: number, t2: number, t3: number, t4: number, t5: number) => ({ 1: t1, 2: t2, 3: t3, 4: t4, 5: t5 });
+    const report: ContentReport = {
+      topics: [
+        {
+          file: "general.json",
+          name: "General",
+          tiers: counts(12, 3, 0, 0, 0),
+          subjects: {
+            history: counts(10, 0, 0, 0, 0),
+            science: counts(2, 3, 0, 0, 0),
+            sports: counts(0, 0, 0, 0, 0),
+            "pop culture": counts(0, 0, 0, 0, 0),
+          },
+        },
+        { file: "tv/the-big-bang-theory.json", name: "The Big Bang Theory", tiers: counts(1, 0, 2, 0, 0) },
+      ],
+      warnings: [{ file: "tv/the-big-bang-theory.json", question: "abcd1234 (question 2)", message: "too long" }],
+    };
+    expect(formatReport(report)).toBe(
+      [
+        "Questions per Tier       T1  T2  T3  T4  T5  Total",
+        "General                  12   3   0   0   0     15",
+        "  history                10   0   0   0   0     10",
+        "  science                 2   3   0   0   0      5",
+        "  sports                  0   0   0   0   0      0",
+        "  pop culture             0   0   0   0   0      0",
+        "The Big Bang Theory       1   0   2   0   0      3",
+        "",
+        "Warning: tv/the-big-bang-theory.json, abcd1234 (question 2): too long",
+        "1 warning. Warnings don't fail the check.",
+      ].join("\n"),
+    );
+  });
+
+  it("says so when there are no Topics or warnings", () => {
+    expect(formatReport({ topics: [], warnings: [] })).toBe("No Topic files to report on.\n\nNo warnings.");
   });
 });
