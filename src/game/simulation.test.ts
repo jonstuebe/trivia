@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type { Subject, Tier } from "../content/schema";
 import { createSeededRandom } from "../random/random";
-import { askTheAudience } from "./simulation";
-import type { AnswerPosition, ShownQuestion } from "./types";
+import { askTheAudience, phoneAFriend } from "./simulation";
+import type { AnswerPosition, Friend, ShownQuestion } from "./types";
 
 function shownQuestion(tier: Tier, correct: AnswerPosition = 2, subject: Subject = "history"): ShownQuestion {
   return {
@@ -65,6 +65,39 @@ describe("askTheAudience", () => {
       expect(votes[1]).toBe(0);
       expect(votes[3]).toBe(0);
       expect(votes[0] + votes[2]).toBe(100);
+    }
+  });
+});
+
+describe("phoneAFriend", () => {
+  function rightRate(tier: Tier, friend: Friend, subject: Subject, seed: number) {
+    const random = createSeededRandom(seed);
+    let right = 0;
+    for (let i = 0; i < 10_000; i++) {
+      if (phoneAFriend({ shown: shownQuestion(tier, 3, subject), friend, random }).answer === 3) right++;
+    }
+    return right / 10_000;
+  }
+
+  it.each([
+    { tier: 1, onSubject: 0.95, offSubject: 0.85 },
+    { tier: 2, onSubject: 0.95, offSubject: 0.75 },
+    { tier: 3, onSubject: 0.85, offSubject: 0.6 },
+    { tier: 4, onSubject: 0.7, offSubject: 0.45 },
+    { tier: 5, onSubject: 0.55, offSubject: 0.3 },
+  ] as const)(
+    "on Tier $tier, over 10,000 rolls, is right $onSubject of the time on their Subject and $offSubject off it",
+    ({ tier, onSubject, offSubject }) => {
+      expect(Math.abs(rightRate(tier, "science", "science", tier) - onSubject)).toBeLessThan(0.02);
+      expect(Math.abs(rightRate(tier, "sports", "science", tier + 10) - offSubject)).toBeLessThan(0.02);
+    },
+  );
+
+  it("after a 50:50 only ever names one of the two answers left", () => {
+    const random = createSeededRandom(3);
+    for (let i = 0; i < 500; i++) {
+      const { answer } = phoneAFriend({ shown: shownQuestion(5, 3), remaining: [1, 3], friend: "history", random });
+      expect([1, 3]).toContain(answer);
     }
   });
 });

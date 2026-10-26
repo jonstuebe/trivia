@@ -1,6 +1,6 @@
 import type { Tier } from "../content/schema";
 import type { Random } from "../random/random";
-import type { AnswerPosition, ShownQuestion } from "./types";
+import type { AnswerPosition, Friend, ShownQuestion } from "./types";
 
 /**
  * The simulated Ask the Audience vote and Phone a Friend line. Each takes the
@@ -24,7 +24,8 @@ export interface AudienceResult {
 
 export function askTheAudience({ shown, remaining = ALL_POSITIONS, random }: SimulationInput): AudienceResult {
   const positions = checkRemaining(shown, remaining);
-  const leader = rollPointsRight(shown.question.tier, random)
+  const leader =
+    random.next() < RIGHT_ODDS[shown.question.tier]
     ? shown.correct
     : pickOne(positions.filter((position) => position !== shown.correct), random);
 
@@ -41,6 +42,28 @@ export function askTheAudience({ shown, remaining = ALL_POSITIONS, random }: Sim
   return { votes: toVotes(positions, shares) };
 }
 
+export interface FriendInput extends SimulationInput {
+  /** The Friend the player chose to call. */
+  friend: Friend;
+}
+
+/** What the Friend said on the call. */
+export interface FriendResult {
+  friend: Friend;
+  /** The answer they named. */
+  answer: AnswerPosition;
+}
+
+export function phoneAFriend({ shown, remaining = ALL_POSITIONS, friend, random }: FriendInput): FriendResult {
+  const positions = checkRemaining(shown, remaining);
+  const { tier, subject } = shown.question;
+  // On their own Subject a Friend is 15 points likelier to be right, never above 95%; off it, 10 points less.
+  const odds = friend === subject ? Math.min(RIGHT_ODDS[tier] + 0.15, 0.95) : RIGHT_ODDS[tier] - 0.1;
+  const answer =
+    random.next() < odds ? shown.correct : pickOne(positions.filter((position) => position !== shown.correct), random);
+  return { friend, answer };
+}
+
 /** How often the audience or a Friend (before their Subject bonus) points at the right answer, by Tier. */
 export const RIGHT_ODDS: Record<Tier, number> = { 1: 0.95, 2: 0.85, 3: 0.7, 4: 0.55, 5: 0.4 };
 
@@ -51,10 +74,6 @@ export const RIGHT_ODDS: Record<Tier, number> = { 1: 0.95, 2: 0.85, 3: 0.7, 4: 0
 const AUDIENCE_LEAD: Record<Tier, number> = { 1: 50 / 75, 2: 41.25 / 75, 3: 32.5 / 75, 4: 23.75 / 75, 5: 15 / 75 };
 /** The most the lead moves either way from its Tier's usual share, in points. */
 const LEAD_JITTER = 3;
-
-function rollPointsRight(tier: Tier, random: Random): boolean {
-  return random.next() < RIGHT_ODDS[tier];
-}
 
 function pickOne<T>(items: readonly T[], random: Random): T {
   return items[Math.floor(random.next() * items.length)]!;
