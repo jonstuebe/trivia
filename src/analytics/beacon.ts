@@ -17,7 +17,7 @@ export const BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js";
  * The test build (`vite build --mode fixtures`) sets a stand-in token and loads
  * an empty same-origin script instead of Cloudflare's, so the e2e journeys can
  * watch the load decision without sending anything to Cloudflare. The file is
- * emitted by `fixtureBeacon()` in `src/content/fixture-build.ts`.
+ * emitted by `fixtureBeacon()` in `fixture-beacon.ts`.
  */
 const FIXTURE_BUILD = import.meta.env.MODE === "fixtures";
 const FIXTURE_TOKEN = "fixture-token";

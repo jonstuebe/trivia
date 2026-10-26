@@ -2,7 +2,8 @@
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import { FIXTURE_MODE, fixtureBeacon, fixtureContent } from "./src/content/fixture-build.ts";
+import { fixtureBeacon } from "./src/analytics/fixture-beacon.ts";
+import { FIXTURE_MODE, fixtureContent } from "./src/content/fixture-build.ts";
 import { linkPreview } from "./src/link-preview.ts";
 import { pwa } from "./src/pwa.ts";
 
