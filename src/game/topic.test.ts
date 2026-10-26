@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { TopicIndex } from "../content/types";
-import { listedTitles, offersMixedGame, topicFromPath, topicName } from "./topic";
+import { listedTitles, offersMixedGame, questionCount, topicFromPath, topicName } from "./topic";
 
 const counts = { 1: 3, 2: 3, 3: 3, 4: 3, 5: 3 };
 const index: TopicIndex = {
@@ -72,6 +72,24 @@ describe("offersMixedGame", () => {
       ],
     };
     expect(offersMixedGame("tv", tvIndex)).toBe(false);
+  });
+});
+
+describe("questionCount", () => {
+  const countIndex: TopicIndex = {
+    general: { questionCounts: tiers(3, 3, 3, 3, 3) },
+    tv: [
+      { name: "Friends", slug: "friends", questionCounts: tiers(4, 4, 4, 4, 4) },
+      { name: "Lost", slug: "lost", questionCounts: tiers(1, 1, 1, 1, 1) },
+    ],
+    movies: [],
+  };
+
+  it("counts a Topic's Questions, every Title's for a Category", () => {
+    expect(questionCount({ kind: "general" }, countIndex)).toBe(15);
+    expect(questionCount({ kind: "title", category: "tv", slug: "friends" }, countIndex)).toBe(20);
+    // A Mixed game draws from every Title file, listed or not.
+    expect(questionCount({ kind: "category", category: "tv" }, countIndex)).toBe(25);
   });
 });
 

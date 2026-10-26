@@ -7,6 +7,27 @@ import type { Topic } from "./types";
 /** A Title is listed in the Topic picker once it has this many Questions ("about 20"). */
 export const LISTED_TITLE_QUESTIONS = 20;
 
+function total(counts: QuestionCounts): number {
+  return TIERS.reduce((sum, tier) => sum + counts[tier], 0);
+}
+
+/**
+ * How many Questions a Game in `topic` draws from, as in "You've seen almost
+ * all 15 General questions": every Title's, listed or not, for a Category.
+ */
+export function questionCount(topic: Topic, index: TopicIndex = topicIndex): number {
+  switch (topic.kind) {
+    case "general":
+      return index.general ? total(index.general.questionCounts) : 0;
+    case "category":
+      return index[topic.category].reduce((sum, title) => sum + total(title.questionCounts), 0);
+    case "title": {
+      const title = index[topic.category].find((entry) => entry.slug === topic.slug);
+      return title ? total(title.questionCounts) : 0;
+    }
+  }
+}
+
 /** Whether the counts can fill one Game: 3 in every Tier. */
 function fillsAGame(counts: QuestionCounts): boolean {
   return TIERS.every((tier) => counts[tier] >= QUESTIONS_PER_TIER);
@@ -18,10 +39,9 @@ function fillsAGame(counts: QuestionCounts): boolean {
  * can be played on their own.
  */
 export function listedTitles(category: TitleCategory, index: TopicIndex = topicIndex): TitleEntry[] {
-  return index[category].filter((title) => {
-    const total = TIERS.reduce((sum, tier) => sum + title.questionCounts[tier], 0);
-    return total >= LISTED_TITLE_QUESTIONS && fillsAGame(title.questionCounts);
-  });
+  return index[category].filter(
+    (title) => total(title.questionCounts) >= LISTED_TITLE_QUESTIONS && fillsAGame(title.questionCounts),
+  );
 }
 
 /** Whether the Topic picker offers "All … (mixed)": the Category has 2 or more listed Titles. */
