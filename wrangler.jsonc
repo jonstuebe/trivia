@@ -1,6 +1,12 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // A static-assets-only Worker: no script, just the Vite build in dist/.
+  //
+  // Until Phase 7 the workers.dev preview serves the fixture build: content/
+  // is empty, so the real build has no Topics to play. CI uploads
+  // dist-fixtures/ as the `dist` artifact and the deploy job downloads it
+  // here (see .github/workflows/ci.yml). Phase 7 switches the upload back to
+  // the real dist/ before trivia.jonstuebe.com is attached.
   "name": "trivia",
   "compatibility_date": "2026-10-01",
   "assets": {

@@ -16,6 +16,20 @@
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
     {
+      "id": "qm06jc52",
+      "tier": 1,
+      "prompt": "Saga, tier 1, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "wf8cykeb",
+      "tier": 1,
+      "prompt": "Saga, tier 1, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
       "id": "5y27sasi",
       "tier": 2,
       "prompt": "Saga, tier 2, question 1: which answer is right?",
@@ -26,6 +40,20 @@
       "id": "fir8hkvm",
       "tier": 2,
       "prompt": "Saga, tier 2, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "i1hh93sv",
+      "tier": 2,
+      "prompt": "Saga, tier 2, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "4gyhq1y5",
+      "tier": 2,
+      "prompt": "Saga, tier 2, question 4: which answer is right?",
       "correct": "Right answer",
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
@@ -44,6 +72,20 @@
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
     {
+      "id": "fddoot03",
+      "tier": 3,
+      "prompt": "Saga, tier 3, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "hfh7uppo",
+      "tier": 3,
+      "prompt": "Saga, tier 3, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
       "id": "y1yvq7nk",
       "tier": 4,
       "prompt": "Saga, tier 4, question 1: which answer is right?",
@@ -58,6 +100,20 @@
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
     {
+      "id": "clbxsgfg",
+      "tier": 4,
+      "prompt": "Saga, tier 4, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "mhwmpcdx",
+      "tier": 4,
+      "prompt": "Saga, tier 4, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
       "id": "dpiewtqf",
       "tier": 5,
       "prompt": "Saga, tier 5, question 1: which answer is right?",
@@ -68,6 +124,20 @@
       "id": "0rco19so",
       "tier": 5,
       "prompt": "Saga, tier 5, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "hftov322",
+      "tier": 5,
+      "prompt": "Saga, tier 5, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "db999uil",
+      "tier": 5,
+      "prompt": "Saga, tier 5, question 4: which answer is right?",
       "correct": "Right answer",
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     }

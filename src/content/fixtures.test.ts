@@ -27,10 +27,10 @@ describe("the fixture Topic set", () => {
           // Full: a Game plus a spare in every Tier for Switch the Question.
           { name: "Fixture Sitcom", slug: "fixture-sitcom", questionCounts: each(4) },
         ],
-        // Neither fills a Game alone, but the Mixed game does.
+        // Two listed Titles, so the Topic picker offers "All Movies (mixed)".
         movies: [
-          { name: "Fixture Heist", slug: "fixture-heist", questionCounts: each(2) },
-          { name: "Fixture Saga", slug: "fixture-saga", questionCounts: each(2) },
+          { name: "Fixture Heist", slug: "fixture-heist", questionCounts: each(4) },
+          { name: "Fixture Saga", slug: "fixture-saga", questionCounts: each(4) },
         ],
       },
     });

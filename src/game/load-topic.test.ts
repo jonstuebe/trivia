@@ -6,7 +6,7 @@ import { loadTopic } from "./load-topic";
 describe("loadTopic", () => {
   it("loads one Title's Questions, labelled with the Title and counted as pop culture", async () => {
     const questions = await loadTopic({ kind: "title", category: "movies", slug: "fixture-heist" });
-    expect(questions).toHaveLength(10);
+    expect(questions).toHaveLength(20);
     expect(new Set(questions.map((q) => q.titleName))).toEqual(new Set(["Fixture Heist"]));
     expect(new Set(questions.map((q) => q.subject))).toEqual(new Set(["pop culture"]));
   });

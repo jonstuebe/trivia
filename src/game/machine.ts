@@ -127,8 +127,8 @@ function remaining(context: GameContext): AnswerPosition[] {
 /** What the next question starts with: no answer picked and no Lifeline results showing. */
 const freshQuestion = { picked: null, removed: [], audience: null, friend: null } satisfies Partial<GameContext>;
 
-/** Switch the Question is only offered after question 10. */
-const LAST_RUNG_WITHOUT_SWITCH = 10;
+/** Switch the Question is offered from this question on. */
+export const FIRST_SWITCH_RUNG = 11;
 
 /** The Game machine, with its outside dependencies closed over so the context stays plain data. */
 function gameMachineWith({ random, topicQuestions, readSeen }: GameDependencies) {
@@ -157,7 +157,7 @@ function gameMachineWith({ random, topicQuestions, readSeen }: GameDependencies)
       askTheAudienceUnused: ({ context }) => unused(context, "askTheAudience"),
       phoneAFriendUnused: ({ context }) => unused(context, "phoneAFriend"),
       switchAvailable: ({ context }) =>
-        unused(context, "switchTheQuestion") && context.rung > LAST_RUNG_WITHOUT_SWITCH && canDrawReplacement(context),
+        unused(context, "switchTheQuestion") && context.rung >= FIRST_SWITCH_RUNG && canDrawReplacement(context),
     },
     actions: {
       finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
