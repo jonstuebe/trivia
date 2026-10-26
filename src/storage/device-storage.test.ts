@@ -78,6 +78,18 @@ describe("Personal bests", () => {
     expect(storage.personalBest({ kind: "general" })).toBe(250000);
   });
 
+  it("is stored under `general`, the Category, or `<category>/<slug>`", () => {
+    const backend = createMemoryBackend();
+    const storage = open(backend);
+    storage.recordWinnings({ kind: "general" }, 100);
+    storage.recordWinnings(tvShows, 200);
+    storage.recordWinnings(friends, 300);
+    expect(JSON.parse(backend.getItem("trivia.personalBests")!)).toEqual({
+      version: 1,
+      data: { general: 100, tv: 200, "tv/friends": 300 },
+    });
+  });
+
   it("is remembered on the device", () => {
     const backend = createMemoryBackend();
     open(backend).recordWinnings(friends, 1000);
