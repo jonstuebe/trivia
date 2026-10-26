@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // A static-assets-only Worker: no script, just the Vite build in dist/.
+  "name": "trivia",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths (deep links like /tv/friends) get index.html with a 200,
+    // so the client-side router can take over.
+    "not_found_handling": "single-page-application"
+  }
+}
