@@ -53,9 +53,11 @@ describe("the Game's sound cues", () => {
     const cues = cuesWhile(game, (send) => {
       send({ type: "pick", answer: correct(game) });
       send({ type: "finalAnswer" });
+      send({ type: "reveal" });
       send({ type: "next" });
       send({ type: "pick", answer: ((correct(game) + 1) % 4) as AnswerPosition });
       send({ type: "finalAnswer" });
+      send({ type: "reveal" });
     });
     expect(cues).toEqual(["lockIn", "lockIn"]);
   });

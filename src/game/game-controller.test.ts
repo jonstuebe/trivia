@@ -29,6 +29,7 @@ function wrongAnswer(game: PlayingGame): AnswerPosition {
 function answer(game: PlayingGame, position: AnswerPosition) {
   game.send({ type: "pick", answer: position });
   game.send({ type: "finalAnswer" });
+  game.send({ type: "reveal" });
   game.send({ type: "next" });
 }
 
@@ -212,6 +213,24 @@ describe("a restored Saved game", () => {
     expect(resumed.snapshot().context).toMatchObject({ rung: 3, picked: null });
   });
 
+  it("comes back from the reveal wait at the reveal, the answer still locked in, and plays on", async () => {
+    const backend = createMemoryBackend();
+    const game = await aDevice(backend).controller.startGame(general);
+    climbTo(game, 3);
+    const wrong = wrongAnswer(game);
+    game.send({ type: "pick", answer: wrong });
+    game.send({ type: "finalAnswer" });
+    expect(game.snapshot().value).toBe("lockedIn");
+
+    const { storage, controller } = aDevice(backend);
+    const resumed = (await controller.resumeGame())!;
+    expect(resumed.snapshot().value).toEqual({ revealing: "wrong" });
+    expect(resumed.snapshot().context).toMatchObject({ rung: 3, picked: wrong });
+    resumed.send({ type: "next" });
+    expect(resumed.gameOver()?.result).toMatchObject({ ending: "missed", winnings: 0 });
+    expect(storage.savedGame()).toBeUndefined();
+  });
+
   it("resumes the Question shown, even one the Topic no longer has", async () => {
     const backend = createMemoryBackend();
     const game = await aDevice(backend).controller.startGame(general);
@@ -306,9 +325,11 @@ describe("a walked-away Game", () => {
     const unsubscribe = game.subscribe(() => steps.push(storage.savedGame()?.value));
     game.send({ type: "pick", answer: current(game).correct });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     unsubscribe();
     game.send({ type: "next" });
-    expect(steps).toEqual(["choosing", { revealing: "right" }]);
+    // Locked in is saved as revealed, so a refresh during the reveal wait comes back at the reveal.
+    expect(steps).toEqual(["choosing", { revealing: "right" }, { revealing: "right" }]);
   });
 
   it("ignores moves sent after Game over", async () => {

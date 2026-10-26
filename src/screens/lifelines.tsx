@@ -10,11 +10,20 @@ import type { LifelinesView } from "./lifelines-view";
  * The Lifeline ovals above the Question, then whatever the Lifelines have
  * said about it: the 50:50's two removed answers (to screen readers), the
  * audience's vote as a chart and in words, and the Friend's line. A result
- * takes focus when it appears, so it's read next.
+ * takes focus when it appears, so it's read next. `inert` while the stage is
+ * dimmed for the reveal wait.
  */
-export function Lifelines({ view, onUse }: { view: LifelinesView; onUse: (event: GameEvent) => void }) {
+export function Lifelines({
+  view,
+  onUse,
+  inert = false,
+}: {
+  view: LifelinesView;
+  onUse: (event: GameEvent) => void;
+  inert?: boolean;
+}) {
   return (
-    <div className="lifelines-area">
+    <div className="lifelines-area" inert={inert}>
       <ul className="lifelines" aria-label="Lifelines">
         {view.ovals.map((oval) => (
           <li key={oval.lifeline}>

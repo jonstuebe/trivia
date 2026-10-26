@@ -9,10 +9,10 @@ type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
  * the same whether the move came from a tap or a key. Add a cue for a Game
  * moment here.
  *
- * - "Final answer" locks in: from confirming the answer to revealing it.
+ * - "Final answer" locks in: from confirming the answer into the reveal wait.
  */
 export function gameCues(previous: GameSnapshot, next: GameSnapshot): CueName[] {
   const cues: CueName[] = [];
-  if (previous.matches("confirmingAnswer") && next.matches("revealing")) cues.push("lockIn");
+  if (previous.matches("confirmingAnswer") && next.matches("lockedIn")) cues.push("lockIn");
   return cues;
 }

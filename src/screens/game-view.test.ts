@@ -41,6 +41,7 @@ function playTo(game: GameActor, rung: number) {
   while (game.getSnapshot().context.rung < rung) {
     game.send({ type: "pick", answer: correct(game) });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     game.send({ type: "next" });
   }
 }
@@ -84,6 +85,7 @@ describe("the answers", () => {
     const right = correct(game);
     game.send({ type: "pick", answer: right });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     const answer = view(game).answers[right]!;
     expect(answer.mark).toBe("right");
     expect(answer.label).toBe(`${answer.letter}: Right 1, ✓ correct`);
@@ -94,11 +96,53 @@ describe("the answers", () => {
     const picked = wrong(game);
     game.send({ type: "pick", answer: picked });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     const { answers } = view(game);
     expect(answers[picked]!.mark).toBe("wrong");
     expect(answers[picked]!.label).toMatch(/, ✗ your answer, wrong$/);
     expect(answers[correct(game)]!.mark).toBe("right");
     expect(answers.filter((answer) => answer.mark === "none")).toHaveLength(2);
+  });
+});
+
+describe("the reveal wait", () => {
+  it("says the answer is locked in and the reveal is coming, and shows no result yet", () => {
+    const game = newGame();
+    const picked = wrong(game);
+    game.send({ type: "pick", answer: picked });
+    expect(view(game).lockedIn).toBeUndefined();
+    game.send({ type: "finalAnswer" });
+    const shown = view(game);
+    const { letter, text } = shown.answers[picked]!;
+    expect(shown.lockedIn).toBe(`${letter}: ${text} is locked in. The answer is coming…`);
+    expect(shown.reveal).toBeUndefined();
+    expect(shown.finalAnswer).toBeUndefined();
+    expect(shown.answers.map((answer) => answer.mark).filter((mark) => mark !== "none")).toEqual(["picked"]);
+    expect(shown.answers[picked]!.label).toBe(`${letter}: ${text}, locked in`);
+
+    game.send({ type: "reveal" });
+    expect(view(game).lockedIn).toBeUndefined();
+  });
+
+  it("keeps the Ladder on the Rung being played until a right answer is revealed, then steps it up", () => {
+    const game = newGame();
+    playTo(game, 4);
+    game.send({ type: "pick", answer: correct(game) });
+    game.send({ type: "finalAnswer" });
+    expect(view(game).ladderRung).toBe(4);
+    game.send({ type: "reveal" });
+    expect(view(game).ladderRung).toBe(5);
+    game.send({ type: "next" });
+    expect(view(game).ladderRung).toBe(5);
+  });
+
+  it("leaves the Ladder where it was on a wrong answer", () => {
+    const game = newGame();
+    playTo(game, 4);
+    game.send({ type: "pick", answer: wrong(game) });
+    game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
+    expect(view(game).ladderRung).toBe(4);
   });
 });
 
@@ -127,6 +171,7 @@ describe("the reveal", () => {
     game.send({ type: "pick", answer: correct(game) });
     expect(view(game).reveal).toBeUndefined();
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     expect(view(game).reveal).toEqual({ right: true, message: "✓ Correct! You've banked $500.", next: "Next question" });
   });
 
@@ -135,6 +180,7 @@ describe("the reveal", () => {
     playTo(game, 15);
     game.send({ type: "pick", answer: correct(game) });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     expect(view(game).reveal).toEqual({
       right: true,
       message: "✓ Correct! That was the million-dollar question!",
@@ -147,6 +193,7 @@ describe("the reveal", () => {
     playTo(game, 12);
     game.send({ type: "pick", answer: wrong(game) });
     game.send({ type: "finalAnswer" });
+    game.send({ type: "reveal" });
     expect(view(game).reveal).toEqual({
       right: false,
       message: "✗ Wrong. The correct answer was Right 12. You drop to $32,000.",
