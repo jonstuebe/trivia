@@ -1,3 +1,5 @@
+import { TIERS, type Tier } from "../content/schema";
+
 /** The Ladder: 15 Rungs, each worth more than the last, with Safe levels at 5 and 10. */
 
 const PRIZES = [
@@ -32,4 +34,10 @@ export function winningsAfterMiss(rung: number): number {
   const passed = SAFE_RUNGS.filter((safe) => safe < rung);
   const last = passed[passed.length - 1];
   return last === undefined ? 0 : prizeForRung(last);
+}
+
+/** The Tier for a Rung (1–15): Rungs 1–3 are Tier 1, up to 13–15 for Tier 5. */
+export function tierForRung(rung: number): Tier {
+  checkRung(rung);
+  return Math.ceil(rung / (LADDER_LENGTH / TIERS.length)) as Tier;
 }

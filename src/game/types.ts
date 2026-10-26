@@ -1,4 +1,4 @@
-import type { Question, Subject, Tier, TitleCategory } from "../content/schema";
+import type { Question, Subject, TitleCategory } from "../content/schema";
 
 /** Shapes shared by the Game machine, Question selection, the simulation, storage and the Share result. */
 
@@ -45,12 +45,6 @@ export type Lifeline = (typeof LIFELINES)[number];
 /** The four Friends, one per Subject. */
 export const FRIENDS = ["history", "science", "sports", "pop culture"] as const satisfies readonly Subject[];
 export type Friend = (typeof FRIENDS)[number];
-
-/** The Tier for a Rung (1–15): Rungs 1–3 are Tier 1, up to 13–15 for Tier 5. */
-export function tierForRung(rung: number): Tier {
-  if (!Number.isInteger(rung) || rung < 1 || rung > 15) throw new RangeError(`No Rung ${rung}`);
-  return Math.ceil(rung / 3) as Tier;
-}
 
 /** How a Game ended. */
 export type GameEnding = "won" | "missed" | "walkedAway";

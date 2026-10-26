@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { prizeForRung, winningsAfterMiss, winningsBeforeRung } from "./ladder";
+import { prizeForRung, tierForRung, winningsAfterMiss, winningsBeforeRung } from "./ladder";
 
 describe("prizeForRung", () => {
   it("follows the Ladder in docs/game-design.md", () => {
@@ -28,5 +28,16 @@ describe("winningsAfterMiss", () => {
 describe("winningsBeforeRung", () => {
   it("is $0 on question 1, then the prize of the question before", () => {
     expect([1, 2, 6, 15].map(winningsBeforeRung)).toEqual([0, 100, 1_000, 500_000]);
+  });
+});
+
+describe("tierForRung", () => {
+  it("gives each Tier three Rungs", () => {
+    expect([1, 3, 4, 6, 7, 9, 10, 12, 13, 15].map(tierForRung)).toEqual([1, 1, 2, 2, 3, 3, 4, 4, 5, 5]);
+  });
+
+  it("rejects a Rung off the Ladder", () => {
+    expect(() => tierForRung(0)).toThrow(RangeError);
+    expect(() => tierForRung(16)).toThrow(RangeError);
   });
 });
