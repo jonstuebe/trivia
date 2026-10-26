@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { FIXTURE_MODE, fixtureBeacon, fixtureContent } from "./src/content/fixture-build.ts";
 import { linkPreview } from "./src/link-preview.ts";
+import { pwa } from "./src/pwa.ts";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
@@ -15,6 +16,8 @@ export default defineConfig(({ mode }) => ({
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     linkPreview(),
+    // The manifest and the offline service worker; `vite build` only.
+    pwa(),
   ],
   build: mode === FIXTURE_MODE ? { outDir: "dist-fixtures" } : {},
   test: {

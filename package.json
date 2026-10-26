@@ -12,6 +12,7 @@
     "check-fixtures": "bun scripts/check-content.ts --content src/content/fixtures --out src/content/topic-index.fixtures.gen.json",
     "assign-ids": "bun scripts/assign-ids.ts",
     "render-link-preview": "bun scripts/render-link-preview.ts",
+    "render-icons": "bun scripts/render-icons.ts",
     "preview": "vite preview",
     "lint": "oxlint --disable-nested-config",
     "typecheck": "tsc --noEmit",
@@ -41,7 +42,9 @@
     "sharp": "0.35.5",
     "typescript": "7.0.2",
     "vite": "8.3.5",
+    "vite-plugin-pwa": "2.0.0",
     "vitest": "5.0.5",
+    "workbox-build": "7.4.1",
     "wrangler": "4.150.0"
   }
 }
