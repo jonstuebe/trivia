@@ -17,6 +17,9 @@ export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentErr
   const firstPrompt = new Map<string, string>();
 
   for (const { path, topic } of topics) {
+    const title = topic.category === "general" ? null : topic.title;
+    const namesTitle = title === null ? null : wholePhrase(title);
+
     topic.questions.forEach(({ id, prompt, correct, wrong }, i) => {
       const fail = (message: string) => errors.push({ file: path, question: `${id} (question ${i + 1})`, message });
 
@@ -24,6 +27,8 @@ export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentErr
       const earlier = firstPrompt.get(key);
       if (earlier) fail(`the prompt repeats the one in ${earlier}`);
       else firstPrompt.set(key, `${path}, question ${i + 1}`);
+
+      if (namesTitle?.test(prompt)) fail(`the prompt names its own Title, "${title}"`);
 
       const promptLength = characters(prompt);
       if (promptLength > MAX_PROMPT) fail(`the prompt is ${promptLength} characters, over the limit of ${MAX_PROMPT}`);
@@ -55,6 +60,15 @@ function characters(text: string): number {
   let count = 0;
   for (const _ of graphemes.segment(text)) count++;
   return count;
+}
+
+/**
+ * Matches `phrase` as whole words, with the same capitals: a Title's name is
+ * a proper noun, so "friends" in ordinary lowercase prose isn't the Title.
+ */
+function wholePhrase(phrase: string): RegExp {
+  const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, "u");
 }
 
 /** Lowercase, with punctuation and symbols dropped and spaces collapsed. */

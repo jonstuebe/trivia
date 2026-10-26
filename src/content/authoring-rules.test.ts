@@ -103,3 +103,34 @@ describe("length limits", () => {
     expect(checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [atLimit] } }]).errors).toEqual([]);
   });
 });
+
+describe("no Title name in a TV or Movies prompt", () => {
+  it("rejects a prompt that names its own Title", () => {
+    const named = question({ prompt: "In the first Star Wars film, who is Luke's father?" });
+    const { errors } = checkContent([{ path: "movies/star-wars.json", data: { title: "Star Wars", questions: [named] } }]);
+    expect(errors).toEqual([
+      { file: "movies/star-wars.json", question: `${named.id} (question 1)`, message: 'the prompt names its own Title, "Star Wars"' },
+    ]);
+  });
+
+  it("rejects the Title name followed by punctuation, like a possessive", () => {
+    const named = question({ prompt: "Who sings the Friends' theme song?" });
+    const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [named] } }]);
+    expect(errors.map((error) => error.message)).toEqual(['the prompt names its own Title, "Friends"']);
+  });
+
+  it("accepts the Title's words used as ordinary lowercase words", () => {
+    const ordinary = question({ prompt: "Which of Ross's friends was a chef?" });
+    expect(checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [ordinary] } }]).errors).toEqual([]);
+  });
+
+  it("accepts the Title name inside a longer word", () => {
+    const longer = question({ prompt: "Who are Woody's Pixarian friends?" });
+    expect(checkContent([{ path: "movies/pixar.json", data: { title: "Pixar", questions: [longer] } }]).errors).toEqual([]);
+  });
+
+  it("accepts a General prompt that names any Title", () => {
+    const general = question({ prompt: "Which year did Friends first air?", subject: "pop culture" });
+    expect(checkContent([{ path: "general.json", data: { questions: [general] } }]).errors).toEqual([]);
+  });
+});
