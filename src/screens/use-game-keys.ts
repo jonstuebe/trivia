@@ -1,31 +1,28 @@
 import { useEffect, useRef } from "react";
 import type { PlayingGame } from "../game/game-controller";
-import { GAME_KEYS, gameKeyEvent, SHOW_KEYS_KEY, type GameKey } from "./game-keys";
-
-const CONTROLS = "button, a[href], input, select, textarea, summary";
+import { gameKeyEvent, SHOW_KEYS_KEY } from "./game-keys";
 
 /**
- * Plays the Game from the keyboard: a key in `keys` sends its move when the
+ * Plays the Game from the keyboard: a key in `GAME_KEYS` sends its move when the
  * Game's current step accepts it (`snapshot.can`). Keys are left alone:
- * - inside an open dialog, whose own buttons and Esc answer it;
- * - Enter and Space on a focused control, which presses that control;
+ * - inside an open dialog, whose own buttons and Esc answer it (and Enter
+ *   and Esc are only ever the dialog's: see `answeredBy` in `GAME_KEYS`);
  * - with Ctrl, Cmd or Alt held, and on key repeat.
  */
-export function useGameKeys(game: PlayingGame, keys: readonly GameKey[] = GAME_KEYS): void {
+export function useGameKeys(game: PlayingGame): void {
   useEffect(() => {
     function onKeyDown(press: KeyboardEvent) {
       if (press.defaultPrevented || press.repeat) return;
       const target = press.target instanceof Element ? press.target : null;
       if (target?.closest("dialog[open]")) return;
-      if ((press.key === "Enter" || press.key === " ") && target?.closest(CONTROLS)) return;
-      const event = gameKeyEvent(press, keys);
+      const event = gameKeyEvent(press);
       if (!event || !game.snapshot().can(event)) return;
       press.preventDefault();
       game.send(event);
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [game, keys]);
+  }, [game]);
 }
 
 /**

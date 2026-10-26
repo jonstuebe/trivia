@@ -10,9 +10,10 @@ describe("the Game's keys", () => {
     expect(["1", "2", "3", "4"].map((key) => press(key))).toEqual([0, 1, 2, 3].map((answer) => ({ type: "pick", answer })));
   });
 
-  it("give Final answer on Enter, Cancel on Esc and Walk away on W", () => {
-    expect(press("Enter")).toEqual({ type: "finalAnswer" });
-    expect(press("Escape")).toEqual({ type: "cancel" });
+  it("leave Enter and Esc to the open dialog, and Walk away on W", () => {
+    // Final answer and Cancel are the dialog's own: Enter presses its focused button, Esc cancels it.
+    expect(press("Enter")).toBeUndefined();
+    expect(press("Escape")).toBeUndefined();
     expect(press("w")).toEqual({ type: "walkAway" });
     expect(press("W")).toEqual({ type: "walkAway" });
   });

@@ -2,24 +2,36 @@ import type { GameEvent } from "../game/machine";
 
 /**
  * One Game keyboard shortcut. The table below is the one place shortcuts are
- * listed: `gameKeyEvent` reads it, and the `?` key list can show it. Add a
- * row to add a key.
+ * listed: `useGameKeys` sends the `event` of a row that has one, and the `?`
+ * key list shows every row. Add a row to add a key.
  */
-export interface GameKey {
+export type GameKey = {
   /** `KeyboardEvent.key` values; letters match in either case. */
   keys: readonly string[];
-  event: GameEvent;
   /** What the key does, for the list of keys. */
   description: string;
-}
+} & (
+  | {
+      /** The Game move `useGameKeys` sends for it. */
+      event: GameEvent;
+    }
+  | {
+      /**
+       * A key the open dialog answers itself (Enter presses its focused
+       * button, Esc cancels it), so `useGameKeys` never sends anything for
+       * it. Listed so the player knows it.
+       */
+      answeredBy: "dialog";
+    }
+);
 
 export const GAME_KEYS: readonly GameKey[] = [
   { keys: ["a", "1"], event: { type: "pick", answer: 0 }, description: "Pick answer A" },
   { keys: ["b", "2"], event: { type: "pick", answer: 1 }, description: "Pick answer B" },
   { keys: ["c", "3"], event: { type: "pick", answer: 2 }, description: "Pick answer C" },
   { keys: ["d", "4"], event: { type: "pick", answer: 3 }, description: "Pick answer D" },
-  { keys: ["Enter"], event: { type: "finalAnswer" }, description: "Final answer" },
-  { keys: ["Escape"], event: { type: "cancel" }, description: "Cancel" },
+  { keys: ["Enter"], answeredBy: "dialog", description: "Final answer" },
+  { keys: ["Escape"], answeredBy: "dialog", description: "Cancel" },
   { keys: ["w"], event: { type: "walkAway" }, description: "Walk away (still asks to confirm)" },
   { keys: ["f"], event: { type: "fiftyFifty" }, description: "50:50" },
   { keys: ["q"], event: { type: "askTheAudience" }, description: "Ask the Audience" },
@@ -38,15 +50,23 @@ export interface KeyListRow {
 
 const KEY_NAMES: Record<string, string> = { Escape: "Esc" };
 
+/** A key as the player sees it: "A", "Enter", "Esc". */
+function keyName(key: string): string {
+  return KEY_NAMES[key] ?? (key.length === 1 ? key.toUpperCase() : key);
+}
+
 /** Every Game key as it's pressed, then `?` itself, for the list of keys. */
-export function keyList(keys: readonly GameKey[] = GAME_KEYS): KeyListRow[] {
+export function keyList(): KeyListRow[] {
   return [
-    ...keys.map((shortcut) => ({
-      keys: shortcut.keys.map((key) => KEY_NAMES[key] ?? (key.length === 1 ? key.toUpperCase() : key)).join(" or "),
-      description: shortcut.description,
-    })),
+    ...GAME_KEYS.map((shortcut) => ({ keys: shortcut.keys.map(keyName).join(" or "), description: shortcut.description })),
     { keys: SHOW_KEYS_KEY, description: "Show the keys" },
   ];
+}
+
+/** The first key that sends `type`, as the player sees it ("F"), for showing beside its button. */
+export function keyFor(type: GameEvent["type"]): string | undefined {
+  const shortcut = GAME_KEYS.find((row) => "event" in row && row.event.type === type);
+  return shortcut && keyName(shortcut.keys[0]!);
 }
 
 /** The parts of a `KeyboardEvent` that pick a shortcut. */
@@ -59,11 +79,13 @@ export interface KeyPress {
 
 /**
  * The Game move a key press asks for, or undefined to leave it to the
- * browser. Ctrl, Cmd and Alt combinations are always the browser's. Whether
- * the move fits the Game's current step is for `snapshot.can` to say.
+ * browser or the open dialog. Ctrl, Cmd and Alt combinations are always the
+ * browser's. Whether the move fits the Game's current step is for
+ * `snapshot.can` to say.
  */
-export function gameKeyEvent(press: KeyPress, keys: readonly GameKey[] = GAME_KEYS): GameEvent | undefined {
+export function gameKeyEvent(press: KeyPress): GameEvent | undefined {
   if (press.ctrlKey || press.metaKey || press.altKey) return undefined;
   const key = press.key.length === 1 ? press.key.toLowerCase() : press.key;
-  return keys.find((shortcut) => shortcut.keys.includes(key))?.event;
+  const shortcut = GAME_KEYS.find((row) => row.keys.includes(key));
+  return shortcut && "event" in shortcut ? shortcut.event : undefined;
 }
