@@ -155,6 +155,49 @@ describe("a miss", () => {
   });
 });
 
+describe("Walk away", () => {
+  it("isn't offered on question 1", () => {
+    const game = newGame();
+    expect(game.getSnapshot().can({ type: "walkAway" })).toBe(false);
+    game.send({ type: "walkAway" });
+    expect(game.getSnapshot().value).toBe("choosing");
+  });
+
+  it("asks to confirm from question 2, and Cancel goes back to choosing", () => {
+    const game = newGame();
+    climbTo(game, 2);
+    expect(game.getSnapshot().can({ type: "walkAway" })).toBe(true);
+    game.send({ type: "walkAway" });
+    expect(game.getSnapshot().value).toBe("confirmingWalkAway");
+    game.send({ type: "cancel" });
+    expect(game.getSnapshot().value).toBe("choosing");
+    expect(game.getSnapshot().context.rung).toBe(2);
+  });
+
+  it("keeps the current winnings once confirmed", () => {
+    const game = newGame();
+    climbTo(game, 8);
+    game.send({ type: "walkAway" });
+    game.send({ type: "confirmWalkAway" });
+    expect(game.getSnapshot().status).toBe("done");
+    expect(game.getSnapshot().output).toEqual({
+      topic,
+      ending: "walkedAway",
+      winnings: 4_000,
+      reached: [...Array(7).fill("right"), "walkedAway"],
+      lifelinesUsed: [],
+    });
+  });
+
+  it("isn't offered while an answer waits on Final answer", () => {
+    const game = newGame();
+    climbTo(game, 3);
+    game.send({ type: "pick", answer: 0 });
+    game.send({ type: "walkAway" });
+    expect(game.getSnapshot().value).toBe("confirmingAnswer");
+  });
+});
+
 describe("starting a Game", () => {
   it("shows question 1, for $100, with its four answers", () => {
     const game = newGame();

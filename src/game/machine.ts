@@ -60,6 +60,10 @@ export type GameEvent =
   | { type: "finalAnswer" }
   /** Backs out of "Final answer" or "Walk away" to choosing. */
   | { type: "cancel" }
+  /** Asks "Walk away with $X? / Cancel". Offered from question 2. */
+  | { type: "walkAway" }
+  /** Confirms the Walk away, ending the Game with the current winnings. */
+  | { type: "confirmWalkAway" }
   /** Moves on from the reveal: to the next question, or to the end of the Game. */
   | { type: "next" };
 
@@ -78,6 +82,8 @@ export const gameMachine = setup({
   guards: {
     pickedRight: ({ context }) => context.picked === context.questions[context.rung - 1]!.correct,
     onLastRung: ({ context }) => context.rung === LADDER_LENGTH,
+    /** Walk away is offered from question 2. */
+    pastFirstRung: ({ context }) => context.rung >= 2,
   },
   actions: {
     finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
@@ -98,6 +104,13 @@ export const gameMachine = setup({
     choosing: {
       on: {
         pick: { target: "confirmingAnswer", actions: assign({ picked: ({ event }) => event.answer }) },
+        walkAway: { guard: "pastFirstRung", target: "confirmingWalkAway" },
+      },
+    },
+    confirmingWalkAway: {
+      on: {
+        cancel: { target: "choosing" },
+        confirmWalkAway: { target: "finished", actions: { type: "finish", params: "walkedAway" } },
       },
     },
     confirmingAnswer: {
