@@ -62,7 +62,7 @@ The game leaves the tab: shared, linked, installed and played offline.
 
 - The Share button: the share sheet on phones, copy elsewhere. Topic links open Ready to play, and a bad link goes to the Topic picker with a note ([Share result and topic links](https://github.com/jonstuebe/trivia/issues/8)).
 - The PWA: installable and playable offline ([Tech stack and hosting](https://github.com/jonstuebe/trivia/issues/2)).
-- The site-wide link preview: the Studio logo disc with "Fifteen questions. One million dollars." ([Visual direction](https://github.com/jonstuebe/trivia/issues/11)).
+- The site-wide link preview: the Studio logo disc with "Fifteen questions. One million imaginary dollars." ([Visual direction](https://github.com/jonstuebe/trivia/issues/11)).
 - The Cloudflare Web Analytics beacon, loaded only when the browser sends no GPC or DNT signal, and the privacy note on the Main menu ([Analytics and error reporting](https://github.com/jonstuebe/trivia/issues/13)).
 
 **Done when:** a shared result opens the right Topic, the app installs on a phone and plays a Game offline, and the link preview shows when the preview URL is pasted into a chat.
@@ -83,7 +83,8 @@ Real Questions, checked, then live.
 
 - Writing the real Questions with the `write-questions` skill for General and every launch Title, about 75 per Topic. A Title ships once it has about 20 ([Launch Titles](https://github.com/jonstuebe/trivia/issues/4), [Question authoring rules](https://github.com/jonstuebe/trivia/issues/9)). This can start once phase 2 ships.
 - The manual launch checklist: iPhone install and offline play, the share sheet, the link preview, and VoiceOver and keyboard-only runs ([Testing approach](https://github.com/jonstuebe/trivia/issues/10), [Accessibility and keyboard play](https://github.com/jonstuebe/trivia/issues/14)).
-- Attaching trivia.jonstuebe.com to the Worker.
+- Deploying the real build in place of the fixture build, which the preview URL serves until then. Only from here does the analytics beacon count visits, once its site token is set: the fixture build loads a stand-in instead.
+- Attaching trivia.jonstuebe.com to the Worker, and switching the site address (the Share result link and the link preview) to it.
 
 **Done when:** every launch Topic passes the build checks, the checklist is done, and trivia.jonstuebe.com serves the game. Then v1 is announced.
 

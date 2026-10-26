@@ -1,9 +1,11 @@
 import { test } from "@e2e-dev/web";
 import { expect } from "e2e";
 import { checkA11y } from "./support/axe";
+import { copiedText, fakeClipboard } from "./support/clipboard";
 import { answerRight, playToRung, questionHeading, RIGHT_ANSWER, rightAnswerKey, startGame } from "./support/game";
 
-test("a whole Game won by keyboard alone, from Start to Play again", async ({ app, screen, browser }) => {
+test("a whole Game won by keyboard alone, from Start to Share and Play again", async ({ app, screen, browser }) => {
+  await fakeClipboard(browser);
   await app.open("/tv/fixture-sitcom");
   await screen.getByRole("button", "Start").focus();
   await browser.keyboard.press("Enter");
@@ -49,10 +51,26 @@ test("a whole Game won by keyboard alone, from Start to Play again", async ({ ap
       "$1,000,000 🏆",
       "✅✅✅✅✅ ✅✅✅✅✅ ✅✅✅✅✅",
       "No lifelines",
-      "trivia.jonstuebe.com/tv/fixture-sitcom",
+      "trivia.jonstuebe.workers.dev/tv/fixture-sitcom",
     ].join("\n"),
   );
   await checkA11y(browser, "Game over, won");
+
+  // Share, by keyboard. A desktop copies the Share result and says "Copied".
+  await browser.keyboard.press("Tab");
+  await expect(screen.getByRole("button", "Share")).toBeFocused();
+  await browser.keyboard.press("Enter");
+  await expect(screen.getByRole("status")).toHaveText("Copied");
+  expect(await copiedText(browser)).toBe(
+    [
+      "Trivia · Fixture Sitcom",
+      "$1,000,000 🏆",
+      "✅✅✅✅✅ ✅✅✅✅✅ ✅✅✅✅✅",
+      "No lifelines",
+      "trivia.jonstuebe.workers.dev/tv/fixture-sitcom",
+    ].join("\n"),
+  );
+  await checkA11y(browser, "Game over, copied");
 
   await browser.keyboard.press("Tab");
   await expect(screen.getByRole("button", "Play again")).toBeFocused();
