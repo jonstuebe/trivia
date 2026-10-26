@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Screen Flow Prototype</title>
+<style>
+  :root { --bg:#f7f7f5; --panel:#fff; --ink:#1d1d1f; --muted:#6b6b70; --line:#e2e2e0; --accent:#4b3fd1; --accent-ink:#fff; --good:#1f7a3a; --bad:#b3261e; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#141416; --panel:#1d1d21; --ink:#ececef; --muted:#9a9aa3; --line:#2e2e34; --accent:#8b80ff; --accent-ink:#0f0f12; --good:#5fd38a; --bad:#ff8a80; } }
+  :root[data-theme="dark"] { --bg:#141416; --panel:#1d1d21; --ink:#ececef; --muted:#9a9aa3; --line:#2e2e34; --accent:#8b80ff; --accent-ink:#0f0f12; --good:#5fd38a; --bad:#ff8a80; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, -apple-system, sans-serif; }
+  main { max-width:1180px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .intro { color:var(--muted); max-width:760px; margin:0 0 20px; }
+  .grid { display:grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap:20px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px; }
+  .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 12px; }
+  .screen { min-height:420px; border:2px dashed var(--line); border-radius:10px; padding:16px; }
+  .screen h3 { margin:0 0 10px; font-size:18px; }
+  .screen .sub { color:var(--muted); margin:0 0 12px; }
+  button { font:inherit; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:8px; padding:8px 12px; cursor:pointer; margin:0 6px 6px 0; }
+  button:hover:not(:disabled) { border-color:var(--accent); }
+  button.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  .answers { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:12px 0; }
+  .answers button { margin:0; text-align:left; width:100%; }
+  .answers button.sel { outline:2px solid var(--accent); }
+  .answers button.right { border-color:var(--good); color:var(--good); font-weight:600; }
+  .answers button.wrong { border-color:var(--bad); color:var(--bad); }
+  .cheat { color:var(--muted); font-size:12px; }
+  .tag { display:inline-block; font-size:12px; border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin-right:6px; color:var(--muted); }
+  .box { border:1px solid var(--line); border-radius:8px; padding:10px 12px; margin:10px 0; }
+  .bar { display:flex; align-items:center; gap:8px; margin:3px 0; }
+  .bar span:first-child { width:18px; }
+  .bar div { height:10px; background:var(--accent); border-radius:3px; }
+  .ladder { font-size:12px; color:var(--muted); columns:3; margin-top:12px; }
+  .ladder .on { color:var(--ink); font-weight:700; }
+  .ladder .safe { text-decoration:underline; }
+  dl { display:grid; grid-template-columns: max-content 1fr; gap:4px 12px; margin:0; font-size:14px; }
+  dt { color:var(--muted); }
+  dd { margin:0; }
+  .changed { background: color-mix(in srgb, var(--accent) 18%, transparent); border-radius:4px; }
+  pre { white-space:pre-wrap; font-size:13px; background:var(--bg); padding:10px; border-radius:8px; margin:8px 0; }
+  .tabs { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:10px; }
+  .tabs button { margin:0; font-size:13px; padding:5px 10px; }
+  .tabs button.active { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+  ol.steps { padding-left:20px; margin:8px 0 0; }
+  ol.steps li { margin-bottom:6px; }
+  ol.steps li.done button { opacity:.5; }
+  .notice { font-size:13px; color:var(--accent); margin-top:10px; min-height:20px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Screen flow prototype (throwaway)</h1>
+  <p class="intro"><strong>Question:</strong> Do these screens, and the moves between them, cover everything the game design promises, with no dead ends or surprises? It's behavior only, not the look. Click through the rough screen on the left, or run a guided walkthrough. Question content is fake, and each correct answer is marked <span class="cheat">(✓)</span> so you can choose to get it right or wrong. "Refresh the page" and "Open a shared link" simulate things a real browser would do. Nothing is saved; reloading this file starts over.</p>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>The screen</h2>
+      <div class="screen" id="screen"></div>
+      <div style="margin-top:12px">
+        <button id="sim-refresh">Simulate: refresh the page</button>
+        <button id="sim-link">Simulate: open a shared link to Friends</button>
+        <button id="sim-wipe">Start over (new device)</button>
+      </div>
+      <div class="notice" id="notice"></div>
+    </section>
+
+    <div style="display:flex; flex-direction:column; gap:20px; min-width:0">
+      <section class="panel">
+        <h2>Guided walkthroughs</h2>
+        <div class="tabs" id="tabs"></div>
+        <div id="walk"></div>
+      </section>
+      <section class="panel">
+        <h2>What the app knows right now</h2>
+        <dl id="state"></dl>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script>
+// ---------------------------------------------------------------------------
+// The flow module: plain logic, no page code. `step(state, action)` returns the
+// next state. Randomness comes from Math.random (prototype shortcut).
+// ---------------------------------------------------------------------------
+const Flow = (() => {
+  const PRIZES = [0, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
+  const SAFE_RUNGS = [5, 10];
+  const ODDS = { 1: 95, 2: 85, 3: 70, 4: 55, 5: 40 };
+  const AUDIENCE_LEAD = { 1: 75, 2: 65, 3: 55, 4: 47, 5: 40 };
+  const FRIEND_CONFIDENCE = { 1: 90, 2: 80, 3: 65, 4: 50, 5: 35 };
+  const FRIENDS = { history: 'History buff', science: 'Science buff', sports: 'Sports fan', pop: 'Pop-culture fan' };
+  const SUBJECTS = ['history', 'science', 'sports', 'pop'];
+  const LETTERS = ['A', 'B', 'C', 'D'];
+
+  const CATEGORIES = {
+    general: { name: 'General', titles: [] },
+    tv: { name: 'TV Shows', titles: [['friends', 'Friends'], ['the-big-bang-theory', 'The Big Bang Theory'], ['modern-family', 'Modern Family']] },
+    movies: { name: 'Movies', titles: [['star-wars', 'Star Wars'], ['harry-potter', 'Harry Potter'], ['marvel-cinematic-universe', 'Marvel Cinematic Universe'], ['jurassic-park', 'Jurassic Park'], ['pixar', 'Pixar']] },
+  };
+
+  // Fake question bank. Most topics get 4 per Tier (20). Modern Family gets the
+  // minimum (17: 3 per Tier plus a spare in Tiers 4 and 5) so it runs out fast.
+  const BANK = [];
+  let n = 0;
+  function addTopic(topic, titleName, perTier) {
+    for (let tier = 1; tier <= 5; tier++) {
+      for (let i = 0; i < perTier(tier); i++) {
+        n++;
+        BANK.push({
+          id: 'q' + n, topic, titleName, tier,
+          subject: topic === 'general' ? SUBJECTS[n % 4] : 'pop',
+          prompt: `Sample ${titleName || 'General'} question #${i + 1} (Tier ${tier})`,
+          answers: ['Right answer', 'Wrong answer 1', 'Wrong answer 2', 'Wrong answer 3'], // index 0 is correct
+        });
+      }
+    }
+  }
+  addTopic('general', null, () => 4);
+  for (const cat of ['tv', 'movies']) for (const [slug, name] of CATEGORIES[cat].titles) {
+    addTopic(`${cat}/${slug}`, name, (tier) => (slug === 'modern-family' ? (tier >= 4 ? 4 : 3) : 4));
+  }
+
+  const rand = (k) => Math.floor(Math.random() * k);
+  const shuffle = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = rand(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const clone = (x) => structuredClone(x);
+
+  function topicName(topic) {
+    if (topic === 'general') return 'General';
+    const [cat, slug] = topic.split('/');
+    if (!slug) return `${CATEGORIES[cat].name} (mixed)`;
+    return CATEGORIES[cat].titles.find(([s]) => s === slug)[1];
+  }
+  const isMixed = (topic) => topic === 'tv' || topic === 'movies';
+  const pool = (topic) => BANK.filter((q) => q.topic === topic || (isMixed(topic) && q.topic.startsWith(topic + '/')));
+  const tierOf = (rung) => Math.ceil(rung / 3);
+  const currentWinnings = (rung) => PRIZES[rung - 1];
+  const safeWinnings = (rung) => (rung > 10 ? PRIZES[10] : rung > 5 ? PRIZES[5] : 0);
+
+  // Unseen first; otherwise the one seen longest ago. Showing it marks it seen.
+  function drawQuestion(s, topic, tier, excludeIds) {
+    const candidates = pool(topic).filter((q) => q.tier === tier && !excludeIds.includes(q.id));
+    const unseen = candidates.filter((q) => !(q.id in s.storage.seen));
+    const q = unseen.length
+      ? unseen[rand(unseen.length)]
+      : candidates.sort((a, b) => s.storage.seen[a.id] - s.storage.seen[b.id])[0];
+    s.storage.seen[q.id] = ++s.storage.seenCounter;
+    const order = shuffle([0, 1, 2, 3]);
+    return { id: q.id, prompt: q.prompt, titleName: q.titleName, subject: q.subject, tier, answers: order.map((i) => q.answers[i]), correct: order.indexOf(0), wasRepeat: !unseen.length };
+  }
+
+  function remaining(g) { return [0, 1, 2, 3].filter((i) => !g.removed.includes(i)); }
+
+  function rollAudience(g) {
+    const q = g.question, left = remaining(g);
+    const right = Math.random() * 100 < ODDS[q.tier];
+    const wrongs = left.filter((i) => i !== q.correct);
+    const leader = right ? q.correct : wrongs[rand(wrongs.length)];
+    let lead = AUDIENCE_LEAD[q.tier] + rand(9) - 4;
+    if (left.length === 2) lead = Math.max(lead, 55 + rand(15));
+    const votes = [0, 0, 0, 0];
+    votes[leader] = lead;
+    const others = left.filter((i) => i !== leader);
+    let rest = 100 - lead;
+    others.forEach((i, k) => {
+      const share = k === others.length - 1 ? rest : Math.min(rest, rand(Math.floor(rest * 0.7)) + 1);
+      votes[i] = share; rest -= share;
+    });
+    return { votes, pointedRight: right };
+  }
+
+  function rollFriend(g, friendId) {
+    const q = g.question, left = remaining(g);
+    const onSpecialty = q.subject === friendId;
+    const odds = Math.max(5, Math.min(95, ODDS[q.tier] + (onSpecialty ? 15 : -10)));
+    const right = Math.random() * 100 < odds;
+    const wrongs = left.filter((i) => i !== q.correct);
+    const pick = right ? q.correct : wrongs[rand(wrongs.length)];
+    const guessing = q.tier === 5 && Math.random() < 0.25;
+    const conf = Math.max(10, Math.min(98, FRIEND_CONFIDENCE[q.tier] + (right ? 10 : -10) + rand(11) - 5));
+    const line = guessing
+      ? `Honestly, I'm just guessing… ${LETTERS[pick]}?`
+      : conf >= 75 ? `I'm pretty sure it's ${LETTERS[pick]}. Maybe ${conf}%.`
+      : conf >= 50 ? `I think it's ${LETTERS[pick]}, but I'm only about ${conf}% sure.`
+      : `Not sure at all. If I had to pick, ${LETTERS[pick]}? ${conf}% maybe.`;
+    return { friend: FRIENDS[friendId], onSpecialty, odds, pick, line, pointedRight: right };
+  }
+
+  function newGame(s, topic) {
+    const g = { topic, rung: 1, phase: 'choosing', selected: null, removed: [], audience: null, friend: null, used: { fifty: false, audience: false, friend: false, switch: false }, usedIds: [], trail: [] };
+    g.question = drawQuestion(s, topic, 1, []);
+    g.usedIds.push(g.question.id);
+    return g;
+  }
+
+  function toReady(s, topic) {
+    s.topic = topic;
+    // Exhausted once the Topic can't fill a whole Game (3 per Tier) with unseen Questions.
+    const unseen = pool(topic).filter((q) => !(q.id in s.storage.seen));
+    const canFill = [1, 2, 3, 4, 5].every((t) => unseen.filter((q) => q.tier === t).length >= 3);
+    s.screen = canFill ? 'ready' : 'exhausted';
+  }
+
+  function finish(s, reason) {
+    const g = s.game;
+    const winnings = reason === 'won' ? PRIZES[15] : reason === 'walked' ? currentWinnings(g.rung) : safeWinnings(g.rung);
+    const prev = s.storage.bests[g.topic] ?? null;
+    const newBest = prev === null || winnings > prev;
+    if (newBest) s.storage.bests[g.topic] = winnings;
+    const trail = [...g.trail, ...(reason === 'missed' ? ['❌'] : reason === 'walked' ? ['🚶'] : [])].join('');
+    const lifelines = Object.entries({ fifty: '50:50', audience: 'Audience', friend: 'Friend', switch: 'Switch' }).filter(([k]) => g.used[k]).map(([, v]) => v);
+    const path = g.topic === 'general' ? 'general' : g.topic;
+    const share = `Trivia: ${topicName(g.topic)}\n$${winnings.toLocaleString()}\n${trail}\nLifelines: ${lifelines.join(', ') || 'none'}\ntrivia.jonstuebe.com/play/${path}`;
+    s.end = { reason, winnings, newBest, previousBest: prev, topic: g.topic, share, correctAnswer: reason === 'missed' ? g.question.answers[g.question.correct] : null };
+    s.game = null;
+    s.storage.savedGame = null;
+    s.screen = 'end';
+  }
+
+  function initial() {
+    return { screen: 'menu', pickerCategory: null, topic: null, game: null, end: null, confirmingReset: false, notice: '', storage: { seen: {}, seenCounter: 0, savedGame: null, bests: {} } };
+  }
+
+  function step(prev, a) {
+    const s = clone(prev);
+    s.notice = '';
+    const g = s.game;
+    switch (a.type) {
+      case 'play': s.screen = 'picker'; s.pickerCategory = null; break;
+      case 'pickCategory':
+        if (a.category === 'general') toReady(s, 'general'); else s.pickerCategory = a.category;
+        break;
+      case 'pickTopic': toReady(s, a.topic); break;
+      case 'back':
+        if (s.screen === 'picker' && s.pickerCategory) s.pickerCategory = null;
+        else if (s.screen === 'ready' || s.screen === 'exhausted') { s.screen = 'picker'; s.pickerCategory = s.topic === 'general' ? null : s.topic.split('/')[0]; }
+        else s.screen = 'menu';
+        break;
+      case 'resetTopic':
+        pool(s.topic).forEach((q) => delete s.storage.seen[q.id]);
+        s.screen = 'ready'; s.notice = `Seen questions for ${topicName(s.topic)} cleared.`;
+        break;
+      case 'playAnyway': s.screen = 'ready'; break;
+      case 'start':
+        if (s.storage.savedGame) s.notice = `Your saved ${topicName(s.storage.savedGame.topic)} game was discarded.`;
+        s.game = newGame(s, s.topic); s.screen = 'game';
+        break;
+      case 'resume': s.game = s.storage.savedGame; s.screen = 'game'; break;
+      case 'leaveToMenu': s.game = null; s.screen = 'menu'; break;
+      case 'select': if (g.phase === 'choosing' && !g.removed.includes(a.index)) { g.selected = a.index; g.phase = 'confirmAnswer'; } break;
+      case 'cancel': if (['confirmAnswer', 'confirmWalk', 'pickFriend'].includes(g.phase)) { g.phase = 'choosing'; g.selected = null; } break;
+      case 'finalAnswer':
+        if (g.phase !== 'confirmAnswer') break;
+        g.phase = g.selected === g.question.correct ? 'revealRight' : 'revealWrong';
+        break;
+      case 'next':
+        if (g.phase === 'revealWrong') { finish(s, 'missed'); break; }
+        if (g.phase !== 'revealRight') break;
+        g.trail.push('✅');
+        if (g.rung === 15) { finish(s, 'won'); break; }
+        g.rung++;
+        Object.assign(g, { phase: 'choosing', selected: null, removed: [], audience: null, friend: null });
+        g.question = drawQuestion(s, g.topic, tierOf(g.rung), g.usedIds);
+        g.usedIds.push(g.question.id);
+        break;
+      case 'walkAway': if (g.phase === 'choosing' && g.rung >= 2) g.phase = 'confirmWalk'; break;
+      case 'confirmWalk': if (g.phase === 'confirmWalk') finish(s, 'walked'); break;
+      case 'fifty': {
+        if (g.phase !== 'choosing' || g.used.fifty) break;
+        const wrongs = shuffle([0, 1, 2, 3].filter((i) => i !== g.question.correct));
+        g.removed = wrongs.slice(0, 2); g.used.fifty = true;
+        break;
+      }
+      case 'audience': if (g.phase === 'choosing' && !g.used.audience) { g.audience = rollAudience(g); g.used.audience = true; } break;
+      case 'phone': if (g.phase === 'choosing' && !g.used.friend) g.phase = 'pickFriend'; break;
+      case 'chooseFriend': if (g.phase === 'pickFriend') { g.friend = rollFriend(g, a.friend); g.used.friend = true; g.phase = 'choosing'; } break;
+      case 'switch':
+        if (g.phase !== 'choosing' || g.used.switch || g.rung <= 10) break;
+        g.used.switch = true;
+        Object.assign(g, { removed: [], audience: null, friend: null });
+        g.question = drawQuestion(s, g.topic, tierOf(g.rung), g.usedIds);
+        g.usedIds.push(g.question.id);
+        break;
+      case 'askReset': s.confirmingReset = true; break;
+      case 'cancelReset': s.confirmingReset = false; break;
+      case 'confirmReset': s.storage.seen = {}; s.storage.seenCounter = 0; s.confirmingReset = false; s.notice = 'All seen questions cleared.'; break;
+      case 'playAgain': toReady(s, s.end.topic); break;
+      case 'copyShare': s.notice = 'Result copied to the clipboard.'; break;
+      case 'menu': s.screen = 'menu'; break;
+      // Things the browser does, not the player:
+      case 'refresh': s.pickerCategory = null; s.confirmingReset = false; if (s.screen === 'game' && s.storage.savedGame) { s.game = s.storage.savedGame; } else { s.game = null; s.screen = 'menu'; } break;
+      case 'openLink': s.game = null; toReady(s, a.topic); break;
+      case 'wipe': return initial();
+    }
+    if (s.screen === 'game' && s.game) s.storage.savedGame = clone(s.game);
+    return s;
+  }
+
+  return { initial, step, PRIZES, SAFE_RUNGS, LETTERS, FRIENDS, CATEGORIES, topicName, pool, isMixed, currentWinnings, safeWinnings };
+})();
+
+// ---------------------------------------------------------------------------
+// The page: a thin shell that draws state and sends actions.
+// ---------------------------------------------------------------------------
+let state = Flow.initial();
+let prevSummary = {};
+const $ = (id) => document.getElementById(id);
+const money = (v) => '$' + v.toLocaleString();
+
+function act(action) { state = Flow.step(state, action); render(); }
+
+function btn(label, action, opts = {}) {
+  const b = document.createElement('button');
+  b.textContent = label;
+  if (opts.primary) b.className = 'primary';
+  if (opts.disabled) b.disabled = true;
+  if (opts.cls) b.className += ' ' + opts.cls;
+  b.onclick = () => act(action);
+  return b;
+}
+function el(tag, html, cls) { const e = document.createElement(tag); if (html != null) e.innerHTML = html; if (cls) e.className = cls; return e; }
+
+function renderScreen() {
+  const root = $('screen'); root.innerHTML = '';
+  const s = state, st = s.storage;
+  if (s.screen === 'menu') {
+    root.append(el('h3', 'Main menu'));
+    if (st.savedGame) root.append(btn(`Resume: ${Flow.topicName(st.savedGame.topic)}, question ${st.savedGame.rung}`, { type: 'resume' }, { primary: true }));
+    root.append(btn('Play', { type: 'play' }, { primary: !st.savedGame }));
+    const bests = Object.entries(st.bests);
+    root.append(el('div', '<strong>Personal bests</strong><br>' + (bests.length ? bests.map(([t, v]) => `${Flow.topicName(t)}: ${money(v)}`).join('<br>') : '<span class="sub">None yet</span>'), 'box'));
+    if (!s.confirmingReset) root.append(btn('Reset all seen questions', { type: 'askReset' }));
+    else {
+      root.append(el('p', 'Forget every question you have seen, so they can all come up as new again?'));
+      root.append(btn('Reset all', { type: 'confirmReset' }, { primary: true }), btn('Cancel', { type: 'cancelReset' }));
+    }
+  } else if (s.screen === 'picker') {
+    if (!s.pickerCategory) {
+      root.append(el('h3', 'Pick a topic'), el('p', 'Choose a category.', 'sub'));
+      for (const c of ['general', 'tv', 'movies']) root.append(btn(Flow.CATEGORIES[c].name, { type: 'pickCategory', category: c }));
+    } else {
+      const c = Flow.CATEGORIES[s.pickerCategory];
+      root.append(el('h3', c.name), el('p', 'Play every title mixed together, or pick one.', 'sub'));
+      if (c.titles.length >= 2) root.append(btn(`All ${c.name} (mixed)`, { type: 'pickTopic', topic: s.pickerCategory }, { primary: true }));
+      root.append(el('br'));
+      for (const [slug, name] of c.titles) root.append(btn(name, { type: 'pickTopic', topic: `${s.pickerCategory}/${slug}` }));
+    }
+    root.append(el('br'), btn('← Back', { type: 'back' }));
+  } else if (s.screen === 'ready') {
+    const best = st.bests[s.topic];
+    root.append(el('h3', `Ready to play: ${Flow.topicName(s.topic)}`));
+    root.append(el('p', `Personal best: ${best != null ? money(best) : 'none yet'}`, 'sub'));
+    if (st.savedGame) root.append(el('p', `⚠ Starting will discard your saved ${Flow.topicName(st.savedGame.topic)} game (question ${st.savedGame.rung}).`, 'box'));
+    root.append(btn('Start', { type: 'start' }, { primary: true }), btn('← Back', { type: 'back' }));
+  } else if (s.screen === 'exhausted') {
+    const total = Flow.pool(s.topic).length;
+    root.append(el('h3', `You've seen almost all ${total} ${Flow.topicName(s.topic)} questions`));
+    root.append(el('p', 'There aren\'t enough new ones left for a whole game. Reset this topic to see them all as new, or play anyway (repeats come oldest-seen first).', 'sub'));
+    root.append(btn('Reset this topic', { type: 'resetTopic' }, { primary: true }), btn('Play anyway', { type: 'playAnyway' }), btn('← Back', { type: 'back' }));
+  } else if (s.screen === 'game') {
+    renderGame(root, s.game);
+  } else if (s.screen === 'end') {
+    const e = s.end;
+    const head = { won: 'You won the million!', missed: 'Wrong answer. Game over.', walked: 'You walked away.' }[e.reason];
+    root.append(el('h3', head));
+    if (e.correctAnswer) root.append(el('p', `The correct answer was: <strong>${e.correctAnswer}</strong>`, 'sub'));
+    root.append(el('p', `You leave with <strong>${money(e.winnings)}</strong>. ${e.newBest ? '🎉 New personal best!' : `Personal best: ${money(e.previousBest)}`}`));
+    root.append(el('pre', e.share));
+    root.append(btn('Copy result', { type: 'copyShare' }), btn('Play again', { type: 'playAgain' }, { primary: true }), btn('Main menu', { type: 'menu' }));
+  }
+}
+
+function renderGame(root, g) {
+  const q = g.question, L = Flow.LETTERS;
+  root.append(el('div', `<span class="tag">Question ${g.rung} of 15 · for ${money(Flow.PRIZES[g.rung])}</span><span class="tag">Banked: ${money(Flow.currentWinnings(g.rung))}</span><span class="tag">Safe: ${money(Flow.safeWinnings(g.rung))}</span>`));
+  if (Flow.isMixed(g.topic)) root.append(el('div', `<span class="tag">📺 ${q.titleName}</span>`, ''));
+  root.append(el('p', `<strong>${q.prompt}</strong>${q.wasRepeat ? ' <span class="cheat">(repeat: oldest seen)</span>' : ''}`));
+  const grid = el('div', null, 'answers');
+  q.answers.forEach((text, i) => {
+    let cls = '';
+    if (g.selected === i) cls = 'sel';
+    if (g.phase === 'revealRight' && i === q.correct) cls = 'right';
+    if (g.phase === 'revealWrong') cls = i === q.correct ? 'right' : i === g.selected ? 'wrong' : '';
+    const hidden = g.removed.includes(i);
+    const b = btn(hidden ? `${L[i]}: —` : `${L[i]}: ${text}${i === q.correct ? ' (✓)' : ''}`, { type: 'select', index: i }, { disabled: hidden || g.phase !== 'choosing', cls });
+    grid.append(b);
+  });
+  root.append(grid);
+
+  if (g.audience) {
+    const box = el('div', '<strong>Ask the Audience</strong>', 'box');
+    g.audience.votes.forEach((v, i) => { if (!g.removed.includes(i)) box.append(el('div', `<span>${L[i]}</span><div style="width:${v * 2}px"></div><span>${v}%</span>`, 'bar')); });
+    root.append(box);
+  }
+  if (g.friend) root.append(el('div', `<strong>${g.friend.friend}</strong>${g.friend.onSpecialty ? ' (their specialty)' : ''}: “${g.friend.line}”`, 'box'));
+
+  if (g.phase === 'choosing') {
+    const u = g.used;
+    root.append(el('div', '<strong>Lifelines</strong>', 'sub'));
+    root.append(btn('50:50', { type: 'fifty' }, { disabled: u.fifty }), btn('Ask the Audience', { type: 'audience' }, { disabled: u.audience }), btn('Phone a Friend', { type: 'phone' }, { disabled: u.friend }), btn(g.rung <= 10 && !u.switch ? 'Switch (after Q10)' : 'Switch the Question', { type: 'switch' }, { disabled: u.switch || g.rung <= 10 }));
+    root.append(el('br'));
+    if (g.rung >= 2) root.append(btn(`Walk away with ${money(Flow.currentWinnings(g.rung))}`, { type: 'walkAway' }));
+    root.append(btn('Main menu', { type: 'leaveToMenu' }));
+  } else if (g.phase === 'confirmAnswer') {
+    root.append(el('p', `<strong>${L[g.selected]}</strong>: is that your final answer?`, 'box'));
+    root.append(btn('Final answer', { type: 'finalAnswer' }, { primary: true }), btn('Cancel', { type: 'cancel' }));
+  } else if (g.phase === 'confirmWalk') {
+    root.append(el('p', `Walk away with <strong>${money(Flow.currentWinnings(g.rung))}</strong>?`, 'box'));
+    root.append(btn('Walk away', { type: 'confirmWalk' }, { primary: true }), btn('Cancel', { type: 'cancel' }));
+  } else if (g.phase === 'pickFriend') {
+    root.append(el('p', `Who do you call? This question's subject: <strong>${q.subject}</strong>`, 'box'));
+    for (const [id, name] of Object.entries(Flow.FRIENDS)) root.append(btn(name, { type: 'chooseFriend', friend: id }));
+    root.append(btn('Cancel', { type: 'cancel' }));
+  } else if (g.phase === 'revealRight') {
+    root.append(el('p', `✅ Correct! ${g.rung === 15 ? 'That was the million-dollar question!' : `You've banked ${money(Flow.PRIZES[g.rung])}.`}`, 'box'));
+    root.append(btn(g.rung === 15 ? 'See result' : 'Next question', { type: 'next' }, { primary: true }));
+  } else if (g.phase === 'revealWrong') {
+    root.append(el('p', `❌ Wrong. You drop to ${money(Flow.safeWinnings(g.rung))}.`, 'box'));
+    root.append(btn('See result', { type: 'next' }, { primary: true }));
+  }
+
+  const ladder = el('div', null, 'ladder');
+  for (let r = 15; r >= 1; r--) ladder.append(el('div', `${r}. ${money(Flow.PRIZES[r])}`, (r === g.rung ? 'on ' : '') + (Flow.SAFE_RUNGS.includes(r) ? 'safe' : '')));
+  root.append(ladder);
+}
+
+function summary() {
+  const s = state, st = s.storage, g = s.game;
+  const screenNames = { menu: 'Main menu', picker: 'Topic picker', ready: 'Ready to play', exhausted: 'Topic exhausted', game: 'In a game', end: 'Game over' };
+  const phaseNames = { choosing: 'Choosing an answer', confirmAnswer: 'Confirming final answer', confirmWalk: 'Confirming walk away', pickFriend: 'Choosing a friend to call', revealRight: 'Showing: correct', revealWrong: 'Showing: wrong' };
+  const out = {
+    'Screen': screenNames[s.screen],
+    'Topic': s.topic ? Flow.topicName(s.topic) : '—',
+  };
+  if (g) {
+    out['Step in the question'] = phaseNames[g.phase];
+    out['Question'] = `${g.rung} of 15 (Tier ${g.question.tier}), worth ${money(Flow.PRIZES[g.rung])}`;
+    out['Lifelines used'] = Object.entries({ fifty: '50:50', audience: 'Audience', friend: 'Friend', switch: 'Switch' }).filter(([k]) => g.used[k]).map(([, v]) => v).join(', ') || 'none';
+  }
+  out['Saved game on this device'] = st.savedGame ? `${Flow.topicName(st.savedGame.topic)}, question ${st.savedGame.rung}` : 'none';
+  out['Seen questions'] = `${Object.keys(st.seen).length}`;
+  for (const t of ['tv/modern-family', 'tv/friends', 'general']) {
+    const p = Flow.pool(t);
+    out[`  seen in ${Flow.topicName(t)}`] = `${p.filter((q) => q.id in st.seen).length} of ${p.length}`;
+  }
+  out['Personal bests'] = Object.entries(st.bests).map(([t, v]) => `${Flow.topicName(t)} ${money(v)}`).join(', ') || 'none';
+  return out;
+}
+
+function renderState() {
+  const now = summary(), dl = $('state');
+  dl.innerHTML = '';
+  for (const [k, v] of Object.entries(now)) {
+    const changed = prevSummary[k] !== undefined && prevSummary[k] !== v;
+    dl.append(el('dt', k), el('dd', v, changed ? 'changed' : ''));
+  }
+  prevSummary = now;
+}
+
+function render() { renderScreen(); renderState(); $('notice').textContent = state.notice; }
+
+// --- Guided walkthroughs ---------------------------------------------------
+const correctly = { label: null, run: () => { act({ type: 'select', index: state.game.question.correct }); act({ type: 'finalAnswer' }); } };
+const answerRight = (label = 'Answer correctly (pick ✓, then Final answer)') => ({ label, run: correctly.run });
+const answerWrong = (label = 'Answer wrong (pick a wrong one, then Final answer)') => ({ label, run: () => { const g = state.game; act({ type: 'select', index: [0, 1, 2, 3].find((i) => i !== g.question.correct && !g.removed.includes(i)) }); act({ type: 'finalAnswer' }); } });
+const climbTo = (rung) => ({ label: `Answer correctly until you reach question ${rung}`, run: () => { while (state.game.rung < rung) { correctly.run(); act({ type: 'next' }); } } });
+const a = (label, action) => ({ label, run: () => act(action) });
+const startTopic = (label, topic) => ({ label, run: () => { act({ type: 'play' }); const [c] = topic.split('/'); act({ type: 'pickCategory', category: c }); if (topic !== 'general') act({ type: 'pickTopic', topic }); if (state.screen === 'exhausted') act({ type: 'playAnyway' }); act({ type: 'start' }); } });
+
+const WALKS = [
+  { name: 'Happy path', desc: 'From the main menu, pick TV Shows → Friends and play. Watch the Final answer step, the Rung climbing, and the end screen and Share result after you walk away near the top.', steps: [
+    a('Play', { type: 'play' }), a('Pick TV Shows', { type: 'pickCategory', category: 'tv' }), a('Pick Friends', { type: 'pickTopic', topic: 'tv/friends' }), a('Start', { type: 'start' }),
+    a('Pick answer A', { type: 'select', index: 0 }), a('Change your mind: Cancel', { type: 'cancel' }), answerRight(), a('Next question', { type: 'next' }),
+    climbTo(12), a('Walk away', { type: 'walkAway' }), a('Confirm: Walk away', { type: 'confirmWalk' }) ] },
+  { name: 'Miss after a safe level', desc: 'Get past question 5, then miss on question 8. You should drop to $1,000, the first safe level, and see the correct answer.', steps: [
+    startTopic('Start a General game', 'general'), climbTo(8), answerWrong(), a('See result', { type: 'next' }) ] },
+  { name: 'Stacking lifelines', desc: 'Use 50:50, then Ask the Audience (only two bars), then Phone a Friend on the same question. Then check that all three are spent on the next question.', steps: [
+    startTopic('Start a mixed TV game', 'tv'), a('50:50', { type: 'fifty' }), a('Ask the Audience', { type: 'audience' }), a('Phone a Friend', { type: 'phone' }), a('Call the Pop-culture fan', { type: 'chooseFriend', friend: 'pop' }), answerRight(), a('Next question', { type: 'next' }) ] },
+  { name: 'Switch unlocks after Q10', desc: 'Switch is greyed out up to question 10 and becomes available on question 11. Use 50:50 first, then switch: the new question has all four answers, because 50:50 is already spent.', steps: [
+    startTopic('Start a Star Wars game', 'movies/star-wars'), climbTo(10), a('Try Switch on question 10 (nothing happens)', { type: 'switch' }), answerRight(), a('Next question (11)', { type: 'next' }), a('50:50', { type: 'fifty' }), a('Switch the Question', { type: 'switch' }) ] },
+  { name: 'Refresh and Resume', desc: 'Mid-game, the page is refreshed: you land straight back in the Game, lifelines included. Then leave to the main menu on purpose: Resume is there. Then start a new game instead: the Ready screen warns, and the saved one is discarded.', steps: [
+    startTopic('Start a Harry Potter game', 'movies/harry-potter'), climbTo(4), a('Ask the Audience', { type: 'audience' }), a('Refresh the page (back in the game)', { type: 'refresh' }), a('Main menu', { type: 'leaveToMenu' }), a('Resume', { type: 'resume' }), a('Main menu again', { type: 'leaveToMenu' }), a('Play', { type: 'play' }), a('Pick General', { type: 'pickCategory', category: 'general' }), a('Start (discarding the saved game)', { type: 'start' }) ] },
+  { name: 'Topic runs out', desc: 'Modern Family has the minimum 17 questions. After one full game it can\'t fill another with new questions, so picking it again shows the "not enough new questions" screen right away.', steps: [
+    startTopic('Play Modern Family', 'tv/modern-family'), climbTo(15), answerRight(), a('See result', { type: 'next' }), a('Play again', { type: 'playAgain' }), a('Reset this topic', { type: 'resetTopic' }), a('Start', { type: 'start' }) ] },
+  { name: 'Shared link mid-game', desc: 'You are in a game when you open a friend\'s shared link to Friends. It goes straight to "Ready to play Friends" with a warning that starting discards your saved game.', steps: [
+    startTopic('Start a Jurassic Park game', 'movies/jurassic-park'), climbTo(6), a('Open a shared link to Friends', { type: 'openLink', topic: 'tv/friends' }), a('Back (to the picker)', { type: 'back' }), a('Back (to the main menu): Resume is still there', { type: 'back' }) ] },
+];
+
+let activeWalk = 0, walkPos = 0;
+function renderWalks() {
+  const tabs = $('tabs'); tabs.innerHTML = '';
+  WALKS.forEach((w, i) => { const b = document.createElement('button'); b.textContent = w.name; if (i === activeWalk) b.className = 'active'; b.onclick = () => { activeWalk = i; walkPos = 0; state = Flow.initial(); prevSummary = {}; render(); renderWalks(); }; tabs.append(b); });
+  const w = WALKS[activeWalk], box = $('walk'); box.innerHTML = '';
+  box.append(el('p', w.desc), el('p', 'Choosing this tab starts over on a fresh device. Press the steps in order.', 'cheat'));
+  const ol = el('ol', null, 'steps');
+  w.steps.forEach((st, i) => {
+    const li = el('li', null, i < walkPos ? 'done' : '');
+    const b = document.createElement('button'); b.textContent = st.label; b.disabled = i !== walkPos;
+    if (i === walkPos) b.className = 'primary';
+    b.onclick = () => { st.run(); walkPos++; renderWalks(); };
+    li.append(b); ol.append(li);
+  });
+  box.append(ol);
+}
+
+$('sim-refresh').onclick = () => act({ type: 'refresh' });
+$('sim-link').onclick = () => act({ type: 'openLink', topic: 'tv/friends' });
+$('sim-wipe').onclick = () => { state = Flow.initial(); prevSummary = {}; render(); };
+render(); renderWalks();
+</script>
+</body>
+</html>
