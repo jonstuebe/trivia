@@ -326,3 +326,311 @@ button.lozenge:focus-visible::before {
   border-radius: var(--r-tile);
   background: rgba(12, 17, 70, 0.7);
 }
+
+/* Text for screen readers only. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Confirm dialogs ---- */
+
+/* The stage dims behind an open dialog ("Final answer?"). */
+.stage:has(dialog[open]) {
+  background-color: #020310;
+  background-image: var(--spotlight-dim);
+}
+
+.dialog {
+  width: min(420px, calc(100% - 32px));
+  padding: 24px 20px;
+  border: 2px solid var(--line);
+  border-radius: var(--r-tile);
+  background: var(--panel);
+  color: var(--txt);
+  text-align: center;
+}
+.dialog::backdrop {
+  background: rgba(2, 3, 16, 0.55);
+}
+
+.dialog__title {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.dialog__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---- The Game ---- */
+
+.game__main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.game__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+.game__heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.game__banked {
+  color: var(--mut);
+  font-size: 14px;
+}
+
+.game__title-label {
+  align-self: center;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: rgba(12, 17, 70, 0.6);
+  font-size: 14px;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.answer:disabled {
+  cursor: default;
+}
+
+.answer__text {
+  flex: 1;
+}
+
+.answer__mark {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.answer.is-picked {
+  background: linear-gradient(180deg, var(--amber-top), var(--amber-bottom));
+  color: var(--ink);
+}
+.answer.is-picked::before {
+  box-shadow: inset 0 0 0 2px var(--amber-edge);
+}
+
+.answer.is-right {
+  background: linear-gradient(180deg, var(--green-top), var(--green-bottom));
+  color: var(--green-ink);
+}
+.answer.is-right::before {
+  box-shadow: inset 0 0 0 2px var(--green-edge);
+}
+
+.answer.is-wrong {
+  background: linear-gradient(180deg, #ff8a94, var(--bad));
+  color: var(--ink);
+}
+.answer.is-wrong::before {
+  box-shadow: inset 0 0 0 2px #ffc2c8;
+}
+
+.answer.is-picked .answer__letter,
+.answer.is-right .answer__letter,
+.answer.is-wrong .answer__letter {
+  color: inherit;
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.reveal .lozenge--button {
+  width: min(320px, 100%);
+}
+
+.reveal__message {
+  font-weight: 800;
+  font-size: 18px;
+}
+.reveal__message.is-right {
+  color: var(--ok);
+}
+.reveal__message.is-wrong {
+  color: var(--bad);
+}
+
+/* ---- The Ladder: a strip on phones, a column on desktop ---- */
+
+.ladder {
+  display: none;
+}
+
+.ladder-strip {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 4px 40% 6px;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+}
+.ladder-strip:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.ladder-strip > li {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  padding: 5px 6px;
+  border-radius: var(--r-chip);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--gold);
+}
+.ladder-strip small {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mut);
+}
+.ladder-strip > li.is-done {
+  color: var(--mut);
+}
+.ladder-strip > li.is-safe {
+  color: #fff;
+  box-shadow: inset 0 -2px 0 #fff;
+}
+.ladder-strip > li[aria-current="step"] {
+  min-width: 76px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 17px;
+  box-shadow: var(--glow-chip);
+}
+.ladder-strip > li[aria-current="step"] small {
+  color: var(--ink);
+}
+
+@media (min-width: 760px) {
+  .game {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    align-items: start;
+    gap: 24px;
+  }
+
+  .answers {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ladder-strip {
+    display: none;
+  }
+
+  .ladder {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2px;
+    margin: 0;
+    padding: 12px 0 12px 12px;
+    list-style: none;
+    border-left: 1px solid rgba(91, 108, 255, 0.4);
+    font-size: 14px;
+  }
+  .ladder > li {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 10px;
+    border-radius: var(--r-rung);
+    color: var(--gold);
+  }
+  .ladder > li.is-done {
+    color: var(--mut);
+  }
+  .ladder > li.is-safe {
+    color: #fff;
+    font-weight: 800;
+  }
+  .ladder > li[aria-current="step"] {
+    background: var(--gold);
+    color: var(--ink);
+    font-weight: 800;
+  }
+}
+
+/* ---- Game over ---- */
+
+.game-over {
+  align-items: center;
+  text-align: center;
+}
+
+.game-over__leave {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--mut);
+}
+
+.game-over__money {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 44px;
+  color: var(--gold);
+  text-shadow: var(--glow-gold);
+}
+
+.share {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(420px, 100%);
+}
+
+.share__text {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-tile);
+  background: rgba(0, 0, 0, 0.4);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  text-align: left;
+  white-space: pre;
+  overflow-x: auto;
+}
