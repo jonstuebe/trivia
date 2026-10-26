@@ -1,9 +1,8 @@
+import { SITE_HOST } from "../site";
 import { topicKey } from "./topic";
 import { LIFELINES, type GameResult, type Lifeline, type QuestionOutcome, type Topic } from "./types";
 
 /** The Share result: the copyable text summary of a finished Game. */
-
-const SITE = "trivia.jonstuebe.com";
 
 const OUTCOME_EMOJI: Record<QuestionOutcome, string> = { right: "✅", miss: "❌", walkedAway: "🚶" };
 
@@ -43,7 +42,7 @@ export function shareResult(result: GameResult, topicName: string): string {
   const used = LIFELINES.filter((lifeline) => result.lifelinesUsed.includes(lifeline));
   const lifelines = used.length === 0 ? "No lifelines" : used.map((lifeline) => LIFELINE_EMOJI[lifeline]).join(" ");
 
-  return [`Trivia · ${topicName}`, winnings, groups.join(" "), lifelines, `${SITE}${topicPath(result.topic)}`].join(
+  return [`Trivia · ${topicName}`, winnings, groups.join(" "), lifelines, `${SITE_HOST}${topicPath(result.topic)}`].join(
     "\n",
   );
 }

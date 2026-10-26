@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GameRouteImport } from './routes/game'
 import { Route as GeneralRouteImport } from './routes/general'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TopicsRouteImport } from './routes/topics'
 import { Route as CategoryIndexRouteImport } from './routes/$category.index'
 import { Route as CategorySlugRouteImport } from './routes/$category.$slug'
@@ -29,6 +30,11 @@ const GameRoute = GameRouteImport.update({
 const GeneralRoute = GeneralRouteImport.update({
   id: '/general',
   path: '/general',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TopicsRoute = TopicsRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/game': typeof GameRoute
   '/general': typeof GeneralRoute
+  '/privacy': typeof PrivacyRoute
   '/topics': typeof TopicsRoute
   '/$category/$slug': typeof CategorySlugRoute
   '/$category/': typeof CategoryIndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/game': typeof GameRoute
   '/general': typeof GeneralRoute
+  '/privacy': typeof PrivacyRoute
   '/topics': typeof TopicsRoute
   '/$category/$slug': typeof CategorySlugRoute
   '/$category': typeof CategoryIndexRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/game': typeof GameRoute
   '/general': typeof GeneralRoute
+  '/privacy': typeof PrivacyRoute
   '/topics': typeof TopicsRoute
   '/$category/$slug': typeof CategorySlugRoute
   '/$category/': typeof CategoryIndexRoute
@@ -75,14 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/game' | '/general' | '/topics' | '/$category/$slug' | '/$category/'
+    | '/'
+    | '/game'
+    | '/general'
+    | '/privacy'
+    | '/topics'
+    | '/$category/$slug'
+    | '/$category/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/game' | '/general' | '/topics' | '/$category/$slug' | '/$category'
+  to:
+    | '/'
+    | '/game'
+    | '/general'
+    | '/privacy'
+    | '/topics'
+    | '/$category/$slug'
+    | '/$category'
   id:
     | '__root__'
     | '/'
     | '/game'
     | '/general'
+    | '/privacy'
     | '/topics'
     | '/$category/$slug'
     | '/$category/'
@@ -92,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   GameRoute: typeof GameRoute
   GeneralRoute: typeof GeneralRoute
+  PrivacyRoute: typeof PrivacyRoute
   TopicsRoute: typeof TopicsRoute
   CategorySlugRoute: typeof CategorySlugRoute
   CategoryIndexRoute: typeof CategoryIndexRoute
@@ -118,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/general'
       fullPath: '/general'
       preLoaderRoute: typeof GeneralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/topics': {
@@ -148,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   GameRoute: GameRoute,
   GeneralRoute: GeneralRoute,
+  PrivacyRoute: PrivacyRoute,
   TopicsRoute: TopicsRoute,
   CategorySlugRoute: CategorySlugRoute,
   CategoryIndexRoute: CategoryIndexRoute,

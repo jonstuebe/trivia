@@ -1,14 +1,6 @@
 import { resolve } from "node:path";
 import type { Plugin } from "vite";
 
-/**
- * The test build: the app built on the fixture Topic set in
- * `src/content/fixtures/` instead of the real content, for whole-Game tests
- * and the e2e journeys. Build it with `bun run build:fixtures`, which runs
- * `vite build --mode fixtures` into `dist-fixtures/`.
- */
-export const FIXTURE_MODE = "fixtures";
-
 /** Each module that brings in the real content, and the fixture one that replaces it. */
 const swaps = new Map([
   [resolve(import.meta.dirname, "topic-index.gen.json"), resolve(import.meta.dirname, "topic-index.fixtures.gen.json")],

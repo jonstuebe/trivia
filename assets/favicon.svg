@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!--
+    The tab icon: the logo disc (assets/logo-disc.svg) cut down for 16 to 48
+    pixels. The word TRIVIA can't be read that small, so it is its first
+    letter alone, larger; the glow goes and the gold ring is thicker, so the
+    ring still shows at 16 pixels. The "T" is Cinzel 800, which the render
+    script loads from @fontsource/cinzel; see scripts/render-icons.ts.
+  -->
+  <defs>
+    <radialGradient id="disc" gradientUnits="userSpaceOnUse" cx="256" cy="185" r="271">
+      <stop offset="0" stop-color="#3a46ff" />
+      <stop offset="1" stop-color="#0b0e3a" />
+    </radialGradient>
+  </defs>
+  <circle cx="256" cy="256" r="232" fill="url(#disc)" stroke="#f5c542" stroke-width="40" />
+  <text
+    x="256"
+    y="256"
+    dy="0.35em"
+    text-anchor="middle"
+    fill="#eef1ff"
+    font-family="Cinzel, Georgia, serif"
+    font-weight="800"
+    font-size="330"
+  >T</text>
+</svg>

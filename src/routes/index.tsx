@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useId, useState } from "react";
 import { storage } from "../app/game-services";
 import { mainMenuView } from "../screens/main-menu-view";
@@ -12,7 +12,8 @@ export const Route = createFileRoute("/")({
 
 /**
  * The Main menu: Resume when a Game is saved (then Play steps back), Play,
- * the Personal bests, and Reset all seen questions behind a confirm.
+ * the Personal bests, Reset all seen questions behind a confirm, and the
+ * link to the privacy note.
  */
 function MainMenu() {
   const navigate = useNavigate();
@@ -66,6 +67,9 @@ function MainMenu() {
       <Button variant="quiet" onClick={() => setConfirmingReset(true)}>
         Reset all seen questions
       </Button>
+      <Link className="link-quiet" to="/privacy">
+        Privacy
+      </Link>
 
       {confirmingReset && (
         <Dialog

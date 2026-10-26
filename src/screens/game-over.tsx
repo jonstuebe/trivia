@@ -1,18 +1,19 @@
 import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import { setCurrentGame } from "../app/game-services";
+import { browserShareDevice, shareOut } from "../app/share-out";
 import type { GameOver } from "../game/game-controller";
 import { shownNow } from "../game/machine";
 import { topicRoute } from "../game/topic";
 import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
-import { gameOverView } from "./game-over-view";
+import { gameOverView, shareNote } from "./game-over-view";
 import type { GameSnapshot } from "./game-view";
 
 /**
  * Game over: how it ended, the correct answer after a miss, the winnings,
  * the Personal best and the Share result, then Play again (the Topic's Ready
- * to play, or Not enough new questions) and Main menu. The Share button is
- * Phase 5.
+ * to play, or Not enough new questions) and Main menu.
  */
 export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: GameSnapshot }) {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
       <figure className="share">
         <figcaption className="muted">Share result</figcaption>
         <pre className="share__text">{view.share}</pre>
+        <ShareButton text={view.share} />
       </figure>
       <div className="menu">
         <Button variant="primary" onClick={() => leave("playAgain")}>
@@ -50,5 +52,29 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
         </Button>
       </div>
     </main>
+  );
+}
+
+/**
+ * Share: the share sheet on phones and tablets, a copy elsewhere. The note
+ * is a status region, so screen readers announce "Copied".
+ */
+function ShareButton({ text }: { text: string }) {
+  const [note, setNote] = useState("");
+
+  async function share() {
+    // Cleared first, so a second "Copied" is announced again.
+    setNote("");
+    const outcome = await shareOut(text, browserShareDevice());
+    setNote(shareNote(outcome));
+  }
+
+  return (
+    <div className="share__actions">
+      <Button onClick={() => void share()}>Share</Button>
+      <p role="status" className="share__note">
+        {note}
+      </p>
+    </div>
   );
 }
