@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useId, useState } from "react";
 import { storage } from "../app/game-services";
 import { mainMenuView } from "../screens/main-menu-view";
+import { SITE_TAGLINE } from "../site";
 import { Dialog } from "../ui/dialog";
 import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
@@ -35,7 +36,7 @@ function MainMenu() {
       <div className="logo">
         <ScreenHeading className="logo__title">Trivia</ScreenHeading>
       </div>
-      <p className="muted">Fifteen questions. One million imaginary dollars.</p>
+      <p className="muted">{SITE_TAGLINE}</p>
       <div className="menu">
         {/* /game brings the Saved game back. */}
         {view.resume && (
