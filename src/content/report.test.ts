@@ -48,6 +48,18 @@ describe("the long-answer warning", () => {
     expect(reportContent(title([q])).warnings).toEqual([]);
   });
 
+  it("counts characters as a player sees them, so an emoji or accented letter is one", () => {
+    // 9 characters against 10, though the family emoji alone is 8 UTF-16 code units.
+    const family = question(1, { correct: "Central \u{1F468}\u200D\u{1F469}\u200D\u{1F467}", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
+    expect(reportContent(title([family])).warnings).toEqual([]);
+
+    // "Crème Brûlée Café" with its accents as combining marks: 17 characters, 20 code units.
+    const accented = question(1, { correct: "Cre\u0300me Bru\u0302le\u0301e Cafe\u0301", wrong: ["Monica's", "The Pub", "Joey's Bar"] });
+    expect(reportContent(title([accented])).warnings.map((warning) => warning.message)).toEqual([
+      "the right answer (17 characters) is much longer than the longest wrong one (10), which gives it away",
+    ]);
+  });
+
   it("skips files that fail the schema, which the check reports", () => {
     const broken = { path: "tv/friends.json", data: { questions: [question(1, { correct: "A very long right answer" })] } };
     expect(reportContent([broken]).warnings).toEqual([]);

@@ -1,3 +1,4 @@
+import { characters } from "./authoring-rules";
 import {
   TIERS,
   countByTier,
@@ -111,15 +112,15 @@ function formatTable(topics: readonly TopicSummary[]): string[] {
 function longAnswerWarnings(file: string, topic: TopicFile): ContentWarning[] {
   const questions: readonly Question[] = topic.questions;
   return questions.flatMap(({ id, correct, wrong }, i) => {
-    const longestWrong = Math.max(...wrong.map((answer) => answer.length));
-    const givesItAway =
-      correct.length >= longestWrong * LONG_ANSWER_RATIO && correct.length - longestWrong >= LONG_ANSWER_MIN_EXTRA;
+    const length = characters(correct);
+    const longestWrong = Math.max(...wrong.map(characters));
+    const givesItAway = length >= longestWrong * LONG_ANSWER_RATIO && length - longestWrong >= LONG_ANSWER_MIN_EXTRA;
     if (!givesItAway) return [];
     return [
       {
         file,
         question: { id, position: i + 1 },
-        message: `the right answer (${correct.length} characters) is much longer than the longest wrong one (${longestWrong}), which gives it away`,
+        message: `the right answer (${length} characters) is much longer than the longest wrong one (${longestWrong}), which gives it away`,
       },
     ];
   });

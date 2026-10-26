@@ -57,7 +57,7 @@ export const MAX_ANSWER = 40;
 const graphemes = new Intl.Segmenter("en", { granularity: "grapheme" });
 
 /** Characters as a player sees them, so an emoji or accented letter counts as one. */
-function characters(text: string): number {
+export function characters(text: string): number {
   let count = 0;
   for (const _ of graphemes.segment(text)) count++;
   return count;
