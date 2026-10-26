@@ -2,11 +2,12 @@
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { VitePWA } from "vite-plugin-pwa";
 import { fixtureBeacon } from "./src/analytics/fixture-beacon.ts";
 import { fixtureContent } from "./src/content/fixture-build.ts";
 import { FIXTURE_MODE } from "./src/content/fixture-mode.ts";
 import { linkPreview } from "./src/link-preview.ts";
-import { pwa } from "./src/pwa.ts";
+import { PWA_OPTIONS } from "./src/pwa.ts";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
@@ -18,8 +19,8 @@ export default defineConfig(({ mode }) => ({
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     linkPreview(),
-    // The manifest and the offline service worker; `vite build` only.
-    pwa(),
+    // The manifest, the offline service worker and its registration; `vite build` only.
+    VitePWA(PWA_OPTIONS),
   ],
   build: mode === FIXTURE_MODE ? { outDir: "dist-fixtures" } : {},
   test: {

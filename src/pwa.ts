@@ -1,4 +1,4 @@
-import { VitePWA, type VitePWAOptions } from "vite-plugin-pwa";
+import type { VitePWAOptions } from "vite-plugin-pwa";
 import { SITE_NAME, SITE_TAGLINE } from "./site.ts";
 
 /**
@@ -78,8 +78,3 @@ export const PWA_OPTIONS: Partial<VitePWAOptions> = {
     clientsClaim: true,
   },
 };
-
-/** The manifest, the service worker and its registration, in `vite build` only. */
-export function pwa() {
-  return VitePWA(PWA_OPTIONS);
-}
