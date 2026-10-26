@@ -25,8 +25,11 @@ export interface GameDependencies {
   random: Random;
   /** All of the Topic's loaded Questions, for Switch the Question to draw from. */
   topicQuestions: readonly GameQuestion[];
-  /** The Seen questions on this device, so Switch draws unseen first. */
-  seen: SeenQuestions;
+  /**
+   * Reads the Seen questions on this device as they are now, so Switch draws
+   * unseen first even after Questions shown during this Game were marked.
+   */
+  seen: () => SeenQuestions;
 }
 
 /** What a new Game is started from. */
@@ -130,7 +133,7 @@ function gameMachineWith({ random, topicQuestions, seen }: GameDependencies) {
   /** Every Question this Game has drawn, so Switch never brings one back. */
   const inGame = (context: GameContext) => [...context.questions.map((shown) => shown.question), ...context.switchedAway];
   const drawReplacement = (context: GameContext) =>
-    drawSwitch(topicQuestions, shownNow(context).question.tier, inGame(context), seen, random);
+    drawSwitch(topicQuestions, shownNow(context).question.tier, inGame(context), seen(), random);
   /** Whether the Tier has a Question left to switch to, without rolling anything. */
   const canDrawReplacement = (context: GameContext) => {
     const drawn = new Set(inGame(context).map((question) => question.id));

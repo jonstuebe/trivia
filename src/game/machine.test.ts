@@ -32,7 +32,7 @@ function topicQuestions(): GameQuestion[] {
 }
 
 function dependencies(seed: number) {
-  return { random: createSeededRandom(seed), topicQuestions: topicQuestions(), seen: {} };
+  return { random: createSeededRandom(seed), topicQuestions: topicQuestions(), seen: () => ({}) };
 }
 
 function newGame(seed = 1): GameActor {
@@ -461,9 +461,27 @@ describe("Switch the Question", () => {
         questions: fifteenQuestions(),
         ...dependencies(seed),
         topicQuestions: [...topicQuestions(), extra],
-        seen: { s0000004: 1 },
+        seen: () => ({ s0000004: 1 }),
       });
       climbTo(game, 11);
+      game.send({ type: "switchTheQuestion" });
+      expect(current(game).question.prompt).toBe("Unseen spare");
+    }
+  });
+
+  it("reads the Seen questions as they are when switching, not as they were at the start", () => {
+    const extra = { ...topicQuestions()[18]!, id: "s0000099", prompt: "Unseen spare" };
+    for (let seed = 1; seed <= 5; seed++) {
+      let seen: Record<string, number> = {};
+      const game = startGame({
+        topic,
+        questions: fifteenQuestions(),
+        ...dependencies(seed),
+        topicQuestions: [...topicQuestions(), extra],
+        seen: () => seen,
+      });
+      climbTo(game, 11);
+      seen = { s0000004: 1 };
       game.send({ type: "switchTheQuestion" });
       expect(current(game).question.prompt).toBe("Unseen spare");
     }
