@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { createSeededRandom } from "../random/random";
 import { createDeviceStorage, createMemoryBackend, type StorageBackend } from "../storage";
 import { createGameController, type PlayingGame } from "./game-controller";
+import { loadTopic } from "./load-topic";
 import { savedGameFormat } from "./saved-game";
 import type { AnswerPosition, Topic } from "./types";
 
@@ -59,6 +60,60 @@ describe("a won Game", () => {
     expect(storage.personalBest(general)).toBe(1_000_000);
     expect(storage.savedGame()).toBeUndefined();
     expect(Object.keys(storage.seenQuestions()).sort()).toEqual([...shown].sort());
+  });
+});
+
+describe("every Lifeline", () => {
+  it("is used in one won Game, each result kept in the Saved game, and the switched-away Question seen", async () => {
+    const { storage, controller } = aDevice();
+    const tier4 = (await loadTopic(tvShows)).filter((q) => q.tier === 4).map((q) => q.id);
+    // One Tier 4 Question seen before: the Game draws 3 of the 4 unseen, so Switch has one unseen left.
+    storage.markSeen(tier4[0]!);
+    const game = await controller.startGame(tvShows);
+    climbTo(game, 11);
+
+    game.send({ type: "fiftyFifty" });
+    expect(storage.savedGame()?.context.removed).toEqual(game.snapshot().context.removed);
+    expect(game.snapshot().context.removed).toHaveLength(2);
+
+    game.send({ type: "askTheAudience" });
+    expect(storage.savedGame()?.context.audience).toEqual(game.snapshot().context.audience);
+    expect(game.snapshot().context.audience?.votes[game.snapshot().context.removed[0]!]).toBe(0);
+
+    game.send({ type: "phoneAFriend" });
+    expect(storage.savedGame()?.value).toBe("pickingFriend");
+    game.send({ type: "callFriend", friend: "pop culture" });
+    expect(storage.savedGame()?.context.friend).toEqual(game.snapshot().context.friend);
+    expect(game.snapshot().context.friend).toMatchObject({ friend: "pop culture" });
+
+    const before = current(game).question;
+    game.send({ type: "switchTheQuestion" });
+    const after = current(game).question;
+    expect(after.id).not.toBe(before.id);
+    expect(after.tier).toBe(4);
+    expect(after.id).not.toBe(tier4[0]);
+    expect(storage.savedGame()?.context.switchedAway).toEqual([before]);
+    expect(storage.savedGame()?.context.questions[10]).toEqual(current(game));
+    expect(storage.seenQuestions()[before.id]).toBeDefined();
+    expect(storage.seenQuestions()[after.id]).toBeDefined();
+
+    climbTo(game, 15);
+    answer(game, current(game).correct);
+    expect(game.gameOver()?.result).toMatchObject({
+      ending: "won",
+      lifelinesUsed: ["fiftyFifty", "askTheAudience", "phoneAFriend", "switchTheQuestion"],
+    });
+    // 15 shown, 1 switched away, and the one seen before.
+    expect(Object.keys(storage.seenQuestions())).toHaveLength(17);
+  });
+
+  it("backing out of Phone a Friend doesn't spend it", async () => {
+    const { storage, controller } = aDevice();
+    const game = await controller.startGame(general);
+    game.send({ type: "phoneAFriend" });
+    game.send({ type: "cancel" });
+    expect(storage.savedGame()?.value).toBe("choosing");
+    expect(storage.savedGame()?.context.lifelinesUsed).toEqual([]);
   });
 });
 
