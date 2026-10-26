@@ -1,0 +1,94 @@
+import * as z from "zod";
+import type { Topic } from "../game/types";
+import type { StorageBackend } from "./backend";
+import { createVersionedKey, type Migration } from "./versioned-key";
+
+/**
+ * How the Saved game is stored: its current version, shape and migrations.
+ * The Game machine owns the record, so the caller supplies this.
+ */
+export interface SavedGameFormat<T> {
+  version: number;
+  schema: z.ZodType<T>;
+  migrations?: Record<number, Migration>;
+}
+
+export interface DeviceStorageOptions<T> {
+  savedGame: SavedGameFormat<T>;
+}
+
+/** The storage key names, each holding `{version, data}`. */
+export const STORAGE_KEYS = {
+  seen: "trivia.seen",
+  personalBests: "trivia.personalBests",
+  savedGame: "trivia.savedGame",
+  settings: "trivia.settings",
+} as const;
+
+/** Question ID → the running counter from when it was last shown. */
+const seenSchema = z.record(z.string(), z.int().min(1));
+
+/** Topic key → the best winnings from a finished Game in that Topic as picked. */
+const personalBestsSchema = z.record(z.string(), z.int().min(0));
+
+/** The key a Topic's Personal best is kept under: `general`, `tv`, `tv/friends`. */
+export function topicKey(topic: Topic): string {
+  switch (topic.kind) {
+    case "general":
+      return "general";
+    case "category":
+      return topic.category;
+    case "title":
+      return `${topic.category}/${topic.slug}`;
+  }
+}
+
+/** Everything the game remembers on this device. */
+export function createDeviceStorage<T>(backend: StorageBackend, _options: DeviceStorageOptions<T>) {
+  const seen = createVersionedKey(backend, {
+    name: STORAGE_KEYS.seen,
+    version: 1,
+    schema: seenSchema,
+    initial: () => ({}),
+  });
+  const personalBests = createVersionedKey(backend, {
+    name: STORAGE_KEYS.personalBests,
+    version: 1,
+    schema: personalBestsSchema,
+    initial: () => ({}),
+  });
+
+  return {
+    /** Each seen Question's counter: the higher, the more recently shown. */
+    seenQuestions(): ReadonlyMap<string, number> {
+      return new Map(Object.entries(seen.read()));
+    },
+
+    /** Records a Question as shown, making it the newest seen. */
+    markSeen(questionId: string): void {
+      const counters = seen.read();
+      const newest = Math.max(0, ...Object.values(counters));
+      seen.write({ ...counters, [questionId]: newest + 1 });
+    },
+
+    /** The best winnings in this Topic as picked, or `undefined` if no Game in it has finished. */
+    personalBest(topic: Topic): number | undefined {
+      return personalBests.read()[topicKey(topic)];
+    },
+
+    /**
+     * Counts a finished Game (won, missed or walked away) towards the Topic's
+     * Personal best. Says what the best now is, and whether this Game set it.
+     */
+    recordWinnings(topic: Topic, winnings: number): { best: number; isNew: boolean } {
+      const bests = personalBests.read();
+      const key = topicKey(topic);
+      const previous = bests[key];
+      if (previous !== undefined && previous >= winnings) return { best: previous, isNew: false };
+      personalBests.write({ ...bests, [key]: winnings });
+      return { best: winnings, isNew: true };
+    },
+  };
+}
+
+export type DeviceStorage<T> = ReturnType<typeof createDeviceStorage<T>>;
