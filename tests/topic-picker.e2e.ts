@@ -26,9 +26,9 @@ test("the Topic picker lists each Category's Titles and goes up one level with B
 
   await expect(browser).toHaveURL(/\/topics\?category=movies$/);
   await expect(screen.getByRole("heading", "Movies", { level: 1 })).toBeFocused();
-  await expect(screen.getByRole("link", "All Movies (mixed) Not played")).toBeVisible();
-  await expect(screen.getByRole("link", "Fixture Heist Not played")).toBeVisible();
-  await expect(screen.getByRole("link", "Fixture Saga Not played")).toBeVisible();
+  await expect(screen.getByRole("link", "All Movies (mixed)")).toBeVisible();
+  await expect(screen.getByRole("link", "Fixture Heist")).toBeVisible();
+  await expect(screen.getByRole("link", "Fixture Saga")).toBeVisible();
   await checkA11y(browser, "Topic picker: Movies");
 
   await screen.getByRole("button", "← Back").focus();
@@ -42,7 +42,7 @@ test("the Topic picker lists each Category's Titles and goes up one level with B
   await expect(screen.getByRole("link", /Fixture Drama/)).toHaveCount(0);
   await checkA11y(browser, "Topic picker: TV Shows");
 
-  await screen.getByRole("link", "Fixture Sitcom Not played").focus();
+  await screen.getByRole("link", "Fixture Sitcom").focus();
   await browser.keyboard.press("Enter");
   await expect(browser).toHaveURL("/tv/fixture-sitcom");
   await expect(screen.getByRole("heading", "Ready to play: Fixture Sitcom", { level: 1 })).toBeFocused();
