@@ -9,6 +9,10 @@ import { FIXTURE_MODE } from "../content/fixture-mode";
  * snippet's `data-cf-beacon` attribute. Don't use the automatic setup: it
  * injects the beacon into every page itself, which skips the privacy-signal
  * check below. The token isn't secret; it only says which site a visit is for.
+ *
+ * Until Phase 7, setting it counts nothing: the workers.dev preview serves
+ * the test build, which always uses the stand-in token and script below.
+ * Visits are counted once the real build is deployed (see wrangler.jsonc).
  */
 export const SITE_TOKEN = "";
 
