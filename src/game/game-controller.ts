@@ -5,14 +5,9 @@ import { restoreGame, saveGame, shownNow, startGame, type GameActor, type GameEv
 import { canFillGame, drawGame } from "./selection";
 import type { GameResult, Topic } from "./types";
 
-/**
- * Plays Games the way the app does, wired to device storage: every Question
- * shown is marked seen, the Saved game is rewritten after every step, and at
- * Game over it's cleared and the Personal best updated. No UI: the screens
- * drive it with `send` and read `snapshot`.
- */
-
+/** What the Game controller is wired to. */
 export interface GameControllerOptions {
+  /** Device storage, holding the Saved game in the Game's own format. */
   storage: DeviceStorage<SavedGameSnapshot>;
   /** The source for draws, answer shuffles and Lifeline rolls: unseeded in the app, seeded in tests. */
   random: Random;
@@ -39,6 +34,12 @@ export interface PlayingGame {
   gameOver(): GameOver | undefined;
 }
 
+/**
+ * Plays Games the way the app does, wired to device storage: every Question
+ * shown is marked seen, the Saved game is rewritten after every step, and at
+ * Game over it's cleared and the Personal best updated. No UI: the screens
+ * drive it with `send` and read `snapshot`.
+ */
 export function createGameController({ storage, random }: GameControllerOptions) {
   /** Wraps a running Game so each step marks, saves or finishes it. `marked` is what it has already marked seen. */
   function play(actor: GameActor, marked: Set<string>): PlayingGame {
@@ -136,4 +137,5 @@ export function createGameController({ storage, random }: GameControllerOptions)
   };
 }
 
+/** Starts, resumes and checks Games for the screens; see `createGameController`. */
 export type GameController = ReturnType<typeof createGameController>;

@@ -14,7 +14,9 @@ export interface SavedGameFormat<T> {
   migrations?: Record<number, Migration>;
 }
 
+/** What device storage needs from the app: the Saved game's format, and how to ask for persistence. */
 export interface DeviceStorageOptions<T> {
+  /** The Saved game's version, shape and migrations, from the Game. */
   savedGame: SavedGameFormat<T>;
   /**
    * Asks the browser to keep this site's storage, guarding against Safari's
@@ -153,10 +155,12 @@ export function createDeviceStorage<T>(backend: StorageBackend, options: DeviceS
       return settings.read().muted;
     },
 
+    /** Remembers whether the sound is off. */
     setMuted(muted: boolean): void {
       settings.write({ ...settings.read(), muted });
     },
   };
 }
 
+/** Everything the game remembers on this device; see `createDeviceStorage`. */
 export type DeviceStorage<T> = ReturnType<typeof createDeviceStorage<T>>;

@@ -8,10 +8,13 @@ import { ANSWER_POSITIONS, type AnswerPosition, type Friend, type ShownQuestion 
  * save the result and a refresh or Resume shows it again without rerolling.
  */
 
+/** What a Lifeline simulation rolls for: the Question as shown and what's left of it. */
 export interface SimulationInput {
+  /** The Question on screen, with its answers in shown order. */
   shown: ShownQuestion;
   /** The answers still in play: all four, or the two a 50:50 left. Defaults to all four. */
   remaining?: readonly AnswerPosition[];
+  /** The source for every roll. */
   random: Random;
 }
 
@@ -20,6 +23,11 @@ export interface AudienceResult {
   votes: readonly [number, number, number, number];
 }
 
+/**
+ * Ask the Audience: rolls the audience's vote. They lean to the right answer,
+ * less often and less clearly on harder Tiers; when wrong, they lean to one
+ * wrong answer still in play.
+ */
 export function askTheAudience({ shown, remaining = ANSWER_POSITIONS, random }: SimulationInput): AudienceResult {
   const positions = checkRemaining(shown, remaining);
   const leader =
@@ -40,6 +48,7 @@ export function askTheAudience({ shown, remaining = ANSWER_POSITIONS, random }: 
   return { votes: toVotes(positions, shares) };
 }
 
+/** What Phone a Friend rolls for: the Question, as for the audience, and who was called. */
 export interface FriendInput extends SimulationInput {
   /** The Friend the player chose to call. */
   friend: Friend;
@@ -58,6 +67,10 @@ export interface FriendResult {
   line: string;
 }
 
+/**
+ * Phone a Friend: rolls what the chosen Friend says. They're right more often
+ * on their own Subject, and on Tier 5 may admit they're guessing.
+ */
 export function phoneAFriend({ shown, remaining = ANSWER_POSITIONS, friend, random }: FriendInput): FriendResult {
   const positions = checkRemaining(shown, remaining);
   const { tier, subject } = shown.question;

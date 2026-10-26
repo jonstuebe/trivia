@@ -11,11 +11,13 @@ import type { StorageBackend } from "./backend";
 export interface VersionedKey<T> {
   /** The stored data, or the initial value when nothing usable is stored. */
   read(): T;
+  /** Stores `data` at the current version. */
   write(data: T): void;
   /** Removes the stored value, so the next read gives the initial value. */
   clear(): void;
 }
 
+/** How one versioned key is stored, checked and stepped up. */
 export interface VersionedKeyOptions<T> {
   /** The storage key, like `trivia.seen`. */
   name: string;
@@ -46,6 +48,7 @@ export const BACKUP_SUFFIX = ".backup";
 
 const envelopeSchema = z.object({ version: z.int().min(1), data: z.unknown() });
 
+/** Opens one stored value under `options.name`; see `VersionedKey` for how reads, writes and bad values behave. */
 export function createVersionedKey<T>(backend: StorageBackend, options: VersionedKeyOptions<T>): VersionedKey<T> {
   const { name, version, schema, initial, migrations = {}, unreadable = "backup" } = options;
 

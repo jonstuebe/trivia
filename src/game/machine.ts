@@ -267,6 +267,7 @@ function gameMachineWith({ random, topicQuestions, readSeen }: GameDependencies)
 }
 
 type GameMachine = ReturnType<typeof gameMachineWith>;
+/** A running Game: send it `GameEvent`s and read its snapshot. */
 export type GameActor = Actor<GameMachine>;
 
 /** Starts a new Game at question 1. */

@@ -5,13 +5,6 @@ import { LADDER_LENGTH } from "./ladder";
 import type { GameContext, SavedGameSnapshot } from "./machine";
 import { FRIENDS, LIFELINES, type Topic } from "./types";
 
-/**
- * The Saved game as device storage keeps it: the Game's `SavedGameSnapshot`,
- * checked on every read. Its Questions are full copies, so they're checked
- * only for shape, never against the current authoring rules: an app update
- * that edits or removes a Question can't break a Game in progress.
- */
-
 const position = z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]);
 
 const titleCategory = z.enum(TITLE_CATEGORIES);
@@ -77,6 +70,12 @@ const snapshotSchema = z.object({
   children: z.record(z.string(), z.unknown()),
 });
 
+/**
+ * The Saved game as device storage keeps it: the Game's `SavedGameSnapshot`,
+ * checked on every read. Its Questions are full copies, so they're checked
+ * only for shape, never against the current authoring rules: an app update
+ * that edits or removes a Question can't break a Game in progress.
+ */
 export const savedGameFormat: SavedGameFormat<SavedGameSnapshot> = {
   version: 1,
   // The parsed record is the snapshot XState restores from; zod can't express its internal types.
