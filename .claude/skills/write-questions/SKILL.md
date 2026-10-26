@@ -32,11 +32,13 @@ For every flagged Question, either:
 - **fix** it and send the fix with your source back to the same verifier (SendMessage), until it confirms the Question against a source you both accept; write that source into `source`, or
 - **drop** it from the file.
 
-Done when the verifier has confirmed every Question left in the file. Nothing flagged stays.
+A confirmed Question whose verifier source differs from your `source` gets the source you both accept: your note can be wrong even when the fact is right.
+
+Done when the verifier has confirmed every Question left in the file, each with an agreed `source` where one is required. Nothing flagged stays.
 
 ## 5. Content checks
 
-Run `bun run check-content`. Fix every error and rerun until it passes. Then read the report: fix each warning (an over-long right answer gives itself away), and check the counts match what step 1 set out to write. A fixed Question whose fact changed goes back through step 4.
+Run `bun run check-content`. Fix every error and rerun until it passes. Then read the report: fix each warning (an over-long right answer gives itself away), and check the counts match what step 1 set out to write. Moved Tiers and dropped Questions leave gaps: fill them from step 2 on. A fixed Question whose fact changed goes back through step 4.
 
 Done when the check passes with no warnings on this Topic, and the counts are what you planned.
 
