@@ -1,3 +1,5 @@
+import { FIXTURE_MODE } from "../content/fixture-mode";
+
 /**
  * The Cloudflare Web Analytics site token. Empty, so the beacon is off.
  *
@@ -19,7 +21,7 @@ export const BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js";
  * watch the load decision without sending anything to Cloudflare. The file is
  * emitted by `fixtureBeacon()` in `fixture-beacon.ts`.
  */
-const FIXTURE_BUILD = import.meta.env.MODE === "fixtures";
+const FIXTURE_BUILD = import.meta.env.MODE === FIXTURE_MODE;
 const FIXTURE_TOKEN = "fixture-token";
 export const FIXTURE_BEACON_SRC = "/fixture-beacon.js";
 
