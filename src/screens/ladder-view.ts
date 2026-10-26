@@ -21,8 +21,6 @@ function shortMoney(dollars: number): string {
   return `$${dollars}`;
 }
 
-const SAFE: readonly number[] = SAFE_RUNGS;
-
 /** The Ladder's 15 Rungs, from Rung 1 up, with `rung` the one being played. */
 export function ladderView(rung: number): RungView[] {
   return Array.from({ length: LADDER_LENGTH }, (_, i) => {
@@ -32,7 +30,7 @@ export function ladderView(rung: number): RungView[] {
       rung: at,
       prize: formatMoney(prize),
       short: shortMoney(prize),
-      safe: SAFE.includes(at),
+      safe: SAFE_RUNGS.some((safe) => safe === at),
       state: at < rung ? "done" : at === rung ? "current" : "ahead",
     };
   });
