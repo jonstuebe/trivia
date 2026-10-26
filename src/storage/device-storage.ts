@@ -31,6 +31,9 @@ const seenSchema = z.record(z.string(), z.int().min(1));
 /** Topic key → the best winnings from a finished Game in that Topic as picked. */
 const personalBestsSchema = z.record(z.string(), z.int().min(0));
 
+/** The player's settings: for now, just the remembered mute. */
+const settingsSchema = z.object({ muted: z.boolean() });
+
 /** The key a Topic's Personal best is kept under: `general`, `tv`, `tv/friends`. */
 export function topicKey(topic: Topic): string {
   switch (topic.kind) {
@@ -44,7 +47,7 @@ export function topicKey(topic: Topic): string {
 }
 
 /** Everything the game remembers on this device. */
-export function createDeviceStorage<T>(backend: StorageBackend, _options: DeviceStorageOptions<T>) {
+export function createDeviceStorage<T>(backend: StorageBackend, options: DeviceStorageOptions<T>) {
   const seen = createVersionedKey(backend, {
     name: STORAGE_KEYS.seen,
     version: 1,
@@ -56,6 +59,21 @@ export function createDeviceStorage<T>(backend: StorageBackend, _options: Device
     version: 1,
     schema: personalBestsSchema,
     initial: () => ({}),
+  });
+  const savedGame = createVersionedKey(backend, {
+    name: STORAGE_KEYS.savedGame,
+    version: options.savedGame.version,
+    schema: options.savedGame.schema.optional(),
+    migrations: options.savedGame.migrations,
+    initial: () => undefined,
+    // A Game in progress that can't be read is just dropped.
+    unreadable: "drop",
+  });
+  const settings = createVersionedKey(backend, {
+    name: STORAGE_KEYS.settings,
+    version: 1,
+    schema: settingsSchema,
+    initial: () => ({ muted: false }),
   });
 
   return {
@@ -87,6 +105,30 @@ export function createDeviceStorage<T>(backend: StorageBackend, _options: Device
       if (previous !== undefined && previous >= winnings) return { best: previous, isNew: false };
       personalBests.write({ ...bests, [key]: winnings });
       return { best: winnings, isNew: true };
+    },
+
+    /** The one Game in progress, or `undefined` if there is none. */
+    savedGame(): T | undefined {
+      return savedGame.read();
+    },
+
+    /** Keeps the Game in progress, replacing any Saved game. Call after every step. */
+    saveGame(game: T): void {
+      savedGame.write(game);
+    },
+
+    /** Removes the Saved game, at Game over. */
+    clearSavedGame(): void {
+      savedGame.clear();
+    },
+
+    /** Whether the player has turned the sound off. */
+    muted(): boolean {
+      return settings.read().muted;
+    },
+
+    setMuted(muted: boolean): void {
+      settings.write({ ...settings.read(), muted });
     },
   };
 }

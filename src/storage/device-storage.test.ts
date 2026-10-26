@@ -91,3 +91,57 @@ describe("Personal bests", () => {
     expect(open(backend).personalBest(friends)).toBe(1000);
   });
 });
+
+describe("the Saved game", () => {
+  it("is empty until a Game is saved", () => {
+    expect(open().savedGame()).toBeUndefined();
+  });
+
+  it("keeps the one Game in progress, rewritten after every step", () => {
+    const backend = createMemoryBackend();
+    open(backend).saveGame({ rung: 1 });
+    open(backend).saveGame({ rung: 2 });
+    expect(open(backend).savedGame()).toEqual({ rung: 2 });
+  });
+
+  it("is cleared at Game over", () => {
+    const storage = open();
+    storage.saveGame({ rung: 4 });
+    storage.clearSavedGame();
+    expect(storage.savedGame()).toBeUndefined();
+  });
+
+  it("is read with the format the caller gives it, migrations included", () => {
+    const backend = createMemoryBackend({ "trivia.savedGame": JSON.stringify({ version: 1, data: { step: 6 } }) });
+    const storage = createDeviceStorage(backend, {
+      savedGame: {
+        version: 2,
+        schema: z.object({ rung: z.int() }),
+        migrations: { 1: (data) => ({ rung: (data as { step: number }).step }) },
+      },
+    });
+    expect(storage.savedGame()).toEqual({ rung: 6 });
+  });
+
+  it("is just dropped when it can't be read, with no backup", () => {
+    const backend = createMemoryBackend({
+      "trivia.savedGame": JSON.stringify({ version: 1, data: { rung: "six" } }),
+    });
+    expect(open(backend).savedGame()).toBeUndefined();
+    expect(backend.keys()).toEqual([]);
+  });
+});
+
+describe("settings", () => {
+  it("has sound on by default", () => {
+    expect(open().muted()).toBe(false);
+  });
+
+  it("remembers the mute", () => {
+    const backend = createMemoryBackend();
+    open(backend).setMuted(true);
+    expect(open(backend).muted()).toBe(true);
+    open(backend).setMuted(false);
+    expect(open(backend).muted()).toBe(false);
+  });
+});
