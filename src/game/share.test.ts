@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { SITE_HOST } from "../site";
 import { shareResult } from "./share";
 import type { QuestionOutcome } from "./types";
 
@@ -71,5 +72,15 @@ describe("shareResult", () => {
       "TV Shows",
     );
     expect(text).toBe(["Trivia · TV Shows", "$0", "❌", "No lifelines", "trivia.jonstuebe.workers.dev/tv"].join("\n"));
+  });
+
+  it("links to the site address plus the Topic's path, for every kind of Topic", () => {
+    const linkFor = (topic: Parameters<typeof shareResult>[0]["topic"]) =>
+      shareResult({ topic, ending: "missed", winnings: 0, reached: ["miss"], lifelinesUsed: [] }, "Any").split("\n").at(-1);
+    // The site address is the workers.dev preview until Phase 7.
+    expect(SITE_HOST).toBe("trivia.jonstuebe.workers.dev");
+    expect(linkFor({ kind: "general" })).toBe(`${SITE_HOST}/general`);
+    expect(linkFor({ kind: "category", category: "movies" })).toBe(`${SITE_HOST}/movies`);
+    expect(linkFor({ kind: "title", category: "tv", slug: "friends" })).toBe(`${SITE_HOST}/tv/friends`);
   });
 });

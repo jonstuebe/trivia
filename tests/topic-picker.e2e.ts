@@ -14,6 +14,7 @@ test("the Topic picker lists each Category's Titles and Back returns to the Cate
 }) => {
   await app.open("/topics");
   await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+  await expect(screen.getByText("That topic isn't available.")).toHaveCount(0);
   await expect(screen.getByRole("link", /^General/)).toBeVisible();
   await expect(screen.getByRole("link", "TV Shows")).toBeVisible();
 
@@ -66,14 +67,50 @@ test("a shared Title link opens that Title's Ready to play", async ({ app, scree
   await checkA11y(browser, "Ready to play, from a shared link");
 });
 
-test("a link to a Topic the picker doesn't list goes to the Topic picker", async ({ app, screen, browser }) => {
-  await app.open("/tv/fixture-drama");
-  await expect(browser).toHaveURL("/topics");
-  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeVisible();
+test("a bad Title link opens the Topic picker with a note, gone after a refresh", async ({ app, screen, browser }) => {
+  // An unknown Title, and one below the picker's threshold.
+  for (const path of ["/tv/not-a-show", "/tv/fixture-drama"]) {
+    await app.open(path);
+    await expect(browser).toHaveURL("/topics");
+    await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+    await expect(screen.getByRole("status")).toHaveText("That topic isn't available.");
+  }
+  // Read out with the heading as it takes focus.
+  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toHaveAttribute("aria-describedby", /.+/);
+  await checkA11y(browser, "Topic picker with the unavailable note");
 
-  // TV has one listed Title, so no Mixed game.
-  await app.open("/tv");
-  await expect(browser).toHaveURL("/topics");
+  await browser.reload();
+  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+  await expect(screen.getByText("That topic isn't available.")).toHaveCount(0);
+});
+
+test("a bad Category link opens the Topic picker with a note, gone after moving on", async ({
+  app,
+  screen,
+  browser,
+}) => {
+  // An unknown Category, and one with too few listed Titles for a Mixed game.
+  for (const path of ["/books", "/tv"]) {
+    await app.open(path);
+    await expect(browser).toHaveURL("/topics");
+    await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+    await expect(screen.getByRole("status")).toHaveText("That topic isn't available.");
+  }
+  await checkA11y(browser, "Topic picker with the unavailable note");
+
+  await screen.getByRole("link", "Movies").tap();
+  await expect(screen.getByRole("heading", "Movies", { level: 1 })).toBeFocused();
+  await expect(screen.getByText("That topic isn't available.")).toHaveCount(0);
+  await screen.getByRole("button", "← Back").tap();
+  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+  await expect(screen.getByText("That topic isn't available.")).toHaveCount(0);
+
+  // Browser Back to the picker's first visit doesn't bring it back either.
+  await app.back();
+  await expect(screen.getByRole("heading", "Movies", { level: 1 })).toBeVisible();
+  await app.back();
+  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeVisible();
+  await expect(screen.getByText("That topic isn't available.")).toHaveCount(0);
 });
 
 test("a Topic runs out, shows Not enough new questions, and Reset this topic makes it playable again", async ({
