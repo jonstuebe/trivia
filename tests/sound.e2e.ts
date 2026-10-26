@@ -139,12 +139,13 @@ test("the suspense bed climbs by Tier, draws out through the reveal wait, carrie
   expect(await bedNow(browser)).toBeNull();
 });
 
-test("the bed stops on leaving the Game for the Main menu, and on a wrong answer's Game over", async ({ screen, browser }) => {
+test("the Tier bed gives way to the menu theme on leaving the Game for the Main menu, and stops on a wrong answer's Game over", async ({ screen, browser }) => {
   await startGame(browser, screen, "/tv/fixture-sitcom");
   await expect.poll(() => bedNow(browser)).toBe("tier1");
   await screen.getByRole("button", "Main menu").tap();
   await expect(screen.getByRole("button", "Resume: Fixture Sitcom, question 1")).toBeVisible();
-  expect(await bedNow(browser)).toBeNull();
+  // The Tier bed stops, and the menu theme takes over.
+  await expect.poll(() => bedNow(browser)).toBe("theme");
 
   await screen.getByRole("button", "Resume: Fixture Sitcom, question 1").tap();
   await expect(questionHeading(screen, 1)).toBeFocused();
@@ -154,4 +155,40 @@ test("the bed stops on leaving the Game for the Main menu, and on a wrong answer
   await screen.getByRole("button", "See result").tap();
   await expect(screen.getByRole("heading", "Wrong answer. Game over.", { level: 1 })).toBeFocused();
   expect(await bedNow(browser)).toBeNull();
+});
+
+test("the menu theme plays from the first tap through to Ready to play, stops for the Game and comes back on the Main menu", async ({
+  app,
+  screen,
+  browser,
+}) => {
+  await app.open("/");
+  // Nothing plays before the first tap or key press.
+  expect(await soundData(browser, "soundBed")).toBeNull();
+
+  await screen.getByRole("button", "Play").tap();
+  await expect(screen.getByRole("heading", "Pick a topic", { level: 1 })).toBeFocused();
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("theme");
+
+  await screen.getByRole("link", "TV Shows").tap();
+  await screen.getByRole("link", "Fixture Sitcom").tap();
+  await expect(browser).toHaveURL("/tv/fixture-sitcom");
+  expect(await soundData(browser, "soundBed")).toBe("theme");
+
+  // The mute on Ready to play stops it, and turning the mute off brings it back.
+  await soundSwitch(screen).tap();
+  await expectSound(screen, "off");
+  expect(await soundData(browser, "soundBed")).toBeNull();
+  await soundSwitch(screen).tap();
+  await expectSound(screen, "on");
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("theme");
+
+  await screen.getByRole("button", "Start").tap();
+  await expect(questionHeading(screen, 1)).toBeFocused();
+  // The Game's Tier bed replaces the theme, and the root doesn't stop it.
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("tier1");
+
+  await screen.getByRole("button", "Main menu").tap();
+  await expect(browser).toHaveURL("/");
+  await expect.poll(() => soundData(browser, "soundBed")).toBe("theme");
 });

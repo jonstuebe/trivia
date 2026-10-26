@@ -9,6 +9,8 @@
  * by adding it to `CUES` or `BEDS`.
  */
 
+import { theme } from "./theme";
+
 /** Where a cue plays: the engine's AudioContext, the node to connect to (the mute sits after it), and the time to start at. */
 export interface SoundOutput {
   context: BaseAudioContext;
@@ -223,9 +225,10 @@ function lockedInBed(tension: Tension): Bed {
 /**
  * The Tier beds (`tier1` to `tier5`) and their reveal-wait versions
  * (`tier1LockedIn` to `tier5LockedIn`). `gameBed` picks one for each step
- * of the Game. The menu theme adds its bed here too.
+ * of the Game, and the menu theme (`theme`, from theme.ts).
  */
 export const BEDS = {
+  theme,
   tier1: tierBed(TIER_TENSION[0]),
   tier2: tierBed(TIER_TENSION[1]),
   tier3: tierBed(TIER_TENSION[2]),
