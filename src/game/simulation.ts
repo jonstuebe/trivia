@@ -26,8 +26,8 @@ export function askTheAudience({ shown, remaining = ALL_POSITIONS, random }: Sim
   const positions = checkRemaining(shown, remaining);
   const leader =
     random.next() < RIGHT_ODDS[shown.question.tier]
-    ? shown.correct
-    : pickOne(positions.filter((position) => position !== shown.correct), random);
+      ? shown.correct
+      : pickOne(positions.filter((position) => position !== shown.correct), random);
 
   // The lead's share above an even split shrinks with the Tier; a little jitter keeps votes from looking canned.
   const even = 100 / positions.length;
