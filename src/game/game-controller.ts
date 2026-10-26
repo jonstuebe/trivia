@@ -2,7 +2,7 @@ import type { Random } from "../random/random";
 import type { DeviceStorage } from "../storage";
 import { loadTopic } from "./load-topic";
 import { saveGame, startGame, type GameActor, type GameEvent, type SavedGameSnapshot } from "./machine";
-import { drawGame } from "./selection";
+import { canFillGame, drawGame } from "./selection";
 import type { GameResult, Topic } from "./types";
 
 /**
@@ -81,6 +81,20 @@ export function createGameController({ storage, random }: GameControllerOptions)
   }
 
   return {
+    /**
+     * The run-out check, for Ready to play: whether the Topic can fill a whole
+     * Game with unseen Questions. When it can't, show Not enough new
+     * questions; a Game can still start, with repeats.
+     */
+    async checkTopic(topic: Topic): Promise<{ enoughNew: boolean }> {
+      return { enoughNew: canFillGame(await loadTopic(topic), storage.seenQuestions()) };
+    },
+
+    /** Reset this topic: clears the seen entries for its Questions, every Title's for a Category. */
+    async resetTopic(topic: Topic): Promise<void> {
+      storage.resetTopic((await loadTopic(topic)).map((question) => question.id));
+    },
+
     /**
      * Starts a new Game in `topic`, drawing unseen Questions first, then
      * repeats oldest-seen first. Discards any Saved game: it doesn't count

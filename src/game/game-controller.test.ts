@@ -117,6 +117,55 @@ describe("every Lifeline", () => {
   });
 });
 
+describe("a Topic running out", () => {
+  it("has enough new Questions until a Game has shown them, then still plays, repeats oldest-seen first", async () => {
+    // General's fixture has exactly 3 Questions per Tier: one whole Game.
+    const { storage, controller } = aDevice();
+    expect(await controller.checkTopic(general)).toEqual({ enoughNew: true });
+
+    const first = await controller.startGame(general);
+    climbTo(first, 15);
+    answer(first, current(first).correct);
+    expect(await controller.checkTopic(general)).toEqual({ enoughNew: false });
+
+    const firstOrder = first.snapshot().context.questions.map((q) => q.question.id);
+    const repeat = await controller.startGame(general);
+    const repeatIds = repeat.snapshot().context.questions.map((q) => q.question.id);
+    // Within each Tier, the oldest-seen comes first: the order the first Game showed them.
+    expect(repeatIds).toEqual(firstOrder);
+    expect(storage.seenQuestions()[repeatIds[0]!]).toBeGreaterThan(storage.seenQuestions()[repeatIds[1]!]!);
+  });
+
+  it("has enough new Questions again after Reset this topic, which clears only its own", async () => {
+    const { storage, controller } = aDevice();
+    const game = await controller.startGame(general);
+    climbTo(game, 15);
+    answer(game, current(game).correct);
+    storage.markSeen("notgen01");
+
+    await controller.resetTopic(general);
+
+    expect(await controller.checkTopic(general)).toEqual({ enoughNew: true });
+    expect(storage.seenQuestions()).toEqual({ notgen01: 16 });
+  });
+
+  it("for a Category, resets every Title in it", async () => {
+    const { storage, controller } = aDevice();
+    const sitcom: Topic = { kind: "title", category: "tv", slug: "fixture-sitcom" };
+    for (let i = 0; i < 2; i++) {
+      const game = await controller.startGame(tvShows);
+      climbTo(game, 15);
+      answer(game, current(game).correct);
+    }
+    expect(await controller.checkTopic(sitcom)).toEqual({ enoughNew: false });
+
+    await controller.resetTopic(tvShows);
+
+    expect(storage.seenQuestions()).toEqual({});
+    expect(await controller.checkTopic(sitcom)).toEqual({ enoughNew: true });
+  });
+});
+
 describe("a missed Game", () => {
   it("missing question 5, just before the first Safe level, leaves with $0", async () => {
     const { storage, controller } = aDevice();
