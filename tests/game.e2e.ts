@@ -164,7 +164,10 @@ test("a finished Game doesn't come back: Back from Game over, then forward to th
 
   await app.back();
   await expect(browser).toHaveURL("/tv/fixture-sitcom");
-  await browser.evaluate(() => history.forward());
+  await browser.evaluate(() => {
+    history.forward();
+    return null;
+  });
   await expect(browser).toHaveURL("/");
   await expect(screen.getByRole("heading", "Trivia", { level: 1 })).toBeFocused();
 });
