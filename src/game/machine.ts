@@ -1,4 +1,4 @@
-import { assign, createActor, setup, type Actor } from "xstate";
+import { assign, createActor, setup, type Actor, type Snapshot, type StateValueFrom } from "xstate";
 import { shuffle, type Random } from "../random/random";
 import { LADDER_LENGTH, prizeForRung, winningsAfterMiss, winningsBeforeRung } from "./ladder";
 import type {
@@ -78,6 +78,7 @@ export const gameMachine = setup({
     input: {} as GameInput,
     context: {} as GameContext,
     events: {} as GameEvent,
+    output: {} as GameResult,
   },
   guards: {
     pickedRight: ({ context }) => context.picked === context.questions[context.rung - 1]!.correct,
@@ -152,5 +153,26 @@ export function startGame(input: GameInput): GameActor {
     throw new RangeError(`A Game needs ${LADDER_LENGTH} Questions, got ${input.questions.length}`);
   }
   return createActor(gameMachine, { input }).start();
+}
+
+/**
+ * A Game as plain JSON-safe data: its step in `value`, everything else in
+ * `context`, and `status`/`output` once finished. Save it as is; it restores
+ * with `restoreGame`.
+ */
+export type SavedGameSnapshot = Snapshot<GameResult> & {
+  value: StateValueFrom<typeof gameMachine>;
+  context: GameContext;
+};
+
+/** The Game's state now, ready to save. */
+export function saveGame(game: GameActor): SavedGameSnapshot {
+  return game.getPersistedSnapshot() as SavedGameSnapshot;
+}
+
+/** Picks a saved Game back up exactly where it was. */
+export function restoreGame(saved: SavedGameSnapshot): GameActor {
+  // The snapshot already holds the context, so the input is never read.
+  return createActor(gameMachine, { snapshot: saved, input: undefined as never }).start();
 }
 

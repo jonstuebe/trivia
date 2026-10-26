@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createSeededRandom } from "../random/random";
 import type { Tier } from "../content/schema";
-import { startGame, type GameActor } from "./machine";
+import { restoreGame, saveGame, startGame, type GameActor, type SavedGameSnapshot } from "./machine";
 import type { AnswerPosition, GameQuestion, Topic } from "./types";
 
 const topic: Topic = { kind: "general" };
@@ -195,6 +195,30 @@ describe("Walk away", () => {
     game.send({ type: "pick", answer: 0 });
     game.send({ type: "walkAway" });
     expect(game.getSnapshot().value).toBe("confirmingAnswer");
+  });
+});
+
+describe("saving and restoring a Game", () => {
+  it("round-trips through JSON as plain data and plays on from where it was", () => {
+    const game = newGame(3);
+    climbTo(game, 6);
+    const saved = JSON.parse(JSON.stringify(saveGame(game))) as SavedGameSnapshot;
+
+    const restored = restoreGame(saved);
+    expect(restored.getSnapshot().value).toBe("choosing");
+    expect(restored.getSnapshot().context).toEqual(game.getSnapshot().context);
+
+    answer(restored, aWrongAnswer(restored));
+    restored.send({ type: "next" });
+    expect(restored.getSnapshot().output).toMatchObject({ ending: "missed", winnings: 1_000 });
+  });
+
+  it("keeps the step within a question", () => {
+    const game = newGame();
+    climbTo(game, 2);
+    game.send({ type: "walkAway" });
+    const restored = restoreGame(JSON.parse(JSON.stringify(saveGame(game))) as SavedGameSnapshot);
+    expect(restored.getSnapshot().value).toBe("confirmingWalkAway");
   });
 });
 
