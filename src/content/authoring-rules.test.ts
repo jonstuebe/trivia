@@ -25,7 +25,7 @@ describe("no duplicate prompts", () => {
     expect(errors).toEqual([
       {
         file: "movies/pixar.json",
-        question: `${again.id} (question 1)`,
+        question: { id: again.id, position: 1 },
         message: "the prompt repeats the one in tv/friends.json, question 2",
       },
     ]);
@@ -40,7 +40,7 @@ describe("no duplicate prompts", () => {
     expect(errors).toEqual([
       {
         file: "tv/friends.json",
-        question: `${again.id} (question 2)`,
+        question: { id: again.id, position: 2 },
         message: "the prompt repeats the one in tv/friends.json, question 1",
       },
     ]);
@@ -62,7 +62,7 @@ describe("the four answers are all different", () => {
     const repeated = question({ correct: "Ross", wrong: ["Joey", "ross.", "Chandler"] });
     const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [repeated] } }]);
     expect(errors).toEqual([
-      { file: "tv/friends.json", question: `${repeated.id} (question 1)`, message: 'the answers must all be different: "ross." repeats "Ross"' },
+      { file: "tv/friends.json", question: { id: repeated.id, position: 1 }, message: 'the answers must all be different: "ross." repeats "Ross"' },
     ]);
   });
 
@@ -70,7 +70,7 @@ describe("the four answers are all different", () => {
     const repeated = question({ correct: "Ross", wrong: ["Joey", "Chandler", "JOEY"] });
     const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [repeated] } }]);
     expect(errors).toEqual([
-      { file: "tv/friends.json", question: `${repeated.id} (question 1)`, message: 'the answers must all be different: "JOEY" repeats "Joey"' },
+      { file: "tv/friends.json", question: { id: repeated.id, position: 1 }, message: 'the answers must all be different: "JOEY" repeats "Joey"' },
     ]);
   });
 });
@@ -85,7 +85,7 @@ describe("length limits", () => {
     const long = question({ prompt: `${"a".repeat(120)}?` });
     const { errors } = checkContent([{ path: "tv/friends.json", data: { title: "Friends", questions: [long] } }]);
     expect(errors).toEqual([
-      { file: "tv/friends.json", question: `${long.id} (question 1)`, message: "the prompt is 121 characters, over the limit of 120" },
+      { file: "tv/friends.json", question: { id: long.id, position: 1 }, message: "the prompt is 121 characters, over the limit of 120" },
     ]);
   });
 
@@ -109,7 +109,7 @@ describe("no Title name in a TV or Movies prompt", () => {
     const named = question({ prompt: "In the first Star Wars film, who is Luke's father?" });
     const { errors } = checkContent([{ path: "movies/star-wars.json", data: { title: "Star Wars", questions: [named] } }]);
     expect(errors).toEqual([
-      { file: "movies/star-wars.json", question: `${named.id} (question 1)`, message: 'the prompt names its own Title, "Star Wars"' },
+      { file: "movies/star-wars.json", question: { id: named.id, position: 1 }, message: 'the prompt names its own Title, "Star Wars"' },
     ]);
   });
 

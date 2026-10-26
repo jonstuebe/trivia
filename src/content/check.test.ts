@@ -61,7 +61,7 @@ describe("checking across Topic files", () => {
     expect(errors).toEqual([
       {
         file: "movies/pixar.json",
-        question: `${shared.id} (question 2)`,
+        question: { id: shared.id, position: 2 },
         message: `ID ${shared.id} is already used in tv/friends.json, question 1`,
       },
     ]);
@@ -75,7 +75,7 @@ describe("checking across Topic files", () => {
     expect(errors).toEqual([
       {
         file: "tv/friends.json",
-        question: `${shared.id} (question 3)`,
+        question: { id: shared.id, position: 3 },
         message: `ID ${shared.id} is already used in tv/friends.json, question 1`,
       },
     ]);

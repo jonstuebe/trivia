@@ -72,18 +72,18 @@ describe("rejecting a broken Question", () => {
     expect(errors.length).toBeGreaterThan(0);
     for (const error of errors) {
       expect(error.file).toBe("movies/jurassic-park.json");
-      expect(error.question).toMatch(/question 2\)?$/);
+      expect(error.question?.position).toBe(2);
     }
   });
 
   it("names the Question by its ID when it has one", () => {
     expect(errorsFor({ tier: 9 })).toEqual([
-      { file: "movies/jurassic-park.json", question: "k3p9x2qa (question 2)", message: "tier: must be 1, 2, 3, 4 or 5" },
+      { file: "movies/jurassic-park.json", question: { id: "k3p9x2qa", position: 2 }, message: "tier: must be 1, 2, 3, 4 or 5" },
     ]);
   });
 
   it("names the Question by position when its ID is missing", () => {
-    expect(errorsFor({ id: undefined }).map((e) => e.question)).toEqual(["question 2"]);
+    expect(errorsFor({ id: undefined }).map((e) => e.question)).toEqual([{ position: 2 }]);
   });
 
   it("says which field is wrong", () => {
@@ -105,7 +105,7 @@ describe("General Questions and Subjects", () => {
     expect(parseTopicFile("general.json", { questions: [question()] })).toEqual({
       ok: false,
       errors: [
-        { file: "general.json", question: "k3p9x2qa (question 1)", message: expect.stringMatching(/^subject: /) },
+        { file: "general.json", question: { id: "k3p9x2qa", position: 1 }, message: expect.stringMatching(/^subject: /) },
       ],
     });
   });
@@ -148,8 +148,11 @@ describe("Topic file details and paths", () => {
 describe("formatting an error", () => {
   it("names the file and the Question in one line", () => {
     expect(
-      formatContentError({ file: "tv/friends.json", question: "k3p9x2qa (question 4)", message: "tier: bad" }),
+      formatContentError({ file: "tv/friends.json", question: { id: "k3p9x2qa", position: 4 }, message: "tier: bad" }),
     ).toBe("tv/friends.json, k3p9x2qa (question 4): tier: bad");
+    expect(formatContentError({ file: "tv/friends.json", question: { position: 2 }, message: "id: missing" })).toBe(
+      "tv/friends.json, question 2: id: missing",
+    );
     expect(formatContentError({ file: "tv/friends.json", message: "title: missing" })).toBe(
       "tv/friends.json: title: missing",
     );

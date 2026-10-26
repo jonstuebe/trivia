@@ -24,7 +24,7 @@ describe("the long-answer warning", () => {
     expect(reportContent(title([q])).warnings).toEqual([
       {
         file: "tv/friends.json",
-        question: `${q.id} (question 1)`,
+        question: { id: q.id, position: 1 },
         message: "the right answer (19 characters) is much longer than the longest wrong one (10), which gives it away",
       },
     ]);
@@ -122,7 +122,7 @@ describe("printing the report", () => {
         },
         { file: "tv/the-big-bang-theory.json", name: "The Big Bang Theory", tiers: counts(1, 0, 2, 0, 0) },
       ],
-      warnings: [{ file: "tv/the-big-bang-theory.json", question: "abcd1234 (question 2)", message: "too long" }],
+      warnings: [{ file: "tv/the-big-bang-theory.json", question: { id: "abcd1234", position: 2 }, message: "too long" }],
     };
     expect(formatReport(report)).toBe(
       [

@@ -1,4 +1,4 @@
-import type { ContentError, TopicFile } from "./schema";
+import { describeQuestion, type ContentError, type TopicFile } from "./schema";
 
 /**
  * The Question authoring rules that fail the build (issue #9, "Build
@@ -21,12 +21,13 @@ export function checkAuthoringRules(topics: readonly CheckedTopic[]): ContentErr
     const namesTitle = title === null ? null : wholePhrase(title);
 
     topic.questions.forEach(({ id, prompt, correct, wrong }, i) => {
-      const fail = (message: string) => errors.push({ file: path, question: `${id} (question ${i + 1})`, message });
+      const position = i + 1;
+      const fail = (message: string) => errors.push({ file: path, question: { id, position }, message });
 
       const key = normalize(prompt);
       const earlier = firstPrompt.get(key);
       if (earlier) fail(`the prompt repeats the one in ${earlier}`);
-      else firstPrompt.set(key, `${path}, question ${i + 1}`);
+      else firstPrompt.set(key, `${path}, ${describeQuestion({ position })}`);
 
       if (namesTitle?.test(prompt)) fail(`the prompt names its own Title, "${title}"`);
 

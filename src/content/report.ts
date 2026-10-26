@@ -116,7 +116,7 @@ function longAnswerWarnings(file: string, topic: TopicFile): ContentWarning[] {
     return [
       {
         file,
-        question: `${id} (question ${i + 1})`,
+        question: { id, position: i + 1 },
         message: `the right answer (${correct.length} characters) is much longer than the longest wrong one (${longestWrong}), which gives it away`,
       },
     ];

@@ -72,7 +72,7 @@ describe("checking a content folder", () => {
         warnings: [
           {
             file: "tv/fixture-title.json",
-            question: "fx7g8h9i (question 3)",
+            question: { id: "fx7g8h9i", position: 3 },
             message: "the right answer (15 characters) is much longer than the longest wrong one (10), which gives it away",
           },
         ],

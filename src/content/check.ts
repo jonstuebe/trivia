@@ -1,5 +1,5 @@
 import { checkAuthoringRules, type CheckedTopic } from "./authoring-rules";
-import { TIERS, parseTopicFile, type ContentError, type Question, type Tier, type TopicFile } from "./schema";
+import { TIERS, describeQuestion, parseTopicFile, type ContentError, type Question, type Tier, type TopicFile } from "./schema";
 
 /** A Topic file as read from disk: its path inside the content folder and its parsed JSON. */
 export interface ContentFile {
@@ -55,10 +55,11 @@ export function checkContent(files: readonly ContentFile[]): ContentCheckResult 
       continue;
     }
     result.topic.questions.forEach(({ id }, i) => {
-      const where = `${path}, question ${i + 1}`;
+      const position = i + 1;
+      const where = `${path}, ${describeQuestion({ position })}`;
       const earlier = firstUse.get(id);
       if (earlier) {
-        errors.push({ file: path, question: `${id} (question ${i + 1})`, message: `ID ${id} is already used in ${earlier}` });
+        errors.push({ file: path, question: { id, position }, message: `ID ${id} is already used in ${earlier}` });
       } else {
         firstUse.set(id, where);
       }

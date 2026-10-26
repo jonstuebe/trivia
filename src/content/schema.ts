@@ -69,9 +69,15 @@ export type TopicFile =
 export interface ContentError {
   /** The file's path inside the content folder, like `tv/friends.json`. */
   file: string;
-  /** The Question at fault, by ID when it has one, otherwise by its position. */
-  question?: string;
+  /** The Question at fault, when the error is about one. */
+  question?: QuestionRef;
   message: string;
+}
+
+/** Which Question in a Topic file: its position, counting from 1, and its ID when it has a usable one. */
+export interface QuestionRef {
+  id?: string;
+  position: number;
 }
 
 export type ParseResult = { ok: true; topic: TopicFile } | { ok: false; errors: ContentError[] };
@@ -113,22 +119,27 @@ function toContentErrors(file: string, data: unknown, error: z.ZodError): Conten
     const [first, index, ...rest] = issue.path;
     if (first === "questions" && typeof index === "number") {
       const field = rest.length > 0 ? `${rest.join(".")}: ` : "";
-      return { file, question: describeQuestion(data, index), message: `${field}${issue.message}` };
+      return { file, question: questionAt(data, index), message: `${field}${issue.message}` };
     }
     const field = issue.path.length > 0 ? `${issue.path.join(".")}: ` : "";
     return { file, message: `${field}${issue.message}` };
   });
 }
 
-/** Names a Question by its ID if it has a usable one, otherwise by its position. */
-function describeQuestion(data: unknown, index: number): string {
+/** The Question at `index` in the raw file data, with its ID if it has a usable one. */
+function questionAt(data: unknown, index: number): QuestionRef {
   const questions = (data as { questions?: unknown } | null)?.questions;
   const id = Array.isArray(questions) ? (questions[index] as { id?: unknown } | null)?.id : undefined;
-  const position = `question ${index + 1}`;
-  return typeof id === "string" && id.length > 0 ? `${id} (${position})` : position;
+  const position = index + 1;
+  return typeof id === "string" && id.length > 0 ? { id, position } : { position };
+}
+
+/** Names a Question for a person: by its ID and position, like `k3p9x2qa (question 4)`, or by position alone. */
+export function describeQuestion({ id, position }: QuestionRef): string {
+  return id === undefined ? `question ${position}` : `${id} (question ${position})`;
 }
 
 /** One line for a person reading the check's output. */
 export function formatContentError({ file, question, message }: ContentError): string {
-  return question ? `${file}, ${question}: ${message}` : `${file}: ${message}`;
+  return question ? `${file}, ${describeQuestion(question)}: ${message}` : `${file}: ${message}`;
 }
