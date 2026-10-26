@@ -144,3 +144,37 @@ describe("phoneAFriend", () => {
     for (const tier of [1, 2, 3, 4] as const) expect(calls(tier, 7, 500).some((c) => c.guessing)).toBe(false);
   });
 });
+
+describe("the audience and Friend together", () => {
+  it("roll independently, so over 10,000 Tier 5 Questions they agree on being right only by chance", () => {
+    const random = createSeededRandom(8);
+    const rolls = 10_000;
+    let bothRight = 0;
+    for (let i = 0; i < rolls; i++) {
+      const shown = shownQuestion(5, 0, "science");
+      const { votes } = askTheAudience({ shown, random });
+      const { answer } = phoneAFriend({ shown, friend: "sports", random });
+      if (votes[0] === Math.max(...votes) && answer === 0) bothRight++;
+    }
+    // Audience 40% times off-Subject Friend 30%.
+    expect(Math.abs(bothRight / rolls - 0.4 * 0.3)).toBeLessThan(0.02);
+  });
+
+  it("give plain data that survives being saved, and the same seed gives the same result", () => {
+    const shown = shownQuestion(4, 1);
+    const roll = (seed: number) => {
+      const random = createSeededRandom(seed);
+      return { audience: askTheAudience({ shown, random }), friend: phoneAFriend({ shown, friend: "history", random }) };
+    };
+    const result = roll(42);
+    expect(JSON.parse(JSON.stringify(result))).toEqual(result);
+    expect(roll(42)).toEqual(result);
+  });
+
+  it("reject answers left that leave out the right one or repeat one", () => {
+    const random = createSeededRandom(1);
+    const shown = shownQuestion(1, 2);
+    expect(() => askTheAudience({ shown, remaining: [0, 1], random })).toThrow(RangeError);
+    expect(() => phoneAFriend({ shown, remaining: [2, 2], friend: "history", random })).toThrow(RangeError);
+  });
+});
