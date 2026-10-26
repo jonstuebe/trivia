@@ -1,12 +1,13 @@
 import { join } from "node:path";
 import { createServer } from "vite";
 import { describe, expect, it } from "vitest";
+import type { TopicFileLoaders } from "./topic-file-loaders";
 import type { TopicIndex } from "./types";
 
 const root = join(import.meta.dirname, "../..");
 
-/** The topic index the app sees when Vite runs in this mode, as the build would bundle it. */
-async function appTopicIndex(mode: string): Promise<TopicIndex> {
+/** One of the app's modules as Vite runs it in this mode, as the build would bundle it. */
+async function appModule(mode: string, path: string): Promise<Record<string, unknown>> {
   const server = await createServer({
     root,
     configFile: join(root, "vite.config.ts"),
@@ -16,11 +17,19 @@ async function appTopicIndex(mode: string): Promise<TopicIndex> {
     server: { middlewareMode: true, hmr: false, ws: false, watch: null },
   });
   try {
-    const module = await server.ssrLoadModule("/src/content/topic-index.ts");
-    return module.topicIndex as TopicIndex;
+    return await server.ssrLoadModule(path);
   } finally {
     await server.close();
   }
+}
+
+async function appTopicIndex(mode: string): Promise<TopicIndex> {
+  return (await appModule(mode, "/src/content/topic-index.ts")).topicIndex as TopicIndex;
+}
+
+async function appTopicFilePaths(mode: string): Promise<string[]> {
+  const { topicFiles } = await appModule(mode, "/src/content/topic-files.ts");
+  return Object.keys(topicFiles as TopicFileLoaders).sort();
 }
 
 describe("the test build", () => {
@@ -31,9 +40,20 @@ describe("the test build", () => {
     expect(index.general).not.toBeNull();
   });
 
+  it("loads the fixture Topic files in fixtures mode", async () => {
+    expect(await appTopicFilePaths("fixtures")).toEqual([
+      "general.json",
+      "movies/fixture-heist.json",
+      "movies/fixture-saga.json",
+      "tv/fixture-drama.json",
+      "tv/fixture-sitcom.json",
+    ]);
+  });
+
   it("uses the real content in a normal build, even before there is any", async () => {
     const index = await appTopicIndex("production");
     expect(index.tv.some((title) => title.slug.startsWith("fixture-"))).toBe(false);
     expect(index.movies.some((title) => title.slug.startsWith("fixture-"))).toBe(false);
+    expect((await appTopicFilePaths("production")).some((path) => path.includes("fixture"))).toBe(false);
   });
 });
