@@ -10,6 +10,17 @@ import type { ContentError } from "./schema";
  * other file in the wrong place is reported. Throws if the folder is missing.
  */
 export async function checkContentDir(dir: string): Promise<ContentCheckResult> {
+  const { files, errors: unreadable } = await readContentDir(dir);
+  const result = checkContent(files);
+  return { index: result.index, errors: [...unreadable, ...result.errors] };
+}
+
+/**
+ * Reads every file in a content folder from disk without checking it, for
+ * `checkContent` and `reportContent`. A file that isn't valid JSON comes back
+ * as an error instead. Hidden files are skipped. Throws if the folder is missing.
+ */
+export async function readContentDir(dir: string): Promise<{ files: ContentFile[]; errors: ContentError[] }> {
   const entries = await readdir(dir, { recursive: true, withFileTypes: true });
   const paths = entries
     .filter((entry) => entry.isFile())
@@ -31,7 +42,5 @@ export async function checkContentDir(dir: string): Promise<ContentCheckResult> 
       unreadable.push({ file: path, message: `not valid JSON: ${(error as Error).message}` });
     }
   }
-
-  const result = checkContent(files);
-  return { index: result.index, errors: [...unreadable, ...result.errors] };
+  return { files, errors: unreadable };
 }
