@@ -1,11 +1,8 @@
-import { shownNow, type GameActor } from "../game/machine";
+import { shownNow, type GameSnapshot } from "../game/machine";
 import { LADDER_LENGTH, prizeForRung, winningsAfterMiss, winningsBeforeRung } from "../game/ladder";
 import { ANSWER_POSITIONS, type AnswerPosition } from "../game/types";
 import type { AnswerMark } from "../ui/lozenge";
 import { formatMoney } from "../ui/money";
-
-/** A Game's snapshot, as `PlayingGame.snapshot()` gives it. */
-export type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
 
 /**
  * What the Game screen shows for a snapshot, worked out from the Game alone

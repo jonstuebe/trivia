@@ -1,11 +1,5 @@
 import type { Bed } from "./cues";
-
-/**
- * A note's frequency from its distance in semitones from A4, as `semitones`
- * in cues.ts. Kept here because cues.ts imports this file for `BEDS`, and
- * a value imported back from it could be read before it's defined.
- */
-const semitones = (fromA4: number) => 440 * 2 ** (fromA4 / 12);
+import { semitones } from "./pitch";
 
 /**
  * The menu theme: an original eight-second loop in D minor, in the spirit of

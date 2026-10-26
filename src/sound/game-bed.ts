@@ -1,8 +1,6 @@
-import type { GameActor } from "../game/machine";
+import type { GameSnapshot } from "../game/machine";
 import { tierForRung } from "../game/ladder";
 import type { BedName } from "./cues";
-
-type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
 
 /**
  * The bed a Game wants at this step: the Tier bed for the Rung under each

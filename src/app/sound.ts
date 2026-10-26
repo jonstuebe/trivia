@@ -24,15 +24,22 @@ export const sound = createSoundEngine({
 const GESTURES = ["keydown", "mousedown", "pointerdown", "pointerup", "touchend"] as const;
 
 /**
- * Starts the sound on the first tap or key press, and shows what's playing
- * on `<html>` as data attributes: `data-sound` ("on" or "off"),
- * `data-sound-cues` (how many cues have played), `data-sound-last-cue` and
- * `data-sound-bed`. The page can't be heard in the e2e journeys, so they
- * check these instead.
+ * Written out rather than compared with `FIXTURE_MODE`, so the real build
+ * folds the check to false and drops `showOn` (as beacon.ts does).
+ */
+const FIXTURE_BUILD = import.meta.env.MODE === "fixtures";
+
+/**
+ * Starts the sound on the first tap or key press. In the test build it also
+ * shows what's playing on `<html>` as data attributes: `data-sound` ("on"
+ * or "off"), `data-sound-cues` (how many cues have played),
+ * `data-sound-last-cue` and `data-sound-bed`. The page can't be heard in the
+ * e2e journeys, so they check these instead.
  */
 export function startSound(): void {
   const unlock = () => sound.unlock();
   for (const type of GESTURES) window.addEventListener(type, unlock, { capture: true, passive: true });
+  if (!FIXTURE_BUILD) return;
   const show = () => showOn(document.documentElement, sound.state());
   sound.subscribe(show);
   show();

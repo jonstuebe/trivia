@@ -1,7 +1,6 @@
-import type { GameActor } from "../game/machine";
+import { friendCallLanded, type GameSnapshot } from "../game/machine";
+import { LADDER_LENGTH } from "../game/ladder";
 import type { CueName } from "./cues";
-
-type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
 
 /**
  * The cues one step of a Game asks for, from the step before it and the one
@@ -10,10 +9,10 @@ type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
  * moment here.
  *
  * - "Final answer" locks in: from confirming the answer into the reveal wait.
- * - The reveal, after the wait: out of the wait into right or wrong.
- * - Walk away, once it's confirmed, and the million, on moving on from the
- *   last right answer: into the end of the Game. A miss ends the Game
- *   quietly, since its wrong sting has already played.
+ * - The reveal, after the wait: out of the wait into right or wrong. The
+ *   last right answer plays the million in place of right.
+ * - Walk away, once it's confirmed: into the end of the Game. A win or a
+ *   miss ends the Game quietly, since its sting has already played.
  * - Ask the Audience's vote and the phone ringing for Phone a Friend: as the
  *   audience's vote or the Friend's call arrives. Switch the Question clears
  *   both, silently.
@@ -21,14 +20,14 @@ type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
 export function gameCues(previous: GameSnapshot, next: GameSnapshot): CueName[] {
   const cues: CueName[] = [];
   if (previous.matches("confirmingAnswer") && next.matches("lockedIn")) cues.push("lockIn");
-  if (previous.matches("lockedIn") && next.matches({ revealing: "right" })) cues.push("right");
+  if (previous.matches("lockedIn") && next.matches({ revealing: "right" })) {
+    cues.push(next.context.rung === LADDER_LENGTH ? "million" : "right");
+  }
   if (previous.matches("lockedIn") && next.matches({ revealing: "wrong" })) cues.push("wrong");
-  if (!previous.matches("finished") && next.matches("finished")) {
-    const ending = next.context.result?.ending;
-    if (ending === "walkedAway") cues.push("walkAway");
-    if (ending === "won") cues.push("million");
+  if (!previous.matches("finished") && next.matches("finished") && next.context.result?.ending === "walkedAway") {
+    cues.push("walkAway");
   }
   if (!previous.context.audience && next.context.audience) cues.push("audienceVote");
-  if (!previous.context.friend && next.context.friend) cues.push("phoneRing");
+  if (friendCallLanded(previous, next)) cues.push("phoneRing");
   return cues;
 }

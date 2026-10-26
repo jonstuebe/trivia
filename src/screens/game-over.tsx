@@ -7,9 +7,9 @@ import { shownNow } from "../game/machine";
 import { topicRoute } from "../game/topic";
 import { Button } from "../ui/lozenge";
 import { ScreenHeading } from "../ui/screen-heading";
-import { MuteButton } from "./mute-button";
+import { SoundSwitch } from "./sound-switch";
 import { gameOverView, shareNote } from "./game-over-view";
-import type { GameSnapshot } from "./game-view";
+import type { GameSnapshot } from "../game/machine";
 
 /**
  * Game over: how it ended, the correct answer after a miss, the winnings,
@@ -52,7 +52,7 @@ export function GameOverScreen({ over, snapshot }: { over: GameOver; snapshot: G
           Main menu
         </Button>
       </div>
-      <MuteButton />
+      <SoundSwitch />
     </main>
   );
 }

@@ -1,9 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type { Tier } from "../content/schema";
-import { startGame, type GameActor } from "../game/machine";
+import { startGame, type GameActor, type GameSnapshot } from "../game/machine";
 import type { AnswerPosition, GameQuestion } from "../game/types";
 import { createSeededRandom } from "../random/random";
-import type { GameSnapshot } from "../screens/game-view";
 import { gameCues } from "./game-cues";
 
 function fifteenQuestions(): GameQuestion[] {
@@ -96,16 +95,16 @@ describe("the Game's sound cues", () => {
     expect(cues).toEqual(["walkAway"]);
   });
 
-  it("play the million's sting on moving on from the last right answer", () => {
+  it("play the million's sting in place of the right one when the last right answer is revealed", () => {
     const game = newGame();
     playRight(game, 14);
-    const cues = cuesWhile(game, (send) => {
+    const atReveal = cuesWhile(game, (send) => {
       send({ type: "pick", answer: correct(game) });
       send({ type: "finalAnswer" });
       send({ type: "reveal" });
-      send({ type: "next" });
     });
-    expect(cues).toEqual(["lockIn", "right", "million"]);
+    expect(atReveal).toEqual(["lockIn", "million"]);
+    expect(cuesWhile(game, (send) => send({ type: "next" }))).toEqual([]);
     expect(game.getSnapshot().status).toBe("done");
   });
 

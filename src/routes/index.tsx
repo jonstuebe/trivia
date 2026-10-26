@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useId, useState } from "react";
 import { storage } from "../app/game-services";
 import { mainMenuView } from "../screens/main-menu-view";
-import { MuteButton } from "../screens/mute-button";
+import { SoundSwitch } from "../screens/sound-switch";
 import { SITE_TAGLINE } from "../site";
 import { Dialog } from "../ui/dialog";
 import { Button } from "../ui/lozenge";
@@ -72,7 +72,7 @@ function MainMenu() {
       <Link className="link-quiet" to="/privacy">
         Privacy
       </Link>
-      <MuteButton />
+      <SoundSwitch />
 
       {confirmingReset && (
         <Dialog

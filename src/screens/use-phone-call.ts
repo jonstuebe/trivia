@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { PlayingGame } from "../game/game-controller";
-import { CALL_WAIT } from "./lifelines-view";
+import { friendCallLanded } from "../game/machine";
+import { CALL_WAIT } from "../game/reveal-wait";
 
 /**
  * Whether the phone is still ringing on the Friend just called: true for
@@ -15,7 +16,7 @@ export function usePhoneCall(game: PlayingGame): boolean {
     let previous = game.snapshot();
     const unsubscribe = game.subscribe(() => {
       const next = game.snapshot();
-      if (!previous.context.friend && next.context.friend) {
+      if (friendCallLanded(previous, next)) {
         setCalling(true);
         window.clearTimeout(timer);
         timer = window.setTimeout(() => setCalling(false), CALL_WAIT);

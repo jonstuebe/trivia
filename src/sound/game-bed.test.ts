@@ -56,7 +56,7 @@ function climbTo(game: GameActor, rung: number): void {
   }
 }
 
-describe("the Game's suspense bed", () => {
+describe("the Game's Tier bed", () => {
   it("climbs a Tier every three Rungs", () => {
     const game = newGame();
     const beds: string[] = [];

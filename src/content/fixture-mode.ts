@@ -8,3 +8,11 @@
  * so app code can check `import.meta.env.MODE` against it too.
  */
 export const FIXTURE_MODE = "fixtures";
+
+/**
+ * The test build's switch for instant reveals: while this localStorage key
+ * is "on", the reveal wait is 0 (see `revealWaitHere`), so the e2e journeys
+ * that climb the Ladder stay fast. tests/support/engine.ts sets it on every
+ * page; `realRevealWait` clears it to time the real wait.
+ */
+export const INSTANT_REVEAL_KEY = "trivia.fixtures.instantReveal";

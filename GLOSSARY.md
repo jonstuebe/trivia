@@ -46,6 +46,14 @@ _Avoid_: Quit, cash out, forfeit
 A once-per-Game aid: 50:50, Ask the Audience, Phone a Friend or Switch the Question.
 _Avoid_: Power-up, hint, help
 
+**Locked in**:
+An answer confirmed with Final answer, held through the Reveal wait while nothing else can be played.
+_Avoid_: Submitted, committed
+
+**Reveal wait**:
+The pause between Final answer and right or wrong showing, longer at each Tier. It can't be skipped.
+_Avoid_: Delay, suspense pause
+
 ## Questions
 
 **Question**:
@@ -71,6 +79,24 @@ _Avoid_: Save file, save slot, session
 **Seen question**:
 A Question shown to the player on this device, whether answered or switched away from.
 _Avoid_: Used question, answered question
+
+## Sound
+
+**Sting**:
+A short sound for a moment in the Game: an answer Locked in, right or wrong, a Lifeline, a Walk away or winning the million.
+_Avoid_: Sound effect, jingle
+
+**Tier bed**:
+The looping music under each Question, more suspenseful at each Tier, drawn out through the Reveal wait.
+_Avoid_: Suspense bed, background music
+
+**Menu theme**:
+The looping music on the screens outside the Game.
+_Avoid_: Title music, intro
+
+**Sound switch**:
+The control on the Main menu, Ready to play, the Game and Game over that turns all sound on or off. The device remembers it.
+_Avoid_: Mute button, mute toggle
 
 ## Results
 

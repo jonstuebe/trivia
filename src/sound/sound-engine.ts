@@ -1,12 +1,12 @@
 import { BEDS, CUES, type Bed, type BedName, type Cue, type CueName } from "./cues";
 
-/** The sounds an engine can play: the game's own (`CUES` and `BEDS`), or a test's. */
-export interface SoundLibrary<C extends string, B extends string> {
-  cues: Record<C, Cue>;
-  beds: Record<B, Bed>;
+/** The sounds an engine can play, by name: the game's own (`CUES` and `BEDS`), or some of them in a test's place. */
+export interface SoundLibrary {
+  cues: Partial<Record<CueName, Cue>>;
+  beds: Partial<Record<BedName, Bed>>;
 }
 
-export interface SoundEngineOptions<C extends string, B extends string> {
+export interface SoundEngineOptions {
   /**
    * Makes the AudioContext, on the first tap or key press. Undefined, or a
    * throw, means there's no Web Audio: then nothing plays, and nothing fails.
@@ -15,20 +15,20 @@ export interface SoundEngineOptions<C extends string, B extends string> {
   /** Where the mute is remembered: device storage in the app. */
   remembered: { muted(): boolean; setMuted(muted: boolean): void };
   /** The sounds to play. The game's own by default. */
-  sounds?: SoundLibrary<C, B>;
+  sounds?: SoundLibrary;
 }
 
 /** What the engine is doing, for the page to show (and the e2e journeys to check, since they can't hear). */
-export interface SoundState<C extends string = CueName, B extends string = BedName> {
+export interface SoundState {
   /** Whether the first tap or key press has happened. */
   unlocked: boolean;
   muted: boolean;
   /** How many cues have actually played. */
   cues: number;
   /** The cue that played last. */
-  lastCue: C | undefined;
+  lastCue: CueName | undefined;
   /** The bed playing now. */
-  bed: B | undefined;
+  bed: BedName | undefined;
 }
 
 /**
@@ -45,21 +45,17 @@ export interface SoundState<C extends string = CueName, B extends string = BedNa
  * Every sound goes through one master gain, which the mute closes too, so
  * a sound already ringing out goes quiet straight away.
  */
-export function createSoundEngine<C extends string = CueName, B extends string = BedName>({
-  createContext,
-  remembered,
-  sounds = { cues: CUES, beds: BEDS } as unknown as SoundLibrary<C, B>,
-}: SoundEngineOptions<C, B>) {
+export function createSoundEngine({ createContext, remembered, sounds = { cues: CUES, beds: BEDS } }: SoundEngineOptions) {
   let unlocked = false;
   let muted = remembered.muted();
   let audio: { context: AudioContext; master: GainNode } | undefined;
   /** The bed asked for, playing or waiting for the first tap or the mute to come off. */
-  let wantedBed: B | undefined;
-  let playing: { name: B; stop(): void } | undefined;
-  let state: SoundState<C, B> = { unlocked, muted, cues: 0, lastCue: undefined, bed: undefined };
+  let wantedBed: BedName | undefined;
+  let playing: { name: BedName; stop(): void } | undefined;
+  let state: SoundState = { unlocked, muted, cues: 0, lastCue: undefined, bed: undefined };
   const listeners = new Set<() => void>();
 
-  function update(change: Partial<SoundState<C, B>>) {
+  function update(change: Partial<SoundState>) {
     state = { ...state, ...change };
     for (const listener of listeners) listener();
   }
@@ -80,9 +76,10 @@ export function createSoundEngine<C extends string = CueName, B extends string =
       playing = undefined;
     }
     const out = output();
-    if (!playing && wantedBed !== undefined && out) {
+    const start = wantedBed === undefined ? undefined : sounds.beds[wantedBed];
+    if (!playing && wantedBed !== undefined && start && out) {
       try {
-        playing = { name: wantedBed, ...sounds.beds[wantedBed](out) };
+        playing = { name: wantedBed, ...start(out) };
       } catch {
         playing = undefined;
       }
@@ -141,11 +138,12 @@ export function createSoundEngine<C extends string = CueName, B extends string =
     },
 
     /** Plays a cue once, unless it's before the first tap or muted. */
-    play(name: C): void {
+    play(name: CueName): void {
       const out = output();
-      if (!out) return;
+      const cue = sounds.cues[name];
+      if (!out || !cue) return;
       try {
-        sounds.cues[name](out);
+        cue(out);
       } catch {
         return;
       }
@@ -153,7 +151,7 @@ export function createSoundEngine<C extends string = CueName, B extends string =
     },
 
     /** Plays a bed on a loop, stopping any other. It waits for the first tap, and the mute. */
-    startBed(name: B): void {
+    startBed(name: BedName): void {
       wantedBed = name;
       syncBed();
     },
@@ -163,7 +161,7 @@ export function createSoundEngine<C extends string = CueName, B extends string =
      * if that's the bed asked for, so it can't stop one a screen has just
      * started.
      */
-    stopBed(only?: B): void {
+    stopBed(only?: BedName): void {
       if (only !== undefined && wantedBed !== only) return;
       wantedBed = undefined;
       syncBed();
@@ -180,7 +178,7 @@ export function createSoundEngine<C extends string = CueName, B extends string =
     },
 
     /** What's playing; the same object until something changes, for `useSyncExternalStore`. */
-    state(): SoundState<C, B> {
+    state(): SoundState {
       return state;
     },
 
@@ -194,4 +192,4 @@ export function createSoundEngine<C extends string = CueName, B extends string =
   };
 }
 
-export type SoundEngine = ReturnType<typeof createSoundEngine<CueName, BedName>>;
+export type SoundEngine = ReturnType<typeof createSoundEngine>;

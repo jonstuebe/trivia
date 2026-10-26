@@ -1,7 +1,7 @@
-import { FIRST_SWITCH_RUNG, type GameEvent } from "../game/machine";
+import { FIRST_SWITCH_RUNG, type GameEvent, type GameSnapshot } from "../game/machine";
 import { ANSWER_POSITIONS, FRIENDS, LIFELINES, type Friend, type Lifeline } from "../game/types";
 import { keyFor } from "./game-keys";
-import { ANSWER_LETTERS, type GameSnapshot } from "./game-view";
+import { ANSWER_LETTERS } from "./game-view";
 
 /**
  * How an oval looks: `ready` to use (or waiting while a dialog is up),
@@ -46,9 +46,6 @@ export interface LifelinesView {
   /** The Friend's line, once they pick up: "Sports fan: “I'm pretty sure it's B, maybe 80%.”" */
   friend: string | undefined;
 }
-
-/** How long the phone rings before the Friend picks up and their line shows, in milliseconds. */
-export const CALL_WAIT = 1800;
 
 /** The Friends as the player knows them (GLOSSARY: Friend). */
 export const FRIEND_NAMES: Record<Friend, string> = {

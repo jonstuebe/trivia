@@ -9,6 +9,7 @@
  * by adding it to `CUES` or `BEDS`.
  */
 
+import { semitones } from "./pitch";
 import { theme } from "./theme";
 
 /** Where a cue plays: the engine's AudioContext, the node to connect to (the mute sits after it), and the time to start at. */
@@ -24,10 +25,6 @@ export type Cue = (out: SoundOutput) => void;
 /** A looping sound. It starts at `now` and plays until `stop`, which should fade it out rather than cut it. */
 export type Bed = (out: SoundOutput) => { stop(): void };
 
-/** A note's frequency, from its distance in semitones from A4 (440 Hz). */
-export function semitones(fromA4: number): number {
-  return 440 * 2 ** (fromA4 / 12);
-}
 
 /**
  * The lock-in sting on "Final answer": a low thud under a dark, filtered

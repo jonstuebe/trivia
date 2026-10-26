@@ -2,7 +2,7 @@ import type { Browser } from "@e2e-dev/web";
 import { test } from "@e2e-dev/web";
 import { expect, type Screen } from "e2e";
 import { checkA11y } from "./support/axe";
-import { answerRight, playToRung, questionHeading, RIGHT_ANSWER, startGame } from "./support/game";
+import { answerRight, playToRung, questionHeading, realRevealWait, RIGHT_ANSWER, startGame } from "./support/game";
 
 /** The Sound switch, on every screen that has one. */
 const soundSwitch = (screen: Screen) => screen.getByRole("switch", "Sound");
@@ -99,6 +99,26 @@ test("the reveal, the Lifelines and Walk away each play their cue, beside what t
   await checkA11y(browser, "Game over after Walk away");
 });
 
+test("the last right answer plays the million's sting at the reveal, in place of the right one", async ({
+  screen,
+  browser,
+}) => {
+  await startGame(browser, screen, "/tv/fixture-sitcom");
+  await playToRung(screen, 1, 15);
+  const before = Number(await soundData(browser, "soundCues"));
+
+  await screen.getByRole("button", RIGHT_ANSWER).tap();
+  await screen.getByRole("button", "Final answer").tap();
+  await expect(screen.getByRole("button", "See result")).toBeFocused();
+  expect(await soundData(browser, "soundLastCue")).toBe("million");
+  expect(await soundData(browser, "soundCues")).toBe(String(before + 2));
+
+  // See result plays nothing more.
+  await screen.getByRole("button", "See result").tap();
+  await expect(screen.getByRole("heading", "You won the million!", { level: 1 })).toBeFocused();
+  expect(await soundData(browser, "soundCues")).toBe(String(before + 2));
+});
+
 test("Final answer plays the lock-in sting, the reveal its own after the wait, and a muted page plays nothing", async ({
   screen,
   browser,
@@ -106,10 +126,7 @@ test("Final answer plays the lock-in sting, the reveal its own after the wait, a
   await startGame(browser, screen, "/tv/fixture-sitcom");
   expect(await soundData(browser, "sound")).toBe("on");
   // The real reveal wait, so the lock-in can be told apart from the reveal's sting.
-  await browser.evaluate(() => {
-    localStorage.removeItem("trivia.fixtures.instantReveal");
-    return null;
-  });
+  await realRevealWait(browser);
 
   await screen.getByRole("button", RIGHT_ANSWER).tap();
   await screen.getByRole("button", "Final answer").tap();
@@ -135,7 +152,7 @@ test("Final answer plays the lock-in sting, the reveal its own after the wait, a
 /** The bed playing, or null for none. */
 const bedNow = (browser: Browser) => soundData(browser, "soundBed");
 
-test("the suspense bed climbs by Tier, draws out through the reveal wait, carries on through a Lifeline, and stops on Walk away", async ({
+test("the Tier bed climbs by Tier, draws out through the reveal wait, carries on through a Lifeline, and stops on Walk away", async ({
   screen,
   browser,
 }) => {
@@ -154,10 +171,7 @@ test("the suspense bed climbs by Tier, draws out through the reveal wait, carrie
   expect(await bedNow(browser)).toBe("tier2");
 
   // The real reveal wait (2s at Tier 2): the locked-in bed plays across it, then gives way to the reveal.
-  await browser.evaluate(() => {
-    localStorage.removeItem("trivia.fixtures.instantReveal");
-    return null;
-  });
+  await realRevealWait(browser);
   await screen.getByRole("button", RIGHT_ANSWER).tap();
   await screen.getByRole("button", "Final answer").tap();
   await expect(screen.getByText(/ is locked in\. The answer is coming…$/)).toBeFocused();
