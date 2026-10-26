@@ -1,4 +1,5 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { useEffect, useId, useState } from "react";
 import type { TitleCategory } from "../content/schema";
 import { listedTitles, offersMixedGame, topicFromPath, topicName } from "../game/topic";
 import { Button } from "../ui/lozenge";
@@ -24,11 +25,18 @@ function TopicPicker() {
 /** General, TV Shows and Movies; a Category with nothing to play isn't offered. */
 function PickerTop() {
   const navigate = useNavigate();
+  const unavailable = useUnavailableNote();
+  const noteId = useId();
   const categories = (["tv", "movies"] as const).filter((category) => listedTitles(category).length > 0);
   const general = topicFromPath("/general");
   return (
     <main className="screen">
-      <ScreenHeading>Pick a topic</ScreenHeading>
+      <ScreenHeading describedBy={unavailable ? noteId : undefined}>Pick a topic</ScreenHeading>
+      {unavailable && (
+        <p id={noteId} className="notice" role="status">
+          That topic isn't available.
+        </p>
+      )}
       <p className="muted">Choose a category.</p>
       <ul className="tiles">
         {general && (
@@ -52,6 +60,23 @@ function PickerTop() {
       </Button>
     </main>
   );
+}
+
+/**
+ * Whether to show "That topic isn't available": the picker was reached from a
+ * link to a Topic that can't be played (`topicUnavailable` in history state).
+ * It's read once and the flag cleared from the entry, so a refresh, Back to
+ * it, or moving on and back shows no note. The note describes the heading, so
+ * screen readers read it with the heading as it takes focus.
+ */
+function useUnavailableNote(): boolean {
+  const navigate = useNavigate();
+  const flagged = useLocation({ select: (location) => location.state.topicUnavailable === true });
+  const [show] = useState(flagged);
+  useEffect(() => {
+    if (flagged) void navigate({ to: "/topics", search: {}, state: {}, replace: true });
+  }, [flagged, navigate]);
+  return show;
 }
 
 /** One Category's listed Titles, after "All … (mixed)" when it has 2 or more. */
