@@ -306,3 +306,32 @@ describe("50:50", () => {
     expect(game.getSnapshot().can({ type: "fiftyFifty" })).toBe(false);
   });
 });
+
+describe("Ask the Audience", () => {
+  it("shows a vote over all four answers that adds up to 100, once per Game", () => {
+    const game = newGame();
+    game.send({ type: "askTheAudience" });
+    const { audience, lifelinesUsed } = game.getSnapshot().context;
+    expect(audience!.votes.reduce((a, b) => a + b, 0)).toBe(100);
+    expect(audience!.votes.every((vote) => vote > 0)).toBe(true);
+    expect(lifelinesUsed).toEqual(["askTheAudience"]);
+    expect(game.getSnapshot().can({ type: "askTheAudience" })).toBe(false);
+  });
+
+  it("only votes between the two answers a 50:50 left", () => {
+    const game = newGame(5);
+    game.send({ type: "fiftyFifty" });
+    game.send({ type: "askTheAudience" });
+    const { audience, removed, lifelinesUsed } = game.getSnapshot().context;
+    for (const position of removed) expect(audience!.votes[position]).toBe(0);
+    expect(audience!.votes.filter((vote) => vote > 0)).toHaveLength(2);
+    expect(lifelinesUsed).toEqual(["fiftyFifty", "askTheAudience"]);
+  });
+
+  it("is gone on the next question", () => {
+    const game = newGame();
+    game.send({ type: "askTheAudience" });
+    climbTo(game, 2);
+    expect(game.getSnapshot().context.audience).toBeNull();
+  });
+});

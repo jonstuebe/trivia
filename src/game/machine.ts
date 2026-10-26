@@ -12,6 +12,7 @@ import type {
   ShownQuestion,
   Topic,
 } from "./types";
+import { askTheAudience, type AudienceResult } from "./simulation";
 
 /**
  * What a Game needs from outside that isn't plain data: given when a Game
@@ -46,6 +47,8 @@ export interface GameContext {
   lifelinesUsed: Lifeline[];
   /** The two wrong answers a 50:50 took away on this question, or none. */
   removed: AnswerPosition[];
+  /** The Ask the Audience vote on this question, rolled once. */
+  audience: AudienceResult | null;
   /** Set once the Game ends; also the machine's output. */
   result: GameResult | null;
 }
@@ -81,7 +84,9 @@ export type GameEvent =
   /** Moves on from the reveal: to the next question, or to the end of the Game. */
   | { type: "next" }
   /** 50:50: removes two wrong answers. */
-  | { type: "fiftyFifty" };
+  | { type: "fiftyFifty" }
+  /** Ask the Audience: shows their vote, over only the answers still in play. */
+  | { type: "askTheAudience" };
 
 /** A Question with its answers shuffled into the order shown. */
 export function showQuestion(question: GameQuestion, random: Random): ShownQuestion {
@@ -96,6 +101,14 @@ function shownNow(context: GameContext): ShownQuestion {
 function unused(context: GameContext, lifeline: Lifeline): boolean {
   return !context.lifelinesUsed.includes(lifeline);
 }
+
+/** The answers not taken away by a 50:50. */
+function remaining(context: GameContext): AnswerPosition[] {
+  return ([0, 1, 2, 3] as const).filter((position) => !context.removed.includes(position));
+}
+
+/** What the next question starts with: no answer picked and no Lifeline results showing. */
+const freshQuestion = { picked: null, removed: [], audience: null } satisfies Partial<GameContext>;
 
 /** The Game machine, with its outside dependencies closed over so the context stays plain data. */
 function gameMachineWith({ random }: GameDependencies) {
@@ -113,6 +126,7 @@ function gameMachineWith({ random }: GameDependencies) {
       pastFirstRung: ({ context }) => context.rung >= 2,
       stillInPlay: ({ context, event }) => event.type === "pick" && !context.removed.includes(event.answer),
       fiftyFiftyUnused: ({ context }) => unused(context, "fiftyFifty"),
+      askTheAudienceUnused: ({ context }) => unused(context, "askTheAudience"),
     },
     actions: {
       finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
@@ -124,6 +138,10 @@ function gameMachineWith({ random }: GameDependencies) {
           lifelinesUsed: [...context.lifelinesUsed, "fiftyFifty" as const],
         };
       }),
+      useAskTheAudience: assign(({ context }) => ({
+        audience: askTheAudience({ shown: shownNow(context), remaining: remaining(context), random }),
+        lifelinesUsed: [...context.lifelinesUsed, "askTheAudience" as const],
+      })),
     },
   }).createMachine({
     id: "game",
@@ -134,6 +152,7 @@ function gameMachineWith({ random }: GameDependencies) {
       picked: null,
       lifelinesUsed: [],
       removed: [],
+      audience: null,
       result: null,
     }),
     output: ({ context }) => context.result!,
@@ -148,6 +167,7 @@ function gameMachineWith({ random }: GameDependencies) {
           },
           walkAway: { guard: "pastFirstRung", target: "confirmingWalkAway" },
           fiftyFifty: { guard: "fiftyFiftyUnused", actions: "useFiftyFifty" },
+          askTheAudience: { guard: "askTheAudienceUnused", actions: "useAskTheAudience" },
         },
       },
       confirmingWalkAway: {
@@ -171,7 +191,7 @@ function gameMachineWith({ random }: GameDependencies) {
                 { guard: "onLastRung", target: "#game.finished", actions: { type: "finish", params: "won" } },
                 {
                   target: "#game.choosing",
-                  actions: assign({ rung: ({ context }) => context.rung + 1, picked: null, removed: [] }),
+                  actions: assign({ rung: ({ context }) => context.rung + 1, ...freshQuestion }),
                 },
               ],
             },
