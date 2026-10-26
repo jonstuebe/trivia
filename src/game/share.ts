@@ -25,7 +25,7 @@ export function topicPath(topic: Topic): string {
 /**
  * The five-line Share result for a finished Game. `topicName` is the Topic as
  * shown to the player (like "Movies" or "Friends"), since a Title's name comes
- * from the content, not the Game.
+ * from the content, not the Game; `topicName(result.topic)` gives it.
  */
 export function shareResult(result: GameResult, topicName: string): string {
   const winnings = `$${result.winnings.toLocaleString("en-US")}${result.ending === "won" ? " 🏆" : ""}`;
