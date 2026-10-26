@@ -154,6 +154,18 @@ describe("the Lifeline results", () => {
     game.send({ type: "callFriend", friend: "sports" });
     expect(view(game).friend).toMatch(/^Sports fan: “.+”$/);
     expect(view(game).friend).toContain(game.getSnapshot().context.friend!.line);
+    expect(view(game).calling).toBeUndefined();
+  });
+
+  it("say who's being called while the phone rings, holding back the Friend's line", () => {
+    const game = newGame();
+    game.send({ type: "phoneAFriend" });
+    expect(lifelinesView(game.getSnapshot(), { calling: true }).calling).toBeUndefined();
+    game.send({ type: "callFriend", friend: "pop culture" });
+    expect(lifelinesView(game.getSnapshot(), { calling: true })).toMatchObject({
+      calling: "Calling Pop-culture fan…",
+      friend: undefined,
+    });
   });
 
   it("are cleared by Switch the Question", () => {

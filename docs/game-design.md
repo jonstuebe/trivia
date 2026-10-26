@@ -27,7 +27,7 @@ Each lifeline can be used once per game. Several can be stacked on the same ques
 
 - **50:50:** removes two wrong answers.
 - **Ask the Audience:** a simulated vote chart.
-- **Phone a Friend:** the player picks one of four specialist friends (history, science, sports, pop culture), who gives a simulated guess with a stated confidence.
+- **Phone a Friend:** the player picks one of four specialist friends (history, science, sports, pop culture), who gives a simulated guess with a stated confidence. The phone rings first, with "Calling …" in place of their answer for a moment.
 - **Switch the Question:** swaps the current question for another from the same difficulty tier. It is only available **after question 10**.
 
 The audience and friend are simulated from the known answer. They are reliable on easy questions and get shakier as difficulty rises: the audience splits more, the friend is less sure, and both are sometimes wrong. After a 50:50 they only choose between the two answers left.
