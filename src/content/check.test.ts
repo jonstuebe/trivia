@@ -56,7 +56,7 @@ describe("checking across Topic files", () => {
     const shared = question(1);
     const { errors } = checkContent([
       { path: "tv/friends.json", data: { title: "Friends", questions: [shared] } },
-      { path: "movies/pixar.json", data: { title: "Pixar", questions: [question(1), { ...shared }] } },
+      { path: "movies/pixar.json", data: { title: "Pixar", questions: [question(1), { ...shared, prompt: "A different prompt?" }] } },
     ]);
     expect(errors).toEqual([
       {
@@ -70,7 +70,7 @@ describe("checking across Topic files", () => {
   it("rejects a Question ID used twice in one file", () => {
     const shared = question(2);
     const { errors } = checkContent([
-      { path: "tv/friends.json", data: { title: "Friends", questions: [shared, question(1), { ...shared }] } },
+      { path: "tv/friends.json", data: { title: "Friends", questions: [shared, question(1), { ...shared, prompt: "A different prompt?" }] } },
     ]);
     expect(errors).toEqual([
       {
