@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { TIERS } from "../content/schema";
 import { createSeededRandom } from "../random/random";
 import { loadTopic } from "./load-topic";
-import { drawGame } from "./selection";
+import { canFillGame, drawGame } from "./selection";
 
 const sitcom = await loadTopic({ kind: "title", category: "tv", slug: "fixture-sitcom" });
 
@@ -52,5 +52,35 @@ describe("drawGame", () => {
     expect(ids(7)).toEqual(ids(7));
     const games = new Set([1, 2, 3, 4, 5, 6, 7, 8].map((seed) => ids(seed).join()));
     expect(games.size).toBeGreaterThan(1);
+  });
+});
+
+describe("canFillGame", () => {
+  it("says a Topic can fill a whole Game while every Tier has 3 unseen Questions", () => {
+    const seenIds = TIERS.map((tier) => sitcom.find((q) => q.tier === tier)!.id);
+    expect(canFillGame(sitcom, {})).toBe(true);
+    expect(canFillGame(sitcom, Object.fromEntries(seenIds.map((id, i) => [id, i])))).toBe(true);
+  });
+
+  it("says a Topic has run out once any Tier has fewer than 3 unseen", () => {
+    const tier5 = sitcom.filter((q) => q.tier === 5).map((q) => q.id);
+    expect(canFillGame(sitcom, { [tier5[0]!]: 1, [tier5[1]!]: 2 })).toBe(false);
+  });
+
+  it("counts a Question seen in its Title as seen in the Mixed game", async () => {
+    const tv = await loadTopic({ kind: "category", category: "tv" });
+    // TV has 5 per Tier: 4 Sitcom and 1 Drama. Seeing 3 Sitcom Tier 1 Questions leaves 2.
+    const sitcomTier1 = sitcom.filter((q) => q.tier === 1).map((q) => q.id);
+    expect(canFillGame(tv, { [sitcomTier1[0]!]: 1, [sitcomTier1[1]!]: 2 })).toBe(true);
+    expect(canFillGame(tv, { [sitcomTier1[0]!]: 1, [sitcomTier1[1]!]: 2, [sitcomTier1[2]!]: 3 })).toBe(false);
+  });
+
+  it("ignores seen IDs that are no longer in the content", () => {
+    expect(canFillGame(sitcom, { gone0001: 1, gone0002: 2, gone0003: 3 })).toBe(true);
+  });
+
+  it("says a Topic with too few Questions in a Tier can't fill a Game", async () => {
+    const drama = await loadTopic({ kind: "title", category: "tv", slug: "fixture-drama" });
+    expect(canFillGame(drama, {})).toBe(false);
   });
 });

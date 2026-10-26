@@ -26,6 +26,17 @@ function drawOrder(candidates: readonly GameQuestion[], seen: SeenQuestions, ran
   return [...shuffle(unseen, random), ...repeats];
 }
 
+/**
+ * The run-out check: whether a Topic can fill a whole Game with unseen
+ * Questions, 3 in every Tier. When it can't, the player is told and offered a
+ * reset; repeats are still allowed. Seen IDs not in `questions` are ignored.
+ */
+export function canFillGame(questions: readonly GameQuestion[], seen: SeenQuestions): boolean {
+  return TIERS.every(
+    (tier) => questions.filter((q) => q.tier === tier && seen[q.id] === undefined).length >= QUESTIONS_PER_TIER,
+  );
+}
+
 function notEnough(tier: Tier, count: number): string {
   return `Tier ${tier} has ${count} Questions, a Game needs ${QUESTIONS_PER_TIER}`;
 }
