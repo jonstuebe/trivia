@@ -239,6 +239,40 @@ describe("saving and restoring a Game", () => {
     const restored = saveAndRestore(game);
     expect(restored.getSnapshot().value).toBe("confirmingWalkAway");
   });
+
+  it("keeps every Lifeline result as rolled, with a different random source after restoring", () => {
+    const game = newGame(8);
+    climbTo(game, 11);
+    game.send({ type: "switchTheQuestion" });
+    game.send({ type: "fiftyFifty" });
+    game.send({ type: "askTheAudience" });
+    game.send({ type: "phoneAFriend" });
+    game.send({ type: "callFriend", friend: "pop culture" });
+
+    const restored = saveAndRestore(game, 12345);
+    expect(restored.getSnapshot().context).toEqual(game.getSnapshot().context);
+    expect(restored.getSnapshot().context.removed).toHaveLength(2);
+    expect(restored.getSnapshot().context.audience).not.toBeNull();
+    expect(restored.getSnapshot().context.friend).toMatchObject({ friend: "pop culture" });
+    expect(restored.getSnapshot().context.switchedAway).toHaveLength(1);
+  });
+
+  it("keeps the pick of a Friend open, with Phone a Friend not yet spent", () => {
+    const game = newGame();
+    game.send({ type: "phoneAFriend" });
+    const restored = saveAndRestore(game);
+    expect(restored.getSnapshot().value).toBe("pickingFriend");
+    restored.send({ type: "callFriend", friend: "history" });
+    expect(restored.getSnapshot().context.lifelinesUsed).toEqual(["phoneAFriend"]);
+  });
+
+  it("switches from the restored Game's Topic Questions, never back to one already in it", () => {
+    const game = newGame();
+    climbTo(game, 11);
+    const restored = saveAndRestore(game);
+    restored.send({ type: "switchTheQuestion" });
+    expect(current(restored).question.prompt).toBe("Spare 4");
+  });
 });
 
 describe("starting a Game", () => {
@@ -405,6 +439,22 @@ describe("Switch the Question", () => {
 
     answer(game, current(game).correct);
     expect(game.getSnapshot().value).toEqual({ revealing: "right" });
+  });
+
+  it("draws an unseen Question before one seen on this device", () => {
+    const extra = { ...topicQuestions()[18]!, id: "s0000099", prompt: "Unseen spare" };
+    for (let seed = 1; seed <= 5; seed++) {
+      const game = startGame({
+        topic,
+        questions: fifteenQuestions(),
+        ...dependencies(seed),
+        topicQuestions: [...topicQuestions(), extra],
+        seen: { s0000004: 1 },
+      });
+      climbTo(game, 11);
+      game.send({ type: "switchTheQuestion" });
+      expect(current(game).question.prompt).toBe("Unseen spare");
+    }
   });
 
   it("is unavailable when the Tier has no other Question left", () => {
