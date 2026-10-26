@@ -9,7 +9,8 @@ import type { LifelinesView } from "./lifelines-view";
 /**
  * The Lifeline ovals above the Question, then whatever the Lifelines have
  * said about it: the 50:50's two removed answers (to screen readers), the
- * audience's vote as a chart and in words, and the Friend's line. A result
+ * audience's vote as a chart and in words, and "Calling …" while the phone
+ * rings, then the Friend's line. A result
  * takes focus when it appears, so it's read next. `inert` while the stage is
  * dimmed for the reveal wait.
  */
@@ -53,7 +54,8 @@ export function Lifelines({
         </p>
       )}
       {view.audience && <AudienceVote audience={view.audience} />}
-      {view.friend && <FriendLine line={view.friend} />}
+      {view.calling && <FriendLine key="calling" line={view.calling} calling />}
+      {view.friend && <FriendLine key="friend" line={view.friend} />}
     </div>
   );
 }
@@ -89,10 +91,10 @@ function AudienceVote({ audience }: { audience: NonNullable<LifelinesView["audie
   );
 }
 
-function FriendLine({ line }: { line: string }) {
+function FriendLine({ line, calling = false }: { line: string; calling?: boolean }) {
   const ref = useFocusOnMount<HTMLParagraphElement>();
   return (
-    <p ref={ref} tabIndex={-1} className="friend-line">
+    <p ref={ref} tabIndex={-1} className={`friend-line${calling ? " is-calling" : ""}`}>
       {line}
     </p>
   );

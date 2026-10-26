@@ -673,7 +673,7 @@ button.lozenge:focus-visible {
 
 /*
  * Motion, only for players who haven't asked for less: the dimming fades in,
- * the locked-in line breathes, a right answer flashes green and the gold
+ * the locked-in line breathes, "Calling …" pulses, a right answer flashes green and the gold
  * steps up the Ladder. Under reduced motion all of it shows at once, still.
  */
 @media (prefers-reduced-motion: no-preference) {
@@ -685,6 +685,11 @@ button.lozenge:focus-visible {
 
   .locked-in {
     animation: locked-in-breathe 1.6s ease-in-out infinite;
+  }
+
+  /* "Calling …" pulses with the rings. */
+  .friend-line.is-calling {
+    animation: locked-in-breathe 0.55s ease-in-out infinite;
   }
 
   .answers.is-won .answer.is-right {

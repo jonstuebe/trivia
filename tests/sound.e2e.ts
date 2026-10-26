@@ -68,14 +68,57 @@ test("the mute set on one screen holds on the others and after a reload, and M t
   await expect(screen.getByRole("dialog")).toHaveCount(0);
 });
 
-test("Final answer plays the lock-in sting, and a muted page plays nothing", async ({ screen, browser }) => {
+test("the reveal, the Lifelines and Walk away each play their cue, beside what the screen shows", async ({
+  screen,
+  browser,
+}) => {
   await startGame(browser, screen, "/tv/fixture-sitcom");
-  expect(await soundData(browser, "sound")).toBe("on");
 
   await screen.getByRole("button", RIGHT_ANSWER).tap();
   await screen.getByRole("button", "Final answer").tap();
-  await expect.poll(() => soundData(browser, "soundCues")).toBe("1");
+  await expect(screen.getByRole("button", "Next question")).toBeFocused();
+  expect(await soundData(browser, "soundLastCue")).toBe("right");
+  await screen.getByRole("button", "Next question").tap();
+  await expect(questionHeading(screen, 2)).toBeFocused();
+
+  await screen.getByRole("button", "Ask the Audience").tap();
+  await expect(screen.getByText(/^The audience voted/)).toBeVisible();
+  expect(await soundData(browser, "soundLastCue")).toBe("audienceVote");
+
+  await screen.getByRole("button", "Phone a Friend").tap();
+  await screen.getByRole("button", "Science buff").tap();
+  await expect(screen.getByText("Calling Science buff…", { exact: true })).toBeVisible();
+  expect(await soundData(browser, "soundLastCue")).toBe("phoneRing");
+  await expect(screen.getByText(/^Science buff: “.+”$/)).toBeVisible();
+
+  await screen.getByRole("button", "Walk away with $100").tap();
+  await screen.getByRole("button", "Walk away").tap();
+  await expect(screen.getByRole("heading", "You walked away.", { level: 1 })).toBeFocused();
+  expect(await soundData(browser, "soundLastCue")).toBe("walkAway");
+  expect(await soundData(browser, "soundCues")).toBe("5");
+  await checkA11y(browser, "Game over after Walk away");
+});
+
+test("Final answer plays the lock-in sting, the reveal its own after the wait, and a muted page plays nothing", async ({
+  screen,
+  browser,
+}) => {
+  await startGame(browser, screen, "/tv/fixture-sitcom");
+  expect(await soundData(browser, "sound")).toBe("on");
+  // The real reveal wait, so the lock-in can be told apart from the reveal's sting.
+  await browser.evaluate(() => {
+    localStorage.removeItem("trivia.fixtures.instantReveal");
+    return null;
+  });
+
+  await screen.getByRole("button", RIGHT_ANSWER).tap();
+  await screen.getByRole("button", "Final answer").tap();
+  await expect(screen.getByText(/ is locked in\. The answer is coming…$/)).toBeFocused();
+  expect(await soundData(browser, "soundCues")).toBe("1");
   expect(await soundData(browser, "soundLastCue")).toBe("lockIn");
+  await expect(screen.getByRole("button", "Next question")).toBeFocused();
+  expect(await soundData(browser, "soundCues")).toBe("2");
+  expect(await soundData(browser, "soundLastCue")).toBe("right");
   await screen.getByRole("button", "Next question").tap();
   await expect(questionHeading(screen, 2)).toBeFocused();
 
@@ -83,6 +126,8 @@ test("Final answer plays the lock-in sting, and a muted page plays nothing", asy
   await expectSound(screen, "off");
   await answerRight(screen);
   await expect(questionHeading(screen, 3)).toBeFocused();
+  await screen.getByRole("button", "Ask the Audience").tap();
+  await expect(screen.getByText(/^The audience voted/)).toBeVisible();
   expect(await soundData(browser, "sound")).toBe("off");
-  expect(await soundData(browser, "soundCues")).toBe("1");
+  expect(await soundData(browser, "soundCues")).toBe("2");
 });

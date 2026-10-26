@@ -15,6 +15,7 @@ import { lifelinesView } from "./lifelines-view";
 import { MuteButton } from "./mute-button";
 import { useGameKeys, useMuteKey, useShowKeysKey } from "./use-game-keys";
 import { useGameSounds } from "./use-game-sounds";
+import { usePhoneCall } from "./use-phone-call";
 import { useRevealWait } from "./use-reveal-wait";
 
 /**
@@ -39,6 +40,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
   useGameKeys(game);
   useMuteKey();
   useGameSounds(game);
+  const calling = usePhoneCall(game);
   const [showingKeys, setShowingKeys] = useState(false);
   useShowKeysKey(() => setShowingKeys(true));
   const navigate = useNavigate();
@@ -50,7 +52,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
   if (snapshot.status === "done" && over) return <GameOverScreen over={over} snapshot={snapshot} />;
 
   const view = gameView(snapshot);
-  const lifelines = lifelinesView(snapshot);
+  const lifelines = lifelinesView(snapshot, { calling });
   const choosing = snapshot.matches("choosing");
   const ladder = ladderView(view.ladderRung);
   const stepping = view.ladderRung !== rung;

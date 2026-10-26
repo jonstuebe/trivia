@@ -41,9 +41,14 @@ export interface LifelinesView {
   audience: { bars: AudienceBar[]; text: string } | undefined;
   /** The Pick a friend dialog, while it's open. */
   pickFriend: { title: string; friends: { friend: Friend; name: string }[] } | undefined;
-  /** The Friend's line: "Sports fan: “I'm pretty sure it's B, maybe 80%.”" */
+  /** While the phone rings, in the Friend's line's place: "Calling Sports fan…". */
+  calling: string | undefined;
+  /** The Friend's line, once they pick up: "Sports fan: “I'm pretty sure it's B, maybe 80%.”" */
   friend: string | undefined;
 }
+
+/** How long the phone rings before the Friend picks up and their line shows, in milliseconds. */
+export const CALL_WAIT = 1800;
 
 /** The Friends as the player knows them (GLOSSARY: Friend). */
 export const FRIEND_NAMES: Record<Friend, string> = {
@@ -83,9 +88,14 @@ function audienceFor(snapshot: GameSnapshot): LifelinesView["audience"] {
   return { bars, text: `The audience voted ${bars.map((bar) => bar.label).join(", ")}.` };
 }
 
-/** The Lifeline ovals and their results, for a Game's snapshot. */
-export function lifelinesView(snapshot: GameSnapshot): LifelinesView {
+/**
+ * The Lifeline ovals and their results, for a Game's snapshot. `calling` is
+ * whether the phone is still ringing on a Friend just called (`CALL_WAIT`,
+ * timed by the screen): until then the Friend's line is held back.
+ */
+export function lifelinesView(snapshot: GameSnapshot, { calling = false }: { calling?: boolean } = {}): LifelinesView {
   const { context } = snapshot;
+  const friendName = context.friend && FRIEND_NAMES[context.friend.friend];
   const gone = context.removed.map((position) => ANSWER_LETTERS[position]);
   return {
     ovals: LIFELINES.map((lifeline) => {
@@ -107,6 +117,7 @@ export function lifelinesView(snapshot: GameSnapshot): LifelinesView {
           friends: FRIENDS.map((friend) => ({ friend, name: FRIEND_NAMES[friend] })),
         }
       : undefined,
-    friend: context.friend ? `${FRIEND_NAMES[context.friend.friend]}: “${context.friend.line}”` : undefined,
+    calling: context.friend && calling ? `Calling ${friendName}…` : undefined,
+    friend: context.friend && !calling ? `${friendName}: “${context.friend.line}”` : undefined,
   };
 }

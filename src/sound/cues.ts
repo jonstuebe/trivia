@@ -68,7 +68,182 @@ const lockIn: Cue = ({ context, destination, now }) => {
   }
 };
 
-export const CUES = { lockIn } satisfies Record<string, Cue>;
+/** An envelope: rises from silence to `peak` over `attack`, then falls back to silence by `end` (seconds after `at`). */
+function envelope(context: BaseAudioContext, at: number, peak: number, attack: number, end: number): GainNode {
+  const gain = context.createGain();
+  gain.gain.setValueAtTime(0.0001, at);
+  gain.gain.exponentialRampToValueAtTime(peak, at + attack);
+  gain.gain.exponentialRampToValueAtTime(0.0001, at + end);
+  return gain;
+}
+
+interface Note {
+  /** Semitones from A4. */
+  pitch: number;
+  at: number;
+  /** Seconds until it has faded out. */
+  length: number;
+  peak: number;
+  type?: OscillatorType;
+  attack?: number;
+}
+
+/** One oscillator note into `to`, shaped by an envelope, stopping once it's faded. */
+function note(context: BaseAudioContext, to: AudioNode, { pitch, at, length, peak, type = "sine", attack = 0.01 }: Note): void {
+  const voice = context.createOscillator();
+  voice.type = type;
+  voice.frequency.value = semitones(pitch);
+  voice.connect(envelope(context, at, peak, attack, length)).connect(to);
+  voice.start(at);
+  voice.stop(at + length + 0.05);
+}
+
+/** A low-pass filter into `to`, its cutoff moving from `from` to `toHz` between `at` and `by`. */
+function sweep(context: BaseAudioContext, to: AudioNode, from: number, toHz: number, at: number, by: number): BiquadFilterNode {
+  const filter = context.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.setValueAtTime(from, at);
+  filter.frequency.exponentialRampToValueAtTime(toHz, by);
+  filter.connect(to);
+  return filter;
+}
+
+/**
+ * The right answer: a quick climb up a bright major arpeggio, C5 to C6, that
+ * rings on as a chord with a high shimmer on top.
+ */
+const right: Cue = ({ context, destination, now }) => {
+  const bright = sweep(context, destination, 1800, 6000, now, now + 0.4);
+  [3, 7, 10, 15].forEach((pitch, i) => {
+    note(context, bright, { pitch, at: now + i * 0.07, length: 1.3 - i * 0.07, peak: 0.16, type: "triangle" });
+  });
+  note(context, bright, { pitch: 27, at: now + 0.28, length: 1, peak: 0.05 });
+};
+
+/**
+ * A wrong answer: a low, buzzing pair falling a semitone (E3 to E♭3) over a
+ * thud, darkening as it fades.
+ */
+const wrong: Cue = ({ context, destination, now }) => {
+  const dark = sweep(context, destination, 1400, 220, now, now + 1.3);
+  for (const [pitch, at, length] of [
+    [-17, 0, 0.35],
+    [-18, 0.3, 1.1],
+  ] as const) {
+    // Two voices a little apart, for the buzz.
+    for (const detune of [-8, 8]) {
+      const voice = context.createOscillator();
+      voice.type = "sawtooth";
+      voice.frequency.value = semitones(pitch);
+      voice.detune.value = detune;
+      voice.connect(envelope(context, now + at, 0.12, 0.02, length)).connect(dark);
+      voice.start(now + at);
+      voice.stop(now + at + length + 0.05);
+    }
+  }
+  note(context, destination, { pitch: -36, at: now, length: 0.5, peak: 0.5 });
+};
+
+/**
+ * Walk away: a soft, warm close, an F major chord settling onto C major, the
+ * sound of keeping what's been won.
+ */
+const walkAway: Cue = ({ context, destination, now }) => {
+  const warm = sweep(context, destination, 2400, 900, now, now + 1.8);
+  for (const pitch of [-16, -4, 0, 3]) {
+    note(context, warm, { pitch, at: now, length: 0.7, peak: 0.09, type: "triangle", attack: 0.06 });
+  }
+  for (const pitch of [-21, -9, -5, -2, 3]) {
+    note(context, warm, { pitch, at: now + 0.55, length: 1.5, peak: 0.08, type: "triangle", attack: 0.08 });
+  }
+};
+
+/**
+ * The million: a fanfare. A climb from G4 to G5, then a full C major chord
+ * that opens up and holds, with a twinkle of high notes over it and a boom
+ * under it. About three seconds.
+ */
+const million: Cue = ({ context, destination, now }) => {
+  const climb = sweep(context, destination, 2500, 5000, now, now + 0.5);
+  [-2, 3, 7, 10].forEach((pitch, i) => {
+    note(context, climb, { pitch, at: now + i * 0.11, length: 0.3, peak: 0.15, type: "triangle" });
+  });
+  const hold = now + 0.45;
+  const chord = sweep(context, destination, 600, 4500, hold, hold + 0.8);
+  for (const pitch of [-21, -9, -5, -2, 3, 7]) {
+    note(context, chord, { pitch, at: hold, length: 2.6, peak: 0.07, type: "sawtooth", attack: 0.05 });
+    note(context, chord, { pitch: pitch + 12, at: hold, length: 2.4, peak: 0.04, type: "triangle", attack: 0.05 });
+  }
+  [22, 27, 31, 34, 39, 34, 31, 27].forEach((pitch, i) => {
+    note(context, destination, { pitch, at: hold + 0.3 + i * 0.12, length: 0.5, peak: 0.03 });
+  });
+  note(context, destination, { pitch: -45, at: hold, length: 1.2, peak: 0.45 });
+};
+
+/**
+ * The audience voting: a murmur of filtered noise under a patter of keypad
+ * blips that comes quicker as the votes go in, then a chime as the vote is
+ * counted. About a second and a half.
+ */
+const audienceVote: Cue = ({ context, destination, now }) => {
+  const length = 1.3;
+  const noise = context.createBuffer(1, Math.ceil(context.sampleRate * length), context.sampleRate);
+  const samples = noise.getChannelData(0);
+  for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+  const murmur = context.createBufferSource();
+  murmur.buffer = noise;
+  const band = context.createBiquadFilter();
+  band.type = "bandpass";
+  band.frequency.value = 500;
+  band.Q.value = 0.8;
+  murmur.connect(band).connect(envelope(context, now, 0.18, 0.4, length)).connect(destination);
+  murmur.start(now);
+  murmur.stop(now + length);
+
+  // The blips: closer together as they go, on a little run up and down.
+  let at = now + 0.05;
+  [15, 19, 17, 22, 20, 15, 24, 19, 22, 17, 20, 24].forEach((pitch, i) => {
+    note(context, destination, { pitch, at, length: 0.06, peak: 0.07, type: "square", attack: 0.003 });
+    at += 0.11 - i * 0.006;
+  });
+  note(context, destination, { pitch: 27, at: now + 1.15, length: 0.5, peak: 0.1 });
+  note(context, destination, { pitch: 34, at: now + 1.15, length: 0.5, peak: 0.05 });
+};
+
+/**
+ * The phone ringing for Phone a Friend: two trilling rings, a pair of bell
+ * tones shaken on and off twenty times a second. Over in about a second, well
+ * inside `CALL_WAIT` (the "Calling …" line).
+ */
+const phoneRing: Cue = ({ context, destination, now }) => {
+  for (const ring of [0, 0.55]) {
+    const start = now + ring;
+    const out = envelope(context, start, 0.14, 0.01, 0.4);
+    out.connect(destination);
+    // The trill: a square wave opening and closing the bell's gain.
+    const bell = context.createGain();
+    bell.gain.value = 0.5;
+    const depth = context.createGain();
+    depth.gain.value = 0.5;
+    const trill = context.createOscillator();
+    trill.type = "square";
+    trill.frequency.value = 20;
+    trill.connect(depth);
+    depth.connect(bell.gain);
+    bell.connect(out);
+    for (const pitch of [17, 21]) {
+      const tone = context.createOscillator();
+      tone.frequency.value = semitones(pitch);
+      tone.connect(bell);
+      tone.start(start);
+      tone.stop(start + 0.45);
+    }
+    trill.start(start);
+    trill.stop(start + 0.45);
+  }
+};
+
+export const CUES = { lockIn, right, wrong, walkAway, million, audienceVote, phoneRing } satisfies Record<string, Cue>;
 
 /** No beds yet: the Tier beds and the menu theme add theirs here. */
 export const BEDS = {} satisfies Record<string, Bed>;
