@@ -16,7 +16,7 @@ test("every Lifeline in one Game, by keyboard and by mouse, each result readable
   await browser.keyboard.press("?");
   const keys = screen.getByRole("dialog", "Keys");
   await expect(keys).toBeVisible();
-  for (const row of ["A or 1", "Enter", "Esc", "W", "F", "Q", "P", "S", "?"]) {
+  for (const row of ["A or 1", "Enter", "Esc", "W", "F", "Q", "P", "S", "M", "?"]) {
     await expect(keys.getByText(row, { exact: true })).toBeVisible();
   }
   await expect(keys.getByText("Phone a Friend", { exact: true })).toBeVisible();
@@ -58,7 +58,13 @@ test("every Lifeline in one Game, by keyboard and by mouse, each result readable
   await expect(screen.getByRole("button", "Phone a Friend")).toBeVisible();
   await screen.getByRole("button", "Phone a Friend").tap();
   await screen.getByRole("button", "Pop-culture fan").tap();
-  await expect(screen.getByText(/^Pop-culture fan: “.+”$/)).toBeVisible();
+  // The phone rings first: "Calling …" shows, and is read, before the Friend's line.
+  const calling = screen.getByText("Calling Pop-culture fan…", { exact: true });
+  await expect(calling).toBeFocused();
+  await expect(screen.getByText(/^Pop-culture fan: “/)).toHaveCount(0);
+  await checkA11y(browser, "Calling a Friend");
+  await expect(screen.getByText(/^Pop-culture fan: “.+”$/)).toBeFocused();
+  await expect(calling).toHaveCount(0);
   await expect(screen.getByRole("button", "Phone a Friend, used")).toBeVisible();
   await checkA11y(browser, "Phone a Friend");
 

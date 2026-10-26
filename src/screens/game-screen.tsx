@@ -12,19 +12,22 @@ import { LadderColumn, LadderStrip } from "./ladder";
 import { ladderView } from "./ladder-view";
 import { KeysDialog, Lifelines, PickFriendDialog } from "./lifelines";
 import { lifelinesView } from "./lifelines-view";
-import { useGameKeys, useShowKeysKey } from "./use-game-keys";
+import { SoundSwitch } from "./sound-switch";
+import { useGameKeys, useMuteKey, useShowKeysKey } from "./use-game-keys";
+import { useGameSounds } from "./use-game-sounds";
+import { usePhoneCall } from "./use-phone-call";
 import { useRevealWait } from "./use-reveal-wait";
 
 /**
  * The Game at `/game`, from question 1 to Game over. Every move goes to the
  * Game controller; this only lays out what `gameView` says and moves focus.
  *
- * Top to bottom in the main column: the header ("Question n of 15 · for $X"),
- * the phone Ladder strip, the Lifelines and their results,
- * the Title label in a Mixed game, the Question, the answers, then the reveal
- * or the Walk away and Main menu links. The desktop Ladder is the second
- * column. The confirm dialogs, Pick a friend and the `?` list of keys sit
- * over it all.
+ * Top to bottom in the main column: the header ("Question n of 15 · for
+ * $X"), the phone Ladder strip, the Lifelines and their results, the Title
+ * label in a Mixed game, the Question, the answers, then the reveal or the
+ * Walk away and Main menu links, then the Sound switch. The desktop Ladder
+ * is the second column. The confirm dialogs, Pick a friend and the `?` list
+ * of keys sit over it all.
  *
  * After Final answer comes the reveal wait: the stage dims, the locked-in
  * answer stays lit, and a line in the reveal's place says the answer is
@@ -35,6 +38,9 @@ import { useRevealWait } from "./use-reveal-wait";
 export function GameScreen({ game }: { game: PlayingGame }) {
   const snapshot = useSyncExternalStore(game.subscribe, game.snapshot);
   useGameKeys(game);
+  useMuteKey();
+  useGameSounds(game);
+  const calling = usePhoneCall(game);
   const [showingKeys, setShowingKeys] = useState(false);
   useShowKeysKey(() => setShowingKeys(true));
   const navigate = useNavigate();
@@ -46,7 +52,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
   if (snapshot.status === "done" && over) return <GameOverScreen over={over} snapshot={snapshot} />;
 
   const view = gameView(snapshot);
-  const lifelines = lifelinesView(snapshot);
+  const lifelines = lifelinesView(snapshot, { calling });
   const choosing = snapshot.matches("choosing");
   const ladder = ladderView(view.ladderRung);
   const stepping = view.ladderRung !== rung;
@@ -119,6 +125,7 @@ export function GameScreen({ game }: { game: PlayingGame }) {
             Main menu
           </Button>
         )}
+        <SoundSwitch />
       </div>
       <LadderColumn rows={ladder} stepping={stepping} inert={dimmed} />
 

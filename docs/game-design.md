@@ -27,7 +27,7 @@ Each lifeline can be used once per game. Several can be stacked on the same ques
 
 - **50:50:** removes two wrong answers.
 - **Ask the Audience:** a simulated vote chart.
-- **Phone a Friend:** the player picks one of four specialist friends (history, science, sports, pop culture), who gives a simulated guess with a stated confidence.
+- **Phone a Friend:** the player picks one of four specialist friends (history, science, sports, pop culture), who gives a simulated guess with a stated confidence. The phone rings first, with "Calling …" in place of their answer for a moment.
 - **Switch the Question:** swaps the current question for another from the same difficulty tier. It is only available **after question 10**.
 
 The audience and friend are simulated from the known answer. They are reliable on easy questions and get shakier as difficulty rises: the audience splits more, the friend is less sure, and both are sometimes wrong. After a 50:50 they only choose between the two answers left.
@@ -61,6 +61,7 @@ Everything below is kept in the browser on that device.
 - **Reset:** the main menu has a single "reset all" that clears every seen question, but not personal bests or a saved game. Resetting one topic from the run-out screen clears just that topic's questions; for TV Shows or Movies that includes every title in it.
 - **Game in progress:** a refresh drops the player straight back into the game. A refresh during "Final answer?" comes back to the question with nothing picked; one during the wait after "Final answer" comes back at the reveal, the answer still locked in. Leaving through the main menu pauses it, and the menu offers Resume. Starting a new game instead discards the saved one: it doesn't count toward a personal best, and its questions stay seen.
 - **Personal best:** best winnings per topic as picked, so "TV Shows" and "Friends" each have their own. Every finished game counts, including a walk away.
+- **Mute:** sound is on by default and starts on the first tap or key press. The Sound switch on the main menu, Ready to play, in the game and on Game over (or M in the game) turns it off, and it stays off on every screen and after a reload.
 
 ## End of game
 

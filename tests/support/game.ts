@@ -1,5 +1,6 @@
 import type { Browser } from "@e2e-dev/web";
 import { expect, type Screen } from "e2e";
+import { INSTANT_REVEAL_KEY } from "../../src/content/fixture-mode";
 
 /**
  * Playing a Game in the journeys. Every fixture Question's correct answer is
@@ -13,6 +14,18 @@ export const RIGHT_ANSWER = /Right answer/;
 /** The Game's heading for question `rung`: "Question 3 of 15 · for $300". */
 export function questionHeading(screen: Screen, rung: number) {
   return screen.getByRole("heading", new RegExp(`^Question ${rung} of 15 · for \\$`), { level: 1 });
+}
+
+/**
+ * Turns the test build's instant reveals back off for the rest of this page
+ * (engine.ts turns them on at every page load), so the next Final answer
+ * waits as a player's would.
+ */
+export async function realRevealWait(browser: Browser): Promise<void> {
+  await browser.evaluate((key: string) => {
+    localStorage.removeItem(key);
+    return null;
+  }, INSTANT_REVEAL_KEY);
 }
 
 /** Opens a Topic's Ready to play at `path` and presses Start, landing on question 1. */

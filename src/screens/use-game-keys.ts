@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+import { sound } from "../app/sound";
 import type { PlayingGame } from "../game/game-controller";
-import { gameKeyEvent, SHOW_KEYS_KEY } from "./game-keys";
+import { gameKeyEvent, isMuteKey, SHOW_KEYS_KEY, type KeyPress } from "./game-keys";
 
 /**
  * Plays the Game from the keyboard: a key in `GAME_KEYS` sends its move when the
@@ -26,24 +27,39 @@ export function useGameKeys(game: PlayingGame): void {
 }
 
 /**
- * Calls `onShow` when `?` is pressed outside a dialog, to show the list of
- * keys. It's not a Game move, so it works on every step of the Game.
+ * Calls `onPress` when a key that `matches` is pressed outside a dialog or a
+ * text field, and not on key repeat. For the keys that aren't Game moves, so
+ * they work on every step of the Game.
  */
-export function useShowKeysKey(onShow: () => void): void {
-  const show = useRef(onShow);
+function useKeyOutsideDialogs(matches: (press: KeyPress) => boolean, onPress: () => void): void {
+  const pressed = useRef(onPress);
   useEffect(() => {
-    show.current = onShow;
+    pressed.current = onPress;
   });
   useEffect(() => {
     function onKeyDown(press: KeyboardEvent) {
-      if (press.defaultPrevented || press.repeat || press.key !== SHOW_KEYS_KEY) return;
-      if (press.ctrlKey || press.metaKey || press.altKey) return;
+      if (press.defaultPrevented || press.repeat || !matches(press)) return;
       const target = press.target instanceof Element ? press.target : null;
       if (target?.closest("dialog[open], input, textarea, select")) return;
       press.preventDefault();
-      show.current();
+      pressed.current();
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [matches]);
+}
+
+/** Turns the sound on or off when M is pressed outside a dialog. */
+export function useMuteKey(): void {
+  useKeyOutsideDialogs(isMuteKey, () => sound.toggleMuted());
+}
+
+/** Whether `press` is `?` with no Ctrl, Cmd or Alt held. */
+function isShowKeysKey(press: KeyPress): boolean {
+  return press.key === SHOW_KEYS_KEY && !press.ctrlKey && !press.metaKey && !press.altKey;
+}
+
+/** Calls `onShow` when `?` is pressed outside a dialog, to show the list of keys. */
+export function useShowKeysKey(onShow: () => void): void {
+  useKeyOutsideDialogs(isShowKeysKey, onShow);
 }

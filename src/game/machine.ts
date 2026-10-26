@@ -283,6 +283,14 @@ type GameMachine = ReturnType<typeof gameMachineWith>;
 /** A running Game: send it `GameEvent`s and read its snapshot. */
 export type GameActor = Actor<GameMachine>;
 
+/** A Game's snapshot, as `PlayingGame.snapshot()` gives it. */
+export type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
+
+/** Whether a Phone a Friend call lands in the step from `previous` to `next`: the Friend has just answered. */
+export function friendCallLanded(previous: GameSnapshot, next: GameSnapshot): boolean {
+  return !previous.context.friend && next.context.friend !== null;
+}
+
 /** Starts a new Game at question 1. */
 export function startGame({ topic, questions, ...dependencies }: GameInput): GameActor {
   if (questions.length !== LADDER_LENGTH) {

@@ -1,19 +1,7 @@
 import { test, type Browser } from "@e2e-dev/web";
 import { expect, type Screen } from "e2e";
 import { checkA11y } from "./support/axe";
-import { playToRung, questionHeading, RIGHT_ANSWER, startGame } from "./support/game";
-
-/**
- * Turns the test build's instant reveals back off for the rest of this page
- * (tests/support/engine.ts turns them on at every page load), so the next
- * Final answer waits as a player's would.
- */
-async function realRevealWait(browser: Browser): Promise<void> {
-  await browser.evaluate(() => {
-    localStorage.removeItem("trivia.fixtures.instantReveal");
-    return null;
-  });
-}
+import { playToRung, questionHeading, realRevealWait, RIGHT_ANSWER, startGame } from "./support/game";
 
 /** The line shown through the reveal wait. */
 function lockedInLine(screen: Screen) {
