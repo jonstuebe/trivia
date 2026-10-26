@@ -1,0 +1,339 @@
+<!doctype html>
+<!--
+  PROTOTYPE — throwaway. Visual direction for the trivia game (Visual direction, issue #11).
+  Plan: three radically different visual directions, each showing the key screens,
+  switchable via ?variant=A|B|C and ?screen=menu|topics|ready|game|final|reveal|over.
+  The floating bar at the bottom is prototype chrome, not part of any design.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trivia — visual direction prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Mono:wght@400;600&family=Archivo+Black&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { font-family: Inter, system-ui, sans-serif; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  #stage { min-height: 100vh; padding-bottom: 96px; }
+  body.framed #stage { display: flex; justify-content: center; align-items: flex-start; padding: 24px 16px 110px; background: #2a2a2e; }
+  body.framed #app { width: 390px; min-height: 780px; border-radius: 36px; overflow: hidden; box-shadow: 0 0 0 10px #111, 0 30px 80px rgba(0,0,0,.5); }
+  #app { min-height: 100vh; }
+  body.framed #app { min-height: 780px; }
+
+  /* ---------- prototype switcher (not part of the design) ---------- */
+  #proto { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 99;
+    display: flex; flex-direction: column; gap: 6px; align-items: center;
+    font: 600 12px/1 "IBM Plex Mono", monospace; color: #fff; }
+  #proto .row { display: flex; gap: 4px; align-items: center; background: #ff2d75; padding: 5px; border-radius: 999px; box-shadow: 0 6px 24px rgba(0,0,0,.35); max-width: calc(100vw - 16px); overflow-x: auto; }
+  #proto button { padding: 7px 10px; border-radius: 999px; white-space: nowrap; }
+  #proto button.on { background: #fff; color: #ff2d75; }
+  #proto .lbl { padding: 0 8px; white-space: nowrap; }
+
+  /* =====================================================================
+     A — STUDIO: a direct nod to the show. Dark spotlight, lozenge answers,
+     gold money ladder, serif caps. Tension through light.
+     ===================================================================== */
+  .vA { --bg:#05061a; --panel:#0c1146; --line:#5b6cff; --gold:#f5c542; --txt:#eef1ff; --mut:#8e96d6; --ok:#2fd27a; --bad:#ff4d5e;
+    background: radial-gradient(ellipse 80% 55% at 50% 0%, #2a2f9e 0%, #0b0e3a 45%, var(--bg) 80%); color: var(--txt);
+    min-height: inherit; display: flex; flex-direction: column; font-family: Inter, sans-serif; transition: filter .6s; }
+  .vA.dim { background: radial-gradient(ellipse 50% 40% at 50% 30%, #1b1f6e 0%, #070926 60%, #020310 90%); }
+  .vA .brand { font-family: Cinzel, serif; font-weight: 800; letter-spacing: .12em; }
+  .vA .wrap { flex: 1; display: flex; flex-direction: column; padding: 20px 16px; gap: 16px; max-width: 980px; width: 100%; margin: 0 auto; }
+  .vA .top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--mut); }
+  .vA .pill { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; color: var(--txt); background: rgba(12,17,70,.6); }
+  .vA .lozenge { position: relative; display: flex; align-items: center; gap: 10px; padding: 14px 22px; color: var(--txt);
+    background: linear-gradient(180deg,#16206b,#0a0f45); border: 2px solid var(--line);
+    clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%); text-align: left; width: 100%; }
+  .vA .lozenge::before { content:""; position:absolute; inset:0; clip-path: inherit; box-shadow: inset 0 0 0 2px var(--line); pointer-events:none; }
+  .vA .lozenge .k { color: var(--gold); font-weight: 800; }
+  .vA .q { padding: 22px 26px; font-size: 19px; line-height: 1.35; font-weight: 600; text-align: center; justify-content: center; }
+  .vA .answers { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .vA .ans.sel { background: linear-gradient(180deg,#ffb52e,#d9850a); color: #111; border-color: #ffd27a; }
+  .vA .ans.sel .k { color: #111; }
+  .vA .ans.ok { background: linear-gradient(180deg,#36e388,#16a85a); color: #04210f; border-color:#9cf5c3; animation: flash .35s 3; }
+  .vA .ans.ok .k { color:#04210f; }
+  .vA .ans.gone { opacity: .25; }
+  @keyframes flash { 50% { filter: brightness(1.6); } }
+  .vA .lifelines { display: flex; justify-content: center; gap: 12px; }
+  .vA .ll { width: 58px; height: 40px; border-radius: 50%; border: 2px solid var(--line); background: #0a0f45; display:grid; place-items:center; font-weight: 800; font-size: 13px; color: var(--txt); }
+  .vA .ll.used { opacity: .3; position: relative; }
+  .vA .ll.used::after { content:""; position:absolute; width: 64px; height: 2px; background: var(--bad); transform: rotate(-30deg); }
+  .vA .ll.locked { opacity: .45; border-style: dashed; }
+  .vA .ladder { display: none; }
+  .vA .ladder ol { list-style: none; display: flex; flex-direction: column-reverse; gap: 2px; font-size: 13px; }
+  .vA .ladder li { display: flex; justify-content: space-between; padding: 3px 10px; color: var(--gold); border-radius: 4px; }
+  .vA .ladder li.safe { color: #fff; font-weight: 800; }
+  .vA .ladder li.done { color: var(--mut); }
+  .vA .ladder li.cur { background: var(--gold); color: #111; font-weight: 800; }
+  .vA .strip { display: flex; justify-content: center; gap: 6px; align-items: center; font-size: 13px; color: var(--mut); }
+  .vA .strip b { color: var(--gold); font-size: 22px; font-family: Cinzel, serif; }
+  .vA .hladder { display: flex; gap: 4px; overflow-x: auto; padding: 4px 40% 6px; scrollbar-width: none; scroll-snap-type: x mandatory;
+    mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); }
+  .vA .hladder span { flex: none; scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; min-width: 52px; padding: 5px 6px; border-radius: 8px; font-weight: 800; font-size: 13px; color: var(--gold); }
+  .vA .hladder small { font-size: 10px; color: var(--mut); font-weight: 600; }
+  .vA .hladder .done { color: var(--mut); }
+  .vA .hladder .safe { color: #fff; box-shadow: inset 0 -2px 0 #fff; }
+  .vA .hladder .cur { background: var(--gold); color: #111; font-size: 17px; min-width: 76px; box-shadow: 0 0 18px rgba(245,197,66,.6); }
+  .vA .hladder .cur small { color: #111; }
+  .vA .walk { align-self: center; color: var(--mut); font-size: 13px; text-decoration: underline; }
+  .vA .confirm { text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .vA .confirm h3 { font-family: Cinzel, serif; color: var(--gold); letter-spacing: .08em; font-size: 22px; }
+  .vA .btns { display: flex; gap: 10px; }
+  .vA .btn { padding: 12px 22px; border-radius: 999px; font-weight: 800; background: var(--gold); color: #111; }
+  .vA .btn.ghost { background: transparent; color: var(--txt); border: 1px solid var(--line); }
+  .vA .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; text-align: center; }
+  .vA .logo { width: 170px; height: 170px; border-radius: 50%; display: grid; place-items: center; font-size: 30px;
+    background: radial-gradient(circle at 50% 35%, #3a46ff, #0b0e3a 70%); box-shadow: 0 0 0 4px var(--gold), 0 0 60px rgba(91,108,255,.6); }
+  .vA .menu { display: flex; flex-direction: column; gap: 10px; width: min(320px, 100%); }
+  .vA h2 { font-family: Cinzel, serif; color: var(--gold); letter-spacing: .08em; font-size: 18px; }
+  .vA .cat { display: flex; flex-direction: column; gap: 8px; }
+  .vA .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vA .tile { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: rgba(12,17,70,.7); text-align: left; font-size: 14px; }
+  .vA .tile small { display:block; color: var(--mut); font-size: 11px; margin-top: 3px; }
+  .vA .share { font-family: "IBM Plex Mono", monospace; font-size: 13px; white-space: pre; background: rgba(0,0,0,.4); border: 1px solid var(--line); border-radius: 10px; padding: 14px; text-align: left; }
+  .vA .big { font-family: Cinzel, serif; font-size: 44px; color: var(--gold); text-shadow: 0 0 30px rgba(245,197,66,.5); }
+  @media (min-width: 760px) {
+    body:not(.framed) .vA .game { display: grid; grid-template-columns: 1fr 220px; gap: 24px; align-items: start; }
+    body:not(.framed) .vA .ladder { display: block; padding: 12px 0; border-left: 1px solid rgba(91,108,255,.4); }
+    body:not(.framed) .vA .hladder { display: none; }
+    body:not(.framed) .vA .answers { grid-template-columns: 1fr 1fr; }
+    body:not(.framed) .vA .q { font-size: 24px; padding: 34px 40px; }
+  }
+
+  /* =====================================================================
+     B — QUIZ CARD: editorial and calm. Warm paper, big serif question,
+     answers as ruled rows, the ladder as a 15-tick track. Tension through type and space.
+     ===================================================================== */
+  .vB { --paper:#f4efe6; --ink:#1d1a16; --mut:#7b7266; --rule:#d9d0c1; --acc:#c2410c; --ok:#15803d; --bad:#b91c1c;
+    background: var(--paper); color: var(--ink); min-height: inherit; font-family: Inter, sans-serif; display:flex; flex-direction:column; }
+  .vB .wrap { flex:1; display:flex; flex-direction:column; gap: 22px; padding: 22px 20px; max-width: 680px; margin: 0 auto; width: 100%; }
+  .vB .serif { font-family: Fraunces, Georgia, serif; }
+  .vB .top { display:flex; justify-content:space-between; align-items:baseline; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mut); }
+  .vB .track { display:grid; grid-template-columns: repeat(15, 1fr); gap: 3px; }
+  .vB .track i { height: 6px; background: var(--rule); border-radius: 1px; }
+  .vB .track i.done { background: var(--ink); }
+  .vB .track i.cur { background: var(--acc); height: 10px; margin-top: -2px; }
+  .vB .track i.safe { outline: 1.5px solid var(--ink); outline-offset: 1px; }
+  .vB .prize { display:flex; justify-content:space-between; font-size: 13px; color: var(--mut); }
+  .vB .prize b { color: var(--ink); font-family: Fraunces, serif; font-size: 18px; }
+  .vB .q { font-family: Fraunces, serif; font-size: 30px; line-height: 1.15; font-weight: 600; letter-spacing: -.01em; }
+  .vB .label { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--acc); font-weight: 600; }
+  .vB .answers { display:flex; flex-direction:column; border-top: 1px solid var(--ink); }
+  .vB .ans { display:flex; gap: 16px; align-items: baseline; padding: 16px 4px; border-bottom: 1px solid var(--rule); text-align:left; font-size: 18px; }
+  .vB .ans .k { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--mut); width: 16px; }
+  .vB .ans.sel { background: var(--ink); color: var(--paper); padding-left: 12px; }
+  .vB .ans.sel .k { color: var(--paper); }
+  .vB .ans.ok { background: var(--ok); color: #fff; padding-left: 12px; }
+  .vB .ans.ok .k { color:#fff; }
+  .vB .ans.gone { color: var(--rule); text-decoration: line-through; }
+  .vB .tools { display:flex; justify-content:space-between; align-items:center; gap: 10px; flex-wrap: wrap; }
+  .vB .lifelines { display:flex; gap: 6px; }
+  .vB .ll { font-size: 13px; padding: 7px 11px; border: 1px solid var(--ink); border-radius: 2px; }
+  .vB .ll.used { border-color: var(--rule); color: var(--rule); text-decoration: line-through; }
+  .vB .ll.locked { border-style: dashed; color: var(--mut); border-color: var(--mut); }
+  .vB .walk { font-size: 13px; color: var(--mut); text-decoration: underline; }
+  .vB .sheet { margin-top:auto; border-top: 2px solid var(--ink); padding-top: 16px; display:flex; flex-direction:column; gap: 12px; }
+  .vB .sheet h3 { font-family: Fraunces, serif; font-size: 24px; }
+  .vB .btns { display:flex; gap: 10px; }
+  .vB .btn { padding: 14px 20px; background: var(--ink); color: var(--paper); font-weight: 600; flex:1; }
+  .vB .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .vB .btn.acc { background: var(--acc); }
+  .vB h1 { font-family: Fraunces, serif; font-size: 64px; font-weight: 800; letter-spacing: -.03em; line-height: .9; }
+  .vB .menu { display:flex; flex-direction:column; border-top: 1px solid var(--ink); }
+  .vB .menu button { text-align:left; padding: 16px 0; border-bottom: 1px solid var(--rule); font-family: Fraunces, serif; font-size: 22px; display:flex; justify-content:space-between; }
+  .vB .menu button span { font-family: Inter; font-size: 13px; color: var(--mut); align-self: center; }
+  .vB .toc h2 { font-family: Fraunces, serif; font-size: 22px; margin: 18px 0 4px; }
+  .vB .toc button { display:flex; width:100%; justify-content:space-between; padding: 10px 0; border-bottom: 1px dotted var(--rule); font-size: 16px; text-align:left; }
+  .vB .toc button small { color: var(--mut); }
+  .vB .share { font-family: "IBM Plex Mono", monospace; white-space: pre; font-size: 14px; padding: 16px; background: #fffaf2; border: 1px solid var(--rule); }
+  .vB .big { font-family: Fraunces, serif; font-size: 72px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+
+  /* =====================================================================
+     C — ARCADE: loud and playful. Flat saturated colour that heats up by Tier,
+     chunky shadowed buttons, a giant prize counter, the ladder as a climbing stack.
+     Tension through colour.
+     ===================================================================== */
+  .vC { --t1:#3b82f6; --t2:#14b8a6; --t3:#eab308; --t4:#f97316; --t5:#e11d48; --heat: var(--t4);
+    --ink:#111; --card:#fff; background: var(--heat); color: var(--ink); min-height: inherit; font-family: "Space Grotesk", sans-serif; display:flex; flex-direction:column; transition: background .4s; }
+  .vC .wrap { flex:1; display:flex; flex-direction:column; gap: 14px; padding: 18px 16px; max-width: 760px; margin: 0 auto; width:100%; }
+  .vC .chunky { border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); border-radius: 14px; background: var(--card); }
+  .vC .top { display:flex; justify-content:space-between; align-items:center; }
+  .vC .tag { font-weight: 700; font-size: 13px; padding: 6px 10px; border: 3px solid var(--ink); border-radius: 999px; background: #fff; }
+  .vC .counter { text-align:center; padding: 6px 0; }
+  .vC .counter small { display:block; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; }
+  .vC .counter b { font-family: "Archivo Black", sans-serif; font-size: 56px; line-height: 1; color: #fff; -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 5px 5px 0 var(--ink); }
+  .vC .stack { display:flex; gap: 4px; justify-content:center; }
+  .vC .stack i { width: 16px; height: 16px; border: 2px solid var(--ink); border-radius: 4px; background: rgba(255,255,255,.35); }
+  .vC .stack i.done { background: var(--ink); }
+  .vC .stack i.cur { background: #fff; transform: scale(1.35); }
+  .vC .stack i.safe { border-radius: 50%; }
+  .vC .q { padding: 20px; font-size: 22px; font-weight: 700; line-height: 1.25; }
+  .vC .answers { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vC .ans { padding: 16px 12px; font-weight: 700; font-size: 17px; text-align:left; display:flex; flex-direction:column; gap: 6px; min-height: 86px; }
+  .vC .ans .k { width: 28px; height: 28px; border-radius: 8px; background: var(--ink); color: #fff; display:grid; place-items:center; font-size: 14px; }
+  .vC .ans.sel { background: var(--ink); color: #fff; transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--ink); }
+  .vC .ans.sel .k { background:#fff; color: var(--ink); }
+  .vC .ans.ok { background: #22c55e; animation: bounce .5s 2; }
+  .vC .ans.gone { opacity: .25; box-shadow: none; }
+  @keyframes bounce { 50% { transform: translateY(-6px) rotate(-1deg); } }
+  .vC .lifelines { display:flex; gap: 10px; justify-content:center; }
+  .vC .ll { width: 54px; height: 54px; border-radius: 50%; display:grid; place-items:center; font-size: 22px; }
+  .vC .ll.used { opacity: .35; box-shadow: none; filter: grayscale(1); }
+  .vC .ll.locked { opacity: .55; border-style: dashed; box-shadow: none; }
+  .vC .walk { align-self:center; font-weight: 700; padding: 8px 14px; }
+  .vC .confirm { padding: 18px; text-align:center; display:flex; flex-direction:column; gap: 12px; }
+  .vC .confirm h3 { font-family: "Archivo Black"; font-size: 30px; }
+  .vC .btns { display:flex; gap: 10px; justify-content:center; }
+  .vC .btn { padding: 14px 22px; font-weight: 700; font-size: 17px; }
+  .vC .btn.go { background: #22c55e; }
+  .vC h1 { font-family: "Archivo Black"; font-size: 64px; line-height: .9; color: #fff; -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 6px 6px 0 var(--ink); transform: rotate(-4deg); }
+  .vC .menu { display:flex; flex-direction:column; gap: 14px; width: min(320px,100%); }
+  .vC .menu .btn { font-size: 20px; }
+  .vC .tiles { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vC .tile { padding: 14px; font-weight: 700; text-align:left; display:flex; flex-direction:column; gap: 4px; min-height: 84px; }
+  .vC .tile span { font-size: 26px; }
+  .vC .share { font-family: "IBM Plex Mono", monospace; white-space: pre; padding: 14px; font-size: 14px; }
+  .vC .hero { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 28px; text-align:center; }
+  @media (min-width: 760px) { body:not(.framed) .vC .q { font-size: 28px; padding: 28px; } body:not(.framed) .vC .counter b { font-size: 80px; } }
+</style>
+</head>
+<body class="framed">
+<div id="stage"><div id="app"></div></div>
+<div id="proto"></div>
+
+<script>
+// ---------- fake data ----------
+const PRIZES = [100,200,300,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000,1000000];
+const money = n => '$' + n.toLocaleString('en-US');
+const Q = { prompt: "What is the name of the coffee shop where the friends hang out?", answers: ["Central Perk","The Grind","Java Joe's","Moondance Diner"], correct: 0, removed: [] };
+const RUNG = 11; // playing for $64,000
+const TOPIC = "Friends";
+const SHARE = `Trivia · Friends\n$32,000\n✅✅✅✅✅ ✅✅✅✅✅ ✅❌\n✂️ 👥 🔄\ntrivia.jonstuebe.com/tv/friends`;
+const LL = [ {k:'5050', a:'50:50', e:'✂️', used:true}, {k:'aud', a:'Audience', e:'👥'}, {k:'phone', a:'Phone', e:'📞'}, {k:'switch', a:'Switch', e:'🔄'} ];
+
+const SCREENS = ['menu','topics','ready','game','final','reveal','over'];
+const VARIANTS = { A: 'Studio', B: 'Quiz card', C: 'Arcade' };
+const params = new URLSearchParams(location.search);
+let variant = VARIANTS[params.get('variant')] ? params.get('variant') : 'A';
+let screen = SCREENS.includes(params.get('screen')) ? params.get('screen') : 'game';
+let framed = params.get('frame') !== 'off';
+
+function sel(s) { return s === 'final' ? 1 : -1 }
+
+// ================= A: Studio =================
+function A() {
+  const ladder = `<div class="ladder"><ol>${PRIZES.map((p,i)=>`<li class="${i+1===RUNG?'cur':''} ${i+1<RUNG?'done':''} ${(i===4||i===9||i===14)?'safe':''}"><span>${i+1}</span><span>${money(p)}</span></li>`).join('')}</ol></div>`;
+  const lls = `<div class="lifelines">${LL.map(l=>`<button class="ll ${l.used?'used':''}">${l.a==='50:50'?'50:50':l.e}</button>`).join('')}</div>`;
+  const answers = s => `<div class="answers">${Q.answers.map((a,i)=>`<button class="lozenge ans ${sel(s)===i?'sel':''} ${s==='reveal'&&i===Q.correct?'ok':''}"><span class="k">${'ABCD'[i]}:</span>${a}</button>`).join('')}</div>`;
+  const top = `<div class="top"><span class="brand" style="color:#fff">TRIVIA</span><span class="pill">TV Shows · ${TOPIC}</span></div>`;
+  const game = s => `<div class="wrap">${top}
+    <div class="game"><div style="display:flex;flex-direction:column;gap:16px">
+      <div class="hladder">${PRIZES.map((p,i)=>`<span class="${i+1===RUNG?'cur':''} ${i+1<RUNG?'done':''} ${(i===4||i===9||i===14)?'safe':''}"><small>${i+1}</small>${p>=1000000?'$1M':p>=1000?'$'+p/1000+'K':'$'+p}</span>`).join('')}</div>
+      ${lls}
+      <div class="lozenge q">${Q.prompt}</div>
+      ${answers(s)}
+      ${s==='final' ? `<div class="confirm"><h3>FINAL ANSWER?</h3><div class="btns"><button class="btn">Final answer</button><button class="btn ghost">Cancel</button></div></div>` :
+        s==='reveal' ? `<div class="confirm"><h3>CORRECT</h3><button class="btn">Play for ${money(PRIZES[RUNG])}</button></div>` :
+        `<button class="walk">Walk away with ${money(PRIZES[RUNG-2])}</button>`}
+    </div>${ladder}</div></div>`;
+  const S = {
+    menu: () => `<div class="wrap"><div class="hero"><div class="logo brand">TRIVIA</div><p style="color:var(--mut)">Fifteen questions. One million dollars.</p>
+      <div class="menu"><button class="btn">Resume · Friends, question 11</button><button class="btn ghost">New game</button><button class="walk">Reset all</button></div></div></div>`,
+    topics: () => `<div class="wrap">${top}<h2>CHOOSE YOUR TOPIC</h2>
+      <div class="cat"><button class="tile">General knowledge<small>Best $125,000</small></button></div>
+      <div class="cat"><h2 style="font-size:14px">TV SHOWS</h2><button class="tile">All TV Shows (mixed)<small>Best $8,000</small></button><div class="grid2"><button class="tile">Friends<small>Best $32,000</small></button><button class="tile">The Big Bang Theory<small>Not played</small></button><button class="tile">Modern Family<small>Not played</small></button></div></div>
+      <div class="cat"><h2 style="font-size:14px">MOVIES</h2><button class="tile">All Movies (mixed)<small>Not played</small></button><div class="grid2"><button class="tile">Star Wars</button><button class="tile">Harry Potter</button><button class="tile">Marvel</button><button class="tile">Jurassic Park</button><button class="tile">Pixar</button></div></div></div>`,
+    ready: () => `<div class="wrap">${top}<div class="hero"><p style="color:var(--mut)">TV SHOWS</p><div class="big">Friends</div><p>Personal best <b style="color:var(--gold)">$32,000</b></p><p style="color:var(--mut);max-width:300px">You have a game in progress. Starting a new one will throw it away.</p><div class="btns"><button class="btn">Let's play</button><button class="btn ghost">Back</button></div></div></div>`,
+    game: () => game('game'), final: () => game('final'), reveal: () => game('reveal'),
+    over: () => `<div class="wrap">${top}<div class="hero"><p style="color:var(--mut)">You leave with</p><div class="big">$32,000</div><p>Missed on question 12. Personal best <b style="color:var(--gold)">$32,000</b></p><div class="share">${SHARE}</div><div class="btns"><button class="btn">Share</button><button class="btn ghost">Play again</button></div></div></div>`,
+  };
+  return `<div class="vA ${screen==='final'?'dim':''}">${S[screen]()}</div>`;
+}
+
+// ================= B: Quiz card =================
+function B() {
+  const track = `<div class="track">${PRIZES.map((p,i)=>`<i class="${i+1<RUNG?'done':''} ${i+1===RUNG?'cur':''} ${(i===4||i===9)?'safe':''}"></i>`).join('')}</div>`;
+  const top = `<div class="top"><span class="serif" style="font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:800">Trivia</span><span>TV Shows / ${TOPIC}</span></div>`;
+  const game = s => `<div class="wrap">${top}${track}
+    <div class="prize"><span>Question ${RUNG} of 15 · safe at $32,000</span><b>${money(PRIZES[RUNG-1])}</b></div>
+    <div><p class="label" style="margin-bottom:10px">Tier 4</p><p class="q">${Q.prompt}</p></div>
+    <div class="answers">${Q.answers.map((a,i)=>`<button class="ans ${sel(s)===i?'sel':''} ${s==='reveal'&&i===Q.correct?'ok':''}"><span class="k">${'ABCD'[i]}</span>${a}</button>`).join('')}</div>
+    ${s==='final' ? `<div class="sheet"><h3>Is that your final answer?</h3><p style="color:var(--mut)">A: Central Perk, for ${money(PRIZES[RUNG-1])}.</p><div class="btns"><button class="btn acc">Final answer</button><button class="btn ghost">Cancel</button></div></div>` :
+      s==='reveal' ? `<div class="sheet"><h3>Correct. ${money(PRIZES[RUNG-1])}.</h3><div class="btns"><button class="btn">Next question</button></div></div>` :
+      `<div class="tools"><div class="lifelines">${LL.map(l=>`<button class="ll ${l.used?'used':''}">${l.a}</button>`).join('')}</div><button class="walk">Walk away · ${money(PRIZES[RUNG-2])}</button></div>`}
+  </div>`;
+  const S = {
+    menu: () => `<div class="wrap" style="justify-content:space-between"><div style="padding-top:40px"><p class="label">A quiz in fifteen questions</p><h1 style="margin-top:12px">Trivia</h1></div>
+      <div class="menu"><button>Resume <span>Friends · Q11 · $64,000</span></button><button>New game <span>→</span></button><button style="font-size:16px;color:var(--mut)">Reset all <span></span></button></div></div>`,
+    topics: () => `<div class="wrap">${top}<h1 style="font-size:40px">Pick a topic</h1><div class="toc">
+      <h2>General</h2><button>General knowledge <small>best $125,000</small></button>
+      <h2>TV Shows</h2><button>All TV Shows <small>best $8,000</small></button><button>Friends <small>best $32,000</small></button><button>The Big Bang Theory <small>—</small></button><button>Modern Family <small>—</small></button>
+      <h2>Movies</h2><button>All Movies <small>—</small></button><button>Star Wars <small>—</small></button><button>Harry Potter <small>—</small></button><button>Marvel Cinematic Universe <small>—</small></button><button>Jurassic Park <small>—</small></button><button>Pixar <small>—</small></button></div></div>`,
+    ready: () => `<div class="wrap">${top}<div style="margin-top:40px"><p class="label">TV Shows</p><p class="big" style="margin-top:8px">Friends</p></div><p style="font-size:18px">Fifteen questions, four lifelines. Your best here is <b>$32,000</b>.</p>
+      <p style="padding:12px;border-left:3px solid var(--acc);background:#fff6ea;font-size:14px">A game is in progress. Starting this one discards it.</p><div class="sheet"><div class="btns"><button class="btn acc">Start</button><button class="btn ghost">Back</button></div></div></div>`,
+    game: () => game('game'), final: () => game('final'), reveal: () => game('reveal'),
+    over: () => `<div class="wrap">${top}<div style="margin-top:30px"><p class="label">You leave with</p><p class="big">$32,000</p></div><p>The answer to question 12 was <b>Gunther</b>. Your best here: $32,000.</p><div class="share">${SHARE}</div><div class="sheet"><div class="btns"><button class="btn acc">Share</button><button class="btn ghost">Play again</button></div></div></div>`,
+  };
+  return `<div class="vB">${S[screen]()}</div>`;
+}
+
+// ================= C: Arcade =================
+function C() {
+  const tier = Math.ceil(RUNG/3);
+  const heat = s => ['over','menu','topics','ready'].includes(s) ? 'var(--t1)' : `var(--t${tier})`;
+  const stack = `<div class="stack">${PRIZES.map((p,i)=>`<i class="${i+1<RUNG?'done':''} ${i+1===RUNG?'cur':''} ${(i===4||i===9||i===14)?'safe':''}"></i>`).join('')}</div>`;
+  const top = `<div class="top"><span class="tag">📺 ${TOPIC}</span><span class="tag">Q${RUNG}/15</span></div>`;
+  const game = s => `<div class="wrap">${top}
+    <div class="counter"><small>Playing for</small><b>${money(PRIZES[RUNG-1])}</b></div>${stack}
+    <div class="chunky q">${Q.prompt}</div>
+    <div class="answers">${Q.answers.map((a,i)=>`<button class="chunky ans ${sel(s)===i?'sel':''} ${s==='reveal'&&i===Q.correct?'ok':''}"><span class="k">${'ABCD'[i]}</span>${a}</button>`).join('')}</div>
+    ${s==='final' ? `<div class="chunky confirm"><h3>LOCK IT IN?</h3><div class="btns"><button class="chunky btn go">Final answer</button><button class="chunky btn">Cancel</button></div></div>` :
+      s==='reveal' ? `<div class="chunky confirm"><h3>🎉 NAILED IT</h3><div class="btns"><button class="chunky btn go">Next: ${money(PRIZES[RUNG])}</button></div></div>` :
+      `<div class="lifelines">${LL.map(l=>`<button class="chunky ll ${l.used?'used':''}">${l.e}</button>`).join('')}</div><button class="chunky walk">🚶 Walk away with ${money(PRIZES[RUNG-2])}</button>`}
+  </div>`;
+  const S = {
+    menu: () => `<div class="wrap"><div class="hero"><h1>TRIVIA!</h1><div class="menu"><button class="chunky btn go">▶ Resume Friends</button><button class="chunky btn">New game</button><button class="tag" style="align-self:center">Reset all</button></div></div></div>`,
+    topics: () => `<div class="wrap"><h1 style="font-size:40px;transform:rotate(-2deg);margin:10px 0 6px">Pick one!</h1>
+      <button class="chunky tile" style="min-height:0"><span>🌍</span>General knowledge · best $125,000</button>
+      <p style="font-weight:700;color:#fff">TV SHOWS</p><div class="tiles"><button class="chunky tile"><span>📺</span>All TV · mixed</button><button class="chunky tile"><span>☕</span>Friends · $32k</button><button class="chunky tile"><span>🔬</span>Big Bang Theory</button><button class="chunky tile"><span>🏡</span>Modern Family</button></div>
+      <p style="font-weight:700;color:#fff">MOVIES</p><div class="tiles"><button class="chunky tile"><span>🎬</span>All Movies · mixed</button><button class="chunky tile"><span>⭐</span>Star Wars</button><button class="chunky tile"><span>⚡</span>Harry Potter</button><button class="chunky tile"><span>🛡️</span>Marvel</button><button class="chunky tile"><span>🦖</span>Jurassic Park</button><button class="chunky tile"><span>🧸</span>Pixar</button></div></div>`,
+    ready: () => `<div class="wrap"><div class="hero"><span style="font-size:80px">☕</span><h1 style="font-size:52px">FRIENDS</h1><span class="tag">Best: $32,000</span><div class="chunky" style="padding:12px;font-weight:700;max-width:300px">Heads up: you've got a game going. Starting fresh tosses it.</div><div class="btns"><button class="chunky btn go">Let's go!</button><button class="chunky btn">Back</button></div></div></div>`,
+    game: () => game('game'), final: () => game('final'), reveal: () => game('reveal'),
+    over: () => `<div class="wrap"><div class="hero"><span class="tag">So close!</span><h1 style="font-size:58px">$32,000</h1><span class="tag">Best: $32,000</span><div class="chunky share">${SHARE}</div><div class="btns"><button class="chunky btn go">Share</button><button class="chunky btn">Again!</button></div></div></div>`,
+  };
+  return `<div class="vC" style="--heat:${heat(screen)}">${S[screen]()}</div>`;
+}
+
+// ---------- render + switcher ----------
+const R = { A, B, C };
+function render() {
+  document.body.classList.toggle('framed', framed);
+  document.getElementById('app').innerHTML = R[variant]();
+  const cur = document.querySelector('.hladder .cur'); if (cur) cur.scrollIntoView({ inline: 'center', block: 'nearest' });
+  const keys = Object.keys(VARIANTS);
+  document.getElementById('proto').innerHTML = `
+    <div class="row">${SCREENS.map(s=>`<button data-s="${s}" class="${s===screen?'on':''}">${s}</button>`).join('')}
+      <button data-f="1" class="${framed?'on':''}">phone</button></div>
+    <div class="row"><button data-v="-1">←</button><span class="lbl">${variant} (${VARIANTS[variant]})</span><button data-v="1">→</button></div>`;
+  const p = new URLSearchParams({ variant, screen }); if (!framed) p.set('frame','off');
+  history.replaceState(null, '', '?' + p);
+}
+function cycle(d) { const k = Object.keys(VARIANTS); variant = k[(k.indexOf(variant) + d + k.length) % k.length]; render(); }
+document.getElementById('proto').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.v) cycle(+b.dataset.v);
+  if (b.dataset.s) { screen = b.dataset.s; render(); }
+  if (b.dataset.f) { framed = !framed; render(); }
+});
+addEventListener('keydown', e => {
+  if (e.target.closest('input,textarea,[contenteditable]')) return;
+  if (e.key === 'ArrowLeft') cycle(-1);
+  if (e.key === 'ArrowRight') cycle(1);
+});
+render();
+</script>
+</body>
+</html>
