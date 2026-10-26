@@ -1,14 +1,18 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useState } from "react";
-import { currentGame } from "../app/game-services";
+import { controller, currentGame, setCurrentGame } from "../app/game-services";
 import { GameScreen } from "../screens/game-screen";
 
 // The Game, and Game over when it ends. With no Game in this tab (a refresh,
-// or a link straight here) it goes to the Main menu; bringing back the Saved
-// game on a refresh is #38.
+// Resume from the Main menu, or a link straight here) it brings back the
+// Saved game, one saved during "Final answer?" back at the Question with
+// nothing picked; with none saved it goes to the Main menu.
 export const Route = createFileRoute("/game")({
-  beforeLoad: () => {
-    if (!currentGame()) throw redirect({ to: "/" });
+  beforeLoad: async () => {
+    if (currentGame()) return;
+    const resumed = await controller.resumeGame();
+    if (!resumed) throw redirect({ to: "/" });
+    setCurrentGame(resumed);
   },
   component: Game,
 });

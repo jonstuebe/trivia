@@ -1,4 +1,6 @@
+import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useSyncExternalStore } from "react";
+import { setCurrentGame } from "../app/game-services";
 import type { PlayingGame } from "../game/game-controller";
 import { ANSWER_POSITIONS } from "../game/types";
 import { Dialog } from "../ui/dialog";
@@ -17,12 +19,13 @@ import { useGameKeys } from "./use-game-keys";
  * Top to bottom in the main column: the header ("Question n of 15 · for $X",
  * banked and safe), the phone Ladder strip, the Lifelines (#37), the Title
  * label in a Mixed game, the Question, the answers, then the reveal or the
- * Walk away link. The desktop Ladder is the second column. The confirm
+ * Walk away and Main menu links. The desktop Ladder is the second column. The confirm
  * dialogs sit over it all.
  */
 export function GameScreen({ game }: { game: PlayingGame }) {
   const snapshot = useSyncExternalStore(game.subscribe, game.snapshot);
   useGameKeys(game);
+  const navigate = useNavigate();
 
   const over = game.gameOver();
   if (snapshot.status === "done" && over) return <GameOverScreen over={over} snapshot={snapshot} />;
@@ -77,6 +80,19 @@ export function GameScreen({ game }: { game: PlayingGame }) {
         {choosing && view.walkAway && (
           <Button variant="quiet" onClick={() => game.send({ type: "walkAway" })}>
             {view.walkAway.link}
+          </Button>
+        )}
+        {choosing && (
+          <Button
+            variant="quiet"
+            onClick={() => {
+              // Main menu pauses: the Game is saved after every step, so this
+              // just lets go of it in this tab, and Resume brings it back.
+              setCurrentGame(undefined);
+              void navigate({ to: "/" });
+            }}
+          >
+            Main menu
           </Button>
         )}
       </div>
