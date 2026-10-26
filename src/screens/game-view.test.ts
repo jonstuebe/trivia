@@ -46,12 +46,12 @@ function playTo(game: GameActor, rung: number) {
 }
 
 describe("the Game header", () => {
-  it("shows the question number and prize, what's banked and the Safe level", () => {
+  it("shows the question number and prize", () => {
     const game = newGame();
-    expect(view(game)).toMatchObject({ heading: "Question 1 of 15 · for $100", banked: "$0", safe: "$0" });
+    expect(view(game).heading).toBe("Question 1 of 15 · for $100");
 
     playTo(game, 7);
-    expect(view(game)).toMatchObject({ heading: "Question 7 of 15 · for $4,000", banked: "$2,000", safe: "$1,000" });
+    expect(view(game).heading).toBe("Question 7 of 15 · for $4,000");
   });
 });
 
@@ -175,9 +175,9 @@ describe("Walk away", () => {
 });
 
 describe("the Title label", () => {
-  it("shows each Question's Title in a Mixed game, with the Category's icon", () => {
-    expect(view(newGame({ kind: "category", category: "tv" })).titleLabel).toBe("📺 Fixture Sitcom");
-    expect(view(newGame({ kind: "category", category: "movies" })).titleLabel).toBe("🎬 Fixture Sitcom");
+  it("shows each Question's Title in a Mixed game", () => {
+    expect(view(newGame({ kind: "category", category: "tv" })).titleLabel).toBe("Fixture Sitcom");
+    expect(view(newGame({ kind: "category", category: "movies" })).titleLabel).toBe("Fixture Sitcom");
   });
 
   it("isn't shown when the Game is one Title, or General", () => {

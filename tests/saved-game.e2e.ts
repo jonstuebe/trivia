@@ -13,7 +13,6 @@ test("a refresh mid-Game lands back in it, and one during Final answer comes bac
   await browser.reload();
   await expect(browser).toHaveURL("/game");
   await expect(questionHeading(screen, 3)).toBeFocused();
-  await expect(screen.getByText("Banked: $200 · Safe: $0")).toBeVisible();
   await checkA11y(browser, "Game, resumed after a refresh");
 
   await screen.getByRole("button", RIGHT_ANSWER).tap();
@@ -54,7 +53,6 @@ test("Main menu pauses the Game, Ready to play warns before discarding it, and R
   await screen.getByRole("button", "Resume: Fixture Sitcom, question 2").tap();
   await expect(browser).toHaveURL("/game");
   await expect(questionHeading(screen, 2)).toBeFocused();
-  await expect(screen.getByText("Banked: $100 · Safe: $0")).toBeVisible();
 });
 
 test("the Main menu shows the Personal bests, and Reset all asks first, then clears seen Questions only", async ({

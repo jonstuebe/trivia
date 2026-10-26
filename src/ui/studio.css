@@ -420,11 +420,6 @@ button.lozenge:focus-visible::before {
   color: var(--gold);
 }
 
-.game__banked {
-  color: var(--mut);
-  font-size: 14px;
-}
-
 .game__title-label {
   align-self: center;
   padding: 4px 12px;

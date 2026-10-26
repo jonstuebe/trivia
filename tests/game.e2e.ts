@@ -9,9 +9,8 @@ test("a whole Game won by keyboard alone, from Start to Play again", async ({ ap
   await browser.keyboard.press("Enter");
   await expect(browser).toHaveURL("/game");
   await expect(questionHeading(screen, 1)).toBeFocused();
-  await expect(screen.getByText("Banked: $0 · Safe: $0")).toBeVisible();
   // A single Title's Game has no Title label.
-  await expect(screen.getByText(/^📺/)).toHaveCount(0);
+  await expect(browser.locator(".game__title-label")).toHaveCount(0);
   await checkA11y(browser, "Game");
 
   // Esc backs out of Final answer, and focus comes back.
@@ -71,7 +70,7 @@ test("a whole Game won by keyboard alone, from Start to Play again", async ({ ap
 test("a miss in a Mixed game drops to the Safe level, by mouse", async ({ screen, browser }) => {
   await startGame(browser, screen, "/movies");
   // Each Question in a Mixed game says which Title it's from.
-  await expect(screen.getByText(/^🎬 Fixture (Heist|Saga)$/)).toBeVisible();
+  await expect(screen.getByText(/^Fixture (Heist|Saga)$/)).toBeVisible();
   // Desktop: the Ladder is a column, the answers 2×2.
   await expect(browser.locator('.ladder [aria-current="step"]')).toContainText("$100");
   expect(
@@ -80,7 +79,6 @@ test("a miss in a Mixed game drops to the Safe level, by mouse", async ({ screen
   await checkA11y(browser, "Game, Mixed");
 
   await playToRung(screen, 1, 12);
-  await expect(screen.getByText("Banked: $64,000 · Safe: $32,000")).toBeVisible();
   await expect(browser.locator('.ladder [aria-current="step"]')).toContainText("$125,000");
   await expect(browser.locator(".ladder .is-safe")).toHaveCount(2);
 

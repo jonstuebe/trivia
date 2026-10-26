@@ -18,8 +18,8 @@ import { useGameKeys, useShowKeysKey } from "./use-game-keys";
  * The Game at `/game`, from question 1 to Game over. Every move goes to the
  * Game controller; this only lays out what `gameView` says and moves focus.
  *
- * Top to bottom in the main column: the header ("Question n of 15 · for $X",
- * banked and safe), the phone Ladder strip, the Lifelines and their results,
+ * Top to bottom in the main column: the header ("Question n of 15 · for $X"),
+ * the phone Ladder strip, the Lifelines and their results,
  * the Title label in a Mixed game, the Question, the answers, then the reveal
  * or the Walk away and Main menu links. The desktop Ladder is the second
  * column. The confirm dialogs, Pick a friend and the `?` list of keys sit
@@ -50,9 +50,6 @@ export function GameScreen({ game }: { game: PlayingGame }) {
           <ScreenHeading key={`${rung}:${question.id}`} className="game__heading">
             {view.heading}
           </ScreenHeading>
-          <p className="game__banked">
-            Banked: <span className="money">{view.banked}</span> · Safe: <span className="money">{view.safe}</span>
-          </p>
         </header>
 
         <LadderStrip rows={ladder} />

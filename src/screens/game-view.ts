@@ -1,7 +1,7 @@
-import type { TitleCategory } from "../content/schema";
 import { shownNow, type GameActor } from "../game/machine";
 import { LADDER_LENGTH, prizeForRung, winningsAfterMiss, winningsBeforeRung } from "../game/ladder";
 import { ANSWER_POSITIONS, type AnswerPosition } from "../game/types";
+import type { AnswerMark } from "../ui/lozenge";
 import { formatMoney } from "../ui/money";
 
 /** A Game's snapshot, as `PlayingGame.snapshot()` gives it. */
@@ -14,11 +14,7 @@ export type GameSnapshot = ReturnType<GameActor["getSnapshot"]>;
 export interface GameView {
   /** "Question 7 of 15 · for $4,000". */
   heading: string;
-  /** What a Walk away would keep now. */
-  banked: string;
-  /** What a miss now would leave with. */
-  safe: string;
-  /** The Question's Title with its Category's icon ("📺 Friends"), in a Mixed game only. */
+  /** The Question's Title ("Friends"), in a Mixed game only. */
   titleLabel?: string;
   /** The four answers, A to D, in the order shown. */
   answers: AnswerView[];
@@ -32,13 +28,6 @@ export interface GameView {
   walkAway?: { link: string; confirm: string };
 }
 
-/**
- * How an answer is shown: `picked` (amber, waiting on Final answer or being
- * revealed), `right` (the correct one, at the reveal) or `wrong` (the pick, on
- * a miss).
- */
-export type AnswerMark = "none" | "picked" | "right" | "wrong";
-
 export interface AnswerView {
   letter: string;
   text: string;
@@ -50,8 +39,6 @@ export interface AnswerView {
 }
 
 export const ANSWER_LETTERS = ["A", "B", "C", "D"] as const;
-
-const CATEGORY_ICON: Record<TitleCategory, string> = { tv: "📺", movies: "🎬" };
 
 const MARK_SUFFIX: Record<AnswerMark, string> = {
   none: "",
@@ -114,11 +101,6 @@ export function gameView(snapshot: GameSnapshot): GameView {
         ? { link: `Walk away with ${banked}`, confirm: `Walk away with ${banked}?` }
         : undefined,
     heading: `Question ${rung} of ${LADDER_LENGTH} · for ${prize}`,
-    banked,
-    safe: formatMoney(winningsAfterMiss(rung)),
-    titleLabel:
-      topic.kind === "category" && question.titleName
-        ? `${CATEGORY_ICON[topic.category]} ${question.titleName}`
-        : undefined,
+    titleLabel: topic.kind === "category" ? question.titleName : undefined,
   };
 }
