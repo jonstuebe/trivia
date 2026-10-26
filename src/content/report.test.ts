@@ -53,3 +53,53 @@ describe("the long-answer warning", () => {
     expect(reportContent([broken]).warnings).toEqual([]);
   });
 });
+
+describe("the per-Tier and per-Subject report", () => {
+  function inTiers(countsByTier: number[], extra: Record<string, unknown> = {}) {
+    return countsByTier.flatMap((count, i) => Array.from({ length: count }, () => question(i + 1, extra)));
+  }
+
+  it("counts every Topic's Questions per Tier, General first, then TV and Movies by name", () => {
+    const { topics } = reportContent([
+      { path: "movies/pixar.json", data: { title: "Pixar", questions: inTiers([0, 0, 0, 0, 1]) } },
+      { path: "tv/the-big-bang-theory.json", data: { title: "The Big Bang Theory", questions: inTiers([1, 0, 2]) } },
+      { path: "tv/friends.json", data: { title: "Friends", questions: inTiers([3, 3, 3, 4, 5]) } },
+      { path: "general.json", data: { questions: inTiers([1], { subject: "sports" }) } },
+    ]);
+    expect(topics.map(({ file, name, tiers }) => ({ file, name, tiers }))).toEqual([
+      { file: "general.json", name: "General", tiers: { 1: 1, 2: 0, 3: 0, 4: 0, 5: 0 } },
+      { file: "tv/friends.json", name: "Friends", tiers: { 1: 3, 2: 3, 3: 3, 4: 4, 5: 5 } },
+      { file: "tv/the-big-bang-theory.json", name: "The Big Bang Theory", tiers: { 1: 1, 2: 0, 3: 2, 4: 0, 5: 0 } },
+      { file: "movies/pixar.json", name: "Pixar", tiers: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 1 } },
+    ]);
+  });
+
+  it("counts General's Questions per Subject and Tier, listing every Subject even with none", () => {
+    const { topics } = reportContent([
+      {
+        path: "general.json",
+        data: {
+          questions: [
+            ...inTiers([2, 0, 1], { subject: "history" }),
+            ...inTiers([0, 1, 0, 0, 3], { subject: "science" }),
+            ...inTiers([1], { subject: "pop culture" }),
+          ],
+        },
+      },
+    ]);
+    expect(topics[0]?.subjects).toEqual({
+      history: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 },
+      science: { 1: 0, 2: 1, 3: 0, 4: 0, 5: 3 },
+      sports: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+      "pop culture": { 1: 1, 2: 0, 3: 0, 4: 0, 5: 0 },
+    });
+  });
+
+  it("gives a Title no Subjects, since its Questions are all pop culture", () => {
+    expect(reportContent(title([question(1)])).topics[0]?.subjects).toBeUndefined();
+  });
+
+  it("leaves out files that fail the schema", () => {
+    expect(reportContent([{ path: "tv/friends.json", data: { questions: [] } }]).topics).toEqual([]);
+  });
+});
