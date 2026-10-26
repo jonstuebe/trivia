@@ -1,25 +1,14 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { createServer } from "vite";
 import { beforeAll, describe, expect, it } from "vitest";
+import { servedIndexHtml } from "../tests/support/served-page.ts";
 
 const root = join(import.meta.dirname, "..");
 
 /** The page's `<head>` as the app's Vite config serves and builds it. */
 async function servedHead(): Promise<string> {
-  const server = await createServer({
-    root,
-    configFile: join(root, "vite.config.ts"),
-    logLevel: "silent",
-    appType: "custom",
-    server: { middlewareMode: true, hmr: false, ws: false, watch: null },
-  });
-  try {
-    const html = await server.transformIndexHtml("/", readFileSync(join(root, "index.html"), "utf8"));
-    return html.slice(0, html.indexOf("</head>"));
-  } finally {
-    await server.close();
-  }
+  const html = await servedIndexHtml();
+  return html.slice(0, html.indexOf("</head>"));
 }
 
 /** The `content` of the `<meta>` whose `property` or `name` is `key`. */

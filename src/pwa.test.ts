@@ -2,9 +2,9 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import sharp from "sharp";
-import { createServer } from "vite";
 import { getManifest } from "workbox-build";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { servedIndexHtml } from "../tests/support/served-page.ts";
 import { PWA_OPTIONS } from "./pwa.ts";
 
 const root = join(import.meta.dirname, "..");
@@ -93,23 +93,12 @@ describe("the service worker", () => {
   });
 
   it("isn't registered by the dev server", async () => {
-    const server = await createServer({
-      root,
-      configFile: join(root, "vite.config.ts"),
-      logLevel: "silent",
-      appType: "custom",
-      server: { middlewareMode: true, hmr: false, ws: false, watch: null },
-    });
-    try {
-      const html = await server.transformIndexHtml("/", readFileSync(join(root, "index.html"), "utf8"));
-      expect(html).toContain("<title>Trivia</title>");
-      // With dev registration on, the plugin adds a "vite-plugin-pwa:register-dev-sw"
-      // script and the manifest link here.
-      expect(html).not.toContain("vite-plugin-pwa");
-      expect(html).not.toContain('rel="manifest"');
-    } finally {
-      await server.close();
-    }
+    const html = await servedIndexHtml();
+    expect(html).toContain("<title>Trivia</title>");
+    // With dev registration on, the plugin adds a "vite-plugin-pwa:register-dev-sw"
+    // script and the manifest link here.
+    expect(html).not.toContain("vite-plugin-pwa");
+    expect(html).not.toContain('rel="manifest"');
   }, 30_000);
 });
 
