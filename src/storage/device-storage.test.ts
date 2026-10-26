@@ -181,6 +181,40 @@ describe("Reset this Topic", () => {
   });
 });
 
+describe("persistent storage", () => {
+  it("is asked for when the first Game starts, and only then", async () => {
+    let requests = 0;
+    const storage = createDeviceStorage(createMemoryBackend(), {
+      savedGame: savedGameFormat,
+      persist: async () => {
+        requests++;
+        return true;
+      },
+    });
+    expect(requests).toBe(0);
+    await storage.gameStarted();
+    await storage.gameStarted();
+    expect(requests).toBe(1);
+  });
+
+  it("doesn't stop the Game when the browser refuses or can't ask", async () => {
+    const refusing = createDeviceStorage(createMemoryBackend(), {
+      savedGame: savedGameFormat,
+      persist: () => Promise.reject(new Error("not allowed")),
+    });
+    await expect(refusing.gameStarted()).resolves.toBeUndefined();
+    await expect(open().gameStarted()).resolves.toBeUndefined();
+  });
+});
+
+describe("an unreadable key", () => {
+  it("is backed up and starts fresh", () => {
+    const backend = createMemoryBackend({ "trivia.seen": JSON.stringify({ version: 99, data: {} }) });
+    expect(open(backend).seenQuestions()).toEqual(new Map());
+    expect(backend.getItem("trivia.seen.backup")).toBe(JSON.stringify({ version: 99, data: {} }));
+  });
+});
+
 describe("settings", () => {
   it("has sound on by default", () => {
     expect(open().muted()).toBe(false);

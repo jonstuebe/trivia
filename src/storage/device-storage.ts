@@ -15,6 +15,12 @@ export interface SavedGameFormat<T> {
 
 export interface DeviceStorageOptions<T> {
   savedGame: SavedGameFormat<T>;
+  /**
+   * Asks the browser to keep this site's storage, guarding against Safari's
+   * eviction of sites not on the Home Screen. In the browser:
+   * `() => navigator.storage.persist()`. Left out, nothing is asked.
+   */
+  persist?: () => Promise<boolean>;
 }
 
 /** The storage key names, each holding `{version, data}`. */
@@ -76,7 +82,23 @@ export function createDeviceStorage<T>(backend: StorageBackend, options: DeviceS
     initial: () => ({ muted: false }),
   });
 
+  let persistRequested = false;
+
   return {
+    /**
+     * Call when a Game starts: the first time, asks for persistent storage.
+     * A refusal, or a browser that can't ask, is ignored.
+     */
+    async gameStarted(): Promise<void> {
+      if (persistRequested || !options.persist) return;
+      persistRequested = true;
+      try {
+        await options.persist();
+      } catch {
+        // Storage still works, it just may be evicted.
+      }
+    },
+
     /** Each seen Question's counter: the higher, the more recently shown. */
     seenQuestions(): ReadonlyMap<string, number> {
       return new Map(Object.entries(seen.read()));

@@ -24,7 +24,7 @@ export interface VersionedKeyOptions<T> {
   /** The current shape, checked on every read. */
   schema: z.ZodType<T>;
   /** What the key holds when nothing usable is stored. */
-  initial: () => T;
+  initial: () => NoInfer<T>;
   /**
    * How to step the data up one version: `migrations[n]` turns version `n`
    * data into version `n + 1`. Every version below the current one needs one.
