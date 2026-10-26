@@ -1,9 +1,9 @@
 import * as z from "zod";
-import { subjectSchema, tierSchema } from "../content/schema";
+import { subjectSchema, tierSchema, TITLE_CATEGORIES } from "../content/schema";
 import type { SavedGameFormat } from "../storage";
 import { LADDER_LENGTH } from "./ladder";
 import type { GameContext, SavedGameSnapshot } from "./machine";
-import { FRIENDS, LIFELINES } from "./types";
+import { FRIENDS, LIFELINES, type Topic } from "./types";
 
 /**
  * The Saved game as device storage keeps it: the Game's `SavedGameSnapshot`,
@@ -14,11 +14,15 @@ import { FRIENDS, LIFELINES } from "./types";
 
 const position = z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]);
 
+const titleCategory = z.enum(TITLE_CATEGORIES);
+
 const topicSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("general") }),
-  z.object({ kind: z.literal("category"), category: z.enum(["tv", "movies"]) }),
-  z.object({ kind: z.literal("title"), category: z.enum(["tv", "movies"]), slug: z.string() }),
-]);
+  z.object({ kind: z.literal("category"), category: titleCategory }),
+  z.object({ kind: z.literal("title"), category: titleCategory, slug: z.string() }),
+]) satisfies z.ZodType<Topic>;
+// And the other way: a kind of Topic added without a branch here fails to compile.
+true satisfies Topic extends z.infer<typeof topicSchema> ? true : false;
 
 const gameQuestionSchema = z.object({
   id: z.string(),
