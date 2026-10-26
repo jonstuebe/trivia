@@ -3,6 +3,7 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { FIXTURE_MODE, fixtureBeacon, fixtureContent } from "./src/content/fixture-build.ts";
+import { linkPreview } from "./src/link-preview.ts";
 
 export default defineConfig(({ mode }) => ({
   plugins: [
@@ -13,6 +14,7 @@ export default defineConfig(({ mode }) => ({
     // The router plugin must come before the React plugin.
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
+    linkPreview(),
   ],
   build: mode === FIXTURE_MODE ? { outDir: "dist-fixtures" } : {},
   test: {
