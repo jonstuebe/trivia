@@ -54,7 +54,10 @@ export function Dialog({
       }}
       onClose={() => {
         // Closed by the browser while still meant to show (a second Esc): treat it as Cancel.
-        if (ref.current?.isConnected) cancel.current();
+        // A dialog that's open again got a stale `close`: StrictMode's remount
+        // queues one from the cleanup's `close()` that fires after `showModal()`.
+        const dialog = ref.current;
+        if (dialog?.isConnected && !dialog.open) cancel.current();
       }}
     >
       <h2 id={titleId} className="dialog__title">
