@@ -232,6 +232,18 @@ describe("saving and restoring a Game", () => {
     expect(restored.getSnapshot().output).toMatchObject({ ending: "missed", winnings: 1_000 });
   });
 
+  it("brings a Game saved during Final answer back to the Question with nothing picked", () => {
+    const game = newGame();
+    climbTo(game, 4);
+    game.send({ type: "pick", answer: 1 });
+    const restored = saveAndRestore(game);
+    expect(restored.getSnapshot().value).toBe("choosing");
+    expect(restored.getSnapshot().context.picked).toBeNull();
+    expect(restored.getSnapshot().context.rung).toBe(4);
+    // The Game itself is left as it was.
+    expect(game.getSnapshot().value).toBe("confirmingAnswer");
+  });
+
   it("keeps the step within a question", () => {
     const game = newGame();
     climbTo(game, 2);

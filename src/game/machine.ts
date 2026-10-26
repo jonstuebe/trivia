@@ -286,9 +286,15 @@ export type SavedGameSnapshot = Snapshot<GameResult> & {
   context: GameContext;
 };
 
-/** The Game's state now, ready to save. */
+/**
+ * The Game's state now, ready to save. A picked answer isn't saved until it's
+ * confirmed, so a Game waiting on "Final answer?" is saved back at the
+ * Question with nothing picked.
+ */
 export function saveGame(game: GameActor): SavedGameSnapshot {
-  return game.getPersistedSnapshot() as SavedGameSnapshot;
+  const saved = game.getPersistedSnapshot() as SavedGameSnapshot;
+  if (saved.value !== "confirmingAnswer") return saved;
+  return { ...saved, value: "choosing", context: { ...saved.context, picked: null } };
 }
 
 /** Picks a saved Game back up exactly where it was. Lifeline results come from the save, never rerolled. */
