@@ -1,0 +1,145 @@
+{
+  "title": "Fixture Sitcom",
+  "questions": [
+    {
+      "id": "7vi55s71",
+      "tier": 1,
+      "prompt": "Sitcom, tier 1, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "k4up4jpe",
+      "tier": 1,
+      "prompt": "Sitcom, tier 1, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "zrke0yzy",
+      "tier": 1,
+      "prompt": "Sitcom, tier 1, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "akvd9490",
+      "tier": 1,
+      "prompt": "Sitcom, tier 1, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "gpc627x5",
+      "tier": 2,
+      "prompt": "Sitcom, tier 2, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "x0t97sih",
+      "tier": 2,
+      "prompt": "Sitcom, tier 2, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "yekqtqsb",
+      "tier": 2,
+      "prompt": "Sitcom, tier 2, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "unkonsa9",
+      "tier": 2,
+      "prompt": "Sitcom, tier 2, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "kredb116",
+      "tier": 3,
+      "prompt": "Sitcom, tier 3, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "6mee9k8z",
+      "tier": 3,
+      "prompt": "Sitcom, tier 3, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "oyir1gz5",
+      "tier": 3,
+      "prompt": "Sitcom, tier 3, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "oi6aczho",
+      "tier": 3,
+      "prompt": "Sitcom, tier 3, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "igoldcsg",
+      "tier": 4,
+      "prompt": "Sitcom, tier 4, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "30cal0vp",
+      "tier": 4,
+      "prompt": "Sitcom, tier 4, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "c14v535k",
+      "tier": 4,
+      "prompt": "Sitcom, tier 4, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "zclnrtee",
+      "tier": 4,
+      "prompt": "Sitcom, tier 4, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "hrn11rfu",
+      "tier": 5,
+      "prompt": "Sitcom, tier 5, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "b36x30yq",
+      "tier": 5,
+      "prompt": "Sitcom, tier 5, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "m0m1l2dd",
+      "tier": 5,
+      "prompt": "Sitcom, tier 5, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "uv601jtr",
+      "tier": 5,
+      "prompt": "Sitcom, tier 5, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    }
+  ]
+}

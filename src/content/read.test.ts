@@ -4,21 +4,8 @@ import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { checkContentDir } from "./read";
 
-const fixtures = join(import.meta.dirname, "fixtures");
-
 describe("checking a content folder", () => {
-  it("builds the topic index from the fixture Topic file", async () => {
-    expect(await checkContentDir(fixtures)).toEqual({
-      errors: [],
-      index: {
-        general: null,
-        tv: [{ name: "Fixture Show", slug: "fixture-show", questionCounts: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
-        movies: [],
-      },
-    });
-  });
-
-  describe("with broken files", () => {
+  describe("on disk", () => {
     let dir: string;
     afterEach(async () => {
       await rm(dir, { recursive: true, force: true });
@@ -32,6 +19,24 @@ describe("checking a content folder", () => {
       }
       return dir;
     }
+
+    it("builds the topic index from the Topic files in it", async () => {
+      const show = {
+        title: "Fixture Show",
+        questions: [
+          { id: "fx1a2b3c", tier: 1, prompt: "What colour is the couch?", correct: "Orange", wrong: ["Blue", "Green", "Grey"] },
+          { id: "fx7g8h9i", tier: 3, prompt: "Which city is it set in?", correct: "Springfield", wrong: ["Paris", "Rome", "Oslo"] },
+        ],
+      };
+      expect(await checkContentDir(await contentFolder({ "tv/fixture-show.json": JSON.stringify(show) }))).toEqual({
+        errors: [],
+        index: {
+          general: null,
+          tv: [{ name: "Fixture Show", slug: "fixture-show", questionCounts: { 1: 1, 2: 0, 3: 1, 4: 0, 5: 0 } }],
+          movies: [],
+        },
+      });
+    });
 
     it("reports a file that isn't valid JSON, by its path in the folder", async () => {
       const { errors } = await checkContentDir(await contentFolder({ "movies/pixar.json": '{ "title": ' }));
