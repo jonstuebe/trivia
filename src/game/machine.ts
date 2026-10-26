@@ -1,7 +1,16 @@
 import { assign, createActor, setup, type Actor } from "xstate";
 import { shuffle, type Random } from "../random/random";
-import { LADDER_LENGTH } from "./ladder";
-import type { AnswerPosition, GameQuestion, ShownQuestion, Topic } from "./types";
+import { LADDER_LENGTH, prizeForRung, winningsAfterMiss, winningsBeforeRung } from "./ladder";
+import type {
+  AnswerPosition,
+  GameEnding,
+  GameQuestion,
+  GameResult,
+  Lifeline,
+  QuestionOutcome,
+  ShownQuestion,
+  Topic,
+} from "./types";
 
 /** What a new Game is started from. */
 export interface GameInput {
@@ -21,6 +30,26 @@ export interface GameContext {
   rung: number;
   /** The answer waiting on "Final answer / Cancel", or the confirmed one while revealing. */
   picked: AnswerPosition | null;
+  /** The Lifelines used so far, in the order used. */
+  lifelinesUsed: Lifeline[];
+  /** Set once the Game ends; also the machine's output. */
+  result: GameResult | null;
+}
+
+/** The finished-Game record for an ending on the current Rung. */
+function resultFor(context: GameContext, ending: GameEnding): GameResult {
+  const { rung } = context;
+  const rights: QuestionOutcome[] = Array(ending === "won" ? LADDER_LENGTH : rung - 1).fill("right");
+  const last: QuestionOutcome[] = ending === "missed" ? ["miss"] : ending === "walkedAway" ? ["walkedAway"] : [];
+  const winnings =
+    ending === "won" ? prizeForRung(LADDER_LENGTH) : ending === "missed" ? winningsAfterMiss(rung) : winningsBeforeRung(rung);
+  return {
+    topic: context.topic,
+    ending,
+    winnings,
+    reached: [...rights, ...last],
+    lifelinesUsed: [...context.lifelinesUsed],
+  };
 }
 
 /** What the player can do in a Game. Events that don't fit the current step are ignored. */
@@ -30,7 +59,9 @@ export type GameEvent =
   /** Confirms the picked answer. */
   | { type: "finalAnswer" }
   /** Backs out of "Final answer" or "Walk away" to choosing. */
-  | { type: "cancel" };
+  | { type: "cancel" }
+  /** Moves on from the reveal: to the next question, or to the end of the Game. */
+  | { type: "next" };
 
 /** A Question with its answers shuffled into the order shown. */
 export function showQuestion(question: GameQuestion, random: Random): ShownQuestion {
@@ -46,6 +77,10 @@ export const gameMachine = setup({
   },
   guards: {
     pickedRight: ({ context }) => context.picked === context.questions[context.rung - 1]!.correct,
+    onLastRung: ({ context }) => context.rung === LADDER_LENGTH,
+  },
+  actions: {
+    finish: assign({ result: ({ context }, ending: GameEnding) => resultFor(context, ending) }),
   },
 }).createMachine({
   id: "game",
@@ -54,7 +89,10 @@ export const gameMachine = setup({
     questions: input.questions.map((question) => showQuestion(question, input.random)),
     rung: 1,
     picked: null,
+    lifelinesUsed: [],
+    result: null,
   }),
+  output: ({ context }) => context.result!,
   initial: "choosing",
   states: {
     choosing: {
@@ -71,10 +109,21 @@ export const gameMachine = setup({
     revealing: {
       initial: "right",
       states: {
-        right: {},
+        right: {
+          on: {
+            next: [
+              { guard: "onLastRung", target: "#game.finished", actions: { type: "finish", params: "won" } },
+              {
+                target: "#game.choosing",
+                actions: assign({ rung: ({ context }) => context.rung + 1, picked: null }),
+              },
+            ],
+          },
+        },
         wrong: {},
       },
     },
+    finished: { type: "final" },
   },
 });
 

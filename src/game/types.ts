@@ -44,3 +44,21 @@ export function tierForRung(rung: number): Tier {
   if (!Number.isInteger(rung) || rung < 1 || rung > 15) throw new RangeError(`No Rung ${rung}`);
   return Math.ceil(rung / 3) as Tier;
 }
+
+/** How a Game ended. */
+export type GameEnding = "won" | "missed" | "walkedAway";
+
+/** What happened on one question reached, in Ladder order: ✅, ❌ or 🚶 in the Share result. */
+export type QuestionOutcome = "right" | "miss" | "walkedAway";
+
+/** A finished Game: what the end screen, the Personal best and the Share result are built from. */
+export interface GameResult {
+  topic: Topic;
+  ending: GameEnding;
+  /** What the player leaves with, in dollars. */
+  winnings: number;
+  /** One entry per question reached: every right answer, then the miss or the Walk away, if any. */
+  reached: QuestionOutcome[];
+  /** The Lifelines used, in the order used. Empty for "No lifelines". */
+  lifelinesUsed: Lifeline[];
+}
