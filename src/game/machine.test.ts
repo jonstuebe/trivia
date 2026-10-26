@@ -117,6 +117,44 @@ describe("a win", () => {
   });
 });
 
+describe("a miss", () => {
+  function missOn(rung: number) {
+    const game = newGame();
+    climbTo(game, rung);
+    answer(game, aWrongAnswer(game));
+    expect(game.getSnapshot().status).toBe("active");
+    game.send({ type: "next" });
+    expect(game.getSnapshot().status).toBe("done");
+    return game.getSnapshot().output!;
+  }
+
+  it("before question 5 leaves with $0", () => {
+    expect(missOn(4)).toEqual({
+      topic,
+      ending: "missed",
+      winnings: 0,
+      reached: ["right", "right", "right", "miss"],
+      lifelinesUsed: [],
+    });
+  });
+
+  it("on question 5 itself still leaves with $0", () => {
+    expect(missOn(5).winnings).toBe(0);
+  });
+
+  it("just after question 5 keeps the $1,000 Safe level", () => {
+    const result = missOn(6);
+    expect(result.winnings).toBe(1_000);
+    expect(result.reached).toEqual([...Array(5).fill("right"), "miss"]);
+  });
+
+  it("on question 10 keeps $1,000, and after it keeps $32,000", () => {
+    expect(missOn(10).winnings).toBe(1_000);
+    expect(missOn(11).winnings).toBe(32_000);
+    expect(missOn(15).winnings).toBe(32_000);
+  });
+});
+
 describe("starting a Game", () => {
   it("shows question 1, for $100, with its four answers", () => {
     const game = newGame();

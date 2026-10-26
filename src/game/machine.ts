@@ -120,7 +120,11 @@ export const gameMachine = setup({
             ],
           },
         },
-        wrong: {},
+        wrong: {
+          on: {
+            next: { target: "#game.finished", actions: { type: "finish", params: "missed" } },
+          },
+        },
       },
     },
     finished: { type: "final" },
