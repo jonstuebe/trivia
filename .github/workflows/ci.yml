@@ -23,10 +23,16 @@ jobs:
           bun-version-file: package.json
       - run: bun install --frozen-lockfile
       - run: bun run lint
+      # Checks every Topic file and regenerates the topic index. A broken
+      # Topic file fails here, naming the file and the Question.
+      - run: bun run check-content
       - run: bun run typecheck
       - run: bun run test
       - run: bun run build
-      - name: Committed files are up to date after build (src/routeTree.gen.ts)
+      # The test build on the fixture Topic set, into dist-fixtures/. It
+      # checks the fixtures and regenerates their topic index first.
+      - run: bun run build:fixtures
+      - name: Committed files are up to date after build (src/routeTree.gen.ts, src/content/topic-index.gen.json, src/content/topic-index.fixtures.gen.json)
         run: git diff --exit-code
       # The deploy job ships this exact build rather than building again.
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

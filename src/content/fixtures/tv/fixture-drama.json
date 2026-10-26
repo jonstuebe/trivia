@@ -1,0 +1,40 @@
+{
+  "title": "Fixture Drama",
+  "questions": [
+    {
+      "id": "q7x9ia0g",
+      "tier": 1,
+      "prompt": "Drama, tier 1, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "tkmh8288",
+      "tier": 2,
+      "prompt": "Drama, tier 2, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "795mw0x0",
+      "tier": 3,
+      "prompt": "Drama, tier 3, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "oivqtqk7",
+      "tier": 4,
+      "prompt": "Drama, tier 4, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "g208gd3o",
+      "tier": 5,
+      "prompt": "Drama, tier 5, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Fixture Heist",
+  "questions": [
+    {
+      "id": "tn0m2tx6",
+      "tier": 1,
+      "prompt": "Heist, tier 1, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "47i5zayk",
+      "tier": 1,
+      "prompt": "Heist, tier 1, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "xzg2ezty",
+      "tier": 2,
+      "prompt": "Heist, tier 2, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "d03vtoc4",
+      "tier": 2,
+      "prompt": "Heist, tier 2, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "kx8yymc4",
+      "tier": 3,
+      "prompt": "Heist, tier 3, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "q3mkffyj",
+      "tier": 3,
+      "prompt": "Heist, tier 3, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "3a54aweu",
+      "tier": 4,
+      "prompt": "Heist, tier 4, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "fgixkp4g",
+      "tier": 4,
+      "prompt": "Heist, tier 4, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "k0efy7tx",
+      "tier": 5,
+      "prompt": "Heist, tier 5, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "ed8uv9g3",
+      "tier": 5,
+      "prompt": "Heist, tier 5, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    }
+  ]
+}

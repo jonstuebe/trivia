@@ -1,0 +1,75 @@
+{
+  "title": "Fixture Saga",
+  "questions": [
+    {
+      "id": "06rgfu04",
+      "tier": 1,
+      "prompt": "Saga, tier 1, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "kvt0y94r",
+      "tier": 1,
+      "prompt": "Saga, tier 1, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "5y27sasi",
+      "tier": 2,
+      "prompt": "Saga, tier 2, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "fir8hkvm",
+      "tier": 2,
+      "prompt": "Saga, tier 2, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "lle4kuxu",
+      "tier": 3,
+      "prompt": "Saga, tier 3, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "boy4l8z9",
+      "tier": 3,
+      "prompt": "Saga, tier 3, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "y1yvq7nk",
+      "tier": 4,
+      "prompt": "Saga, tier 4, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "8doux7nd",
+      "tier": 4,
+      "prompt": "Saga, tier 4, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "dpiewtqf",
+      "tier": 5,
+      "prompt": "Saga, tier 5, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "0rco19so",
+      "tier": 5,
+      "prompt": "Saga, tier 5, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    }
+  ]
+}
