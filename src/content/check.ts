@@ -1,3 +1,4 @@
+import { checkAuthoringRules, type CheckedTopic } from "./authoring-rules";
 import { TIERS, parseTopicFile, type ContentError, type Question, type Tier, type TopicFile } from "./schema";
 
 /** A Topic file as read from disk: its path inside the content folder and its parsed JSON. */
@@ -39,11 +40,12 @@ export interface ContentCheckResult {
 
 /**
  * Checks every Topic file against the schema and against each other (Question
- * IDs are unique across all files), and builds the topic index from them.
+ * IDs are unique across all files) and the authoring rules, and builds the topic index from them.
  */
 export function checkContent(files: readonly ContentFile[]): ContentCheckResult {
   const errors: ContentError[] = [];
   const topics: TopicFile[] = [];
+  const checked: CheckedTopic[] = [];
   const firstUse = new Map<string, string>();
 
   for (const { path, data } of files) {
@@ -62,7 +64,9 @@ export function checkContent(files: readonly ContentFile[]): ContentCheckResult 
       }
     });
     topics.push(result.topic);
+    checked.push({ path, topic: result.topic });
   }
+  errors.push(...checkAuthoringRules(checked));
 
   return { index: buildIndex(topics), errors };
 }
