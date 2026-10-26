@@ -5,37 +5,37 @@ import { afterEach, describe, expect, it } from "vitest";
 import { checkContentDir, readContentDir } from "./read";
 import { reportContent } from "./report";
 
-const fixtures = join(import.meta.dirname, "fixtures");
+/** One small Title file. */
+const show = {
+  title: "Fixture Show",
+  questions: [
+    {
+      id: "fx1a2b3c",
+      tier: 1,
+      prompt: "What colour is the couch in the main apartment?",
+      correct: "Orange",
+      wrong: ["Blue", "Green", "Grey"],
+    },
+    {
+      id: "fx4d5e6f",
+      tier: 1,
+      prompt: "Which city is the show set in?",
+      correct: "Springfield",
+      wrong: ["Shelbyville", "Capital City", "Ogdenville"],
+      source: "S1E1",
+    },
+    {
+      id: "fx7g8h9i",
+      tier: 3,
+      prompt: "What is the name of the coffee shop the friends meet in?",
+      correct: "The Daily Grind",
+      wrong: ["Bean There", "Brew Haven", "Cup of Joe"],
+    },
+  ],
+};
 
 describe("checking a content folder", () => {
-  it("builds the topic index from the fixture Topic file", async () => {
-    expect(await checkContentDir(fixtures)).toEqual({
-      errors: [],
-      index: {
-        general: null,
-        tv: [{ name: "Fixture Show", slug: "fixture-show", questionCounts: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
-        movies: [],
-      },
-    });
-  });
-
-  it("reads the fixture Topic file for the report", async () => {
-    const { files, unreadable } = await readContentDir(fixtures);
-    expect(unreadable).toEqual([]);
-    expect(reportContent(files)).toEqual({
-      topics: [{ file: "tv/fixture-show.json", name: "Fixture Show", tiers: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
-      // "The Daily Grind" is 15 characters against "Brew Haven"'s 10.
-      warnings: [
-        {
-          file: "tv/fixture-show.json",
-          question: "fx7g8h9i (question 3)",
-          message: "the right answer (15 characters) is much longer than the longest wrong one (10), which gives it away",
-        },
-      ],
-    });
-  });
-
-  describe("with broken files", () => {
+  describe("on disk", () => {
     let dir: string;
     afterEach(async () => {
       await rm(dir, { recursive: true, force: true });
@@ -49,6 +49,35 @@ describe("checking a content folder", () => {
       }
       return dir;
     }
+
+    it("builds the topic index from the Topic files in it", async () => {
+      expect(await checkContentDir(await contentFolder({ "tv/fixture-show.json": JSON.stringify(show) }))).toEqual({
+        errors: [],
+        index: {
+          general: null,
+          tv: [{ name: "Fixture Show", slug: "fixture-show", questionCounts: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
+          movies: [],
+        },
+      });
+    });
+
+    it("reads the Topic files for the report", async () => {
+      const { files, unreadable } = await readContentDir(
+        await contentFolder({ "tv/fixture-show.json": JSON.stringify(show) }),
+      );
+      expect(unreadable).toEqual([]);
+      expect(reportContent(files)).toEqual({
+        topics: [{ file: "tv/fixture-show.json", name: "Fixture Show", tiers: { 1: 2, 2: 0, 3: 1, 4: 0, 5: 0 } }],
+        // "The Daily Grind" is 15 characters against "Brew Haven"'s 10.
+        warnings: [
+          {
+            file: "tv/fixture-show.json",
+            question: "fx7g8h9i (question 3)",
+            message: "the right answer (15 characters) is much longer than the longest wrong one (10), which gives it away",
+          },
+        ],
+      });
+    });
 
     it("reports a file that isn't valid JSON, by its path in the folder", async () => {
       const { errors } = await checkContentDir(await contentFolder({ "movies/pixar.json": '{ "title": ' }));

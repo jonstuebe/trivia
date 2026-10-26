@@ -1,0 +1,124 @@
+{
+  "questions": [
+    {
+      "id": "0a2vmvl5",
+      "tier": 1,
+      "subject": "history",
+      "prompt": "General, history, tier 1, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "vae2wtaf",
+      "tier": 1,
+      "subject": "science",
+      "prompt": "General, science, tier 1, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "ndzmflqp",
+      "tier": 1,
+      "subject": "sports",
+      "prompt": "General, sports, tier 1, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "jt07dfd1",
+      "tier": 2,
+      "subject": "pop culture",
+      "prompt": "General, pop culture, tier 2, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "3w6d37hx",
+      "tier": 2,
+      "subject": "history",
+      "prompt": "General, history, tier 2, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "tz6ihn8x",
+      "tier": 2,
+      "subject": "science",
+      "prompt": "General, science, tier 2, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "67tqerhr",
+      "tier": 3,
+      "subject": "sports",
+      "prompt": "General, sports, tier 3, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "oq00mtdg",
+      "tier": 3,
+      "subject": "pop culture",
+      "prompt": "General, pop culture, tier 3, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "8nam48st",
+      "tier": 3,
+      "subject": "history",
+      "prompt": "General, history, tier 3, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "rtchuje7",
+      "tier": 4,
+      "subject": "science",
+      "prompt": "General, science, tier 4, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "ai5y0ntv",
+      "tier": 4,
+      "subject": "sports",
+      "prompt": "General, sports, tier 4, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "bvv073pt",
+      "tier": 4,
+      "subject": "pop culture",
+      "prompt": "General, pop culture, tier 4, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "dydukn08",
+      "tier": 5,
+      "subject": "history",
+      "prompt": "General, history, tier 5, question 1: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "3yfn0m32",
+      "tier": 5,
+      "subject": "science",
+      "prompt": "General, science, tier 5, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "hb98rqps",
+      "tier": 5,
+      "subject": "sports",
+      "prompt": "General, sports, tier 5, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    }
+  ]
+}
