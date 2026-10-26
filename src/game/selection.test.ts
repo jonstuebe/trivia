@@ -37,7 +37,7 @@ describe("drawGame", () => {
 
   it("draws a Mixed game from every Title in the Category, each Question labelled with its Title", async () => {
     const movies = await loadTopic({ kind: "category", category: "movies" });
-    // Each fixture Movies Title has only 2 per Tier, so a full Game needs both.
+    // Drawn across both fixture Movies Titles, not from one of them.
     const game = drawGame(movies, {}, createSeededRandom(3));
     expect(game).toHaveLength(15);
     expect(new Set(game.map((q) => q.titleName))).toEqual(new Set(["Fixture Heist", "Fixture Saga"]));

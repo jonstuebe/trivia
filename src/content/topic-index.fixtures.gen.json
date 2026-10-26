@@ -37,22 +37,22 @@
       "name": "Fixture Heist",
       "slug": "fixture-heist",
       "questionCounts": {
-        "1": 2,
-        "2": 2,
-        "3": 2,
-        "4": 2,
-        "5": 2
+        "1": 4,
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4
       }
     },
     {
       "name": "Fixture Saga",
       "slug": "fixture-saga",
       "questionCounts": {
-        "1": 2,
-        "2": 2,
-        "3": 2,
-        "4": 2,
-        "5": 2
+        "1": 4,
+        "2": 4,
+        "3": 4,
+        "4": 4,
+        "5": 4
       }
     }
   ]

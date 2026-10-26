@@ -16,6 +16,20 @@
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
     {
+      "id": "3rqb347k",
+      "tier": 1,
+      "prompt": "Heist, tier 1, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "5p1w03ig",
+      "tier": 1,
+      "prompt": "Heist, tier 1, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
       "id": "xzg2ezty",
       "tier": 2,
       "prompt": "Heist, tier 2, question 1: which answer is right?",
@@ -26,6 +40,20 @@
       "id": "d03vtoc4",
       "tier": 2,
       "prompt": "Heist, tier 2, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "b8lfir0x",
+      "tier": 2,
+      "prompt": "Heist, tier 2, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "my83ylb2",
+      "tier": 2,
+      "prompt": "Heist, tier 2, question 4: which answer is right?",
       "correct": "Right answer",
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
@@ -44,6 +72,20 @@
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
     {
+      "id": "byjmsph3",
+      "tier": 3,
+      "prompt": "Heist, tier 3, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "4zgyknyl",
+      "tier": 3,
+      "prompt": "Heist, tier 3, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
       "id": "3a54aweu",
       "tier": 4,
       "prompt": "Heist, tier 4, question 1: which answer is right?",
@@ -58,6 +100,20 @@
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     },
     {
+      "id": "f80fcn0e",
+      "tier": 4,
+      "prompt": "Heist, tier 4, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "uggs6xpk",
+      "tier": 4,
+      "prompt": "Heist, tier 4, question 4: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
       "id": "k0efy7tx",
       "tier": 5,
       "prompt": "Heist, tier 5, question 1: which answer is right?",
@@ -68,6 +124,20 @@
       "id": "ed8uv9g3",
       "tier": 5,
       "prompt": "Heist, tier 5, question 2: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "yrrle59j",
+      "tier": 5,
+      "prompt": "Heist, tier 5, question 3: which answer is right?",
+      "correct": "Right answer",
+      "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
+    },
+    {
+      "id": "rke3zt2x",
+      "tier": 5,
+      "prompt": "Heist, tier 5, question 4: which answer is right?",
       "correct": "Right answer",
       "wrong": ["Wrong answer A", "Wrong answer B", "Wrong answer C"]
     }
