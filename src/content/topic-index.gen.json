@@ -45,6 +45,17 @@
   ],
   "movies": [
     {
+      "name": "Harry Potter",
+      "slug": "harry-potter",
+      "questionCounts": {
+        "1": 16,
+        "2": 16,
+        "3": 16,
+        "4": 16,
+        "5": 16
+      }
+    },
+    {
       "name": "Jurassic Park",
       "slug": "jurassic-park",
       "questionCounts": {
