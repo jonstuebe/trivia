@@ -1,0 +1,605 @@
+{
+  "title": "Star Wars",
+  "questions": [
+    {
+      "id": "aww2h9ic",
+      "tier": 1,
+      "prompt": "Darth Vader reveals that he is the father of which character?",
+      "correct": "Luke Skywalker",
+      "wrong": ["Han Solo", "Lando Calrissian", "Boba Fett"],
+      "source": "The Empire Strikes Back, Luke and Vader's duel on Cloud City"
+    },
+    {
+      "id": "urp1mrsj",
+      "tier": 1,
+      "prompt": "What is the name of Han Solo's ship?",
+      "correct": "Millennium Falcon",
+      "wrong": ["Tantive IV", "Corellian Comet", "Kessel Runner"],
+      "source": "A New Hope, Mos Eisley docking bay 94"
+    },
+    {
+      "id": "km6k5cgd",
+      "tier": 1,
+      "prompt": "What color is Darth Vader's lightsaber?",
+      "correct": "Red",
+      "wrong": ["Blue", "Green", "Purple"],
+      "source": "A New Hope, Vader and Obi-Wan's duel on the Death Star"
+    },
+    {
+      "id": "ozcu59e1",
+      "tier": 1,
+      "prompt": "Who is Han Solo's furry co-pilot?",
+      "correct": "Chewbacca",
+      "wrong": ["Wicket", "Greedo", "Salacious Crumb"],
+      "source": "A New Hope, Mos Eisley cantina"
+    },
+    {
+      "id": "t1dkn6ki",
+      "tier": 1,
+      "prompt": "Which small green Jedi Master trains Luke on Dagobah?",
+      "correct": "Yoda",
+      "wrong": ["Mace Windu", "Qui-Gon Jinn", "Plo Koon"],
+      "source": "The Empire Strikes Back, Dagobah"
+    },
+    {
+      "id": "qm4dz9nc",
+      "tier": 1,
+      "prompt": "What is the name of the gold protocol droid?",
+      "correct": "C-3PO",
+      "wrong": ["R2-D2", "BB-8", "K-2SO"],
+      "source": "A New Hope, opening scene aboard the Tantive IV"
+    },
+    {
+      "id": "i9nqrtcv",
+      "tier": 1,
+      "prompt": "In A New Hope, what is the Empire's moon-sized battle station called?",
+      "correct": "Death Star",
+      "wrong": ["Star Destroyer", "Starkiller Base", "Executor"],
+      "source": "A New Hope"
+    },
+    {
+      "id": "s8z7m14i",
+      "tier": 1,
+      "prompt": "On which desert planet does Luke grow up?",
+      "correct": "Tatooine",
+      "wrong": ["Hoth", "Endor", "Dagobah"],
+      "source": "A New Hope, the Lars homestead"
+    },
+    {
+      "id": "838b4vye",
+      "tier": 1,
+      "prompt": "What do the Jedi call the energy field that gives them their power?",
+      "correct": "The Force",
+      "wrong": ["The Spark", "The Pulse", "The Current"],
+      "source": "A New Hope, Obi-Wan explains the Force to Luke"
+    },
+    {
+      "id": "1xbgq8a1",
+      "tier": 1,
+      "prompt": "Which actor played Han Solo in A New Hope?",
+      "correct": "Harrison Ford",
+      "wrong": ["Mark Hamill", "Kurt Russell", "Tom Selleck"],
+      "source": "https://www.imdb.com/title/tt0076759/fullcredits"
+    },
+    {
+      "id": "dlngw2x9",
+      "tier": 1,
+      "prompt": "In Return of the Jedi, what are the small furry natives of Endor's forest moon called?",
+      "correct": "Ewoks",
+      "wrong": ["Jawas", "Gungans", "Wookiees"],
+      "source": "Return of the Jedi, Endor"
+    },
+    {
+      "id": "kqk0dv8b",
+      "tier": 1,
+      "prompt": "Who wrote and directed A New Hope?",
+      "correct": "George Lucas",
+      "wrong": ["Steven Spielberg", "Ridley Scott", "James Cameron"],
+      "source": "https://www.imdb.com/title/tt0076759/fullcredits"
+    },
+    {
+      "id": "kttecajy",
+      "tier": 1,
+      "prompt": "Complete the famous blessing: \"May the Force be…\"",
+      "correct": "With you",
+      "wrong": ["Ever yours", "On your side", "Your guide"],
+      "source": "A New Hope, Han to Luke before the Death Star attack"
+    },
+    {
+      "id": "j2zoaask",
+      "tier": 1,
+      "prompt": "Complete Leia's plea: \"Help me, Obi-Wan Kenobi. You're my…\"",
+      "correct": "Only hope",
+      "wrong": ["Last chance", "Best friend", "Only Jedi"],
+      "source": "A New Hope, R2-D2's hologram of Leia"
+    },
+    {
+      "id": "dp032iyq",
+      "tier": 1,
+      "prompt": "What was Darth Vader's name before he turned to the dark side?",
+      "correct": "Anakin Skywalker",
+      "wrong": ["Obi-Wan Kenobi", "Qui-Gon Jinn", "Owen Lars"],
+      "source": "Revenge of the Sith, Palpatine names Anakin Darth Vader"
+    },
+    {
+      "id": "3893yv4r",
+      "tier": 2,
+      "prompt": "In The Empire Strikes Back, Han Solo is frozen in what?",
+      "correct": "Carbonite",
+      "wrong": ["Ice", "Amber", "Bacta"],
+      "source": "The Empire Strikes Back, Cloud City carbon-freezing chamber"
+    },
+    {
+      "id": "gvob70y7",
+      "tier": 2,
+      "prompt": "In The Force Awakens, who kills Han Solo?",
+      "correct": "Kylo Ren",
+      "wrong": ["Snoke", "Captain Phasma", "General Hux"],
+      "source": "The Force Awakens, Starkiller Base bridge"
+    },
+    {
+      "id": "yiak1mlc",
+      "tier": 2,
+      "prompt": "What is the Emperor's name?",
+      "correct": "Palpatine",
+      "wrong": ["Tarkin", "Snoke", "Plagueis"],
+      "source": "The Phantom Menace and Return of the Jedi"
+    },
+    {
+      "id": "ocxkqr07",
+      "tier": 2,
+      "prompt": "In The Empire Strikes Back, the Rebels hide out on which ice planet?",
+      "correct": "Hoth",
+      "wrong": ["Jakku", "Bespin", "Crait"],
+      "source": "The Empire Strikes Back, Echo Base"
+    },
+    {
+      "id": "k1aokiwn",
+      "tier": 2,
+      "prompt": "Which bounty hunter delivers the frozen Han to Jabba the Hutt?",
+      "correct": "Boba Fett",
+      "wrong": ["Greedo", "Bossk", "Dengar"],
+      "source": "The Empire Strikes Back, Boba Fett takes Han from Cloud City"
+    },
+    {
+      "id": "iaj30e1y",
+      "tier": 2,
+      "prompt": "In A New Hope, who fires the shot that destroys the Death Star?",
+      "correct": "Luke Skywalker",
+      "wrong": ["Han Solo", "Wedge Antilles", "Princess Leia"],
+      "source": "A New Hope, Battle of Yavin"
+    },
+    {
+      "id": "alyuupld",
+      "tier": 2,
+      "prompt": "Who is Luke's twin sister?",
+      "correct": "Leia",
+      "wrong": ["Rey", "Padmé", "Jyn"],
+      "source": "Return of the Jedi, Luke tells Leia on Endor"
+    },
+    {
+      "id": "h3n7zcxi",
+      "tier": 2,
+      "prompt": "Which actor played Luke Skywalker in A New Hope?",
+      "correct": "Mark Hamill",
+      "wrong": ["Kurt Russell", "Ewan McGregor", "Hayden Christensen"],
+      "source": "https://www.imdb.com/title/tt0076759/fullcredits"
+    },
+    {
+      "id": "t0fyudy8",
+      "tier": 2,
+      "prompt": "In Revenge of the Sith, on which volcanic planet do Obi-Wan and Anakin duel?",
+      "correct": "Mustafar",
+      "wrong": ["Geonosis", "Kamino", "Utapau"],
+      "source": "Revenge of the Sith, final duel"
+    },
+    {
+      "id": "hmw934wt",
+      "tier": 2,
+      "prompt": "Who is Luke's mother?",
+      "correct": "Padmé Amidala",
+      "wrong": ["Beru Lars", "Breha Organa", "Mon Mothma"],
+      "source": "Revenge of the Sith, Padmé gives birth to Luke and Leia"
+    },
+    {
+      "id": "2yyvtk4s",
+      "tier": 2,
+      "prompt": "In The Empire Strikes Back, what does Luke lose in his duel with Vader?",
+      "correct": "His right hand",
+      "wrong": ["His left leg", "His right ear", "His left eye"],
+      "source": "The Empire Strikes Back, Cloud City duel"
+    },
+    {
+      "id": "8vtc8eua",
+      "tier": 2,
+      "prompt": "Who composed the score for A New Hope?",
+      "correct": "John Williams",
+      "wrong": ["Hans Zimmer", "Howard Shore", "James Horner"],
+      "source": "https://www.imdb.com/title/tt0076759/fullcredits"
+    },
+    {
+      "id": "j2hr35hv",
+      "tier": 2,
+      "prompt": "In The Phantom Menace, which clumsy Gungan befriends Qui-Gon?",
+      "correct": "Jar Jar Binks",
+      "wrong": ["Boss Nass", "Captain Tarpals", "Watto"],
+      "source": "The Phantom Menace, Naboo swamp"
+    },
+    {
+      "id": "7qxrfo3g",
+      "tier": 2,
+      "prompt": "In The Empire Strikes Back, how does Han reply when Leia says \"I love you\"?",
+      "correct": "\"I know.\"",
+      "wrong": ["\"I love you too.\"", "\"Me too.\"", "\"Same here.\""],
+      "source": "The Empire Strikes Back, before Han is frozen in carbonite"
+    },
+    {
+      "id": "q26oy91y",
+      "tier": 2,
+      "prompt": "In The Phantom Menace, which Sith uses a double-bladed lightsaber?",
+      "correct": "Darth Maul",
+      "wrong": ["Darth Plagueis", "Darth Bane", "Darth Revan"],
+      "source": "The Phantom Menace, Theed duel"
+    },
+    {
+      "id": "2y0h2qbe",
+      "tier": 3,
+      "prompt": "In The Force Awakens, on which desert planet does Rey scavenge?",
+      "correct": "Jakku",
+      "wrong": ["Tatooine", "Jedha", "Geonosis"],
+      "source": "The Force Awakens, opening scenes"
+    },
+    {
+      "id": "ltdo8wt9",
+      "tier": 3,
+      "prompt": "In Return of the Jedi, what beast does Luke fight beneath Jabba's palace?",
+      "correct": "Rancor",
+      "wrong": ["Sarlacc", "Wampa", "Dianoga"],
+      "source": "Return of the Jedi, the rancor pit"
+    },
+    {
+      "id": "7tlkmobn",
+      "tier": 3,
+      "prompt": "In Return of the Jedi, which Rebel admiral shouts \"It's a trap!\"?",
+      "correct": "Admiral Ackbar",
+      "wrong": ["Admiral Piett", "Admiral Holdo", "General Madine"],
+      "source": "Return of the Jedi, Battle of Endor"
+    },
+    {
+      "id": "azm5vkuv",
+      "tier": 3,
+      "prompt": "In The Phantom Menace, which Jedi Master finds young Anakin on Tatooine?",
+      "correct": "Qui-Gon Jinn",
+      "wrong": ["Mace Windu", "Ki-Adi-Mundi", "Yoda"],
+      "source": "The Phantom Menace, Watto's shop in Mos Espa"
+    },
+    {
+      "id": "ckg2mgzf",
+      "tier": 3,
+      "prompt": "In The Empire Strikes Back, who betrays Han to Vader on Cloud City?",
+      "correct": "Lando Calrissian",
+      "wrong": ["Wedge Antilles", "Biggs Darklighter", "Nien Nunb"],
+      "source": "The Empire Strikes Back, Cloud City dining room"
+    },
+    {
+      "id": "bkcmh8o5",
+      "tier": 3,
+      "prompt": "In Rogue One, what is the name of the reprogrammed Imperial droid?",
+      "correct": "K-2SO",
+      "wrong": ["L3-37", "IG-88", "BT-1"],
+      "source": "Rogue One, Cassian's droid"
+    },
+    {
+      "id": "fcnoi4i2",
+      "tier": 3,
+      "prompt": "In Attack of the Clones, which Sith Lord leads the Separatists?",
+      "correct": "Count Dooku",
+      "wrong": ["General Grievous", "Darth Maul", "Snoke"],
+      "source": "Attack of the Clones, Geonosis"
+    },
+    {
+      "id": "afwp2foq",
+      "tier": 3,
+      "prompt": "In Revenge of the Sith, which cyborg general fights Obi-Wan on Utapau?",
+      "correct": "General Grievous",
+      "wrong": ["General Veers", "General Hux", "General Madine"],
+      "source": "Revenge of the Sith, Utapau"
+    },
+    {
+      "id": "zmb81xy3",
+      "tier": 3,
+      "prompt": "In Attack of the Clones, on which ocean planet is the clone army made?",
+      "correct": "Kamino",
+      "wrong": ["Kashyyyk", "Naboo", "Mon Cala"],
+      "source": "Attack of the Clones, Obi-Wan visits Tipoca City"
+    },
+    {
+      "id": "i57x96t2",
+      "tier": 3,
+      "prompt": "In Rogue One, what is the name of Galen Erso's daughter?",
+      "correct": "Jyn",
+      "wrong": ["Rey", "Rose", "Qi'ra"],
+      "source": "Rogue One, opening scene"
+    },
+    {
+      "id": "4ztos4dx",
+      "tier": 3,
+      "prompt": "In The Force Awakens, who is the First Order's Supreme Leader?",
+      "correct": "Snoke",
+      "wrong": ["Hux", "Phasma", "Krennic"],
+      "source": "The Force Awakens, Snoke's hologram on Starkiller Base"
+    },
+    {
+      "id": "ds7bxfid",
+      "tier": 3,
+      "prompt": "In A New Hope, which planet does the Death Star destroy?",
+      "correct": "Alderaan",
+      "wrong": ["Coruscant", "Yavin 4", "Naboo"],
+      "source": "A New Hope, Tarkin's demonstration"
+    },
+    {
+      "id": "0rtqip8e",
+      "tier": 3,
+      "prompt": "In what year was A New Hope first released in cinemas?",
+      "correct": "1977",
+      "wrong": ["1975", "1979", "1980"],
+      "source": "https://www.imdb.com/title/tt0076759/releaseinfo"
+    },
+    {
+      "id": "81h7aqc8",
+      "tier": 3,
+      "prompt": "Luke is raised on Tatooine by his aunt and uncle. What are their first names?",
+      "correct": "Owen and Beru",
+      "wrong": ["Cliegg and Shmi", "Bail and Breha", "Jek and Mara"],
+      "source": "A New Hope, the Lars homestead"
+    },
+    {
+      "id": "2acy7fvv",
+      "tier": 3,
+      "prompt": "In The Rise of Skywalker, who is revealed to be Rey's grandfather?",
+      "correct": "Palpatine",
+      "wrong": ["Obi-Wan Kenobi", "Luke Skywalker", "Snoke"],
+      "source": "The Rise of Skywalker, Exegol"
+    },
+    {
+      "id": "0lci42or",
+      "tier": 4,
+      "prompt": "In The Last Jedi, the Resistance makes its last stand at an old Rebel base on which planet?",
+      "correct": "Crait",
+      "wrong": ["Hoth", "Jakku", "Exegol"],
+      "source": "The Last Jedi, the escape to the old Rebel base on Crait"
+    },
+    {
+      "id": "00rztzxg",
+      "tier": 4,
+      "prompt": "In A New Hope, Han says the Falcon made the Kessel Run in less than how many parsecs?",
+      "correct": "Twelve",
+      "wrong": ["Ten", "Fourteen", "Twenty"],
+      "source": "A New Hope, Mos Eisley cantina"
+    },
+    {
+      "id": "grlxm7y3",
+      "tier": 4,
+      "prompt": "Which actor played Grand Moff Tarkin in A New Hope?",
+      "correct": "Peter Cushing",
+      "wrong": ["Christopher Lee", "Alec Guinness", "Vincent Price"],
+      "source": "https://www.imdb.com/title/tt0076759/fullcredits"
+    },
+    {
+      "id": "5tb8jfr9",
+      "tier": 4,
+      "prompt": "At the end of Revenge of the Sith, which senator adopts baby Leia?",
+      "correct": "Bail Organa",
+      "wrong": ["Owen Lars", "Mon Mothma", "Jan Dodonna"],
+      "source": "Revenge of the Sith, closing scenes"
+    },
+    {
+      "id": "zuh0k26k",
+      "tier": 4,
+      "prompt": "In The Force Awakens, what was Finn's stormtrooper number?",
+      "correct": "FN-2187",
+      "wrong": ["FN-2199", "FN-1138", "TK-7501"],
+      "source": "The Force Awakens, Poe names Finn aboard the TIE fighter"
+    },
+    {
+      "id": "bvmmwcu9",
+      "tier": 4,
+      "prompt": "What is Count Dooku's Sith name?",
+      "correct": "Darth Tyranus",
+      "wrong": ["Darth Plagueis", "Darth Bane", "Darth Maul"],
+      "source": "Attack of the Clones, Dooku and Sidious on Geonosis"
+    },
+    {
+      "id": "ps4jbakc",
+      "tier": 4,
+      "prompt": "In Revenge of the Sith, who kills Count Dooku?",
+      "correct": "Anakin Skywalker",
+      "wrong": ["Obi-Wan Kenobi", "Yoda", "Mace Windu"],
+      "source": "Revenge of the Sith, aboard the Invisible Hand"
+    },
+    {
+      "id": "iowbs9gh",
+      "tier": 4,
+      "prompt": "In A New Hope, what is Luke's call sign in the attack on the Death Star?",
+      "correct": "Red Five",
+      "wrong": ["Red Leader", "Gold Five", "Blue Two"],
+      "source": "A New Hope, Battle of Yavin"
+    },
+    {
+      "id": "cnber87j",
+      "tier": 4,
+      "prompt": "In Return of the Jedi, what creature lives in the Great Pit of Carkoon?",
+      "correct": "Sarlacc",
+      "wrong": ["Rancor", "Exogorth", "Krayt dragon"],
+      "source": "Return of the Jedi, Jabba's sail barge"
+    },
+    {
+      "id": "p67ccnga",
+      "tier": 4,
+      "prompt": "In The Rise of Skywalker, on which hidden Sith world does Palpatine wait?",
+      "correct": "Exegol",
+      "wrong": ["Korriban", "Malachor", "Mustafar"],
+      "source": "The Rise of Skywalker"
+    },
+    {
+      "id": "7rvoxw68",
+      "tier": 4,
+      "prompt": "In The Last Jedi, who rams a cruiser into Snoke's flagship at lightspeed?",
+      "correct": "Vice Admiral Holdo",
+      "wrong": ["Admiral Ackbar", "Poe Dameron", "Rose Tico"],
+      "source": "The Last Jedi, the Holdo maneuver"
+    },
+    {
+      "id": "0nvpco6d",
+      "tier": 4,
+      "prompt": "In Rogue One, which Imperial officer forces Galen Erso to build the Death Star?",
+      "correct": "Orson Krennic",
+      "wrong": ["Admiral Piett", "General Veers", "Admiral Motti"],
+      "source": "Rogue One, opening scene on Lah'mu"
+    },
+    {
+      "id": "68jp3rdm",
+      "tier": 4,
+      "prompt": "In Solo, who is Han's childhood love from Corellia?",
+      "correct": "Qi'ra",
+      "wrong": ["Val", "Enfys Nest", "Jyn Erso"],
+      "source": "Solo: A Star Wars Story, Corellia opening"
+    },
+    {
+      "id": "bxg0yvmg",
+      "tier": 4,
+      "prompt": "In Solo, which game does Han play against Lando to win the Falcon?",
+      "correct": "Sabacc",
+      "wrong": ["Pazaak", "Dejarik", "Chance cubes"],
+      "source": "Solo: A Star Wars Story, final scene on Numidian Prime"
+    },
+    {
+      "id": "7kr5gj5n",
+      "tier": 4,
+      "prompt": "In Revenge of the Sith, what is the Wookiee home planet called?",
+      "correct": "Kashyyyk",
+      "wrong": ["Kamino", "Kessel", "Kuat"],
+      "source": "Revenge of the Sith, Battle of Kashyyyk"
+    },
+    {
+      "id": "m2gzuar5",
+      "tier": 5,
+      "prompt": "Who directed The Empire Strikes Back?",
+      "correct": "Irvin Kershner",
+      "wrong": ["George Lucas", "Richard Marquand", "Steven Spielberg"],
+      "source": "https://www.imdb.com/title/tt0080684/fullcredits"
+    },
+    {
+      "id": "i36mmpuz",
+      "tier": 5,
+      "prompt": "In The Phantom Menace, which model of hyperdrive generator does Qui-Gon need?",
+      "correct": "T-14",
+      "wrong": ["T-16", "X-34", "J-327"],
+      "source": "The Phantom Menace, Watto's shop (\"a T-14 hyperdrive generator\")"
+    },
+    {
+      "id": "umktm4mo",
+      "tier": 5,
+      "prompt": "In A New Hope, which stormtrooper is asked \"Why aren't you at your post?\"",
+      "correct": "TK-421",
+      "wrong": ["FN-2187", "TK-327", "TX-114"],
+      "source": "A New Hope, aboard the Falcon in the Death Star hangar"
+    },
+    {
+      "id": "l8x9nffl",
+      "tier": 5,
+      "prompt": "In The Phantom Menace, Obi-Wan says Anakin's midi-chlorian count is over how many?",
+      "correct": "20,000",
+      "wrong": ["2,000", "10,000", "50,000"],
+      "source": "The Phantom Menace, Qui-Gon and Obi-Wan by comlink (\"Over 20,000\")"
+    },
+    {
+      "id": "ahdbtqcy",
+      "tier": 5,
+      "prompt": "In The Empire Strikes Back, Vader says \"Apology accepted\" before killing which captain?",
+      "correct": "Captain Needa",
+      "wrong": ["Captain Piett", "Admiral Ozzel", "General Veers"],
+      "source": "The Empire Strikes Back, Vader to Needa aboard the Executor (\"Apology accepted, Captain Needa\")"
+    },
+    {
+      "id": "6ply0o7m",
+      "tier": 5,
+      "prompt": "In The Force Awakens, which dangerous creatures is Han smuggling on his freighter?",
+      "correct": "Rathtars",
+      "wrong": ["Wampas", "Mynocks", "Banthas"],
+      "source": "The Force Awakens, Han's freighter (\"rathtars\")"
+    },
+    {
+      "id": "doqnpnm4",
+      "tier": 5,
+      "prompt": "In Attack of the Clones, how is Owen Lars related to Anakin?",
+      "correct": "Stepbrother",
+      "wrong": ["Uncle", "Cousin", "Half-brother"],
+      "source": "Attack of the Clones, Lars homestead (Cliegg Lars married Shmi)"
+    },
+    {
+      "id": "yi4647y3",
+      "tier": 5,
+      "prompt": "In The Phantom Menace, who is the Viceroy of the Trade Federation?",
+      "correct": "Nute Gunray",
+      "wrong": ["Rune Haako", "Wat Tambor", "San Hill"],
+      "source": "The Phantom Menace, the blockade of Naboo"
+    },
+    {
+      "id": "wkf3er71",
+      "tier": 5,
+      "prompt": "In The Phantom Menace, what is the podrace that Anakin wins called?",
+      "correct": "Boonta Eve Classic",
+      "wrong": ["Mos Espa Grand Prix", "Dune Sea Classic", "Jundland Derby"],
+      "source": "The Phantom Menace, Mos Espa Grand Arena"
+    },
+    {
+      "id": "csdvlrou",
+      "tier": 5,
+      "prompt": "In Solo, who gives Han the surname \"Solo\"?",
+      "correct": "An Imperial recruiter",
+      "wrong": ["Lando Calrissian", "Tobias Beckett", "Qi'ra"],
+      "source": "Solo: A Star Wars Story, Imperial recruitment office on Corellia"
+    },
+    {
+      "id": "rtivb0xw",
+      "tier": 5,
+      "prompt": "In A New Hope, which detention block is Leia held in on the Death Star?",
+      "correct": "AA-23",
+      "wrong": ["AA-12", "BB-19", "DD-23"],
+      "source": "A New Hope, Leia's cell is in detention block AA-23"
+    },
+    {
+      "id": "b4uegpgj",
+      "tier": 5,
+      "prompt": "In A New Hope, Luke wants to go to Tosche Station to pick up what?",
+      "correct": "Power converters",
+      "wrong": ["Moisture vaporators", "Hyperdrive motivators", "Speeder fuel cells"],
+      "source": "A New Hope, Lars homestead dinner"
+    },
+    {
+      "id": "n7sritb2",
+      "tier": 5,
+      "prompt": "What is the name of Anakin's mother?",
+      "correct": "Shmi",
+      "wrong": ["Beru", "Breha", "Sabé"],
+      "source": "The Phantom Menace credits (Shmi Skywalker); named in Attack of the Clones"
+    },
+    {
+      "id": "noxo028y",
+      "tier": 5,
+      "prompt": "In Attack of the Clones, which Jedi kills Jango Fett?",
+      "correct": "Mace Windu",
+      "wrong": ["Obi-Wan Kenobi", "Yoda", "Ki-Adi-Mundi"],
+      "source": "Attack of the Clones, Geonosis arena"
+    },
+    {
+      "id": "gxtwcndm",
+      "tier": 5,
+      "prompt": "Which actor wore the Darth Vader costume in A New Hope?",
+      "correct": "David Prowse",
+      "wrong": ["Peter Mayhew", "Kenny Baker", "Anthony Daniels"],
+      "source": "https://www.imdb.com/title/tt0076759/fullcredits"
+    }
+  ]
+}
