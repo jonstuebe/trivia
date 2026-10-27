@@ -316,7 +316,7 @@
     {
       "id": "uo1y99fj",
       "tier": 3,
-      "prompt": "How many seasons did the series run?",
+      "prompt": "How many seasons did the show about Sheldon and his friends run?",
       "correct": "12",
       "wrong": ["9", "10", "14"],
       "source": "Wikipedia: The Big Bang Theory"

@@ -1,0 +1,960 @@
+{
+  "title": "Pixar",
+  "questions": [
+    {
+      "id": "unjvai8h",
+      "tier": 1,
+      "prompt": "In Toy Story, what kind of toy is Woody?",
+      "correct": "A cowboy",
+      "wrong": [
+        "An astronaut",
+        "A pirate",
+        "A knight"
+      ]
+    },
+    {
+      "id": "m4t6lc3d",
+      "tier": 1,
+      "prompt": "In Finding Nemo, what kind of fish is Nemo?",
+      "correct": "A clownfish",
+      "wrong": [
+        "A goldfish",
+        "A pufferfish",
+        "A swordfish"
+      ]
+    },
+    {
+      "id": "8j3blmzz",
+      "tier": 1,
+      "prompt": "In Toy Story, what is Buzz Lightyear's famous catchphrase?",
+      "correct": "To infinity and beyond!",
+      "wrong": [
+        "Up, up and away!",
+        "Fly like the wind!",
+        "Blast off to the stars!"
+      ],
+      "source": "Toy Story (1995), Buzz's first scenes; https://en.wikipedia.org/wiki/Buzz_Lightyear"
+    },
+    {
+      "id": "vp21dch5",
+      "tier": 1,
+      "prompt": "In Monsters, Inc., what do the monsters collect to power their city?",
+      "correct": "Children's screams",
+      "wrong": [
+        "Children's dreams",
+        "Children's teeth",
+        "Melted candy"
+      ]
+    },
+    {
+      "id": "qv2nqiju",
+      "tier": 1,
+      "prompt": "In Cars, what is the name of the red race car who is the film's hero?",
+      "correct": "Lightning McQueen",
+      "wrong": [
+        "Chick Hicks",
+        "Doc Hudson",
+        "Strip Weathers"
+      ]
+    },
+    {
+      "id": "2o3m5a15",
+      "tier": 1,
+      "prompt": "In Up, what lifts Carl's house into the sky?",
+      "correct": "Balloons",
+      "wrong": [
+        "A rocket",
+        "A tornado",
+        "Giant kites"
+      ]
+    },
+    {
+      "id": "pbt41l9q",
+      "tier": 1,
+      "prompt": "In Ratatouille, what kind of animal is Remy?",
+      "correct": "A rat",
+      "wrong": [
+        "A mouse",
+        "A hamster",
+        "A squirrel"
+      ]
+    },
+    {
+      "id": "ez3srbee",
+      "tier": 1,
+      "prompt": "In Finding Nemo, which fish has short-term memory loss?",
+      "correct": "Dory",
+      "wrong": [
+        "Marlin",
+        "Gill",
+        "Bloat"
+      ]
+    },
+    {
+      "id": "mt5i7q22",
+      "tier": 1,
+      "prompt": "In Inside Out, which of Riley's emotions is red?",
+      "correct": "Anger",
+      "wrong": [
+        "Joy",
+        "Fear",
+        "Disgust"
+      ]
+    },
+    {
+      "id": "3h5uka2g",
+      "tier": 1,
+      "prompt": "In Coco, what does Miguel dream of becoming?",
+      "correct": "A musician",
+      "wrong": [
+        "A chef",
+        "A footballer",
+        "A painter"
+      ]
+    },
+    {
+      "id": "ozeapisl",
+      "tier": 1,
+      "prompt": "In Toy Story, what is the name of the boy who owns Woody?",
+      "correct": "Andy",
+      "wrong": [
+        "Sid",
+        "Al",
+        "Billy"
+      ]
+    },
+    {
+      "id": "2q76iiip",
+      "tier": 1,
+      "prompt": "In A Bug's Life, what kind of insect is Flik?",
+      "correct": "An ant",
+      "wrong": [
+        "A grasshopper",
+        "A bee",
+        "A beetle"
+      ]
+    },
+    {
+      "id": "5adyhzjj",
+      "tier": 1,
+      "prompt": "In Monsters, Inc., who is Sulley's one-eyed best friend?",
+      "correct": "Mike Wazowski",
+      "wrong": [
+        "Randall Boggs",
+        "George Sanderson",
+        "Henry Waternoose"
+      ]
+    },
+    {
+      "id": "2rc47vy2",
+      "tier": 1,
+      "prompt": "In Brave, what does Merida's mother turn into?",
+      "correct": "A bear",
+      "wrong": [
+        "A wolf",
+        "A horse",
+        "A raven"
+      ]
+    },
+    {
+      "id": "3yc208cx",
+      "tier": 1,
+      "prompt": "In Toy Story, what kind of toy is Hamm?",
+      "correct": "A piggy bank",
+      "wrong": [
+        "A rubber duck",
+        "A toy robot",
+        "A jack-in-the-box"
+      ]
+    },
+    {
+      "id": "x4kkainb",
+      "tier": 1,
+      "prompt": "In WALL-E, what kind of being is the title character?",
+      "correct": "A robot",
+      "wrong": [
+        "An alien",
+        "A dog",
+        "A spaceship"
+      ]
+    },
+    {
+      "id": "iund2qeh",
+      "tier": 2,
+      "prompt": "In Up, what is the name of the talking dog who joins Carl?",
+      "correct": "Dug",
+      "wrong": [
+        "Max",
+        "Rufus",
+        "Buddy"
+      ]
+    },
+    {
+      "id": "puotm9b4",
+      "tier": 2,
+      "prompt": "In Finding Nemo, in which city is the dentist's office where Nemo is kept?",
+      "correct": "Sydney",
+      "wrong": [
+        "Melbourne",
+        "Brisbane",
+        "Perth"
+      ]
+    },
+    {
+      "id": "hnd31g54",
+      "tier": 2,
+      "prompt": "In Ratatouille, in which city is Gusteau's restaurant?",
+      "correct": "Paris",
+      "wrong": [
+        "Lyon",
+        "Marseille",
+        "Nice"
+      ]
+    },
+    {
+      "id": "xnv6crvo",
+      "tier": 2,
+      "prompt": "In The Incredibles, who designs the Supers' costumes?",
+      "correct": "Edna Mode",
+      "wrong": [
+        "Mirage",
+        "Frozone",
+        "Syndrome"
+      ]
+    },
+    {
+      "id": "294a3s6f",
+      "tier": 2,
+      "prompt": "In Cars, what is the name of the town where Lightning gets stuck?",
+      "correct": "Radiator Springs",
+      "wrong": [
+        "Tailpipe Valley",
+        "Gasket Gulch",
+        "Piston Hills"
+      ]
+    },
+    {
+      "id": "lunr6uk6",
+      "tier": 2,
+      "prompt": "In Toy Story 2, what is the name of Woody's horse?",
+      "correct": "Bullseye",
+      "wrong": [
+        "Trigger",
+        "Silver",
+        "Thunder"
+      ]
+    },
+    {
+      "id": "hn0dus8f",
+      "tier": 2,
+      "prompt": "In Monsters, Inc., what does Sulley call the little girl?",
+      "correct": "Boo",
+      "wrong": [
+        "Bean",
+        "Pip",
+        "Dot"
+      ]
+    },
+    {
+      "id": "sulws8m8",
+      "tier": 2,
+      "prompt": "In WALL-E, what is the name of the sleek white robot WALL-E falls for?",
+      "correct": "EVE",
+      "wrong": [
+        "AUTO",
+        "M-O",
+        "ZOE"
+      ]
+    },
+    {
+      "id": "cgdjbox5",
+      "tier": 2,
+      "prompt": "In Up, what is the name of the young Wilderness Explorer?",
+      "correct": "Russell",
+      "wrong": [
+        "Kevin",
+        "Charles",
+        "Dug"
+      ]
+    },
+    {
+      "id": "spcqlstv",
+      "tier": 2,
+      "prompt": "In Finding Nemo, what kind of animal is Crush?",
+      "correct": "A sea turtle",
+      "wrong": [
+        "A shark",
+        "A whale",
+        "An octopus"
+      ]
+    },
+    {
+      "id": "cfphnwb4",
+      "tier": 2,
+      "prompt": "In Toy Story, at which restaurant do Woody and Buzz meet the three-eyed aliens?",
+      "correct": "Pizza Planet",
+      "wrong": [
+        "Burger Galaxy",
+        "Taco Rocket",
+        "Space Diner"
+      ]
+    },
+    {
+      "id": "wqbkuhg6",
+      "tier": 2,
+      "prompt": "In Toy Story 4, what is the name of the toy Bonnie makes from a spork?",
+      "correct": "Forky",
+      "wrong": [
+        "Sporky",
+        "Spoony",
+        "Pokey"
+      ]
+    },
+    {
+      "id": "dxcjier0",
+      "tier": 2,
+      "prompt": "In Finding Nemo, what motto do Bruce and the sharks repeat?",
+      "correct": "Fish are friends, not food",
+      "wrong": [
+        "Sharks are people too",
+        "Fins up, teeth down",
+        "No fish left behind"
+      ],
+      "source": "Finding Nemo (2003), the sharks' meeting scene; https://en.wikipedia.org/wiki/Finding_Nemo"
+    },
+    {
+      "id": "a79d27ab",
+      "tier": 2,
+      "prompt": "Who voices Woody in the Toy Story films?",
+      "correct": "Tom Hanks",
+      "wrong": [
+        "Tim Allen",
+        "Billy Crystal",
+        "John Goodman"
+      ]
+    },
+    {
+      "id": "ofpje87u",
+      "tier": 2,
+      "prompt": "In Coco, which holiday is the film set during?",
+      "correct": "Day of the Dead",
+      "wrong": [
+        "Christmas",
+        "Cinco de Mayo",
+        "Independence Day"
+      ]
+    },
+    {
+      "id": "8kfb0i68",
+      "tier": 3,
+      "prompt": "In Toy Story 3, at which daycare do the toys end up after being donated?",
+      "correct": "Sunnyside",
+      "wrong": [
+        "Sunshine",
+        "Happy Hills",
+        "Little Acorns"
+      ],
+      "source": "Toy Story 3 (2010), Sunnyside Daycare; https://en.wikipedia.org/wiki/Toy_Story_3"
+    },
+    {
+      "id": "otxzopb6",
+      "tier": 3,
+      "prompt": "In Toy Story, what is the name of Sid's dog?",
+      "correct": "Scud",
+      "wrong": [
+        "Buster",
+        "Bruno",
+        "Spike"
+      ],
+      "source": "Toy Story (1995), Sid's bull terrier; https://en.wikipedia.org/wiki/Toy_Story"
+    },
+    {
+      "id": "4dm0xytz",
+      "tier": 3,
+      "prompt": "In Toy Story 2, what is the Prospector's nickname?",
+      "correct": "Stinky Pete",
+      "wrong": [
+        "Dusty Dan",
+        "Grumpy Gus",
+        "Old Joe"
+      ],
+      "source": "Toy Story 2 (1999); https://en.wikipedia.org/wiki/Toy_Story_2"
+    },
+    {
+      "id": "olt9r9i9",
+      "tier": 3,
+      "prompt": "In Toy Story 3, what is the name of the strawberry-scented teddy bear?",
+      "correct": "Lotso",
+      "wrong": [
+        "Chuckles",
+        "Big Baby",
+        "Stretch"
+      ],
+      "source": "Toy Story 3 (2010), Lots-o'-Huggin' Bear; https://en.wikipedia.org/wiki/Toy_Story_3"
+    },
+    {
+      "id": "y9rfj8qb",
+      "tier": 3,
+      "prompt": "In The Incredibles, what is the family's surname?",
+      "correct": "Parr",
+      "wrong": [
+        "Best",
+        "Pine",
+        "Park"
+      ],
+      "source": "The Incredibles (2004), Bob and Helen Parr; https://en.wikipedia.org/wiki/The_Incredibles"
+    },
+    {
+      "id": "su4j3i6h",
+      "tier": 3,
+      "prompt": "In Finding Nemo, what is the name of the dentist's fish-killing niece?",
+      "correct": "Darla",
+      "wrong": [
+        "Debbie",
+        "Daisy",
+        "Molly"
+      ],
+      "source": "Finding Nemo (2003), Darla Sherman; https://en.wikipedia.org/wiki/Finding_Nemo"
+    },
+    {
+      "id": "m90ivrti",
+      "tier": 3,
+      "prompt": "In Monsters, Inc., which monster can turn invisible by changing colour?",
+      "correct": "Randall",
+      "wrong": [
+        "Fungus",
+        "Waternoose",
+        "George"
+      ],
+      "source": "Monsters, Inc. (2001), Randall Boggs' camouflage; https://en.wikipedia.org/wiki/Monsters,_Inc."
+    },
+    {
+      "id": "5k6yzvd7",
+      "tier": 3,
+      "prompt": "In Up, which waterfall did Carl and Ellie dream of living beside?",
+      "correct": "Paradise Falls",
+      "wrong": [
+        "Rainbow Falls",
+        "Eden Falls",
+        "Emerald Falls"
+      ],
+      "source": "Up (2009); https://en.wikipedia.org/wiki/Up_(2009_film)"
+    },
+    {
+      "id": "j45e8ip4",
+      "tier": 3,
+      "prompt": "In Inside Out, which of Riley's emotions is green?",
+      "correct": "Disgust",
+      "wrong": [
+        "Anger",
+        "Fear",
+        "Sadness"
+      ],
+      "source": "Inside Out (2015); https://en.wikipedia.org/wiki/Inside_Out_(2015_film)"
+    },
+    {
+      "id": "rqoup0uu",
+      "tier": 3,
+      "prompt": "In Inside Out, which state does Riley's family move away from?",
+      "correct": "Minnesota",
+      "wrong": [
+        "Michigan",
+        "Wisconsin",
+        "Iowa"
+      ],
+      "source": "Inside Out (2015), the move from Minnesota to San Francisco; https://en.wikipedia.org/wiki/Inside_Out_(2015_film)"
+    },
+    {
+      "id": "wiou90zz",
+      "tier": 2,
+      "prompt": "In Finding Nemo, what is the dentist's address that Dory reads from the mask?",
+      "correct": "42 Wallaby Way",
+      "wrong": [
+        "24 Kangaroo Lane",
+        "12 Koala Road",
+        "8 Wombat Street"
+      ],
+      "source": "Finding Nemo (2003), 'P. Sherman, 42 Wallaby Way, Sydney'; https://en.wikipedia.org/wiki/Finding_Nemo"
+    },
+    {
+      "id": "voksuqjk",
+      "tier": 3,
+      "prompt": "In Ratatouille, what is Gusteau's famous motto?",
+      "correct": "Anyone can cook!",
+      "wrong": [
+        "Taste is everything!",
+        "Follow your nose!",
+        "Cook with your heart!"
+      ],
+      "source": "Ratatouille (2007), Gusteau's book and TV show; https://en.wikipedia.org/wiki/Ratatouille_(film)"
+    },
+    {
+      "id": "w5g8tiu1",
+      "tier": 2,
+      "prompt": "Who voices Buzz Lightyear in the Toy Story films?",
+      "correct": "Tim Allen",
+      "wrong": [
+        "Tom Hanks",
+        "Jim Carrey",
+        "Billy Crystal"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Toy_Story#Cast"
+    },
+    {
+      "id": "iimcomv4",
+      "tier": 3,
+      "prompt": "In Cars, what trophy are the race cars competing for?",
+      "correct": "The Piston Cup",
+      "wrong": [
+        "The Gasket Trophy",
+        "The Turbo Cup",
+        "The Golden Wheel"
+      ],
+      "source": "Cars (2006); https://en.wikipedia.org/wiki/Cars_(film)"
+    },
+    {
+      "id": "yv9t0bj5",
+      "tier": 3,
+      "prompt": "In The Incredibles, which costume feature does Edna refuse to include?",
+      "correct": "Capes",
+      "wrong": [
+        "Masks",
+        "Boots",
+        "Belts"
+      ],
+      "source": "The Incredibles (2004), Edna's 'No capes!' scene; https://en.wikipedia.org/wiki/Edna_Mode"
+    },
+    {
+      "id": "t5hejp92",
+      "tier": 3,
+      "prompt": "In Coco, what is the Rivera family's trade?",
+      "correct": "Shoemaking",
+      "wrong": [
+        "Baking",
+        "Pottery",
+        "Weaving"
+      ],
+      "source": "Coco (2017); https://en.wikipedia.org/wiki/Coco_(2017_film)"
+    },
+    {
+      "id": "h33n5dvt",
+      "tier": 3,
+      "prompt": "In A Bug's Life, what is the name of the grasshoppers' leader?",
+      "correct": "Hopper",
+      "wrong": [
+        "Thumper",
+        "Molt",
+        "Dim"
+      ],
+      "source": "A Bug's Life (1998); https://en.wikipedia.org/wiki/A_Bug%27s_Life"
+    },
+    {
+      "id": "htm19nw6",
+      "tier": 3,
+      "prompt": "In Toy Story 2, what was the name of Woody's old TV show?",
+      "correct": "Woody's Roundup",
+      "wrong": [
+        "Woody's Rodeo",
+        "Woody's Ranch",
+        "Woody's Wild West"
+      ],
+      "source": "Toy Story 2 (1999); https://en.wikipedia.org/wiki/Toy_Story_2"
+    },
+    {
+      "id": "kup9ysg7",
+      "tier": 4,
+      "prompt": "In Cars, what was Doc Hudson's racing name?",
+      "correct": "The Hudson Hornet",
+      "wrong": [
+        "The Hudson Comet",
+        "The Hudson Rocket",
+        "The Hudson Hurricane"
+      ],
+      "source": "Cars (2006), 'the Fabulous Hudson Hornet'; https://en.wikipedia.org/wiki/Doc_Hudson"
+    },
+    {
+      "id": "l4t22rjn",
+      "tier": 4,
+      "prompt": "In WALL-E, what is the name of the giant starliner the humans live on?",
+      "correct": "The Axiom",
+      "wrong": [
+        "The Odyssey",
+        "The Horizon",
+        "The Voyager"
+      ],
+      "source": "WALL-E (2008); https://en.wikipedia.org/wiki/WALL-E"
+    },
+    {
+      "id": "g927tbwb",
+      "tier": 4,
+      "prompt": "In Toy Story 2, what is the name of Al's toy store?",
+      "correct": "Al's Toy Barn",
+      "wrong": [
+        "Al's Toy Shack",
+        "Al's Toy Palace",
+        "Al's Toy World"
+      ],
+      "source": "Toy Story 2 (1999); https://en.wikipedia.org/wiki/Toy_Story_2"
+    },
+    {
+      "id": "st94l32h",
+      "tier": 4,
+      "prompt": "Which was the studio's first film to win the Oscar for Best Animated Feature?",
+      "correct": "Finding Nemo",
+      "wrong": [
+        "Monsters, Inc.",
+        "Toy Story 2",
+        "The Incredibles"
+      ],
+      "source": "76th Academy Awards (2004); https://en.wikipedia.org/wiki/Academy_Award_for_Best_Animated_Feature"
+    },
+    {
+      "id": "vi83d85c",
+      "tier": 4,
+      "prompt": "Up became only the second animated film nominated for which Oscar?",
+      "correct": "Best Picture",
+      "wrong": [
+        "Best Director",
+        "Best Cinematography",
+        "Best Film Editing"
+      ],
+      "source": "82nd Academy Awards (2010); https://en.wikipedia.org/wiki/Up_(2009_film)"
+    },
+    {
+      "id": "0q01hrg8",
+      "tier": 4,
+      "prompt": "Who wrote the song \"You've Got a Friend in Me\" for Toy Story?",
+      "correct": "Randy Newman",
+      "wrong": [
+        "Phil Collins",
+        "Elton John",
+        "Paul Simon"
+      ],
+      "source": "https://en.wikipedia.org/wiki/You%27ve_Got_a_Friend_in_Me"
+    },
+    {
+      "id": "jex79pjw",
+      "tier": 4,
+      "prompt": "In Monsters, Inc., who is the CEO of the company?",
+      "correct": "Henry J. Waternoose",
+      "wrong": [
+        "Jerry Slugworth",
+        "Mr. Needleman",
+        "Roz"
+      ],
+      "source": "Monsters, Inc. (2001); https://en.wikipedia.org/wiki/Monsters,_Inc."
+    },
+    {
+      "id": "qop0lvh8",
+      "tier": 4,
+      "prompt": "In Finding Nemo, who is the leader of the Tank Gang?",
+      "correct": "Gill",
+      "wrong": [
+        "Bloat",
+        "Jacques",
+        "Peach"
+      ],
+      "source": "Finding Nemo (2003); https://en.wikipedia.org/wiki/Finding_Nemo"
+    },
+    {
+      "id": "7u1ajne1",
+      "tier": 4,
+      "prompt": "In Ratatouille, Linguini turns out to be whose son?",
+      "correct": "Gusteau's",
+      "wrong": [
+        "Skinner's",
+        "Anton Ego's",
+        "Django's"
+      ],
+      "source": "Ratatouille (2007); https://en.wikipedia.org/wiki/Ratatouille_(film)"
+    },
+    {
+      "id": "gcz36utx",
+      "tier": 4,
+      "prompt": "In Cars, which company sponsors Lightning McQueen?",
+      "correct": "Rust-eze",
+      "wrong": [
+        "Dinoco",
+        "Lube-Tec",
+        "Shine-o"
+      ],
+      "source": "Cars (2006), Rust-eze Medicated Bumper Ointment; https://en.wikipedia.org/wiki/Cars_(film)"
+    },
+    {
+      "id": "h37vgl2p",
+      "tier": 4,
+      "prompt": "In WALL-E, which old musical does WALL-E love to watch?",
+      "correct": "Hello, Dolly!",
+      "wrong": [
+        "Singin' in the Rain",
+        "The Sound of Music",
+        "Mary Poppins"
+      ],
+      "source": "WALL-E (2008); https://en.wikipedia.org/wiki/WALL-E"
+    },
+    {
+      "id": "451gbt8x",
+      "tier": 4,
+      "prompt": "In WALL-E, what is the name of the megacorporation that ran Earth?",
+      "correct": "Buy n Large",
+      "wrong": [
+        "MegaMart",
+        "OmniCorp",
+        "ShopCo"
+      ],
+      "source": "WALL-E (2008); https://en.wikipedia.org/wiki/WALL-E"
+    },
+    {
+      "id": "y55fb4uv",
+      "tier": 4,
+      "prompt": "Which song from Coco won the Oscar for Best Original Song?",
+      "correct": "Remember Me",
+      "wrong": [
+        "Un Poco Loco",
+        "Proud Corazón",
+        "The World Es Mi Familia"
+      ],
+      "source": "90th Academy Awards (2018); https://en.wikipedia.org/wiki/Remember_Me_(Coco_song)"
+    },
+    {
+      "id": "ai1fmq2d",
+      "tier": 4,
+      "prompt": "In Brave, what is the name of the demon bear?",
+      "correct": "Mor'du",
+      "wrong": [
+        "Mac'ra",
+        "Dun'brach",
+        "Gor'tha"
+      ],
+      "source": "Brave (2012); https://en.wikipedia.org/wiki/Brave_(2012_film)"
+    },
+    {
+      "id": "x7s000p6",
+      "tier": 4,
+      "prompt": "Which tech founder bought the studio from Lucasfilm in 1986?",
+      "correct": "Steve Jobs",
+      "wrong": [
+        "Bill Gates",
+        "Steve Wozniak",
+        "Larry Ellison"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pixar#History"
+    },
+    {
+      "id": "ruyzc140",
+      "tier": 4,
+      "prompt": "Who voices Mike Wazowski in Monsters, Inc.?",
+      "correct": "Billy Crystal",
+      "wrong": [
+        "John Goodman",
+        "Steve Buscemi",
+        "Danny DeVito"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Monsters,_Inc.#Voice_cast"
+    },
+    {
+      "id": "idqghikm",
+      "tier": 4,
+      "prompt": "In Monsters, Inc., what is stuck to George when the CDA calls a 2319?",
+      "correct": "A child's sock",
+      "wrong": [
+        "A candy wrapper",
+        "A teddy bear",
+        "A hair bow"
+      ],
+      "source": "Monsters, Inc. (2001), George Sanderson's 2319 scene; https://en.wikipedia.org/wiki/Monsters,_Inc."
+    },
+    {
+      "id": "q3k25edc",
+      "tier": 5,
+      "prompt": "Who voices Mr. Incredible in The Incredibles?",
+      "correct": "Craig T. Nelson",
+      "wrong": [
+        "Jeff Bridges",
+        "Kurt Russell",
+        "Bruce Campbell"
+      ],
+      "source": "https://en.wikipedia.org/wiki/The_Incredibles#Voice_cast"
+    },
+    {
+      "id": "85egopqe",
+      "tier": 5,
+      "prompt": "Who voices Edna Mode in The Incredibles?",
+      "correct": "Brad Bird",
+      "wrong": [
+        "Holly Hunter",
+        "Pete Docter",
+        "Kathy Najimy"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Edna_Mode"
+    },
+    {
+      "id": "nukz1v8j",
+      "tier": 5,
+      "prompt": "In Cars, which NASCAR legend voices Strip \"The King\" Weathers?",
+      "correct": "Richard Petty",
+      "wrong": [
+        "Dale Earnhardt",
+        "Cale Yarborough",
+        "David Pearson"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Cars_(film)#Voice_cast"
+    },
+    {
+      "id": "19wivcar",
+      "tier": 5,
+      "prompt": "In WALL-E, what does the \"E\" in the robot's name stand for?",
+      "correct": "Earth-Class",
+      "wrong": [
+        "Electric",
+        "Environmental",
+        "Emergency"
+      ],
+      "source": "WALL-E: Waste Allocation Load Lifter: Earth-Class; https://en.wikipedia.org/wiki/WALL-E_(character)"
+    },
+    {
+      "id": "hkhx18i2",
+      "tier": 5,
+      "prompt": "In Coco, what is the name of Miguel's hometown?",
+      "correct": "Santa Cecilia",
+      "wrong": [
+        "Santa Lucía",
+        "San Miguel",
+        "Santa Rosa"
+      ],
+      "source": "Coco (2017); https://en.wikipedia.org/wiki/Coco_(2017_film)"
+    },
+    {
+      "id": "dzsszmwd",
+      "tier": 5,
+      "prompt": "In Toy Story, what is Sid's last name?",
+      "correct": "Phillips",
+      "wrong": [
+        "Peterson",
+        "Parker",
+        "Simmons"
+      ],
+      "source": "Toy Story (1995), Sid Phillips; https://en.wikipedia.org/wiki/Toy_Story"
+    },
+    {
+      "id": "4hfchywp",
+      "tier": 5,
+      "prompt": "Who sings \"When She Loved Me\" in Toy Story 2?",
+      "correct": "Sarah McLachlan",
+      "wrong": [
+        "Celine Dion",
+        "Sheryl Crow",
+        "Jewel"
+      ],
+      "source": "https://en.wikipedia.org/wiki/When_She_Loved_Me"
+    },
+    {
+      "id": "4cq1zr0x",
+      "tier": 5,
+      "prompt": "Who voices Mr. Potato Head in the first four Toy Story films?",
+      "correct": "Don Rickles",
+      "wrong": [
+        "Danny DeVito",
+        "Joe Pesci",
+        "Rodney Dangerfield"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mr._Potato_Head#Toy_Story"
+    },
+    {
+      "id": "czq8x538",
+      "tier": 5,
+      "prompt": "In The Incredibles, what is Frozone's first name?",
+      "correct": "Lucius",
+      "wrong": [
+        "Marcus",
+        "Darius",
+        "Julian"
+      ],
+      "source": "The Incredibles (2004), Lucius Best; https://en.wikipedia.org/wiki/The_Incredibles"
+    },
+    {
+      "id": "efu4g5do",
+      "tier": 5,
+      "prompt": "In The Incredibles, what is the name of Syndrome's island?",
+      "correct": "Nomanisan",
+      "wrong": [
+        "Isla Oscura",
+        "Volcania",
+        "Kronos Island"
+      ],
+      "source": "The Incredibles (2004); https://en.wikipedia.org/wiki/The_Incredibles"
+    },
+    {
+      "id": "wirolmo0",
+      "tier": 5,
+      "prompt": "In Monsters University, which fraternity do Mike and Sulley join?",
+      "correct": "Oozma Kappa",
+      "wrong": [
+        "Python Nu Kappa",
+        "Jaws Theta Chi",
+        "Slugma Slugma Kappa"
+      ],
+      "source": "Monsters University (2013); https://en.wikipedia.org/wiki/Monsters_University"
+    },
+    {
+      "id": "r78aonnb",
+      "tier": 5,
+      "prompt": "Which CalArts classroom number is hidden in many of the studio's films?",
+      "correct": "A113",
+      "wrong": [
+        "B214",
+        "C127",
+        "A101"
+      ],
+      "source": "https://en.wikipedia.org/wiki/A113"
+    },
+    {
+      "id": "r2msyviw",
+      "tier": 5,
+      "prompt": "Who directed Up, Inside Out and Soul?",
+      "correct": "Pete Docter",
+      "wrong": [
+        "Andrew Stanton",
+        "Lee Unkrich",
+        "Brad Bird"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pete_Docter"
+    },
+    {
+      "id": "yuj0s31w",
+      "tier": 5,
+      "prompt": "In Up, what is the name of Charles Muntz's airship?",
+      "correct": "Spirit of Adventure",
+      "wrong": [
+        "Spirit of Discovery",
+        "Pride of the Skies",
+        "Star of the North"
+      ],
+      "source": "Up (2009); https://en.wikipedia.org/wiki/Up_(2009_film)"
+    },
+    {
+      "id": "2snho8tk",
+      "tier": 5,
+      "prompt": "In Cars, Lightning McQueen's race number 95 nods to the year of which film?",
+      "correct": "Toy Story",
+      "wrong": [
+        "A Bug's Life",
+        "Monsters, Inc.",
+        "Finding Nemo"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Lightning_McQueen"
+    },
+    {
+      "id": "uxzlgrr6",
+      "tier": 5,
+      "prompt": "In Finding Dory, what kind of animal is Destiny?",
+      "correct": "A whale shark",
+      "wrong": [
+        "A beluga whale",
+        "A manta ray",
+        "A blue whale"
+      ],
+      "source": "Finding Dory (2016); https://en.wikipedia.org/wiki/Finding_Dory"
+    }
+  ]
+}
