@@ -1,5 +1,17 @@
 {
   "general": null,
-  "tv": [],
+  "tv": [
+    {
+      "name": "The Big Bang Theory",
+      "slug": "the-big-bang-theory",
+      "questionCounts": {
+        "1": 16,
+        "2": 17,
+        "3": 18,
+        "4": 17,
+        "5": 15
+      }
+    }
+  ],
   "movies": []
 }

@@ -1,0 +1,645 @@
+{
+  "title": "The Big Bang Theory",
+  "questions": [
+    {
+      "id": "lwi8erax",
+      "tier": 1,
+      "prompt": "What is Sheldon's last name?",
+      "correct": "Cooper",
+      "wrong": ["Hofstadter", "Wolowitz", "Koothrappali"]
+    },
+    {
+      "id": "5jdy6jp2",
+      "tier": 1,
+      "prompt": "Where does Penny work as a waitress in the early seasons?",
+      "correct": "The Cheesecake Factory",
+      "wrong": ["The Olive Garden", "Applebee's", "Denny's"]
+    },
+    {
+      "id": "g0qtwcaq",
+      "tier": 1,
+      "prompt": "What does Sheldon shout after pulling a prank?",
+      "correct": "\"Bazinga!\"",
+      "wrong": ["\"Eureka!\"", "\"Gotcha!\"", "\"Cowabunga!\""],
+      "source": "Wikipedia: Sheldon Cooper (catchphrase \"Bazinga\")"
+    },
+    {
+      "id": "fpzgktvs",
+      "tier": 1,
+      "prompt": "What does Sheldon call his particular seat on the couch?",
+      "correct": "His spot",
+      "wrong": ["His throne", "His perch", "His nest"],
+      "source": "https://www.looper.com/243490/the-biggest-onscreen-mistakes-in-the-big-bang-theory"
+    },
+    {
+      "id": "co9k9zlp",
+      "tier": 1,
+      "prompt": "Which song does Sheldon ask to have sung to him when he's sick?",
+      "correct": "\"Soft Kitty\"",
+      "wrong": ["\"Hush, Little Baby\"", "\"Rock-a-bye Baby\"", "\"Twinkle, Twinkle\""],
+      "source": "S1E11, The Pancake Batter Anomaly"
+    },
+    {
+      "id": "5efzsrv1",
+      "tier": 1,
+      "prompt": "Whom does Leonard marry?",
+      "correct": "Penny",
+      "wrong": ["Bernadette", "Priya", "Leslie"]
+    },
+    {
+      "id": "q0ta9ctg",
+      "tier": 1,
+      "prompt": "Which of the friends travels to the International Space Station?",
+      "correct": "Howard",
+      "wrong": ["Raj", "Leonard", "Sheldon"]
+    },
+    {
+      "id": "3t6znxf4",
+      "tier": 1,
+      "prompt": "In the early seasons, who can't speak to women unless he has been drinking?",
+      "correct": "Raj",
+      "wrong": ["Howard", "Leonard", "Stuart"]
+    },
+    {
+      "id": "4wv6rgni",
+      "tier": 1,
+      "prompt": "Whom does Howard live with for much of the series?",
+      "correct": "His mother",
+      "wrong": ["His grandmother", "His brother", "His aunt"]
+    },
+    {
+      "id": "01wxiw1z",
+      "tier": 1,
+      "prompt": "In which California city do Sheldon and Leonard live?",
+      "correct": "Pasadena",
+      "wrong": ["San Diego", "Sacramento", "Fresno"]
+    },
+    {
+      "id": "trr52vs5",
+      "tier": 1,
+      "prompt": "What in the apartment building is broken for nearly the whole series?",
+      "correct": "The elevator",
+      "wrong": ["The front door", "The mailboxes", "The laundry room"]
+    },
+    {
+      "id": "7oy90qgc",
+      "tier": 1,
+      "prompt": "What do Sheldon and Leonard do for a living?",
+      "correct": "Physicists",
+      "wrong": ["Geologists", "Dentists", "Chemists"]
+    },
+    {
+      "id": "2a3fqkh6",
+      "tier": 1,
+      "prompt": "Who plays Sheldon?",
+      "correct": "Jim Parsons",
+      "wrong": ["Johnny Galecki", "Simon Helberg", "Kunal Nayyar"]
+    },
+    {
+      "id": "9ghnyiw8",
+      "tier": 1,
+      "prompt": "How many times does Sheldon knock and say \"Penny\" at her door?",
+      "correct": "Three",
+      "wrong": ["Two", "Four", "Five"],
+      "source": "Wikipedia: Sheldon Cooper (knocking ritual)"
+    },
+    {
+      "id": "ij4k9scy",
+      "tier": 1,
+      "prompt": "Whom does Sheldon marry?",
+      "correct": "Amy",
+      "wrong": ["Penny", "Bernadette", "Ramona"]
+    },
+    {
+      "id": "g2mxjk7b",
+      "tier": 1,
+      "prompt": "What is the prequel spin-off about Sheldon's childhood called?",
+      "correct": "Young Sheldon",
+      "wrong": ["Little Sheldon", "Sheldon Begins", "Baby Cooper"]
+    },
+    {
+      "id": "trq666vn",
+      "tier": 2,
+      "prompt": "Who is the only one of the four friends without a doctorate?",
+      "correct": "Howard",
+      "wrong": ["Leonard", "Raj", "Sheldon"]
+    },
+    {
+      "id": "23dd4pf4",
+      "tier": 2,
+      "prompt": "Which country is Raj from?",
+      "correct": "India",
+      "wrong": ["Pakistan", "Sri Lanka", "Bangladesh"]
+    },
+    {
+      "id": "nrhd222i",
+      "tier": 2,
+      "prompt": "Sheldon's version of rock-paper-scissors adds which two options?",
+      "correct": "Lizard and Spock",
+      "wrong": ["Dragon and Yoda", "Wizard and Kirk", "Robot and Data"],
+      "source": "S2E8, The Lizard-Spock Expansion"
+    },
+    {
+      "id": "b6vjh1dp",
+      "tier": 2,
+      "prompt": "Which state is Sheldon from?",
+      "correct": "Texas",
+      "wrong": ["Oklahoma", "Arkansas", "Louisiana"]
+    },
+    {
+      "id": "tmps2skj",
+      "tier": 2,
+      "prompt": "What document sets out the rules Sheldon and Leonard live by?",
+      "correct": "The Roommate Agreement",
+      "wrong": ["The Tenant Charter", "The House Constitution", "The Flatmate Treaty"]
+    },
+    {
+      "id": "iwmezx32",
+      "tier": 2,
+      "prompt": "Who runs the comic book store the friends visit?",
+      "correct": "Stuart",
+      "wrong": ["Kripke", "Zack", "Bert"]
+    },
+    {
+      "id": "tprno1xx",
+      "tier": 2,
+      "prompt": "Whom does Howard marry?",
+      "correct": "Bernadette",
+      "wrong": ["Amy", "Emily", "Leslie"]
+    },
+    {
+      "id": "itxryofw",
+      "tier": 2,
+      "prompt": "What is Sheldon's web show about flags called?",
+      "correct": "Fun with Flags",
+      "wrong": ["Flag Facts", "Flags of the World", "Flag Time"],
+      "source": "S5E14, The Beta Test Initiation"
+    },
+    {
+      "id": "3752xbdi",
+      "tier": 2,
+      "prompt": "Which kind of transport is Sheldon obsessed with?",
+      "correct": "Trains",
+      "wrong": ["Airships", "Submarines", "Motorcycles"]
+    },
+    {
+      "id": "k835bt84",
+      "tier": 2,
+      "prompt": "What food intolerance does Leonard have?",
+      "correct": "Lactose",
+      "wrong": ["Gluten", "Peanuts", "Shellfish"]
+    },
+    {
+      "id": "sgs3jaev",
+      "tier": 2,
+      "prompt": "What does Sheldon call his grandmother?",
+      "correct": "Meemaw",
+      "wrong": ["Nana", "Granny", "Grams"]
+    },
+    {
+      "id": "lpv7ermm",
+      "tier": 2,
+      "prompt": "Sheldon faints when which famous physicist points out an error in his work?",
+      "correct": "Stephen Hawking",
+      "wrong": ["Albert Einstein", "Carl Sagan", "Richard Feynman"],
+      "source": "S5E21, The Hawking Excitation"
+    },
+    {
+      "id": "ems7g31l",
+      "tier": 2,
+      "prompt": "Whom does Amy insist on calling her \"bestie\"?",
+      "correct": "Penny",
+      "wrong": ["Bernadette", "Leonard", "Howard"]
+    },
+    {
+      "id": "h77kivwp",
+      "tier": 2,
+      "prompt": "At which university do Sheldon, Leonard, Raj and Howard work?",
+      "correct": "Caltech",
+      "wrong": ["MIT", "Stanford", "UCLA"]
+    },
+    {
+      "id": "qaxbztjc",
+      "tier": 2,
+      "prompt": "In the final episodes, what prize do Sheldon and Amy win?",
+      "correct": "The Nobel Prize",
+      "wrong": ["The Pulitzer Prize", "The Turing Award", "The Fields Medal"],
+      "source": "S12E24, The Stockholm Syndrome"
+    },
+    {
+      "id": "o5htfljb",
+      "tier": 2,
+      "prompt": "Which network aired the series?",
+      "correct": "CBS",
+      "wrong": ["NBC", "ABC", "Fox"]
+    },
+    {
+      "id": "pf1u36a1",
+      "tier": 2,
+      "prompt": "The theme song begins: \"Our whole universe was in a hot, dense…\" what?",
+      "correct": "State",
+      "wrong": ["Stew", "Haze", "Space"],
+      "source": "Theme song \"History of Everything\" by Barenaked Ladies, opening line"
+    },
+    {
+      "id": "ma04ax8s",
+      "tier": 3,
+      "prompt": "What IQ does Sheldon claim to have?",
+      "correct": "187",
+      "wrong": ["160", "173", "201"],
+      "source": "S1E11, The Pancake Batter Anomaly (\"I have an IQ of 187\")"
+    },
+    {
+      "id": "8myz906f",
+      "tier": 3,
+      "prompt": "What is Sheldon's mother's first name?",
+      "correct": "Mary",
+      "wrong": ["Martha", "Margaret", "Ruth"],
+      "source": "Wikipedia: Mary Cooper (The Big Bang Theory)"
+    },
+    {
+      "id": "oejnub6y",
+      "tier": 3,
+      "prompt": "Which band performs the theme song?",
+      "correct": "Barenaked Ladies",
+      "wrong": ["They Might Be Giants", "Weezer", "Fountains of Wayne"],
+      "source": "Wikipedia: History of Everything"
+    },
+    {
+      "id": "pavyaml6",
+      "tier": 3,
+      "prompt": "What is Bernadette's scientific field?",
+      "correct": "Microbiology",
+      "wrong": ["Neurobiology", "Astrophysics", "Geology"],
+      "source": "Wikipedia: Bernadette Rostenkowski-Wolowitz"
+    },
+    {
+      "id": "418a7jce",
+      "tier": 3,
+      "prompt": "What is Amy's scientific field?",
+      "correct": "Neurobiology",
+      "wrong": ["Microbiology", "Marine biology", "Botany"],
+      "source": "Wikipedia: Amy Farrah Fowler"
+    },
+    {
+      "id": "709agjxa",
+      "tier": 3,
+      "prompt": "Which of Raj's sisters dates Leonard?",
+      "correct": "Priya",
+      "wrong": ["Anu", "Lakshmi", "Meera"],
+      "source": "Wikipedia: Priya Koothrappali"
+    },
+    {
+      "id": "q7y5dzc8",
+      "tier": 3,
+      "prompt": "Which state is Penny from?",
+      "correct": "Nebraska",
+      "wrong": ["Iowa", "Kansas", "Montana"],
+      "source": "Wikipedia: Penny (The Big Bang Theory)"
+    },
+    {
+      "id": "id2kekno",
+      "tier": 3,
+      "prompt": "After quitting the restaurant, what job does Penny take?",
+      "correct": "Pharmaceutical sales rep",
+      "wrong": ["Real estate agent", "Insurance broker", "Travel agent"],
+      "source": "S7E24, The Status Quo Combustion / S8E1, The Locomotion Interruption (Zangen rep)"
+    },
+    {
+      "id": "ajsxihyl",
+      "tier": 3,
+      "prompt": "Who plays Amy?",
+      "correct": "Mayim Bialik",
+      "wrong": ["Melissa Rauch", "Kaley Cuoco", "Sara Gilbert"],
+      "source": "Wikipedia: Amy Farrah Fowler"
+    },
+    {
+      "id": "uo1y99fj",
+      "tier": 3,
+      "prompt": "How many seasons did the series run?",
+      "correct": "12",
+      "wrong": ["9", "10", "14"],
+      "source": "Wikipedia: The Big Bang Theory"
+    },
+    {
+      "id": "7d2n4vv0",
+      "tier": 3,
+      "prompt": "In which city do Leonard and Penny first get married?",
+      "correct": "Las Vegas",
+      "wrong": ["Reno", "Atlantic City", "Lake Tahoe"],
+      "source": "S9E1, The Matrimonial Momentum"
+    },
+    {
+      "id": "tjcdmezv",
+      "tier": 3,
+      "prompt": "Which actor officiates Sheldon and Amy's wedding?",
+      "correct": "Mark Hamill",
+      "wrong": ["Harrison Ford", "William Shatner", "Billy Dee Williams"],
+      "source": "S11E24, The Bow Tie Asymmetry"
+    },
+    {
+      "id": "n24aqr8k",
+      "tier": 3,
+      "prompt": "Raj falls for which phone voice assistant?",
+      "correct": "Siri",
+      "wrong": ["Alexa", "Cortana", "Bixby"],
+      "source": "S5E14, The Beta Test Initiation"
+    },
+    {
+      "id": "e5r74i74",
+      "tier": 3,
+      "prompt": "Which Caltech colleague with a speech impediment is Sheldon's rival?",
+      "correct": "Barry Kripke",
+      "wrong": ["Bert Kibbler", "Dennis Kim", "Stuart Bloom"],
+      "source": "Wikipedia: List of The Big Bang Theory characters (Barry Kripke)"
+    },
+    {
+      "id": "8rgn64n9",
+      "tier": 3,
+      "prompt": "After his breakup with Amy, Sheldon starts collecting what?",
+      "correct": "Cats",
+      "wrong": ["Dogs", "Birds", "Turtles"],
+      "source": "S4E3, The Zazzy Substitution"
+    },
+    {
+      "id": "gvqvftwr",
+      "tier": 3,
+      "prompt": "What nickname does Sheldon's grandmother have for him?",
+      "correct": "Moon Pie",
+      "wrong": ["Sugar Bear", "Cupcake", "Sweet Pea"],
+      "source": "Wikipedia: Sheldon Cooper"
+    },
+    {
+      "id": "5bxqptdq",
+      "tier": 3,
+      "prompt": "Which Star Trek actor plays himself as Sheldon's sworn enemy?",
+      "correct": "Wil Wheaton",
+      "wrong": ["George Takei", "Brent Spiner", "Patrick Stewart"],
+      "source": "S3E5, The Creepy Candy Coating Corollary"
+    },
+    {
+      "id": "mq9nd0fb",
+      "tier": 3,
+      "prompt": "Who moves in with Howard's mother?",
+      "correct": "Stuart",
+      "wrong": ["Raj", "Sheldon", "Kripke"],
+      "source": "Wikipedia: Stuart Bloom (moves in with Mrs. Wolowitz in season 7)"
+    },
+    {
+      "id": "06rb9uhq",
+      "tier": 4,
+      "prompt": "What nickname does Howard get from the crew on his space mission?",
+      "correct": "Froot Loops",
+      "wrong": ["Lucky Charms", "Cap'n Crunch", "Cocoa Puffs"],
+      "source": "S6E1, The Date Night Variable"
+    },
+    {
+      "id": "g8vyh3n9",
+      "tier": 4,
+      "prompt": "Which cast member has a real PhD in neuroscience?",
+      "correct": "Mayim Bialik",
+      "wrong": ["Melissa Rauch", "Jim Parsons", "Kunal Nayyar"],
+      "source": "Wikipedia: Mayim Bialik"
+    },
+    {
+      "id": "086t423a",
+      "tier": 4,
+      "prompt": "How many Emmy Awards did Jim Parsons win for playing Sheldon?",
+      "correct": "Four",
+      "wrong": ["One", "Two", "Six"],
+      "source": "Wikipedia: Jim Parsons (four Emmys: 2010, 2011, 2013, 2014)"
+    },
+    {
+      "id": "i2hbvxlp",
+      "tier": 4,
+      "prompt": "In which year did the series premiere?",
+      "correct": "2007",
+      "wrong": ["2005", "2006", "2009"],
+      "source": "Wikipedia: The Big Bang Theory (premiered September 24, 2007)"
+    },
+    {
+      "id": "bzrccx2w",
+      "tier": 4,
+      "prompt": "Who plays Leonard's mother, Beverly?",
+      "correct": "Christine Baranski",
+      "wrong": ["Jamie Lee Curtis", "Kathy Bates", "Sigourney Weaver"],
+      "source": "S3E11, The Maternal Congruence; Wikipedia: Christine Baranski"
+    },
+    {
+      "id": "asyb2n8w",
+      "tier": 4,
+      "prompt": "Who plays Sheldon's mother?",
+      "correct": "Laurie Metcalf",
+      "wrong": ["Annie Potts", "Jean Smart", "Allison Janney"],
+      "source": "Wikipedia: Laurie Metcalf"
+    },
+    {
+      "id": "4fd28a9t",
+      "tier": 4,
+      "prompt": "What is the name of Raj's dog?",
+      "correct": "Cinnamon",
+      "wrong": ["Nutmeg", "Biscuit", "Peanut"],
+      "source": "Wikipedia: Raj Koothrappali"
+    },
+    {
+      "id": "dau1shlt",
+      "tier": 4,
+      "prompt": "At Penny's Halloween party, Sheldon dresses as which scientific idea?",
+      "correct": "The Doppler effect",
+      "wrong": ["A black hole", "The speed of light", "Gravity"],
+      "source": "S1E6, The Middle-Earth Paradigm"
+    },
+    {
+      "id": "2ralz18x",
+      "tier": 4,
+      "prompt": "What is Sheldon's middle name?",
+      "correct": "Lee",
+      "wrong": ["Lewis", "Lyle", "Leroy"],
+      "source": "Wikipedia: Sheldon Cooper (Sheldon Lee Cooper)"
+    },
+    {
+      "id": "1bq19mqf",
+      "tier": 4,
+      "prompt": "What do Howard and Bernadette name their daughter?",
+      "correct": "Halley",
+      "wrong": ["Stella", "Luna", "Nova"],
+      "source": "S10E1, The Conjugal Conjecture; Wikipedia: Howard Wolowitz"
+    },
+    {
+      "id": "460vccwl",
+      "tier": 4,
+      "prompt": "What is Sheldon and Leonard's apartment number?",
+      "correct": "4A",
+      "wrong": ["4B", "3A", "5C"],
+      "source": "Wikipedia: The Big Bang Theory (setting)"
+    },
+    {
+      "id": "e95n6ivm",
+      "tier": 4,
+      "prompt": "Which name does Sheldon give one of his cats because it's \"so zazzy\"?",
+      "correct": "Zazzles",
+      "wrong": ["Muffins", "Snowball", "Whiskers"],
+      "source": "S4E3, The Zazzy Substitution (\"he's so zazzy\")"
+    },
+    {
+      "id": "bxxvgct8",
+      "tier": 4,
+      "prompt": "The friends play which word game in Klingon?",
+      "correct": "Boggle",
+      "wrong": ["Scrabble", "Taboo", "Pictionary"],
+      "source": "S1E1, Pilot (\"we played Klingon Boggle\")"
+    },
+    {
+      "id": "3s0q4lem",
+      "tier": 4,
+      "prompt": "What is the name of Sheldon's twin sister?",
+      "correct": "Missy",
+      "wrong": ["Sissy", "Mandy", "Becky"],
+      "source": "Wikipedia: Sheldon Cooper (twin sister Missy)"
+    },
+    {
+      "id": "7kn7fwvi",
+      "tier": 4,
+      "prompt": "Sheldon and Amy first sleep together on whose birthday?",
+      "correct": "Amy's",
+      "wrong": ["Sheldon's", "Penny's", "Leonard's"],
+      "source": "S9E11, The Opening Night Excitation"
+    },
+    {
+      "id": "1337bxb7",
+      "tier": 4,
+      "prompt": "Where does Bernadette work when Howard first meets her?",
+      "correct": "The Cheesecake Factory",
+      "wrong": ["A comic book store", "A hospital lab", "A coffee shop"],
+      "source": "S3E5, The Creepy Candy Coating Corollary"
+    },
+    {
+      "id": "jgytjw9y",
+      "tier": 4,
+      "prompt": "Which physicist rival of Sheldon's has a fling with Leonard in season 1?",
+      "correct": "Leslie Winkle",
+      "wrong": ["Ramona Nowitzki", "Alex Jensen", "Emily Sweeney"],
+      "source": "S1E5, The Hamburger Postulate"
+    },
+    {
+      "id": "grubne05",
+      "tier": 5,
+      "prompt": "Chuck Lorre co-created the series with whom?",
+      "correct": "Bill Prady",
+      "wrong": ["Greg Garcia", "Dan Harmon", "Mike Schur"],
+      "source": "Wikipedia: The Big Bang Theory (created by Chuck Lorre and Bill Prady)"
+    },
+    {
+      "id": "lddyspwo",
+      "tier": 5,
+      "prompt": "What does Sheldon call the best number?",
+      "correct": "73",
+      "wrong": ["42", "17", "137"],
+      "source": "S4E10, The Alien Parasite Hypothesis"
+    },
+    {
+      "id": "mxsoxwwy",
+      "tier": 5,
+      "prompt": "Johnny Galecki and Laurie Metcalf both starred earlier in which sitcom?",
+      "correct": "Roseanne",
+      "wrong": ["Home Improvement", "Full House", "Family Matters"],
+      "source": "Wikipedia: Roseanne (TV series)"
+    },
+    {
+      "id": "law888zv",
+      "tier": 5,
+      "prompt": "Sheldon and Leonard are named after which real TV producer?",
+      "correct": "Sheldon Leonard",
+      "wrong": ["Norman Lear", "Garry Marshall", "Aaron Spelling"],
+      "source": "Wikipedia: The Big Bang Theory (character names)"
+    },
+    {
+      "id": "xwwaoqvi",
+      "tier": 5,
+      "prompt": "What kind of doctor is Raj's father?",
+      "correct": "Gynecologist",
+      "wrong": ["Cardiologist", "Dentist", "Pediatrician"],
+      "source": "Wikipedia: Raj Koothrappali"
+    },
+    {
+      "id": "zqjkys5w",
+      "tier": 5,
+      "prompt": "Who voices the toy Spock that talks to Sheldon in his dreams?",
+      "correct": "Leonard Nimoy",
+      "wrong": ["William Shatner", "George Takei", "Zachary Quinto"],
+      "source": "S5E20, The Transporter Malfunction"
+    },
+    {
+      "id": "2nqz0auj",
+      "tier": 5,
+      "prompt": "Why does Sheldon first hold a grudge against Wil Wheaton?",
+      "correct": "He missed a fan convention",
+      "wrong": ["He beat him at chess", "He mocked his paper", "He took his parking spot"],
+      "source": "S3E5, The Creepy Candy Coating Corollary"
+    },
+    {
+      "id": "4axelh9u",
+      "tier": 5,
+      "prompt": "In which card game tournament does Wil Wheaton beat Sheldon?",
+      "correct": "Mystic Warlords of Ka'a",
+      "wrong": ["Dragon Lords of Tor", "Shadow Wizards of Zan", "Magic Kingdoms of Ur"],
+      "source": "S3E5, The Creepy Candy Coating Corollary"
+    },
+    {
+      "id": "bjckd2yo",
+      "tier": 5,
+      "prompt": "What is Howard's mother's first name?",
+      "correct": "Debbie",
+      "wrong": ["Doris", "Sylvia", "Rhoda"],
+      "source": "S8E15, The Comic Book Store Regeneration; Wikipedia: Howard Wolowitz"
+    },
+    {
+      "id": "r0bnxe0g",
+      "tier": 5,
+      "prompt": "What is the first name of Howard and Bernadette's son?",
+      "correct": "Neil",
+      "wrong": ["Buzz", "John", "Alan"],
+      "source": "S11E14, The Separation Triangulation; Wikipedia: Howard Wolowitz (son Neil Michael)"
+    },
+    {
+      "id": "09gethm2",
+      "tier": 5,
+      "prompt": "On which Pasadena street is Sheldon and Leonard's building?",
+      "correct": "North Los Robles Avenue",
+      "wrong": ["Colorado Boulevard", "South Lake Avenue", "Fair Oaks Avenue"],
+      "source": "Wikipedia: The Big Bang Theory (2311 North Los Robles Avenue)"
+    },
+    {
+      "id": "sepvzt16",
+      "tier": 5,
+      "prompt": "Who provides the voice of Howard's mother?",
+      "correct": "Carol Ann Susi",
+      "wrong": ["Estelle Harris", "Rhea Perlman", "Fran Drescher"],
+      "source": "Wikipedia: Carol Ann Susi"
+    },
+    {
+      "id": "t6p0lks2",
+      "tier": 5,
+      "prompt": "What is the comic book store owner Stuart's last name?",
+      "correct": "Bloom",
+      "wrong": ["Bloch", "Stern", "Feld"],
+      "source": "Wikipedia: Stuart Bloom"
+    },
+    {
+      "id": "gqwc7ge4",
+      "tier": 5,
+      "prompt": "Penny's dating dilemma with Leonard is compared to which thought experiment?",
+      "correct": "Schrödinger's cat",
+      "wrong": ["Maxwell's demon", "The trolley problem", "Zeno's paradox"],
+      "source": "S1E17, The Tangerine Factor"
+    },
+    {
+      "id": "mzragyjs",
+      "tier": 5,
+      "prompt": "How many episodes did the series air in total?",
+      "correct": "279",
+      "wrong": ["246", "301", "264"],
+      "source": "Wikipedia: List of The Big Bang Theory episodes"
+    }
+  ]
+}
