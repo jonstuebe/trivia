@@ -7,7 +7,7 @@
       "prompt": "What is the name of the coffee house where the gang hangs out?",
       "correct": "Central Perk",
       "wrong": ["Central Bean", "The Daily Grind", "Java Joe's"],
-      "source": "S1E1, The One Where Monica Gets a Roommate"
+      "source": "S1E7: https://fangj.github.io/friends/season/0107.html"
     },
     {
       "id": "vnjjqwaf",
@@ -15,7 +15,7 @@
       "prompt": "What does Ross do for a living?",
       "correct": "Paleontologist",
       "wrong": ["Archaeologist", "Geologist", "Astronomer"],
-      "source": "https://en.wikipedia.org/wiki/Ross_Geller"
+      "source": "S1E22: https://fangj.github.io/friends/season/0122.html"
     },
     {
       "id": "0do82esy",
@@ -23,7 +23,7 @@
       "prompt": "What is Joey's famous pickup line?",
       "correct": "How you doin'?",
       "wrong": ["What's up, doc?", "Hey, good lookin'!", "Come here often?"],
-      "source": "https://en.wikipedia.org/wiki/Joey_Tribbiani"
+      "source": "S4E13: https://fangj.github.io/friends/season/0413.html"
     },
     {
       "id": "uu1vmdq8",
@@ -31,7 +31,7 @@
       "prompt": "What is Monica's profession?",
       "correct": "Chef",
       "wrong": ["Nurse", "Lawyer", "Architect"],
-      "source": "https://en.wikipedia.org/wiki/Monica_Geller"
+      "source": "S1E15: https://fangj.github.io/friends/season/0115.html"
     },
     {
       "id": "ocrfvw79",
@@ -39,7 +39,7 @@
       "prompt": "Which character is Ross's younger sister?",
       "correct": "Monica",
       "wrong": ["Rachel", "Phoebe", "Janice"],
-      "source": "https://en.wikipedia.org/wiki/Monica_Geller"
+      "source": "S1E1: https://fangj.github.io/friends/season/0101.html; S2E5: https://fangj.github.io/friends/season/0205.html"
     },
     {
       "id": "tc7nr1uy",
@@ -47,7 +47,7 @@
       "prompt": "What is the title of Phoebe's best-known song?",
       "correct": "Smelly Cat",
       "wrong": ["Stinky Dog", "Grumpy Cat", "Fuzzy Duck"],
-      "source": "S2E6, The One with the Baby on the Bus"
+      "source": "S2E6: https://fangj.github.io/friends/season/0206.html"
     },
     {
       "id": "tvz4equ1",
@@ -55,7 +55,7 @@
       "prompt": "In which city is the series set?",
       "correct": "New York City",
       "wrong": ["Chicago", "Boston", "Los Angeles"],
-      "source": "https://en.wikipedia.org/wiki/Friends"
+      "source": "S7E23: https://fangj.github.io/friends/season/0723.html"
     },
     {
       "id": "th7bwbrc",
@@ -63,7 +63,7 @@
       "prompt": "What does Joey do for a living?",
       "correct": "Actor",
       "wrong": ["Chef", "Firefighter", "Dentist"],
-      "source": "https://en.wikipedia.org/wiki/Joey_Tribbiani"
+      "source": "S1E1: https://fangj.github.io/friends/season/0101.html"
     },
     {
       "id": "wxhom9ef",
@@ -71,7 +71,7 @@
       "prompt": "What job does Rachel take at Central Perk after leaving her wedding?",
       "correct": "Waitress",
       "wrong": ["Bartender", "Cook", "Cashier"],
-      "source": "S1E1–2"
+      "source": "S1E4: https://fangj.github.io/friends/season/0104.html; S2E8: https://fangj.github.io/friends/season/0208.html"
     },
     {
       "id": "w64mw7lw",
@@ -79,7 +79,7 @@
       "prompt": "What is the name of Phoebe's twin sister?",
       "correct": "Ursula",
       "wrong": ["Janice", "Leslie", "Amy"],
-      "source": "S1E16, The One with Two Parts, Part 1"
+      "source": "S1E2: https://fangj.github.io/friends/season/0102.html; S3E3: https://fangj.github.io/friends/season/0303.html"
     },
     {
       "id": "wn2lghbh",
@@ -87,7 +87,7 @@
       "prompt": "Who does Chandler marry?",
       "correct": "Monica",
       "wrong": ["Rachel", "Phoebe", "Janice"],
-      "source": "S7E23–24, The One with Monica and Chandler's Wedding"
+      "source": "S7E23: https://fangj.github.io/friends/season/0723.html"
     },
     {
       "id": "c33dgm9d",
@@ -95,7 +95,7 @@
       "prompt": "What is Janice's signature catchphrase?",
       "correct": "Oh. My. God.",
       "wrong": ["How you doin'?", "Oh no, she didn't!", "Well, hello there!"],
-      "source": "https://en.wikipedia.org/wiki/Janice_Litman_Goralnik"
+      "source": "S1E14: https://fangj.github.io/friends/season/0114.html"
     },
     {
       "id": "7k2zkfk9",
@@ -103,7 +103,7 @@
       "prompt": "What does Ross keep yelling while moving a couch up the stairs?",
       "correct": "Pivot!",
       "wrong": ["Lift!", "Push!", "Heave!"],
-      "source": "S5E16, The One with the Cop"
+      "source": "S5E16: https://fangj.github.io/friends/season/0516.html"
     },
     {
       "id": "vnb4cqw5",
@@ -111,7 +111,7 @@
       "prompt": "What does Ross insist he and Rachel were on when he slept with Chloe?",
       "correct": "A break",
       "wrong": ["A vacation", "A timeout", "A trial run"],
-      "source": "S3E16, The One with the Morning After"
+      "source": "S3E16: https://fangj.github.io/friends/season/0316.html"
     },
     {
       "id": "ggy1gu58",
@@ -119,7 +119,7 @@
       "prompt": "Which actor plays Rachel?",
       "correct": "Jennifer Aniston",
       "wrong": ["Courteney Cox", "Lisa Kudrow", "Jennifer Garner"],
-      "source": "https://en.wikipedia.org/wiki/Rachel_Green"
+      "source": "https://en.wikipedia.org/wiki/Friends"
     },
     {
       "id": "fmudr57i",
@@ -127,7 +127,7 @@
       "prompt": "What does Rachel run away from in the very first episode?",
       "correct": "Her wedding",
       "wrong": ["Her graduation", "A job interview", "A blind date"],
-      "source": "S1E1, The One Where Monica Gets a Roommate"
+      "source": "S1E1: https://fangj.github.io/friends/season/0101.html"
     },
     {
       "id": "h5u11kkg",
@@ -135,7 +135,7 @@
       "prompt": "What is the name of Ross's pet monkey?",
       "correct": "Marcel",
       "wrong": ["Bobo", "George", "Mojo"],
-      "source": "S1E10, The One with the Monkey"
+      "source": "S1E10: https://fangj.github.io/friends/season/0110.html"
     },
     {
       "id": "e7emwsf6",
@@ -143,7 +143,7 @@
       "prompt": "Besides a chick, what pet do Joey and Chandler keep?",
       "correct": "A duck",
       "wrong": ["A rabbit", "A turtle", "A hamster"],
-      "source": "S3E21; S4E1"
+      "source": "S3E21: https://fangj.github.io/friends/season/0321.html; S3E22: https://fangj.github.io/friends/season/0322.html"
     },
     {
       "id": "emcigcyv",
@@ -151,7 +151,7 @@
       "prompt": "Which of Chandler's girlfriends has a nasal voice and an unforgettable laugh?",
       "correct": "Janice",
       "wrong": ["Kathy", "Joanna", "Aurora"],
-      "source": "https://en.wikipedia.org/wiki/Janice_(Friends)"
+      "source": "S1E14: https://fangj.github.io/friends/season/0114.html"
     },
     {
       "id": "4tffquxd",
@@ -159,7 +159,7 @@
       "prompt": "What is the name of Ross and Rachel's daughter?",
       "correct": "Emma",
       "wrong": ["Ella", "Emily", "Erica"],
-      "source": "S8E23–24, The One Where Rachel Has a Baby"
+      "source": "S8E23: https://fangj.github.io/friends/season/0823.html"
     },
     {
       "id": "ldx6imgb",
@@ -167,7 +167,7 @@
       "prompt": "Who is Ross's first wife?",
       "correct": "Carol",
       "wrong": ["Emily", "Susan", "Julie"],
-      "source": "https://en.wikipedia.org/wiki/Ross_Geller"
+      "source": "S1E2: https://fangj.github.io/friends/season/0102.html"
     },
     {
       "id": "hp4rvl7s",
@@ -175,7 +175,7 @@
       "prompt": "Where do Ross and Rachel get drunkenly married?",
       "correct": "Las Vegas",
       "wrong": ["Atlantic City", "Reno", "London"],
-      "source": "S5E24, The One in Vegas, Part 2"
+      "source": "S6E1: https://fangj.github.io/friends/season/0601.html"
     },
     {
       "id": "d370qx4u",
@@ -183,7 +183,7 @@
       "prompt": "What does Monica wear on her head to cheer Chandler up on Thanksgiving?",
       "correct": "A turkey",
       "wrong": ["A pumpkin", "A pie tin", "A gravy boat"],
-      "source": "S5E8, The One with All the Thanksgivings"
+      "source": "S5E8: https://fangj.github.io/friends/season/0508.html"
     },
     {
       "id": "y39t6iej",
@@ -191,7 +191,7 @@
       "prompt": "Which Central Perk worker has a long, secret crush on Rachel?",
       "correct": "Gunther",
       "wrong": ["Mike", "Gary", "Eddie"],
-      "source": "https://en.wikipedia.org/wiki/Gunther_(Friends)"
+      "source": "S10E17–S10E18: https://fangj.github.io/friends/season/1017-1018.html"
     },
     {
       "id": "q27bkb3d",
@@ -199,7 +199,7 @@
       "prompt": "According to Phoebe, which animal mates for life, just like Ross and Rachel?",
       "correct": "A lobster",
       "wrong": ["A crab", "A shrimp", "An octopus"],
-      "source": "S2E14, The One with the Prom Video"
+      "source": "S2E14: https://fangj.github.io/friends/season/0214.html"
     },
     {
       "id": "4ulalqe2",
@@ -207,7 +207,7 @@
       "prompt": "In which city do Monica and Chandler first sleep together?",
       "correct": "London",
       "wrong": ["Paris", "Las Vegas", "Barbados"],
-      "source": "S4E24, The One with Ross's Wedding, Part 2"
+      "source": "S5E1: https://fangj.github.io/friends/season/0501.html"
     },
     {
       "id": "e1l04noe",
@@ -215,7 +215,7 @@
       "prompt": "Whose name does Ross say by mistake while marrying Emily?",
       "correct": "Rachel",
       "wrong": ["Monica", "Carol", "Julie"],
-      "source": "S4E24, The One with Ross's Wedding, Part 2"
+      "source": "S4E23: https://fangj.github.io/friends/season/0423.html"
     },
     {
       "id": "axzlufyb",
@@ -223,7 +223,7 @@
       "prompt": "In the series finale, which city does Rachel decide not to move to?",
       "correct": "Paris",
       "wrong": ["London", "Milan", "Tokyo"],
-      "source": "S10E17–18, The Last One"
+      "source": "S10E14: https://fangj.github.io/friends/season/1014.html; S10E17–S10E18: https://fangj.github.io/friends/season/1017-1018.html"
     },
     {
       "id": "pd8ksb43",
@@ -231,7 +231,7 @@
       "prompt": "Which actor plays Chandler?",
       "correct": "Matthew Perry",
       "wrong": ["Matt LeBlanc", "David Schwimmer", "Matthew Broderick"],
-      "source": "https://en.wikipedia.org/wiki/Chandler_Bing"
+      "source": "https://en.wikipedia.org/wiki/Friends"
     },
     {
       "id": "s5efktuc",
@@ -239,7 +239,7 @@
       "prompt": "What is Chandler's last name?",
       "correct": "Bing",
       "wrong": ["Geller", "Green", "Buffay"],
-      "source": "https://en.wikipedia.org/wiki/Chandler_Bing"
+      "source": "S1E14: https://fangj.github.io/friends/season/0114.html"
     },
     {
       "id": "m0rheqv0",
@@ -247,15 +247,15 @@
       "prompt": "Who does Phoebe marry?",
       "correct": "Mike",
       "wrong": ["David", "Gary", "Paolo"],
-      "source": "S10E12, The One with Phoebe's Wedding"
+      "source": "S10E12: https://fangj.github.io/friends/season/1012.html"
     },
     {
       "id": "0jr78wvp",
       "tier": 2,
-      "prompt": "Finish Joey's famous outburst on a date: \"Joey doesn't share…\"",
+      "prompt": "Finish Joey's famous outburst: \"Joey doesn't share…\"",
       "correct": "Food!",
       "wrong": ["Money!", "Clothes!", "Secrets!"],
-      "source": "S10E9, The One with the Birth Mother"
+      "source": "S10E9: https://fangj.github.io/friends/season/1009.html"
     },
     {
       "id": "bcludoan",
@@ -263,7 +263,7 @@
       "prompt": "Who does Phoebe carry triplets for?",
       "correct": "Her brother",
       "wrong": ["Her sister", "Her best friend", "Her cousin"],
-      "source": "S4E12, The One with the Embryos"
+      "source": "S4E11: https://fangj.github.io/friends/season/0411.html; S4E17: https://fangj.github.io/friends/season/0417.html"
     },
     {
       "id": "pqsy78rp",
@@ -287,7 +287,7 @@
       "prompt": "What is the name of Ross's son with Carol?",
       "correct": "Ben",
       "wrong": ["Sam", "Max", "Jack"],
-      "source": "S1E23, The One with the Birth"
+      "source": "S2E2: https://fangj.github.io/friends/season/0202.html"
     },
     {
       "id": "runbglmd",
@@ -299,7 +299,7 @@
         "All My Children",
         "The Young and the Restless"
       ],
-      "source": "S2E12; https://en.wikipedia.org/wiki/Joey_Tribbiani"
+      "source": "S2E10: https://fangj.github.io/friends/season/0210.html; S2E11: https://fangj.github.io/friends/season/0211.html"
     },
     {
       "id": "6ah4mtcp",
@@ -307,7 +307,7 @@
       "prompt": "How many babies do Monica and Chandler take home in the finale?",
       "correct": "Two",
       "wrong": ["One", "Three", "Four"],
-      "source": "S10E17–18, The Last One"
+      "source": "S10E17–S10E18: https://fangj.github.io/friends/season/1017-1018.html"
     },
     {
       "id": "xqc18sd4",
@@ -315,7 +315,7 @@
       "prompt": "In season 8, which friend does Joey fall for?",
       "correct": "Rachel",
       "wrong": ["Phoebe", "Monica", "Janice"],
-      "source": "S8E16, The One Where Joey Tells Rachel"
+      "source": "S8E16: https://fangj.github.io/friends/season/0816.html"
     },
     {
       "id": "me83kj78",
@@ -323,7 +323,7 @@
       "prompt": "By the end of the series, how many times has Ross been divorced?",
       "correct": "Three",
       "wrong": ["Two", "Four", "Five"],
-      "source": "https://en.wikipedia.org/wiki/Ross_Geller"
+      "source": "S6E1: https://fangj.github.io/friends/season/0601.html"
     },
     {
       "id": "u2htd52m",
@@ -331,7 +331,7 @@
       "prompt": "Which older eye doctor, a friend of her parents, does Monica date?",
       "correct": "Richard",
       "wrong": ["Pete", "Alan", "Paul"],
-      "source": "S2E15, The One Where Ross and Rachel… You Know"
+      "source": "S2E15: https://fangj.github.io/friends/season/0215.html; S4E8: https://fangj.github.io/friends/season/0408.html"
     },
     {
       "id": "yeirbkz5",
@@ -339,7 +339,7 @@
       "prompt": "What does Ross call his state of total awareness, borrowing a sushi word?",
       "correct": "Unagi",
       "wrong": ["Sashimi", "Wasabi", "Tempura"],
-      "source": "S6E17, The One with Unagi"
+      "source": "S6E17: https://fangj.github.io/friends/season/0617.html"
     },
     {
       "id": "buu0atis",
@@ -347,7 +347,7 @@
       "prompt": "What is the name of the doctor Joey plays on his soap opera?",
       "correct": "Dr. Drake Ramoray",
       "wrong": ["Dr. Derek Ramsey", "Dr. Blake Monroe", "Dr. Jake Romano"],
-      "source": "S2E12; https://en.wikipedia.org/wiki/Joey_Tribbiani"
+      "source": "S2E11: https://fangj.github.io/friends/season/0211.html"
     },
     {
       "id": "04377bsc",
@@ -355,7 +355,7 @@
       "prompt": "Which star plays Will, co-founder of the \"I Hate Rachel Green Club\"?",
       "correct": "Brad Pitt",
       "wrong": ["George Clooney", "Tom Cruise", "Johnny Depp"],
-      "source": "S8E9, The One with the Rumor"
+      "source": "S8E9; https://en.wikipedia.org/wiki/The_One_with_the_Rumor"
     },
     {
       "id": "dl3153i1",
@@ -363,7 +363,7 @@
       "prompt": "What savory ingredient ends up in Rachel's Thanksgiving trifle?",
       "correct": "Beef",
       "wrong": ["Chicken", "Ham", "Tuna"],
-      "source": "S6E9, The One Where Ross Got High"
+      "source": "S6E9: https://fangj.github.io/friends/season/0609.html"
     },
     {
       "id": "mg9wnuqj",
@@ -371,7 +371,7 @@
       "prompt": "Which lunch of Ross's does his boss eat, sending him into a rage?",
       "correct": "A leftover turkey sandwich",
       "wrong": ["A slice of birthday cake", "A bowl of chili", "A tuna melt"],
-      "source": "S5E9, The One with Ross's Sandwich"
+      "source": "S5E9: https://fangj.github.io/friends/season/0509.html"
     },
     {
       "id": "180obkt4",
@@ -383,7 +383,7 @@
         "He was dumped on Thanksgiving",
         "His dog ran away on Thanksgiving"
       ],
-      "source": "S5E8, The One with All the Thanksgivings"
+      "source": "S1E9: https://fangj.github.io/friends/season/0109.html"
     },
     {
       "id": "77m3pv83",
@@ -391,7 +391,7 @@
       "prompt": "What does Joey change into at Thanksgiving so he can keep eating?",
       "correct": "Maternity pants",
       "wrong": ["Pajama bottoms", "A loose kilt", "Baggy overalls"],
-      "source": "S8E9, The One with the Rumor; https://en.wikipedia.org/wiki/The_One_with_the_Rumor"
+      "source": "S8E9: https://fangj.github.io/friends/season/0809.html"
     },
     {
       "id": "qvk4xpib",
@@ -399,7 +399,7 @@
       "prompt": "What do Monica and Rachel lose to Joey and Chandler in the trivia game?",
       "correct": "Their apartment",
       "wrong": ["Their car", "Their savings", "Their jobs"],
-      "source": "S4E12, The One with the Embryos"
+      "source": "S4E12: https://fangj.github.io/friends/season/0412.html"
     },
     {
       "id": "8871ux8l",
@@ -407,7 +407,7 @@
       "prompt": "Which fake name does Phoebe use as an alias?",
       "correct": "Regina Phalange",
       "wrong": ["Ken Adams", "Gloria Jones", "Ruth Kellerman"],
-      "source": "S5E24; S10E17; https://en.wikipedia.org/wiki/Phoebe_Buffay"
+      "source": "S5E23: https://fangj.github.io/friends/season/0523.html"
     },
     {
       "id": "2mot2yrj",
@@ -415,7 +415,7 @@
       "prompt": "What is Phoebe's last name?",
       "correct": "Buffay",
       "wrong": ["Bouffant", "Buffet", "Bufford"],
-      "source": "https://en.wikipedia.org/wiki/Phoebe_Buffay"
+      "source": "S1E7: https://fangj.github.io/friends/season/0107.html"
     },
     {
       "id": "de1fbau6",
@@ -423,7 +423,7 @@
       "prompt": "What is the name of Joey's stuffed penguin?",
       "correct": "Hugsy",
       "wrong": ["Waddles", "Snuggles", "Pengy"],
-      "source": "S7E19, The One with Ross and Monica's Cousin"
+      "source": "S5E14: https://fangj.github.io/friends/season/0514.html"
     },
     {
       "id": "0vhg7yvx",
@@ -431,7 +431,7 @@
       "prompt": "Which fashion company does Rachel join after Bloomingdale's?",
       "correct": "Ralph Lauren",
       "wrong": ["Calvin Klein", "Donna Karan", "Tommy Hilfiger"],
-      "source": "S5E19, The One Where Ross Can't Flirt"
+      "source": "S5E17: https://fangj.github.io/friends/season/0517.html; S5E18: https://fangj.github.io/friends/season/0518.html"
     },
     {
       "id": "azl0fjni",
@@ -447,7 +447,7 @@
       "prompt": "In what year did the very first episode air?",
       "correct": "1994",
       "wrong": ["1992", "1996", "1998"],
-      "source": "https://en.wikipedia.org/wiki/Friends (premiered September 22, 1994)"
+      "source": "https://en.wikipedia.org/wiki/List_of_Friends_episodes (pilot aired September 22, 1994)"
     },
     {
       "id": "n1ayc58x",
@@ -455,7 +455,7 @@
       "prompt": "How many sisters does Joey have?",
       "correct": "Seven",
       "wrong": ["Five", "Six", "Eight"],
-      "source": "https://en.wikipedia.org/wiki/Joey_Tribbiani"
+      "source": "S3E3: https://fangj.github.io/friends/season/0303.html"
     },
     {
       "id": "x9sin4rv",
@@ -467,7 +467,7 @@
         "The Hanukkah Hedgehog",
         "The Menorah Moose"
       ],
-      "source": "S7E10, The One with the Holiday Armadillo"
+      "source": "S7E10: https://fangj.github.io/friends/season/0710.html"
     },
     {
       "id": "urlw38a2",
@@ -475,7 +475,7 @@
       "prompt": "What is the name of Rachel's Italian boyfriend in season 1?",
       "correct": "Paolo",
       "wrong": ["Marco", "Luca", "Giovanni"],
-      "source": "S1E7, The One with the Blackout"
+      "source": "S1E7: https://fangj.github.io/friends/season/0107.html"
     },
     {
       "id": "fmr1ur57",
@@ -483,7 +483,7 @@
       "prompt": "Who officiates Monica and Chandler's wedding?",
       "correct": "Joey",
       "wrong": ["Ross", "Phoebe", "Jack Geller"],
-      "source": "S7E23–24, The One with Monica and Chandler's Wedding"
+      "source": "S7E23: https://fangj.github.io/friends/season/0723.html"
     },
     {
       "id": "jpo6x7jd",
@@ -491,7 +491,7 @@
       "prompt": "At which university does Ross become a professor?",
       "correct": "NYU",
       "wrong": ["Columbia", "Yale", "Princeton"],
-      "source": "S6E10; https://en.wikipedia.org/wiki/Ross_Geller"
+      "source": "S6E4: https://fangj.github.io/friends/season/0604.html"
     },
     {
       "id": "sg0u7hfq",
@@ -499,7 +499,7 @@
       "prompt": "What career does Chandler switch to in season 9?",
       "correct": "Advertising",
       "wrong": ["Accounting", "Real estate", "Journalism"],
-      "source": "S9E5; https://en.wikipedia.org/wiki/Chandler_Bing"
+      "source": "S9E11: https://fangj.github.io/friends/season/0911.html; S9E15: https://fangj.github.io/friends/season/0915.html"
     },
     {
       "id": "jkats65i",
@@ -507,7 +507,7 @@
       "prompt": "Which fashion house offers Rachel a job in Paris in the final season?",
       "correct": "Louis Vuitton",
       "wrong": ["Chanel", "Dior", "Yves Saint Laurent"],
-      "source": "S10E15–17; https://en.wikipedia.org/wiki/Rachel_Green"
+      "source": "S10E14: https://fangj.github.io/friends/season/1014.html; S10E15: https://fangj.github.io/friends/season/1015.html"
     },
     {
       "id": "od8kuy25",
@@ -515,7 +515,7 @@
       "prompt": "What does Ross call the gravy-soaked slice of bread in the middle of his sandwich?",
       "correct": "The Moist Maker",
       "wrong": ["The Gravy Train", "The Flavor Bomb", "The Soggy Slice"],
-      "source": "S5E9, The One with Ross's Sandwich"
+      "source": "S5E9: https://fangj.github.io/friends/season/0509.html"
     },
     {
       "id": "mhcc183r",
@@ -523,7 +523,7 @@
       "prompt": "In the apartment trivia game, what does Rachel guess Chandler's job is?",
       "correct": "Transponster",
       "wrong": ["Transistor", "Datamaster", "Numberizer"],
-      "source": "S4E12, The One with the Embryos"
+      "source": "S4E12: https://fangj.github.io/friends/season/0412.html"
     },
     {
       "id": "qt9hndqr",
@@ -531,7 +531,7 @@
       "prompt": "Whose body double does Joey play in a shower scene?",
       "correct": "Al Pacino",
       "wrong": ["Robert De Niro", "Tom Cruise", "Sylvester Stallone"],
-      "source": "S1E6, The One with the Butt"
+      "source": "S1E6: https://fangj.github.io/friends/season/0106.html"
     },
     {
       "id": "v69no7yd",
@@ -539,15 +539,15 @@
       "prompt": "What potato-themed costume does Ross wear to the Halloween party?",
       "correct": "Spudnik",
       "wrong": ["Tater Tot", "Hash Brown", "Couch Potato"],
-      "source": "S8E6, The One with the Halloween Party"
+      "source": "S8E6: https://fangj.github.io/friends/season/0806.html"
     },
     {
       "id": "t7hpvlx5",
       "tier": 4,
       "prompt": "What does Chandler's mother, Nora, do for a living?",
-      "correct": "Writes erotic novels",
+      "correct": "Writes books",
       "wrong": ["Hosts a cooking show", "Teaches ballet", "Sells real estate"],
-      "source": "https://en.wikipedia.org/wiki/Chandler_Bing"
+      "source": "S1E11: https://fangj.github.io/friends/season/0111.html"
     },
     {
       "id": "xgzm83ao",
@@ -555,7 +555,7 @@
       "prompt": "Which star of the series won the 2002 Emmy for Lead Actress in a Comedy?",
       "correct": "Jennifer Aniston",
       "wrong": ["Courteney Cox", "Lisa Kudrow", "Maggie Wheeler"],
-      "source": "54th Primetime Emmy Awards (2002); https://en.wikipedia.org/wiki/Jennifer_Aniston"
+      "source": "https://en.wikipedia.org/wiki/54th_Primetime_Emmy_Awards"
     },
     {
       "id": "rjkmuhqi",
@@ -563,7 +563,7 @@
       "prompt": "Who moves in with Chandler after Joey moves out?",
       "correct": "Eddie",
       "wrong": ["Kip", "Frank", "Steve"],
-      "source": "S2E17, The One Where Eddie Moves In"
+      "source": "S2E17: https://fangj.github.io/friends/season/0217.html"
     },
     {
       "id": "ngantzx1",
@@ -571,7 +571,7 @@
       "prompt": "Where does Phoebe's scientist boyfriend David move for his research?",
       "correct": "Minsk",
       "wrong": ["Moscow", "Prague", "Warsaw"],
-      "source": "S1E10, The One with the Monkey"
+      "source": "S1E10: https://fangj.github.io/friends/season/0110.html"
     },
     {
       "id": "mapkyt74",
@@ -579,7 +579,7 @@
       "prompt": "Which zoo does Ross send Marcel to?",
       "correct": "San Diego Zoo",
       "wrong": ["Bronx Zoo", "Central Park Zoo", "Los Angeles Zoo"],
-      "source": "S1E21, The One with the Fake Monica; S2E12; https://en.wikipedia.org/wiki/The_One_After_the_Superbowl"
+      "source": "S1E21: https://fangj.github.io/friends/season/0121.html"
     },
     {
       "id": "hk4ok22c",
@@ -591,7 +591,7 @@
         "Miss Chandler Binge",
         "Mrs. Chanandra Bing"
       ],
-      "source": "S4E12, The One with the Embryos"
+      "source": "S4E12: https://fangj.github.io/friends/season/0412.html"
     },
     {
       "id": "m15ep7ag",
@@ -599,7 +599,7 @@
       "prompt": "Which of Monica's boyfriends is only fun when he's been drinking?",
       "correct": "Fun Bobby",
       "wrong": ["Party Paul", "Wild Willie", "Cool Carl"],
-      "source": "S1E12; S1E18"
+      "source": "S2E10: https://fangj.github.io/friends/season/0210.html"
     },
     {
       "id": "a8ck5wns",
@@ -607,7 +607,7 @@
       "prompt": "What is Chandler's middle name?",
       "correct": "Muriel",
       "wrong": ["Matthew", "Meredith", "Marion"],
-      "source": "S7E24, The One with Monica and Chandler's Wedding, Part 2; https://en.wikipedia.org/wiki/Chandler_Bing"
+      "source": "S8E5: https://fangj.github.io/friends/season/0805.html"
     },
     {
       "id": "0fgqi2hi",
@@ -615,7 +615,7 @@
       "prompt": "What is the name of the cranky downstairs neighbor who complains about noise?",
       "correct": "Mr. Heckles",
       "wrong": ["Mr. Bloomfield", "Mr. Beaumont", "Mr. Hatfield"],
-      "source": "S1E3; S2E3, The One Where Heckles Dies"
+      "source": "S1E16: https://fangj.github.io/friends/season/0116.html; S3E6: https://fangj.github.io/friends/season/0306.html"
     },
     {
       "id": "krx3at71",
@@ -623,7 +623,7 @@
       "prompt": "What are the first names of Ross and Monica's parents?",
       "correct": "Jack and Judy",
       "wrong": ["Leonard and Sandra", "Frank and Lily", "Charles and Nora"],
-      "source": "https://en.wikipedia.org/wiki/Monica_Geller"
+      "source": "S2E14: https://fangj.github.io/friends/season/0214.html; S4E23: https://fangj.github.io/friends/season/0423.html"
     },
     {
       "id": "zhsdcwu2",
@@ -631,7 +631,7 @@
       "prompt": "What is the name of Frank Jr.'s wife, his former home economics teacher?",
       "correct": "Alice",
       "wrong": ["Leslie", "Ursula", "Lily"],
-      "source": "S3E11"
+      "source": "S3E18: https://fangj.github.io/friends/season/0318.html"
     },
     {
       "id": "7v77x2iy",
@@ -655,7 +655,7 @@
       "prompt": "Which actress won an Emmy for playing Rachel's sister Amy?",
       "correct": "Christina Applegate",
       "wrong": ["Reese Witherspoon", "Winona Ryder", "Julia Roberts"],
-      "source": "2003 Emmy, Guest Actress in a Comedy; https://en.wikipedia.org/wiki/Christina_Applegate"
+      "source": "https://en.wikipedia.org/wiki/Christina_Applegate"
     },
     {
       "id": "oqx81ixg",
@@ -671,7 +671,7 @@
       "prompt": "What is Rachel's real favorite movie, revealed in the trivia game?",
       "correct": "Weekend at Bernie's",
       "wrong": ["Pretty Woman", "Dirty Dancing", "Ghostbusters"],
-      "source": "S4E12, The One with the Embryos"
+      "source": "S4E12: https://fangj.github.io/friends/season/0412.html"
     },
     {
       "id": "ewq7f69v",
@@ -679,7 +679,7 @@
       "prompt": "Who did Phoebe's grandmother claim gave her the cookie recipe?",
       "correct": "Nestlé Toulouse",
       "wrong": ["Betty Crocker", "Julia Child", "Mrs. Fields"],
-      "source": "S7E3, The One with Phoebe's Cookies"
+      "source": "S7E3: https://fangj.github.io/friends/season/0703.html"
     },
     {
       "id": "1x95j387",
@@ -687,7 +687,7 @@
       "prompt": "At which restaurant does Monica become head chef in season 4?",
       "correct": "Alessandro's",
       "wrong": ["Chez Monique", "Bella Cucina", "The Green Room"],
-      "source": "S4E9; https://en.wikipedia.org/wiki/Monica_Geller"
+      "source": "S4E9: https://fangj.github.io/friends/season/0409.html"
     },
     {
       "id": "cb8yo51d",
@@ -695,7 +695,7 @@
       "prompt": "Which of Monica's boyfriends tries to become an Ultimate Fighting champion?",
       "correct": "Pete",
       "wrong": ["Richard", "Alan", "Paul"],
-      "source": "S3E24–25, The One with the Ultimate Fighting Champion"
+      "source": "S3E23: https://fangj.github.io/friends/season/0323.html; S3E24: https://fangj.github.io/friends/season/0324.html"
     }
   ]
 }
