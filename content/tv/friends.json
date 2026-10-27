@@ -1,0 +1,701 @@
+{
+  "title": "Friends",
+  "questions": [
+    {
+      "id": "cgg5g5lp",
+      "tier": 1,
+      "prompt": "What is the name of the coffee house where the gang hangs out?",
+      "correct": "Central Perk",
+      "wrong": ["Central Bean", "The Daily Grind", "Java Joe's"],
+      "source": "S1E1, The One Where Monica Gets a Roommate"
+    },
+    {
+      "id": "vnjjqwaf",
+      "tier": 1,
+      "prompt": "What does Ross do for a living?",
+      "correct": "Paleontologist",
+      "wrong": ["Archaeologist", "Geologist", "Astronomer"],
+      "source": "https://en.wikipedia.org/wiki/Ross_Geller"
+    },
+    {
+      "id": "0do82esy",
+      "tier": 1,
+      "prompt": "What is Joey's famous pickup line?",
+      "correct": "How you doin'?",
+      "wrong": ["What's up, doc?", "Hey, good lookin'!", "Come here often?"],
+      "source": "https://en.wikipedia.org/wiki/Joey_Tribbiani"
+    },
+    {
+      "id": "uu1vmdq8",
+      "tier": 1,
+      "prompt": "What is Monica's profession?",
+      "correct": "Chef",
+      "wrong": ["Nurse", "Lawyer", "Architect"],
+      "source": "https://en.wikipedia.org/wiki/Monica_Geller"
+    },
+    {
+      "id": "ocrfvw79",
+      "tier": 1,
+      "prompt": "Which character is Ross's younger sister?",
+      "correct": "Monica",
+      "wrong": ["Rachel", "Phoebe", "Janice"],
+      "source": "https://en.wikipedia.org/wiki/Monica_Geller"
+    },
+    {
+      "id": "tc7nr1uy",
+      "tier": 1,
+      "prompt": "What is the title of Phoebe's best-known song?",
+      "correct": "Smelly Cat",
+      "wrong": ["Stinky Dog", "Grumpy Cat", "Fuzzy Duck"],
+      "source": "S2E6, The One with the Baby on the Bus"
+    },
+    {
+      "id": "tvz4equ1",
+      "tier": 1,
+      "prompt": "In which city is the series set?",
+      "correct": "New York City",
+      "wrong": ["Chicago", "Boston", "Los Angeles"],
+      "source": "https://en.wikipedia.org/wiki/Friends"
+    },
+    {
+      "id": "th7bwbrc",
+      "tier": 1,
+      "prompt": "What does Joey do for a living?",
+      "correct": "Actor",
+      "wrong": ["Chef", "Firefighter", "Dentist"],
+      "source": "https://en.wikipedia.org/wiki/Joey_Tribbiani"
+    },
+    {
+      "id": "wxhom9ef",
+      "tier": 1,
+      "prompt": "What job does Rachel take at Central Perk after leaving her wedding?",
+      "correct": "Waitress",
+      "wrong": ["Bartender", "Cook", "Cashier"],
+      "source": "S1E1–2"
+    },
+    {
+      "id": "w64mw7lw",
+      "tier": 1,
+      "prompt": "What is the name of Phoebe's twin sister?",
+      "correct": "Ursula",
+      "wrong": ["Janice", "Leslie", "Amy"],
+      "source": "S1E16, The One with Two Parts, Part 1"
+    },
+    {
+      "id": "wn2lghbh",
+      "tier": 1,
+      "prompt": "Who does Chandler marry?",
+      "correct": "Monica",
+      "wrong": ["Rachel", "Phoebe", "Janice"],
+      "source": "S7E23–24, The One with Monica and Chandler's Wedding"
+    },
+    {
+      "id": "c33dgm9d",
+      "tier": 1,
+      "prompt": "What is Janice's signature catchphrase?",
+      "correct": "Oh. My. God.",
+      "wrong": ["How you doin'?", "Oh no, she didn't!", "Well, hello there!"],
+      "source": "https://en.wikipedia.org/wiki/Janice_Litman_Goralnik"
+    },
+    {
+      "id": "7k2zkfk9",
+      "tier": 1,
+      "prompt": "What does Ross keep yelling while moving a couch up the stairs?",
+      "correct": "Pivot!",
+      "wrong": ["Lift!", "Push!", "Heave!"],
+      "source": "S5E16, The One with the Cop"
+    },
+    {
+      "id": "vnb4cqw5",
+      "tier": 1,
+      "prompt": "What does Ross insist he and Rachel were on when he slept with Chloe?",
+      "correct": "A break",
+      "wrong": ["A vacation", "A timeout", "A trial run"],
+      "source": "S3E16, The One with the Morning After"
+    },
+    {
+      "id": "ggy1gu58",
+      "tier": 1,
+      "prompt": "Which actor plays Rachel?",
+      "correct": "Jennifer Aniston",
+      "wrong": ["Courteney Cox", "Lisa Kudrow", "Jennifer Garner"],
+      "source": "https://en.wikipedia.org/wiki/Rachel_Green"
+    },
+    {
+      "id": "fmudr57i",
+      "tier": 1,
+      "prompt": "What does Rachel run away from in the very first episode?",
+      "correct": "Her wedding",
+      "wrong": ["Her graduation", "A job interview", "A blind date"],
+      "source": "S1E1, The One Where Monica Gets a Roommate"
+    },
+    {
+      "id": "h5u11kkg",
+      "tier": 2,
+      "prompt": "What is the name of Ross's pet monkey?",
+      "correct": "Marcel",
+      "wrong": ["Bobo", "George", "Mojo"],
+      "source": "S1E10, The One with the Monkey"
+    },
+    {
+      "id": "e7emwsf6",
+      "tier": 2,
+      "prompt": "Besides a chick, what pet do Joey and Chandler keep?",
+      "correct": "A duck",
+      "wrong": ["A rabbit", "A turtle", "A hamster"],
+      "source": "S3E21; S4E1"
+    },
+    {
+      "id": "emcigcyv",
+      "tier": 2,
+      "prompt": "Which of Chandler's girlfriends has a nasal voice and an unforgettable laugh?",
+      "correct": "Janice",
+      "wrong": ["Kathy", "Joanna", "Aurora"],
+      "source": "https://en.wikipedia.org/wiki/Janice_(Friends)"
+    },
+    {
+      "id": "4tffquxd",
+      "tier": 2,
+      "prompt": "What is the name of Ross and Rachel's daughter?",
+      "correct": "Emma",
+      "wrong": ["Ella", "Emily", "Erica"],
+      "source": "S8E23–24, The One Where Rachel Has a Baby"
+    },
+    {
+      "id": "ldx6imgb",
+      "tier": 2,
+      "prompt": "Who is Ross's first wife?",
+      "correct": "Carol",
+      "wrong": ["Emily", "Susan", "Julie"],
+      "source": "https://en.wikipedia.org/wiki/Ross_Geller"
+    },
+    {
+      "id": "hp4rvl7s",
+      "tier": 2,
+      "prompt": "Where do Ross and Rachel get drunkenly married?",
+      "correct": "Las Vegas",
+      "wrong": ["Atlantic City", "Reno", "London"],
+      "source": "S5E24, The One in Vegas, Part 2"
+    },
+    {
+      "id": "d370qx4u",
+      "tier": 2,
+      "prompt": "What does Monica wear on her head to cheer Chandler up on Thanksgiving?",
+      "correct": "A turkey",
+      "wrong": ["A pumpkin", "A pie tin", "A gravy boat"],
+      "source": "S5E8, The One with All the Thanksgivings"
+    },
+    {
+      "id": "y39t6iej",
+      "tier": 2,
+      "prompt": "Which Central Perk worker has a long, secret crush on Rachel?",
+      "correct": "Gunther",
+      "wrong": ["Mike", "Gary", "Eddie"],
+      "source": "https://en.wikipedia.org/wiki/Gunther_(Friends)"
+    },
+    {
+      "id": "q27bkb3d",
+      "tier": 2,
+      "prompt": "According to Phoebe, which animal mates for life, just like Ross and Rachel?",
+      "correct": "A lobster",
+      "wrong": ["A crab", "A shrimp", "An octopus"],
+      "source": "S2E14, The One with the Prom Video"
+    },
+    {
+      "id": "4ulalqe2",
+      "tier": 2,
+      "prompt": "In which city do Monica and Chandler first sleep together?",
+      "correct": "London",
+      "wrong": ["Paris", "Las Vegas", "Barbados"],
+      "source": "S4E24, The One with Ross's Wedding, Part 2"
+    },
+    {
+      "id": "e1l04noe",
+      "tier": 2,
+      "prompt": "Whose name does Ross say by mistake while marrying Emily?",
+      "correct": "Rachel",
+      "wrong": ["Monica", "Carol", "Julie"],
+      "source": "S4E24, The One with Ross's Wedding, Part 2"
+    },
+    {
+      "id": "axzlufyb",
+      "tier": 2,
+      "prompt": "In the series finale, which city does Rachel decide not to move to?",
+      "correct": "Paris",
+      "wrong": ["London", "Milan", "Tokyo"],
+      "source": "S10E17–18, The Last One"
+    },
+    {
+      "id": "pd8ksb43",
+      "tier": 2,
+      "prompt": "Which actor plays Chandler?",
+      "correct": "Matthew Perry",
+      "wrong": ["Matt LeBlanc", "David Schwimmer", "Matthew Broderick"],
+      "source": "https://en.wikipedia.org/wiki/Chandler_Bing"
+    },
+    {
+      "id": "s5efktuc",
+      "tier": 2,
+      "prompt": "What is Chandler's last name?",
+      "correct": "Bing",
+      "wrong": ["Geller", "Green", "Buffay"],
+      "source": "https://en.wikipedia.org/wiki/Chandler_Bing"
+    },
+    {
+      "id": "m0rheqv0",
+      "tier": 2,
+      "prompt": "Who does Phoebe marry?",
+      "correct": "Mike",
+      "wrong": ["David", "Gary", "Paolo"],
+      "source": "S10E12, The One with Phoebe's Wedding"
+    },
+    {
+      "id": "0jr78wvp",
+      "tier": 2,
+      "prompt": "Finish Joey's famous outburst on a date: \"Joey doesn't share…\"",
+      "correct": "Food!",
+      "wrong": ["Money!", "Clothes!", "Secrets!"],
+      "source": "S10E9, The One with the Birth Mother"
+    },
+    {
+      "id": "bcludoan",
+      "tier": 2,
+      "prompt": "Who does Phoebe carry triplets for?",
+      "correct": "Her brother",
+      "wrong": ["Her sister", "Her best friend", "Her cousin"],
+      "source": "S4E12, The One with the Embryos"
+    },
+    {
+      "id": "pqsy78rp",
+      "tier": 2,
+      "prompt": "What was Rachel's hugely popular layered haircut nicknamed?",
+      "correct": "The Rachel",
+      "wrong": ["The Monica", "The Phoebe", "The Shag"],
+      "source": "https://en.wikipedia.org/wiki/The_Rachel"
+    },
+    {
+      "id": "q09aa12c",
+      "tier": 3,
+      "prompt": "How many seasons did the series run?",
+      "correct": "10",
+      "wrong": ["8", "9", "12"],
+      "source": "https://en.wikipedia.org/wiki/Friends"
+    },
+    {
+      "id": "o8gu79ug",
+      "tier": 3,
+      "prompt": "What is the name of Ross's son with Carol?",
+      "correct": "Ben",
+      "wrong": ["Sam", "Max", "Jack"],
+      "source": "S1E23, The One with the Birth"
+    },
+    {
+      "id": "runbglmd",
+      "tier": 3,
+      "prompt": "On which soap opera does Joey land a recurring role?",
+      "correct": "Days of Our Lives",
+      "wrong": [
+        "General Hospital",
+        "All My Children",
+        "The Young and the Restless"
+      ],
+      "source": "S2E12; https://en.wikipedia.org/wiki/Joey_Tribbiani"
+    },
+    {
+      "id": "6ah4mtcp",
+      "tier": 3,
+      "prompt": "How many babies do Monica and Chandler take home in the finale?",
+      "correct": "Two",
+      "wrong": ["One", "Three", "Four"],
+      "source": "S10E17–18, The Last One"
+    },
+    {
+      "id": "xqc18sd4",
+      "tier": 3,
+      "prompt": "In season 8, which friend does Joey fall for?",
+      "correct": "Rachel",
+      "wrong": ["Phoebe", "Monica", "Janice"],
+      "source": "S8E16, The One Where Joey Tells Rachel"
+    },
+    {
+      "id": "me83kj78",
+      "tier": 3,
+      "prompt": "By the end of the series, how many times has Ross been divorced?",
+      "correct": "Three",
+      "wrong": ["Two", "Four", "Five"],
+      "source": "https://en.wikipedia.org/wiki/Ross_Geller"
+    },
+    {
+      "id": "u2htd52m",
+      "tier": 3,
+      "prompt": "Which older eye doctor, a friend of her parents, does Monica date?",
+      "correct": "Richard",
+      "wrong": ["Pete", "Alan", "Paul"],
+      "source": "S2E15, The One Where Ross and Rachel… You Know"
+    },
+    {
+      "id": "yeirbkz5",
+      "tier": 3,
+      "prompt": "What does Ross call his state of total awareness, borrowing a sushi word?",
+      "correct": "Unagi",
+      "wrong": ["Sashimi", "Wasabi", "Tempura"],
+      "source": "S6E17, The One with Unagi"
+    },
+    {
+      "id": "buu0atis",
+      "tier": 3,
+      "prompt": "What is the name of the doctor Joey plays on his soap opera?",
+      "correct": "Dr. Drake Ramoray",
+      "wrong": ["Dr. Derek Ramsey", "Dr. Blake Monroe", "Dr. Jake Romano"],
+      "source": "S2E12; https://en.wikipedia.org/wiki/Joey_Tribbiani"
+    },
+    {
+      "id": "04377bsc",
+      "tier": 3,
+      "prompt": "Which star plays Will, co-founder of the \"I Hate Rachel Green Club\"?",
+      "correct": "Brad Pitt",
+      "wrong": ["George Clooney", "Tom Cruise", "Johnny Depp"],
+      "source": "S8E9, The One with the Rumor"
+    },
+    {
+      "id": "dl3153i1",
+      "tier": 3,
+      "prompt": "What savory ingredient ends up in Rachel's Thanksgiving trifle?",
+      "correct": "Beef",
+      "wrong": ["Chicken", "Ham", "Tuna"],
+      "source": "S6E9, The One Where Ross Got High"
+    },
+    {
+      "id": "mg9wnuqj",
+      "tier": 3,
+      "prompt": "Which lunch of Ross's does his boss eat, sending him into a rage?",
+      "correct": "A leftover turkey sandwich",
+      "wrong": ["A slice of birthday cake", "A bowl of chili", "A tuna melt"],
+      "source": "S5E9, The One with Ross's Sandwich"
+    },
+    {
+      "id": "180obkt4",
+      "tier": 3,
+      "prompt": "Why does Chandler hate Thanksgiving?",
+      "correct": "His parents announced their divorce",
+      "wrong": [
+        "He got food poisoning as a kid",
+        "He was dumped on Thanksgiving",
+        "His dog ran away on Thanksgiving"
+      ],
+      "source": "S5E8, The One with All the Thanksgivings"
+    },
+    {
+      "id": "77m3pv83",
+      "tier": 3,
+      "prompt": "What does Joey change into at Thanksgiving so he can keep eating?",
+      "correct": "Maternity pants",
+      "wrong": ["Pajama bottoms", "A loose kilt", "Baggy overalls"],
+      "source": "S8E9, The One with the Rumor; https://en.wikipedia.org/wiki/The_One_with_the_Rumor"
+    },
+    {
+      "id": "qvk4xpib",
+      "tier": 3,
+      "prompt": "What do Monica and Rachel lose to Joey and Chandler in the trivia game?",
+      "correct": "Their apartment",
+      "wrong": ["Their car", "Their savings", "Their jobs"],
+      "source": "S4E12, The One with the Embryos"
+    },
+    {
+      "id": "8871ux8l",
+      "tier": 3,
+      "prompt": "Which fake name does Phoebe use as an alias?",
+      "correct": "Regina Phalange",
+      "wrong": ["Ken Adams", "Gloria Jones", "Ruth Kellerman"],
+      "source": "S5E24; S10E17; https://en.wikipedia.org/wiki/Phoebe_Buffay"
+    },
+    {
+      "id": "2mot2yrj",
+      "tier": 3,
+      "prompt": "What is Phoebe's last name?",
+      "correct": "Buffay",
+      "wrong": ["Bouffant", "Buffet", "Bufford"],
+      "source": "https://en.wikipedia.org/wiki/Phoebe_Buffay"
+    },
+    {
+      "id": "de1fbau6",
+      "tier": 4,
+      "prompt": "What is the name of Joey's stuffed penguin?",
+      "correct": "Hugsy",
+      "wrong": ["Waddles", "Snuggles", "Pengy"],
+      "source": "S7E19, The One with Ross and Monica's Cousin"
+    },
+    {
+      "id": "0vhg7yvx",
+      "tier": 4,
+      "prompt": "Which fashion company does Rachel join after Bloomingdale's?",
+      "correct": "Ralph Lauren",
+      "wrong": ["Calvin Klein", "Donna Karan", "Tommy Hilfiger"],
+      "source": "S5E19, The One Where Ross Can't Flirt"
+    },
+    {
+      "id": "azl0fjni",
+      "tier": 4,
+      "prompt": "Which band performs the theme song, \"I'll Be There for You\"?",
+      "correct": "The Rembrandts",
+      "wrong": ["The Monkees", "The Goo Goo Dolls", "Hootie & the Blowfish"],
+      "source": "https://en.wikipedia.org/wiki/I%27ll_Be_There_for_You_(The_Rembrandts_song)"
+    },
+    {
+      "id": "kep0isq0",
+      "tier": 4,
+      "prompt": "In what year did the series premiere?",
+      "correct": "1994",
+      "wrong": ["1992", "1996", "1998"],
+      "source": "https://en.wikipedia.org/wiki/Friends (premiered September 22, 1994)"
+    },
+    {
+      "id": "n1ayc58x",
+      "tier": 4,
+      "prompt": "How many sisters does Joey have?",
+      "correct": "Seven",
+      "wrong": ["Five", "Six", "Eight"],
+      "source": "https://en.wikipedia.org/wiki/Joey_Tribbiani"
+    },
+    {
+      "id": "x9sin4rv",
+      "tier": 4,
+      "prompt": "What does Ross dress as to teach Ben about Hanukkah?",
+      "correct": "The Holiday Armadillo",
+      "wrong": [
+        "The Festive Beaver",
+        "The Hanukkah Hedgehog",
+        "The Menorah Moose"
+      ],
+      "source": "S7E10, The One with the Holiday Armadillo"
+    },
+    {
+      "id": "urlw38a2",
+      "tier": 4,
+      "prompt": "What is the name of Rachel's Italian boyfriend in season 1?",
+      "correct": "Paolo",
+      "wrong": ["Marco", "Luca", "Giovanni"],
+      "source": "S1E7, The One with the Blackout"
+    },
+    {
+      "id": "fmr1ur57",
+      "tier": 4,
+      "prompt": "Who officiates Monica and Chandler's wedding?",
+      "correct": "Joey",
+      "wrong": ["Ross", "Phoebe", "Jack Geller"],
+      "source": "S7E23–24, The One with Monica and Chandler's Wedding"
+    },
+    {
+      "id": "jpo6x7jd",
+      "tier": 4,
+      "prompt": "At which university does Ross become a professor?",
+      "correct": "NYU",
+      "wrong": ["Columbia", "Yale", "Princeton"],
+      "source": "S6E10; https://en.wikipedia.org/wiki/Ross_Geller"
+    },
+    {
+      "id": "sg0u7hfq",
+      "tier": 4,
+      "prompt": "What career does Chandler switch to in season 9?",
+      "correct": "Advertising",
+      "wrong": ["Accounting", "Real estate", "Journalism"],
+      "source": "S9E5; https://en.wikipedia.org/wiki/Chandler_Bing"
+    },
+    {
+      "id": "jkats65i",
+      "tier": 4,
+      "prompt": "Which fashion house offers Rachel a job in Paris in the final season?",
+      "correct": "Louis Vuitton",
+      "wrong": ["Chanel", "Dior", "Yves Saint Laurent"],
+      "source": "S10E15–17; https://en.wikipedia.org/wiki/Rachel_Green"
+    },
+    {
+      "id": "od8kuy25",
+      "tier": 4,
+      "prompt": "What does Ross call the gravy-soaked slice of bread in the middle of his sandwich?",
+      "correct": "The Moist Maker",
+      "wrong": ["The Gravy Train", "The Flavor Bomb", "The Soggy Slice"],
+      "source": "S5E9, The One with Ross's Sandwich"
+    },
+    {
+      "id": "mhcc183r",
+      "tier": 4,
+      "prompt": "In the apartment trivia game, what does Rachel guess Chandler's job is?",
+      "correct": "Transponster",
+      "wrong": ["Transistor", "Datamaster", "Numberizer"],
+      "source": "S4E12, The One with the Embryos"
+    },
+    {
+      "id": "qt9hndqr",
+      "tier": 4,
+      "prompt": "Whose body double does Joey play in a shower scene?",
+      "correct": "Al Pacino",
+      "wrong": ["Robert De Niro", "Tom Cruise", "Sylvester Stallone"],
+      "source": "S1E6, The One with the Butt"
+    },
+    {
+      "id": "v69no7yd",
+      "tier": 4,
+      "prompt": "What potato-themed costume does Ross wear to the Halloween party?",
+      "correct": "Spudnik",
+      "wrong": ["Tater Tot", "Hash Brown", "Couch Potato"],
+      "source": "S8E6, The One with the Halloween Party"
+    },
+    {
+      "id": "t7hpvlx5",
+      "tier": 4,
+      "prompt": "What does Chandler's mother, Nora, do for a living?",
+      "correct": "Writes erotic novels",
+      "wrong": ["Hosts a cooking show", "Teaches ballet", "Sells real estate"],
+      "source": "https://en.wikipedia.org/wiki/Chandler_Bing"
+    },
+    {
+      "id": "xgzm83ao",
+      "tier": 4,
+      "prompt": "Which star of the series won the 2002 Emmy for Lead Actress in a Comedy?",
+      "correct": "Jennifer Aniston",
+      "wrong": ["Courteney Cox", "Lisa Kudrow", "Maggie Wheeler"],
+      "source": "54th Primetime Emmy Awards (2002); https://en.wikipedia.org/wiki/Jennifer_Aniston"
+    },
+    {
+      "id": "rjkmuhqi",
+      "tier": 4,
+      "prompt": "Who moves in with Chandler after Joey moves out?",
+      "correct": "Eddie",
+      "wrong": ["Kip", "Frank", "Steve"],
+      "source": "S2E17, The One Where Eddie Moves In"
+    },
+    {
+      "id": "ngantzx1",
+      "tier": 5,
+      "prompt": "Where does Phoebe's scientist boyfriend David move for his research?",
+      "correct": "Minsk",
+      "wrong": ["Moscow", "Prague", "Warsaw"],
+      "source": "S1E10, The One with the Monkey"
+    },
+    {
+      "id": "mapkyt74",
+      "tier": 5,
+      "prompt": "Which zoo does Ross send Marcel to?",
+      "correct": "San Diego Zoo",
+      "wrong": ["Bronx Zoo", "Central Park Zoo", "Los Angeles Zoo"],
+      "source": "S1E21, The One with the Fake Monica; S2E12; https://en.wikipedia.org/wiki/The_One_After_the_Superbowl"
+    },
+    {
+      "id": "hk4ok22c",
+      "tier": 5,
+      "prompt": "In the trivia game, who does Rachel say Chandler's TV Guide comes addressed to?",
+      "correct": "Miss Chanandler Bong",
+      "wrong": [
+        "Mr. Chandler Bong",
+        "Miss Chandler Binge",
+        "Mrs. Chanandra Bing"
+      ],
+      "source": "S4E12, The One with the Embryos"
+    },
+    {
+      "id": "m15ep7ag",
+      "tier": 5,
+      "prompt": "Which of Monica's boyfriends is only fun when he's been drinking?",
+      "correct": "Fun Bobby",
+      "wrong": ["Party Paul", "Wild Willie", "Cool Carl"],
+      "source": "S1E12; S1E18"
+    },
+    {
+      "id": "a8ck5wns",
+      "tier": 5,
+      "prompt": "What is Chandler's middle name?",
+      "correct": "Muriel",
+      "wrong": ["Matthew", "Meredith", "Marion"],
+      "source": "S7E24, The One with Monica and Chandler's Wedding, Part 2; https://en.wikipedia.org/wiki/Chandler_Bing"
+    },
+    {
+      "id": "0fgqi2hi",
+      "tier": 5,
+      "prompt": "What is the name of the cranky downstairs neighbor who complains about noise?",
+      "correct": "Mr. Heckles",
+      "wrong": ["Mr. Bloomfield", "Mr. Beaumont", "Mr. Hatfield"],
+      "source": "S1E3; S2E3, The One Where Heckles Dies"
+    },
+    {
+      "id": "krx3at71",
+      "tier": 5,
+      "prompt": "What are the first names of Ross and Monica's parents?",
+      "correct": "Jack and Judy",
+      "wrong": ["Leonard and Sandra", "Frank and Lily", "Charles and Nora"],
+      "source": "https://en.wikipedia.org/wiki/Monica_Geller"
+    },
+    {
+      "id": "zhsdcwu2",
+      "tier": 5,
+      "prompt": "What is the name of Frank Jr.'s wife, his former home economics teacher?",
+      "correct": "Alice",
+      "wrong": ["Leslie", "Ursula", "Lily"],
+      "source": "S3E11"
+    },
+    {
+      "id": "7v77x2iy",
+      "tier": 5,
+      "prompt": "Who co-created the series with David Crane?",
+      "correct": "Marta Kauffman",
+      "wrong": ["Shonda Rhimes", "Tina Fey", "Amy Sherman-Palladino"],
+      "source": "https://en.wikipedia.org/wiki/Friends"
+    },
+    {
+      "id": "rfo29cdf",
+      "tier": 5,
+      "prompt": "How many episodes did the series run?",
+      "correct": "236",
+      "wrong": ["200", "216", "254"],
+      "source": "https://en.wikipedia.org/wiki/List_of_Friends_episodes"
+    },
+    {
+      "id": "89coq460",
+      "tier": 5,
+      "prompt": "Which actress won an Emmy for playing Rachel's sister Amy?",
+      "correct": "Christina Applegate",
+      "wrong": ["Reese Witherspoon", "Winona Ryder", "Julia Roberts"],
+      "source": "2003 Emmy, Guest Actress in a Comedy; https://en.wikipedia.org/wiki/Christina_Applegate"
+    },
+    {
+      "id": "oqx81ixg",
+      "tier": 5,
+      "prompt": "On which sitcom did Lisa Kudrow first play Ursula?",
+      "correct": "Mad About You",
+      "wrong": ["Murphy Brown", "Seinfeld", "Frasier"],
+      "source": "https://en.wikipedia.org/wiki/Lisa_Kudrow"
+    },
+    {
+      "id": "khqbtmiw",
+      "tier": 5,
+      "prompt": "What is Rachel's real favorite movie, revealed in the trivia game?",
+      "correct": "Weekend at Bernie's",
+      "wrong": ["Pretty Woman", "Dirty Dancing", "Ghostbusters"],
+      "source": "S4E12, The One with the Embryos"
+    },
+    {
+      "id": "ewq7f69v",
+      "tier": 5,
+      "prompt": "Who did Phoebe's grandmother claim gave her the cookie recipe?",
+      "correct": "Nestlé Toulouse",
+      "wrong": ["Betty Crocker", "Julia Child", "Mrs. Fields"],
+      "source": "S7E3, The One with Phoebe's Cookies"
+    },
+    {
+      "id": "1x95j387",
+      "tier": 5,
+      "prompt": "At which restaurant does Monica become head chef in season 4?",
+      "correct": "Alessandro's",
+      "wrong": ["Chez Monique", "Bella Cucina", "The Green Room"],
+      "source": "S4E9; https://en.wikipedia.org/wiki/Monica_Geller"
+    },
+    {
+      "id": "cb8yo51d",
+      "tier": 5,
+      "prompt": "Which of Monica's boyfriends tries to become an Ultimate Fighting champion?",
+      "correct": "Pete",
+      "wrong": ["Richard", "Alan", "Paul"],
+      "source": "S3E24–25, The One with the Ultimate Fighting Champion"
+    }
+  ]
+}

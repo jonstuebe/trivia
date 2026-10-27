@@ -1,5 +1,17 @@
 {
   "general": null,
-  "tv": [],
+  "tv": [
+    {
+      "name": "Friends",
+      "slug": "friends",
+      "questionCounts": {
+        "1": 16,
+        "2": 18,
+        "3": 17,
+        "4": 18,
+        "5": 16
+      }
+    }
+  ],
   "movies": []
 }
