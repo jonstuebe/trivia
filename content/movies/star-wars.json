@@ -84,10 +84,10 @@
     {
       "id": "dlngw2x9",
       "tier": 1,
-      "prompt": "In Return of the Jedi, what are the small furry natives of Endor's forest moon called?",
-      "correct": "Ewoks",
-      "wrong": ["Jawas", "Gungans", "Wookiees"],
-      "source": "Return of the Jedi, Endor"
+      "prompt": "In Return of the Jedi, the small furry natives of Endor's forest moon treat which droid as a god?",
+      "correct": "C-3PO",
+      "wrong": ["R2-D2", "R5-D4", "2-1B"],
+      "source": "Return of the Jedi, Ewok village (C-3PO: \"I do believe they think I am some sort of god\")"
     },
     {
       "id": "kqk0dv8b",
@@ -388,10 +388,10 @@
     {
       "id": "5tb8jfr9",
       "tier": 4,
-      "prompt": "At the end of Revenge of the Sith, which senator adopts baby Leia?",
-      "correct": "Bail Organa",
-      "wrong": ["Owen Lars", "Mon Mothma", "Jan Dodonna"],
-      "source": "Revenge of the Sith, closing scenes"
+      "prompt": "At the end of Revenge of the Sith, who adopts baby Leia?",
+      "correct": "Senator Organa",
+      "wrong": ["Senator Mothma", "Senator Antilles", "Senator Farr"],
+      "source": "Revenge of the Sith, closing scenes (\"My wife and I will take the girl\"; \"Thank you, Senator Organa\")"
     },
     {
       "id": "zuh0k26k",
@@ -404,10 +404,10 @@
     {
       "id": "bvmmwcu9",
       "tier": 4,
-      "prompt": "What is Count Dooku's Sith name?",
-      "correct": "Darth Tyranus",
-      "wrong": ["Darth Plagueis", "Darth Bane", "Darth Maul"],
-      "source": "Attack of the Clones, Dooku and Sidious on Geonosis"
+      "prompt": "In Attack of the Clones, Darth Sidious welcomes Count Dooku home by what Sith name?",
+      "correct": "Lord Tyranus",
+      "wrong": ["Lord Plagueis", "Lord Bane", "Lord Maul"],
+      "source": "Attack of the Clones, Geonosis (Sidious: \"Welcome home, Lord Tyranus\")"
     },
     {
       "id": "ps4jbakc",
@@ -453,9 +453,9 @@
       "id": "0nvpco6d",
       "tier": 4,
       "prompt": "In Rogue One, which Imperial officer forces Galen Erso to build the Death Star?",
-      "correct": "Orson Krennic",
+      "correct": "Director Krennic",
       "wrong": ["Admiral Piett", "General Veers", "Admiral Motti"],
-      "source": "Rogue One, opening scene on Lah'mu"
+      "source": "Rogue One, opening scene on Lah'mu (\"I won't do it, Krennic\"); called \"Director Krennic\" later"
     },
     {
       "id": "68jp3rdm",
@@ -540,18 +540,18 @@
     {
       "id": "yi4647y3",
       "tier": 5,
-      "prompt": "In The Phantom Menace, who is the Viceroy of the Trade Federation?",
-      "correct": "Nute Gunray",
-      "wrong": ["Rune Haako", "Wat Tambor", "San Hill"],
-      "source": "The Phantom Menace, the blockade of Naboo"
+      "prompt": "In Revenge of the Sith, Sidious tells Anakin to wipe out which viceroy and the other Separatist leaders?",
+      "correct": "Viceroy Gunray",
+      "wrong": ["Viceroy Haako", "Viceroy Tambor", "Viceroy Hill"],
+      "source": "Revenge of the Sith, Sidious sends Anakin to Mustafar (\"Wipe out Viceroy Gunray and the other separatist leaders\")"
     },
     {
       "id": "wkf3er71",
       "tier": 5,
-      "prompt": "In The Phantom Menace, what is the podrace that Anakin wins called?",
-      "correct": "Boonta Eve Classic",
-      "wrong": ["Mos Espa Grand Prix", "Dune Sea Classic", "Jundland Derby"],
-      "source": "The Phantom Menace, Mos Espa Grand Arena"
+      "prompt": "In The Phantom Menace, Anakin says the big podrace is held tomorrow on what day?",
+      "correct": "Boonta Eve",
+      "wrong": ["Twin Suns Day", "Harvest Eve", "Hutt Festival"],
+      "source": "The Phantom Menace, Anakin to Qui-Gon (\"There's a big race tomorrow on Boonta Eve\")"
     },
     {
       "id": "csdvlrou",
@@ -589,9 +589,9 @@
       "id": "noxo028y",
       "tier": 5,
       "prompt": "In Attack of the Clones, which Jedi kills Jango Fett?",
-      "correct": "Mace Windu",
-      "wrong": ["Obi-Wan Kenobi", "Yoda", "Ki-Adi-Mundi"],
-      "source": "Attack of the Clones, Geonosis arena"
+      "correct": "Master Windu",
+      "wrong": ["Master Kenobi", "Master Yoda", "Master Ki-Adi-Mundi"],
+      "source": "Attack of the Clones, Geonosis arena (\"Thank you, Master Windu\")"
     },
     {
       "id": "gxtwcndm",
