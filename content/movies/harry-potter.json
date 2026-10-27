@@ -1,0 +1,618 @@
+{
+  "title": "Harry Potter",
+  "questions": [
+    {
+      "id": "ygaipu6b",
+      "tier": 1,
+      "prompt": "What is the name of the school of witchcraft and wizardry that Harry attends?",
+      "correct": "Hogwarts",
+      "wrong": ["Durmstrang", "Beauxbatons", "Ilvermorny"]
+    },
+    {
+      "id": "rmwrkrus",
+      "tier": 1,
+      "prompt": "What shape is the scar on Harry's forehead?",
+      "correct": "A lightning bolt",
+      "wrong": ["A star", "A crescent moon", "A cross"]
+    },
+    {
+      "id": "5otqomcx",
+      "tier": 1,
+      "prompt": "Who are Harry's two best friends at school?",
+      "correct": "Ron and Hermione",
+      "wrong": ["Neville and Luna", "Fred and George", "Dean and Seamus"]
+    },
+    {
+      "id": "pikz2zku",
+      "tier": 1,
+      "prompt": "Which house is Harry sorted into?",
+      "correct": "Gryffindor",
+      "wrong": ["Slytherin", "Hufflepuff", "Ravenclaw"]
+    },
+    {
+      "id": "nzvql7d1",
+      "tier": 1,
+      "prompt": "What is the name of Harry's snowy owl?",
+      "correct": "Hedwig",
+      "wrong": ["Errol", "Pigwidgeon", "Hermes"]
+    },
+    {
+      "id": "aaz80bf0",
+      "tier": 1,
+      "prompt": "What sport do witches and wizards play on broomsticks?",
+      "correct": "Quidditch",
+      "wrong": ["Gobstones", "Exploding Snap", "Wizard's chess"]
+    },
+    {
+      "id": "vnaku5vf",
+      "tier": 1,
+      "prompt": "Which dark wizard killed Harry's parents?",
+      "correct": "Lord Voldemort",
+      "wrong": ["Gellert Grindelwald", "Lucius Malfoy", "Bellatrix Lestrange"]
+    },
+    {
+      "id": "exfbsdar",
+      "tier": 1,
+      "prompt": "Who is the headmaster of Hogwarts when Harry first arrives?",
+      "correct": "Albus Dumbledore",
+      "wrong": ["Severus Snape", "Minerva McGonagall", "Horace Slughorn"]
+    },
+    {
+      "id": "hdd75qsr",
+      "tier": 1,
+      "prompt": "Which actor plays Harry in the films?",
+      "correct": "Daniel Radcliffe",
+      "wrong": ["Rupert Grint", "Tom Felton", "Elijah Wood"],
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (Harry: Daniel Radcliffe); https://en.wikipedia.org/wiki/List_of_Harry_Potter_films_cast_members"
+    },
+    {
+      "id": "tt8hiwgz",
+      "tier": 1,
+      "prompt": "In the first film, where does Harry sleep at the Dursleys' house?",
+      "correct": "A cupboard under the stairs",
+      "wrong": ["A shed at the end of the garden", "A room up in the attic", "A camp bed in the garage"]
+    },
+    {
+      "id": "aj1xjnt9",
+      "tier": 1,
+      "prompt": "Which half-giant tells Harry that he's a wizard?",
+      "correct": "Rubeus Hagrid",
+      "wrong": ["Argus Filch", "Gilderoy Lockhart", "Remus Lupin"]
+    },
+    {
+      "id": "4kovhm16",
+      "tier": 1,
+      "prompt": "From which platform at King's Cross does the Hogwarts Express leave?",
+      "correct": "Platform 9¾",
+      "wrong": ["Platform 7½", "Platform 10¼", "Platform 13"],
+      "source": "Philosopher's Stone (2001), King's Cross scene: Hagrid's ticket and Molly Weasley name Platform Nine and Three-Quarters"
+    },
+    {
+      "id": "vm6tp8zk",
+      "tier": 1,
+      "prompt": "What do wizards call people who have no magic, like the Dursleys?",
+      "correct": "Muggles",
+      "wrong": ["Squares", "Normals", "Plainfolk"]
+    },
+    {
+      "id": "lml6ftrt",
+      "tier": 1,
+      "prompt": "Which position does Harry play on the Gryffindor Quidditch team?",
+      "correct": "Seeker",
+      "wrong": ["Keeper", "Beater", "Chaser"]
+    },
+    {
+      "id": "nzk11mv3",
+      "tier": 1,
+      "prompt": "What colour is the hair of every Weasley?",
+      "correct": "Red",
+      "wrong": ["Blonde", "Black", "Brown"]
+    },
+    {
+      "id": "2b1gkm4a",
+      "tier": 1,
+      "prompt": "Which actress plays Hermione in the films?",
+      "correct": "Emma Watson",
+      "wrong": ["Emma Stone", "Bonnie Wright", "Evanna Lynch"],
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (Hermione: Emma Watson); https://en.wikipedia.org/wiki/List_of_Harry_Potter_films_cast_members"
+    },
+    {
+      "id": "hgp0sovo",
+      "tier": 2,
+      "prompt": "In the first film, what is the name of the three-headed dog guarding the trapdoor?",
+      "correct": "Fluffy",
+      "wrong": ["Fang", "Norbert", "Buckbeak"]
+    },
+    {
+      "id": "9wctrthz",
+      "tier": 2,
+      "prompt": "What are the objects that Voldemort hides pieces of his soul in called?",
+      "correct": "Horcruxes",
+      "wrong": ["Hallows", "Portkeys", "Pensieves"]
+    },
+    {
+      "id": "naciyyk2",
+      "tier": 2,
+      "prompt": "Who is Harry's godfather?",
+      "correct": "Sirius Black",
+      "wrong": ["Remus Lupin", "Arthur Weasley", "Albus Dumbledore"]
+    },
+    {
+      "id": "66wmoai2",
+      "tier": 2,
+      "prompt": "In Chamber of Secrets, what does Harry trick Lucius Malfoy into giving Dobby to set him free?",
+      "correct": "A sock",
+      "wrong": ["A scarf", "A glove", "A hat"]
+    },
+    {
+      "id": "oqhh8e2a",
+      "tier": 2,
+      "prompt": "Which wizarding prison is guarded by Dementors?",
+      "correct": "Azkaban",
+      "wrong": ["Nurmengard", "Gringotts", "Durmstrang"]
+    },
+    {
+      "id": "qohhtoqu",
+      "tier": 2,
+      "prompt": "In Half-Blood Prince, who kills Dumbledore?",
+      "correct": "Severus Snape",
+      "wrong": ["Draco Malfoy", "Bellatrix Lestrange", "Peter Pettigrew"]
+    },
+    {
+      "id": "2us27gjp",
+      "tier": 2,
+      "prompt": "In Prisoner of Azkaban, what does Professor Lupin turn out to be?",
+      "correct": "A werewolf",
+      "wrong": ["A vampire", "A Metamorphmagus", "A half-giant"]
+    },
+    {
+      "id": "24rgyf7p",
+      "tier": 2,
+      "prompt": "In Order of the Phoenix, who is the new Defence Against the Dark Arts teacher?",
+      "correct": "Dolores Umbridge",
+      "wrong": ["Gilderoy Lockhart", "Quirinus Quirrell", "Horace Slughorn"]
+    },
+    {
+      "id": "1evmkd7d",
+      "tier": 2,
+      "prompt": "In Deathly Hallows – Part 2, which of the Weasley brothers is killed?",
+      "correct": "Fred",
+      "wrong": ["George", "Percy", "Charlie"]
+    },
+    {
+      "id": "wukq82ii",
+      "tier": 2,
+      "prompt": "In the first film, which spell does Hermione tell Ron he is saying wrong?",
+      "correct": "Wingardium Leviosa",
+      "wrong": ["Petrificus Totalus", "Alohomora", "Expelliarmus"]
+    },
+    {
+      "id": "zp1qg441",
+      "tier": 2,
+      "prompt": "What is the name of the language of snakes that Harry can speak?",
+      "correct": "Parseltongue",
+      "wrong": ["Mermish", "Gobbledegook", "Troll"]
+    },
+    {
+      "id": "cpwi607r",
+      "tier": 2,
+      "prompt": "In the first film, whose face is hidden under Professor Quirrell's turban?",
+      "correct": "Voldemort's",
+      "wrong": ["Snape's", "Grindelwald's", "Lucius Malfoy's"]
+    },
+    {
+      "id": "95buzo2l",
+      "tier": 2,
+      "prompt": "What monster lives in the Chamber of Secrets?",
+      "correct": "A basilisk",
+      "wrong": ["A dragon", "A giant spider", "A sphinx"]
+    },
+    {
+      "id": "v4av6let",
+      "tier": 2,
+      "prompt": "In Goblet of Fire, which Hogwarts student is the other Hogwarts champion?",
+      "correct": "Cedric Diggory",
+      "wrong": ["Oliver Wood", "Neville Longbottom", "Fred Weasley"]
+    },
+    {
+      "id": "01no8ka2",
+      "tier": 2,
+      "prompt": "Which actor plays Voldemort from Goblet of Fire onwards?",
+      "correct": "Ralph Fiennes",
+      "wrong": ["Jason Isaacs", "Gary Oldman", "Kenneth Branagh"],
+      "source": "https://en.wikipedia.org/wiki/Lord_Voldemort (Ralph Fiennes, Goblet of Fire to Deathly Hallows – Part 2)"
+    },
+    {
+      "id": "knl5ok7w",
+      "tier": 2,
+      "prompt": "How many films tell Harry's story?",
+      "correct": "Eight",
+      "wrong": ["Six", "Seven", "Nine"],
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (the series consists of eight films)"
+    },
+    {
+      "id": "zmuh63gu",
+      "tier": 3,
+      "prompt": "What form does Harry's Patronus take?",
+      "correct": "A stag",
+      "wrong": ["A doe", "An otter", "A phoenix"],
+      "source": "Prisoner of Azkaban (2004), the lake scene: Harry's Patronus is a stag"
+    },
+    {
+      "id": "104qbmyr",
+      "tier": 3,
+      "prompt": "In Prisoner of Azkaban, what does Hermione use to get to more than one class at once?",
+      "correct": "A Time-Turner",
+      "wrong": ["A Pensieve", "A Portkey", "A Remembrall"],
+      "source": "Prisoner of Azkaban (2004), hospital wing scene: Hermione reveals the Time-Turner"
+    },
+    {
+      "id": "0l1ia2j8",
+      "tier": 3,
+      "prompt": "In the first film, what is the name of Hagrid's baby dragon?",
+      "correct": "Norbert",
+      "wrong": ["Fluffy", "Buckbeak", "Grawp"],
+      "source": "Philosopher's Stone (2001), Hagrid's hut: the dragon hatches and Hagrid names it Norbert"
+    },
+    {
+      "id": "so6ezfbx",
+      "tier": 3,
+      "prompt": "What is the name of Hermione's ginger cat?",
+      "correct": "Crookshanks",
+      "wrong": ["Mrs Norris", "Tibbles", "Snowy"],
+      "source": "Prisoner of Azkaban (2004): Hermione's cat Crookshanks chases Scabbers"
+    },
+    {
+      "id": "ijf1b0ji",
+      "tier": 3,
+      "prompt": "In Goblet of Fire, who does Hermione go to the Yule Ball with?",
+      "correct": "Viktor Krum",
+      "wrong": ["Cedric Diggory", "Neville Longbottom", "Ron Weasley"],
+      "source": "Goblet of Fire (2005), Yule Ball scene"
+    },
+    {
+      "id": "2d09xglm",
+      "tier": 3,
+      "prompt": "Which of these is one of the three Deathly Hallows?",
+      "correct": "The Resurrection Stone",
+      "wrong": ["The Philosopher's Stone", "The Sword of Gryffindor", "The Sorting Hat"],
+      "source": "Deathly Hallows – Part 1 (2010), Xenophilius tells the Tale of the Three Brothers: Elder Wand, Resurrection Stone, Cloak of Invisibility"
+    },
+    {
+      "id": "jfqealft",
+      "tier": 3,
+      "prompt": "In the first film, which broomstick is Harry given to play Quidditch?",
+      "correct": "A Nimbus 2000",
+      "wrong": ["A Firebolt", "A Cleansweep Seven", "A Comet 260"],
+      "source": "Philosopher's Stone (2001), the Great Hall: Harry unwraps a Nimbus 2000"
+    },
+    {
+      "id": "68w7qzbh",
+      "tier": 3,
+      "prompt": "In Prisoner of Azkaban, who turns out to have been hiding as Ron's rat Scabbers?",
+      "correct": "Peter Pettigrew",
+      "wrong": ["Sirius Black", "Remus Lupin", "Barty Crouch Jr."],
+      "source": "Prisoner of Azkaban (2004), Shrieking Shack scene"
+    },
+    {
+      "id": "92rrzgvt",
+      "tier": 3,
+      "prompt": "In Goblet of Fire, who is disguised as Mad-Eye Moody?",
+      "correct": "Barty Crouch Jr.",
+      "wrong": ["Peter Pettigrew", "Igor Karkaroff", "Lucius Malfoy"],
+      "source": "Goblet of Fire (2005), Moody's office after the third task"
+    },
+    {
+      "id": "3yea835u",
+      "tier": 3,
+      "prompt": "In Deathly Hallows – Part 2, who kills Bellatrix Lestrange?",
+      "correct": "Molly Weasley",
+      "wrong": ["Ginny Weasley", "Hermione Granger", "Minerva McGonagall"],
+      "source": "Deathly Hallows – Part 2 (2011), Battle of Hogwarts: 'Not my daughter, you bitch!'"
+    },
+    {
+      "id": "mk0c6aml",
+      "tier": 3,
+      "prompt": "In Half-Blood Prince, who calls Ron 'Won-Won'?",
+      "correct": "Lavender Brown",
+      "wrong": ["Ginny Weasley", "Luna Lovegood", "Cho Chang"],
+      "source": "Half-Blood Prince (2009): Lavender Brown, Ron's girlfriend, calls him Won-Won"
+    },
+    {
+      "id": "aj5go6a5",
+      "tier": 3,
+      "prompt": "In Order of the Phoenix, what does Umbridge make Harry write in detention?",
+      "correct": "I must not tell lies",
+      "wrong": ["I must obey the Ministry", "I will respect my elders", "I must not break rules"],
+      "source": "Order of the Phoenix (2007), detention scene with the blood quill"
+    },
+    {
+      "id": "ucieojcw",
+      "tier": 3,
+      "prompt": "Asked if he still loves Lily after all this time, what one word does Snape answer?",
+      "correct": "Always",
+      "wrong": ["Forever", "Never", "Truly"],
+      "source": "Deathly Hallows – Part 2 (2011), Snape's memories in the Pensieve: 'After all this time?' 'Always.'"
+    },
+    {
+      "id": "c7pk0t01",
+      "tier": 3,
+      "prompt": "In Deathly Hallows – Part 2, which founder's sword does Neville use to kill Nagini?",
+      "correct": "Godric Gryffindor's",
+      "wrong": ["Salazar Slytherin's", "Helga Hufflepuff's", "Rowena Ravenclaw's"],
+      "source": "Deathly Hallows – Part 2 (2011), Neville draws the Sword of Gryffindor from the Sorting Hat"
+    },
+    {
+      "id": "668m06ly",
+      "tier": 3,
+      "prompt": "Who composed the films' theme music known as 'Hedwig's Theme'?",
+      "correct": "John Williams",
+      "wrong": ["Hans Zimmer", "Howard Shore", "James Horner"],
+      "source": "https://en.wikipedia.org/wiki/Hedwig%27s_Theme (composed by John Williams)"
+    },
+    {
+      "id": "aj8c0c8a",
+      "tier": 3,
+      "prompt": "In what year was the first film released?",
+      "correct": "2001",
+      "wrong": ["1999", "2000", "2003"],
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film) (released 16 November 2001)"
+    },
+    {
+      "id": "tko68mo4",
+      "tier": 4,
+      "prompt": "In Order of the Phoenix, what winged creatures pull the Hogwarts carriages unseen by most students?",
+      "correct": "Thestrals",
+      "wrong": ["Hippogriffs", "Abraxans", "Griffins"],
+      "source": "Order of the Phoenix (2007): Luna tells Harry the carriages are pulled by Thestrals"
+    },
+    {
+      "id": "tprxtn5c",
+      "tier": 4,
+      "prompt": "In Order of the Phoenix, what is the name of Hagrid's giant half-brother?",
+      "correct": "Grawp",
+      "wrong": ["Gregor", "Aragog", "Bane"],
+      "source": "Order of the Phoenix (2007), the Forbidden Forest: Hagrid introduces Grawp"
+    },
+    {
+      "id": "ohneitlo",
+      "tier": 4,
+      "prompt": "In Order of the Phoenix, whose family home is 12 Grimmauld Place?",
+      "correct": "Sirius Black's",
+      "wrong": ["Remus Lupin's", "Arthur Weasley's", "Alastor Moody's"],
+      "source": "Order of the Phoenix (2007), Grimmauld Place: Sirius says \"This is my parents' house\" and shows the Black family tree"
+    },
+    {
+      "id": "ccztu5u3",
+      "tier": 4,
+      "prompt": "In Half-Blood Prince, what is the name of the luck potion Harry wins from Slughorn?",
+      "correct": "Felix Felicis",
+      "wrong": ["Amortentia", "Veritaserum", "Draught of Peace"],
+      "source": "Half-Blood Prince (2009), Slughorn's first Potions lesson: 'liquid luck'"
+    },
+    {
+      "id": "5787lbb8",
+      "tier": 4,
+      "prompt": "In the first film, who does McGonagall bring Harry to after making him the new Seeker?",
+      "correct": "Oliver Wood",
+      "wrong": ["Cedric Diggory", "Marcus Flint", "Percy Weasley"],
+      "source": "Philosopher's Stone (2001): \"Potter, this is Oliver Wood. Wood, I have found you a Seeker.\""
+    },
+    {
+      "id": "fhbp19mb",
+      "tier": 4,
+      "prompt": "In Deathly Hallows – Part 1, what does Dumbledore leave Ron in his will?",
+      "correct": "His Deluminator",
+      "wrong": ["His Remembrall", "His Sneakoscope", "His Time-Turner"],
+      "source": "Deathly Hallows – Part 1 (2010), Rufus Scrimgeour reads Dumbledore's will at the Burrow"
+    },
+    {
+      "id": "5zxuy48g",
+      "tier": 4,
+      "prompt": "In Half-Blood Prince, what does Draco mend to let the Death Eaters into Hogwarts?",
+      "correct": "A Vanishing Cabinet",
+      "wrong": ["The Mirror of Erised", "A Pensieve", "The Floo Network"],
+      "source": "Half-Blood Prince (2009): Draco repairs the Vanishing Cabinet in the Room of Requirement"
+    },
+    {
+      "id": "i1g5h6xu",
+      "tier": 4,
+      "prompt": "What form does Snape's Patronus take?",
+      "correct": "A doe",
+      "wrong": ["A stag", "A raven", "A snake"],
+      "source": "Deathly Hallows – Part 2 (2011), Snape's memories: his doe Patronus"
+    },
+    {
+      "id": "9437w3ee",
+      "tier": 4,
+      "prompt": "In Goblet of Fire, which dragon does Harry face in the first task?",
+      "correct": "A Hungarian Horntail",
+      "wrong": ["A Norwegian Ridgeback", "A Welsh Green", "A Ukrainian Ironbelly"],
+      "source": "Goblet of Fire (2005), the first task: Harry draws the Hungarian Horntail"
+    },
+    {
+      "id": "z0x07m1d",
+      "tier": 4,
+      "prompt": "In Half-Blood Prince, which spell from the Prince's book does Harry use on Draco?",
+      "correct": "Sectumsempra",
+      "wrong": ["Levicorpus", "Crucio", "Langlock"],
+      "source": "Half-Blood Prince (2009), the bathroom fight"
+    },
+    {
+      "id": "chj398vw",
+      "tier": 4,
+      "prompt": "What is the core of Harry's wand?",
+      "correct": "A phoenix feather",
+      "wrong": ["Dragon heartstring", "Unicorn hair", "Thestral hair"],
+      "source": "Philosopher's Stone (2001), Ollivanders: the phoenix whose tail feather is in Harry's wand gave one other"
+    },
+    {
+      "id": "rfc9zme5",
+      "tier": 4,
+      "prompt": "Which London pub leads through to Diagon Alley?",
+      "correct": "The Leaky Cauldron",
+      "wrong": ["The Hog's Head", "The Three Broomsticks", "The Hanged Man"],
+      "source": "Prisoner of Azkaban (2004): \"The Leaky Cauldron. That's in London.\"; Philosopher's Stone (2001): Hagrid takes Harry through it to Diagon Alley"
+    },
+    {
+      "id": "4xe4eu77",
+      "tier": 4,
+      "prompt": "In the first film, which chess piece does Ron take the place of on the giant board?",
+      "correct": "A knight",
+      "wrong": ["A bishop", "A rook", "A king"],
+      "source": "Philosopher's Stone (2001), the wizard's chess game: Ron rides a knight"
+    },
+    {
+      "id": "dp3h638c",
+      "tier": 4,
+      "prompt": "In the final film's epilogue, which of Harry's sons worries about being sorted into Slytherin?",
+      "correct": "Albus Severus",
+      "wrong": ["James Sirius", "Scorpius", "Hugo"],
+      "source": "Deathly Hallows – Part 2 (2011), epilogue at King's Cross"
+    },
+    {
+      "id": "fwhujt8w",
+      "tier": 4,
+      "prompt": "Which actor plays Dumbledore in the first two films?",
+      "correct": "Richard Harris",
+      "wrong": ["Michael Gambon", "Ian McKellen", "Christopher Lee"],
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (Dumbledore: Richard Harris in films 1–2, Michael Gambon in 3–8)"
+    },
+    {
+      "id": "6z4bqins",
+      "tier": 4,
+      "prompt": "Who directed the first two films?",
+      "correct": "Chris Columbus",
+      "wrong": ["Alfonso Cuarón", "Mike Newell", "David Yates"],
+      "source": "https://en.wikipedia.org/wiki/Chris_Columbus_(filmmaker) (directed the first and second films)"
+    },
+    {
+      "id": "wvhf7xr9",
+      "tier": 5,
+      "prompt": "In the first film, what is the number of the Gringotts vault that Hagrid empties?",
+      "correct": "713",
+      "wrong": ["687", "394", "942"],
+      "source": "Philosopher's Stone (2001), Gringotts: Hagrid asks for vault seven hundred and thirteen"
+    },
+    {
+      "id": "t0752fy6",
+      "tier": 5,
+      "prompt": "In the first film, which flavour of Bertie Bott's bean does Dumbledore eat?",
+      "correct": "Earwax",
+      "wrong": ["Soap", "Bogey", "Sprouts"],
+      "source": "Philosopher's Stone (2001), hospital wing ending: 'Alas, earwax.'"
+    },
+    {
+      "id": "ejd75skn",
+      "tier": 5,
+      "prompt": "In Deathly Hallows – Part 1, which Minister for Magic reads out Dumbledore's will?",
+      "correct": "Rufus Scrimgeour",
+      "wrong": ["Cornelius Fudge", "Pius Thicknesse", "Kingsley Shacklebolt"],
+      "source": "Deathly Hallows – Part 1 (2010), the Burrow: Rufus Scrimgeour (Bill Nighy)"
+    },
+    {
+      "id": "vfh1fus8",
+      "tier": 5,
+      "prompt": "In Half-Blood Prince, which girl meant the love potion chocolates that Ron eats for Harry?",
+      "correct": "Romilda Vane",
+      "wrong": ["Lavender Brown", "Cho Chang", "Katie Bell"],
+      "source": "Half-Blood Prince (2009): the chocolates were from Romilda Vane"
+    },
+    {
+      "id": "xscz4m0n",
+      "tier": 5,
+      "prompt": "In Deathly Hallows – Part 1, which book does Dumbledore leave Hermione?",
+      "correct": "The Tales of Beedle the Bard",
+      "wrong": ["Hogwarts: A History", "Fantastic Beasts", "Advanced Potion-Making"],
+      "source": "Deathly Hallows – Part 1 (2010), the reading of Dumbledore's will"
+    },
+    {
+      "id": "vjbfziiv",
+      "tier": 5,
+      "prompt": "What is the first name of Dumbledore's brother?",
+      "correct": "Aberforth",
+      "wrong": ["Elphias", "Percival", "Ignotus"],
+      "source": "Deathly Hallows – Part 2 (2011), the Hog's Head: Aberforth Dumbledore"
+    },
+    {
+      "id": "awoxklts",
+      "tier": 5,
+      "prompt": "In Prisoner of Azkaban, what is the name of the Knight Bus conductor?",
+      "correct": "Stan Shunpike",
+      "wrong": ["Ernie Prang", "Tom Marlowe", "Dedalus Diggle"],
+      "source": "Prisoner of Azkaban (2004), the Knight Bus: Stan Shunpike introduces himself"
+    },
+    {
+      "id": "xjf94td3",
+      "tier": 5,
+      "prompt": "What kind of giant spider is Aragog?",
+      "correct": "An Acromantula",
+      "wrong": ["A Chizpurfle", "A Grindylow", "A Doxy"],
+      "source": "Half-Blood Prince (2009): Slughorn prizes the venom of Aragog, an Acromantula"
+    },
+    {
+      "id": "iqfclb9s",
+      "tier": 5,
+      "prompt": "In the first film, what is the password to the Gryffindor common room?",
+      "correct": "Caput Draconis",
+      "wrong": ["Pig Snout", "Fortuna Major", "Banana Fritters"],
+      "source": "Philosopher's Stone (2001): Percy gives the Fat Lady the password 'Caput Draconis'"
+    },
+    {
+      "id": "jve0tw70",
+      "tier": 5,
+      "prompt": "In the first film, what kind of snake does Harry free at the zoo?",
+      "correct": "A Burmese python",
+      "wrong": ["A king cobra", "A black mamba", "An anaconda"],
+      "source": "Philosopher's Stone (2001), the zoo: the tank is labelled Burmese Python"
+    },
+    {
+      "id": "jrph3zcs",
+      "tier": 5,
+      "prompt": "In Deathly Hallows – Part 1, whose body does Nagini hide in at Godric's Hollow?",
+      "correct": "Bathilda Bagshot's",
+      "wrong": ["Arabella Figg's", "Muriel Prewett's", "Hepzibah Smith's"],
+      "source": "Deathly Hallows – Part 1 (2010), Godric's Hollow"
+    },
+    {
+      "id": "g9vwvj9m",
+      "tier": 5,
+      "prompt": "Who directed Prisoner of Azkaban?",
+      "correct": "Alfonso Cuarón",
+      "wrong": ["Guillermo del Toro", "Mike Newell", "Chris Columbus"],
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Prisoner_of_Azkaban_(film) (directed by Alfonso Cuarón)"
+    },
+    {
+      "id": "dxyrg9xc",
+      "tier": 5,
+      "prompt": "Which actress plays Luna Lovegood?",
+      "correct": "Evanna Lynch",
+      "wrong": ["Bonnie Wright", "Katie Leung", "Jessie Cave"],
+      "source": "https://en.wikipedia.org/wiki/Evanna_Lynch (Luna Lovegood, from Order of the Phoenix)"
+    },
+    {
+      "id": "lrw5dy8q",
+      "tier": 5,
+      "prompt": "Which actor voices Dobby the house-elf?",
+      "correct": "Toby Jones",
+      "wrong": ["Warwick Davis", "Andy Serkis", "Timothy Spall"],
+      "source": "https://en.wikipedia.org/wiki/Dobby_the_house_elf (voiced by Toby Jones in the films)"
+    },
+    {
+      "id": "qy37r0ue",
+      "tier": 5,
+      "prompt": "In Goblet of Fire, which national Quidditch team does Viktor Krum play for?",
+      "correct": "Bulgaria",
+      "wrong": ["Ireland", "Romania", "Russia"],
+      "source": "Goblet of Fire (2005), Quidditch World Cup: Krum plays Seeker for Bulgaria"
+    },
+    {
+      "id": "0g3mwr34",
+      "tier": 5,
+      "prompt": "In Chamber of Secrets, what is the name of the Weasleys' old owl?",
+      "correct": "Errol",
+      "wrong": ["Hermes", "Pigwidgeon", "Archimedes"],
+      "source": "Chamber of Secrets (2002): Errol crashes into the Great Hall with Ron's Howler"
+    }
+  ]
+}

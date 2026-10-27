@@ -6,176 +6,112 @@
       "tier": 1,
       "prompt": "What does Phil do for a living?",
       "correct": "Real estate agent",
-      "wrong": [
-        "Dentist",
-        "Accountant",
-        "Car salesman"
-      ]
+      "wrong": ["Dentist", "Accountant", "Car salesman"]
     },
     {
       "id": "ikjlpdbp",
       "tier": 1,
       "prompt": "Who is Jay married to when the series begins?",
       "correct": "Gloria",
-      "wrong": [
-        "Claire",
-        "Haley",
-        "Pepper"
-      ]
+      "wrong": ["Claire", "Haley", "Pepper"]
     },
     {
       "id": "5lc1ajiw",
       "tier": 1,
       "prompt": "Which country is Gloria from?",
       "correct": "Colombia",
-      "wrong": [
-        "Mexico",
-        "Venezuela",
-        "Brazil"
-      ]
+      "wrong": ["Mexico", "Venezuela", "Brazil"]
     },
     {
       "id": "z0ly0jcu",
       "tier": 1,
       "prompt": "What is the name of Mitchell and Cam's adopted daughter?",
       "correct": "Lily",
-      "wrong": [
-        "Alex",
-        "Haley",
-        "Stella"
-      ]
+      "wrong": ["Alex", "Haley", "Stella"]
     },
     {
       "id": "obk5rx7r",
       "tier": 1,
       "prompt": "Who is the father of Claire and Mitchell?",
       "correct": "Jay",
-      "wrong": [
-        "Phil",
-        "Javier",
-        "Cam"
-      ]
+      "wrong": ["Phil", "Javier", "Cam"]
     },
     {
       "id": "hcx66xo2",
       "tier": 1,
       "prompt": "Who is Manny's mother?",
       "correct": "Gloria",
-      "wrong": [
-        "Claire",
-        "Alex",
-        "Lily"
-      ]
+      "wrong": ["Claire", "Alex", "Lily"]
     },
     {
       "id": "30zdcwq0",
       "tier": 1,
       "prompt": "What is the name of Phil's wife?",
       "correct": "Claire",
-      "wrong": [
-        "Gloria",
-        "Haley",
-        "Lily"
-      ]
+      "wrong": ["Gloria", "Haley", "Lily"]
     },
     {
       "id": "4f4fds24",
       "tier": 1,
       "prompt": "Which of Phil and Claire's children is the oldest?",
       "correct": "Haley",
-      "wrong": [
-        "Alex",
-        "Luke",
-        "Lily"
-      ]
+      "wrong": ["Alex", "Luke", "Lily"]
     },
     {
       "id": "gzjgip29",
       "tier": 1,
       "prompt": "What is the name of Mitchell's partner, and later husband?",
       "correct": "Cameron",
-      "wrong": [
-        "Phil",
-        "Dylan",
-        "Andy"
-      ]
+      "wrong": ["Phil", "Dylan", "Andy"]
     },
     {
       "id": "etzs1pky",
       "tier": 1,
       "prompt": "Which actress plays Gloria?",
       "correct": "Sofía Vergara",
-      "wrong": [
-        "Eva Longoria",
-        "Salma Hayek",
-        "Penélope Cruz"
-      ]
+      "wrong": ["Eva Longoria", "Salma Hayek", "Penélope Cruz"]
     },
     {
       "id": "r1gurggf",
       "tier": 1,
       "prompt": "The characters often talk straight to the camera. What style is the show filmed in?",
       "correct": "Mockumentary",
-      "wrong": [
-        "Live studio audience",
-        "Stop-motion",
-        "Found footage"
-      ]
+      "wrong": ["Live studio audience", "Stop-motion", "Found footage"]
     },
     {
-      "id": "imegaxkj",
+      "id": "pvr4s2t8",
       "tier": 1,
-      "prompt": "Which city does the family live in?",
-      "correct": "Los Angeles",
-      "wrong": [
-        "Chicago",
-        "Miami",
-        "Denver"
-      ]
+      "prompt": "What is Phil's surname?",
+      "correct": "Dunphy",
+      "wrong": ["Tucker", "Delgado", "Thorpe"]
     },
     {
       "id": "wwx5zl9g",
       "tier": 1,
       "prompt": "Which of Phil and Claire's children is the brainy overachiever?",
       "correct": "Alex",
-      "wrong": [
-        "Haley",
-        "Luke",
-        "Manny"
-      ]
+      "wrong": ["Haley", "Luke", "Manny"]
     },
     {
       "id": "5se00z6t",
       "tier": 1,
       "prompt": "What does Jay's company make?",
       "correct": "Closets",
-      "wrong": [
-        "Cars",
-        "Swimming pools",
-        "Pianos"
-      ]
+      "wrong": ["Cars", "Swimming pools", "Pianos"]
     },
     {
       "id": "bed109r1",
       "tier": 1,
       "prompt": "Which family member is the youngest of Phil and Claire's three kids?",
       "correct": "Luke",
-      "wrong": [
-        "Haley",
-        "Alex",
-        "Jay"
-      ]
+      "wrong": ["Haley", "Alex", "Jay"]
     },
     {
       "id": "krpayk5h",
       "tier": 2,
       "prompt": "What is the name of Cam's clown alter ego?",
       "correct": "Fizbo",
-      "wrong": [
-        "Bozo",
-        "Giggles",
-        "Mr. Sparkles"
-      ],
+      "wrong": ["Bozo", "Giggles", "Mr. Sparkles"],
       "source": "S1E9 \"Fizbo\""
     },
     {
@@ -183,22 +119,14 @@
       "tier": 2,
       "prompt": "What breed of dog is Jay's beloved Stella?",
       "correct": "French bulldog",
-      "wrong": [
-        "Boston terrier",
-        "Basset hound",
-        "Pug"
-      ]
+      "wrong": ["Boston terrier", "Basset hound", "Pug"]
     },
     {
       "id": "77c5al7v",
       "tier": 2,
       "prompt": "Which country did Mitchell and Cam adopt Lily from?",
       "correct": "Vietnam",
-      "wrong": [
-        "China",
-        "South Korea",
-        "Cambodia"
-      ],
+      "wrong": ["China", "South Korea", "Cambodia"],
       "source": "S1E1 \"Pilot\""
     },
     {
@@ -206,143 +134,91 @@
       "tier": 2,
       "prompt": "What is Mitchell's profession?",
       "correct": "Lawyer",
-      "wrong": [
-        "Doctor",
-        "Architect",
-        "Accountant"
-      ]
+      "wrong": ["Doctor", "Architect", "Accountant"]
     },
     {
       "id": "llr1es3x",
       "tier": 2,
       "prompt": "Manny and Luke are about the same age, but Manny is technically Luke's what?",
       "correct": "Uncle",
-      "wrong": [
-        "Cousin",
-        "Brother",
-        "Nephew"
-      ]
+      "wrong": ["Cousin", "Brother", "Nephew"]
     },
     {
       "id": "yxqr8opw",
       "tier": 2,
       "prompt": "What is Manny's surname?",
       "correct": "Delgado",
-      "wrong": [
-        "Ramirez",
-        "Alvarez",
-        "Morales"
-      ]
+      "wrong": ["Ramirez", "Alvarez", "Morales"]
     },
     {
       "id": "jcs9s2e8",
       "tier": 2,
       "prompt": "What is Cam's surname?",
       "correct": "Tucker",
-      "wrong": [
-        "Dunphy",
-        "Hastings",
-        "Bailey"
-      ]
+      "wrong": ["Dunphy", "Hastings", "Bailey"]
     },
     {
       "id": "t13yk62a",
       "tier": 2,
       "prompt": "What is the name of the son Jay and Gloria have together?",
       "correct": "Joe",
-      "wrong": [
-        "Luke",
-        "Javier",
-        "Frank"
-      ]
+      "wrong": ["Luke", "Javier", "Frank"]
     },
     {
       "id": "gwany5xr",
       "tier": 2,
       "prompt": "Who does Haley marry?",
       "correct": "Dylan",
-      "wrong": [
-        "Andy",
-        "Sanjay",
-        "Rainer"
-      ]
+      "wrong": ["Andy", "Sanjay", "Rainer"]
     },
     {
       "id": "yxyyragk",
       "tier": 2,
       "prompt": "What does Phil call his book of life advice?",
       "correct": "Phil's-osophy",
-      "wrong": [
-        "The Phil Factor",
-        "Dunphy's Rules",
-        "Phil's Pointers"
-      ]
+      "wrong": ["The Phil Factor", "Dunphy's Rules", "Phil's Pointers"]
     },
     {
       "id": "2p9emofc",
       "tier": 2,
       "prompt": "Which network first aired the series?",
       "correct": "ABC",
-      "wrong": [
-        "NBC",
-        "CBS",
-        "Fox"
-      ]
+      "wrong": ["NBC", "CBS", "Fox"]
     },
     {
       "id": "9a2huexi",
       "tier": 2,
       "prompt": "Which actor plays Phil?",
       "correct": "Ty Burrell",
-      "wrong": [
-        "Steve Carell",
-        "Paul Rudd",
-        "Jason Bateman"
-      ]
+      "wrong": ["Steve Carell", "Paul Rudd", "Jason Bateman"]
     },
     {
       "id": "bno0cp87",
       "tier": 2,
       "prompt": "In college, Phil was a member of what kind of squad?",
       "correct": "Cheerleading",
-      "wrong": [
-        "Football",
-        "Debate",
-        "Swimming"
-      ]
+      "wrong": ["Football", "Debate", "Swimming"]
     },
     {
       "id": "iu7iak1s",
       "tier": 2,
       "prompt": "What is Claire's maiden name?",
       "correct": "Pritchett",
-      "wrong": [
-        "Tucker",
-        "Delgado",
-        "Marshall"
-      ]
+      "wrong": ["Tucker", "Delgado", "Marshall"]
     },
     {
       "id": "v5oo433x",
       "tier": 2,
       "prompt": "In later seasons, who takes over running Jay's closet company?",
       "correct": "Claire",
-      "wrong": [
-        "Mitchell",
-        "Phil",
-        "Manny"
-      ]
+      "wrong": ["Mitchell", "Phil", "Manny"]
     },
     {
       "id": "12wyccln",
       "tier": 3,
       "prompt": "Cam grew up on a farm in which state?",
       "correct": "Missouri",
-      "wrong": [
-        "Kansas",
-        "Iowa",
-        "Nebraska"
-      ],
+      "wrong": ["Kansas", "Iowa", "Nebraska"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_characters#Cameron_Tucker"
     },
     {
@@ -350,11 +226,7 @@
       "tier": 3,
       "prompt": "What is the name of Manny's biological father?",
       "correct": "Javier",
-      "wrong": [
-        "Diego",
-        "Alejandro",
-        "Fernando"
-      ],
+      "wrong": ["Diego", "Alejandro", "Fernando"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_characters"
     },
     {
@@ -362,23 +234,15 @@
       "tier": 3,
       "prompt": "In the pilot, which song plays as Cam presents baby Lily to the family?",
       "correct": "Circle of Life",
-      "wrong": [
-        "Hakuna Matata",
-        "Over the Rainbow",
-        "Stand by Me"
-      ],
+      "wrong": ["Hakuna Matata", "Over the Rainbow", "Stand by Me"],
       "source": "S1E1 \"Pilot\""
     },
     {
       "id": "fqju6f88",
       "tier": 3,
       "prompt": "What is the name of the song Dylan wrote and sings to Haley?",
-      "correct": "In the Moonlight (Do Me)",
-      "wrong": [
-        "Under the Stars (Hold Me)",
-        "On the Beach (Love Me)",
-        "By the Ocean (Kiss Me)"
-      ],
+      "correct": "In the Moonlight",
+      "wrong": ["Under the Stars", "On the Beach", "By the Ocean"],
       "source": "S1E4 \"The Incident\""
     },
     {
@@ -386,11 +250,7 @@
       "tier": 3,
       "prompt": "Which holiday is Claire obsessed with decorating the house for?",
       "correct": "Halloween",
-      "wrong": [
-        "Christmas",
-        "Easter",
-        "Fourth of July"
-      ],
+      "wrong": ["Christmas", "Easter", "Fourth of July"],
       "source": "S6E6 \"Halloween 3: AwesomeLand\""
     },
     {
@@ -398,35 +258,23 @@
       "tier": 3,
       "prompt": "Which hobby does Phil love to show off at parties?",
       "correct": "Magic tricks",
-      "wrong": [
-        "Juggling",
-        "Ventriloquism",
-        "Card counting"
-      ],
+      "wrong": ["Juggling", "Ventriloquism", "Card counting"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_characters"
     },
     {
       "id": "dugerwbt",
       "tier": 3,
-      "prompt": "What honour does Alex earn at her high school graduation?",
+      "prompt": "What honour does Alex earn at her middle school graduation?",
       "correct": "Valedictorian",
-      "wrong": [
-        "Prom queen",
-        "Class clown",
-        "Head cheerleader"
-      ],
-      "source": "S6E22 \"Patriot Games\""
+      "wrong": ["Most popular", "Best dressed", "Class clown"],
+      "source": "S2E23 \"See You Next Fall\""
     },
     {
       "id": "282mpchb",
       "tier": 3,
       "prompt": "Which university does Alex go to?",
       "correct": "Caltech",
-      "wrong": [
-        "MIT",
-        "Stanford",
-        "Harvard"
-      ],
+      "wrong": ["MIT", "Stanford", "Harvard"],
       "source": "S7 \"Spread Your Wings\""
     },
     {
@@ -434,11 +282,7 @@
       "tier": 3,
       "prompt": "Which sport does Cam coach at the local high school?",
       "correct": "Football",
-      "wrong": [
-        "Basketball",
-        "Baseball",
-        "Soccer"
-      ],
+      "wrong": ["Basketball", "Baseball", "Soccer"],
       "source": "https://en.wikipedia.org/wiki/Modern_Family_season_6"
     },
     {
@@ -446,11 +290,7 @@
       "tier": 3,
       "prompt": "Andy first works for Jay and Gloria in which job?",
       "correct": "Joe's nanny",
-      "wrong": [
-        "Jay's driver",
-        "Pool cleaner",
-        "Gardener"
-      ],
+      "wrong": ["Jay's driver", "Pool cleaner", "Gardener"],
       "source": "S5E6 \"The Help\""
     },
     {
@@ -458,11 +298,7 @@
       "tier": 3,
       "prompt": "How many seasons did the series run?",
       "correct": "11",
-      "wrong": [
-        "8",
-        "9",
-        "12"
-      ],
+      "wrong": ["8", "9", "12"],
       "source": "https://en.wikipedia.org/wiki/Modern_Family"
     },
     {
@@ -470,11 +306,7 @@
       "tier": 3,
       "prompt": "In what year did the series premiere?",
       "correct": "2009",
-      "wrong": [
-        "2007",
-        "2011",
-        "2012"
-      ],
+      "wrong": ["2007", "2011", "2012"],
       "source": "https://en.wikipedia.org/wiki/Modern_Family"
     },
     {
@@ -482,11 +314,7 @@
       "tier": 3,
       "prompt": "What is the name of Jay's first wife?",
       "correct": "DeDe",
-      "wrong": [
-        "Barb",
-        "Pilar",
-        "Lorraine"
-      ],
+      "wrong": ["Barb", "Pilar", "Lorraine"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_characters"
     },
     {
@@ -494,11 +322,7 @@
       "tier": 3,
       "prompt": "Before playing Jay, Ed O'Neill starred as Al Bundy in which sitcom?",
       "correct": "Married... with Children",
-      "wrong": [
-        "Everybody Loves Raymond",
-        "Home Improvement",
-        "Family Matters"
-      ],
+      "wrong": ["Everybody Loves Raymond", "Home Improvement", "Family Matters"],
       "source": "https://en.wikipedia.org/wiki/Ed_O%27Neill"
     },
     {
@@ -506,11 +330,7 @@
       "tier": 3,
       "prompt": "What is the full name of Jay's closet company?",
       "correct": "Pritchett's Closets & Blinds",
-      "wrong": [
-        "Pritchett's Doors & Drawers",
-        "Pritchett's Shelves & Shutters",
-        "Pritchett's Racks & Rails"
-      ],
+      "wrong": ["Pritchett's Doors & Drawers", "Pritchett's Shelves & Shutters", "Pritchett's Racks & Rails"],
       "source": "https://modernfamily.fandom.com/wiki/Pritchett%27s_Closets_%26_Blinds"
     },
     {
@@ -518,11 +338,7 @@
       "tier": 4,
       "prompt": "What is the name of Cam's sister?",
       "correct": "Pameron",
-      "wrong": [
-        "Lorraine",
-        "Becky",
-        "Sal"
-      ],
+      "wrong": ["Lorraine", "Becky", "Sal"],
       "source": "https://en.wikipedia.org/wiki/Dana_Powell"
     },
     {
@@ -530,11 +346,7 @@
       "tier": 4,
       "prompt": "Who is Alex's academic rival who later becomes her boyfriend?",
       "correct": "Sanjay",
-      "wrong": [
-        "Trevor",
-        "Kyle",
-        "Marcus"
-      ],
+      "wrong": ["Trevor", "Kyle", "Marcus"],
       "source": "S6E22 \"Patriot Games\"; https://en.wikipedia.org/wiki/Patriot_Games_(Modern_Family)"
     },
     {
@@ -542,11 +354,7 @@
       "tier": 4,
       "prompt": "What is the name of Mitchell and Cam's cat?",
       "correct": "Larry",
-      "wrong": [
-        "Gary",
-        "Stella",
-        "Felix"
-      ],
+      "wrong": ["Gary", "Stella", "Felix"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_characters"
     },
     {
@@ -554,23 +362,15 @@
       "tier": 4,
       "prompt": "In the final season, what do Mitchell and Cam name their newly adopted son?",
       "correct": "Rexford",
-      "wrong": [
-        "Lyndon",
-        "Calhoun",
-        "Fulgencio"
-      ],
-      "source": "https://tvline.com/news/modern-family-recap-series-finale-1182423/"
+      "wrong": ["Lyndon", "Calhoun", "Fulgencio"],
+      "source": "https://en.wikipedia.org/wiki/Finale_(Modern_Family)"
     },
     {
       "id": "yyijtkb2",
       "tier": 4,
       "prompt": "What are the names of Haley and Dylan's twins?",
       "correct": "Poppy and George",
-      "wrong": [
-        "Lily and Joe",
-        "Rose and Henry",
-        "Daisy and Frank"
-      ],
+      "wrong": ["Lily and Joe", "Rose and Henry", "Daisy and Frank"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_characters"
     },
     {
@@ -578,11 +378,7 @@
       "tier": 4,
       "prompt": "In which season do Mitchell and Cam get married?",
       "correct": "Season 5",
-      "wrong": [
-        "Season 3",
-        "Season 7",
-        "Season 9"
-      ],
+      "wrong": ["Season 3", "Season 7", "Season 9"],
       "source": "S5E24 \"The Wedding (Part 2)\""
     },
     {
@@ -590,11 +386,7 @@
       "tier": 4,
       "prompt": "Who officiates Mitchell and Cam's wedding?",
       "correct": "Phil",
-      "wrong": [
-        "Jay",
-        "Pepper",
-        "Claire"
-      ],
+      "wrong": ["Jay", "Pepper", "Claire"],
       "source": "S5E24 \"The Wedding (Part 2)\""
     },
     {
@@ -602,11 +394,7 @@
       "tier": 4,
       "prompt": "Which country does the whole family travel to in season 5?",
       "correct": "Australia",
-      "wrong": [
-        "Ireland",
-        "Japan",
-        "Brazil"
-      ],
+      "wrong": ["Ireland", "Japan", "Brazil"],
       "source": "S5E20 \"Australia\""
     },
     {
@@ -614,11 +402,7 @@
       "tier": 4,
       "prompt": "In season 3, Claire runs for which office?",
       "correct": "Town council",
-      "wrong": [
-        "Mayor",
-        "School board",
-        "State senate"
-      ],
+      "wrong": ["Mayor", "School board", "State senate"],
       "source": "S3E19 \"Election Day\""
     },
     {
@@ -626,11 +410,7 @@
       "tier": 4,
       "prompt": "In the pilot, what does Phil plan to shoot Luke with as punishment?",
       "correct": "A BB gun",
-      "wrong": [
-        "A water gun",
-        "A Nerf gun",
-        "A paintball gun"
-      ],
+      "wrong": ["A water gun", "A Nerf gun", "A paintball gun"],
       "source": "S1E1 \"Pilot\""
     },
     {
@@ -638,11 +418,7 @@
       "tier": 4,
       "prompt": "How many years in a row did the show win the Emmy for Outstanding Comedy Series?",
       "correct": "Five",
-      "wrong": [
-        "Three",
-        "Four",
-        "Six"
-      ],
+      "wrong": ["Three", "Four", "Six"],
       "source": "https://en.wikipedia.org/wiki/Primetime_Emmy_Award_for_Outstanding_Comedy_Series"
     },
     {
@@ -650,11 +426,7 @@
       "tier": 4,
       "prompt": "Steven Levitan created the series with which writer?",
       "correct": "Christopher Lloyd",
-      "wrong": [
-        "Chuck Lorre",
-        "Greg Daniels",
-        "Michael Schur"
-      ],
+      "wrong": ["Chuck Lorre", "Greg Daniels", "Michael Schur"],
       "source": "https://en.wikipedia.org/wiki/Modern_Family"
     },
     {
@@ -662,11 +434,7 @@
       "tier": 4,
       "prompt": "Nathan Lane plays which flamboyant friend of Mitchell and Cam?",
       "correct": "Pepper",
-      "wrong": [
-        "Teddy",
-        "Longinus",
-        "Sal"
-      ],
+      "wrong": ["Teddy", "Longinus", "Sal"],
       "source": "https://en.wikipedia.org/wiki/Nathan_Lane"
     },
     {
@@ -674,11 +442,7 @@
       "tier": 4,
       "prompt": "Which actress plays Jay's ex-wife DeDe?",
       "correct": "Shelley Long",
-      "wrong": [
-        "Kirstie Alley",
-        "Rhea Perlman",
-        "Bebe Neuwirth"
-      ],
+      "wrong": ["Kirstie Alley", "Rhea Perlman", "Bebe Neuwirth"],
       "source": "https://en.wikipedia.org/wiki/Shelley_Long"
     },
     {
@@ -686,11 +450,7 @@
       "tier": 4,
       "prompt": "What is the name of Phil's father?",
       "correct": "Frank",
-      "wrong": [
-        "Merle",
-        "Walt",
-        "Gil"
-      ],
+      "wrong": ["Merle", "Walt", "Gil"],
       "source": "https://modernfamily.fandom.com/wiki/Frank_Dunphy"
     },
     {
@@ -698,11 +458,7 @@
       "tier": 5,
       "prompt": "What is the name of Cam's father?",
       "correct": "Merle",
-      "wrong": [
-        "Earl",
-        "Clyde",
-        "Walt"
-      ],
+      "wrong": ["Earl", "Clyde", "Walt"],
       "source": "https://modernfamily.fandom.com/wiki/Merle_Tucker"
     },
     {
@@ -710,11 +466,7 @@
       "tier": 5,
       "prompt": "What is the name of Gloria's mother?",
       "correct": "Pilar",
-      "wrong": [
-        "Sonia",
-        "Rosa",
-        "Carmen"
-      ],
+      "wrong": ["Sonia", "Rosa", "Carmen"],
       "source": "https://modernfamily.fandom.com/wiki/Pilar_Ramirez"
     },
     {
@@ -722,35 +474,23 @@
       "tier": 5,
       "prompt": "In which state is the dude ranch the family visits at the start of season 3?",
       "correct": "Wyoming",
-      "wrong": [
-        "Montana",
-        "Colorado",
-        "Texas"
-      ],
+      "wrong": ["Montana", "Colorado", "Texas"],
       "source": "S3E1 \"Dude Ranch\"; https://en.wikipedia.org/wiki/Dude_Ranch_(Modern_Family)"
     },
     {
       "id": "1vq30uh5",
       "tier": 5,
-      "prompt": "What is Joe's legal first name?",
+      "prompt": "What first name is Joe given at his christening?",
       "correct": "Fulgencio",
-      "wrong": [
-        "Javier",
-        "Joaquín",
-        "Rexford"
-      ],
-      "source": "https://en.wikipedia.org/wiki/Fulgencio_(Modern_Family)"
+      "wrong": ["Javier", "Joaquín", "Rexford"],
+      "source": "S4E13 \"Fulgencio\""
     },
     {
       "id": "7ms2asbc",
       "tier": 5,
       "prompt": "Who does Claire run against in her season 3 election?",
       "correct": "Duane Bailey",
-      "wrong": [
-        "Gil Thorpe",
-        "Walt Kleezak",
-        "Ronaldo"
-      ],
+      "wrong": ["Gil Thorpe", "Walt Kleezak", "Ronaldo"],
       "source": "S3E19 \"Election Day\""
     },
     {
@@ -758,11 +498,7 @@
       "tier": 5,
       "prompt": "What is Dylan's surname?",
       "correct": "Marshall",
-      "wrong": [
-        "Thorpe",
-        "Kleezak",
-        "Saltzman"
-      ],
+      "wrong": ["Thorpe", "Kleezak", "Saltzman"],
       "source": "https://modernfamily.fandom.com/wiki/Dylan_Marshall"
     },
     {
@@ -770,11 +506,7 @@
       "tier": 5,
       "prompt": "What is the name of Phil's rival real estate agent?",
       "correct": "Gil Thorpe",
-      "wrong": [
-        "Duane Bailey",
-        "Walt Kleezak",
-        "Ronaldo"
-      ],
+      "wrong": ["Duane Bailey", "Walt Kleezak", "Ronaldo"],
       "source": "https://modernfamily.fandom.com/wiki/Gil_Thorpe"
     },
     {
@@ -782,35 +514,23 @@
       "tier": 5,
       "prompt": "What is Haley's boyfriend Rainer Shine's job?",
       "correct": "TV weatherman",
-      "wrong": [
-        "Radio DJ",
-        "Fitness trainer",
-        "Pro surfer"
-      ],
+      "wrong": ["Radio DJ", "Fitness trainer", "Pro surfer"],
       "source": "S8E4 \"Weathering Heights\""
     },
     {
       "id": "4sjh6h52",
       "tier": 5,
-      "prompt": "What is the name of Claire's wild party-girl best friend?",
+      "prompt": "Who is Mitchell and Cam's wild party-girl best friend?",
       "correct": "Sal",
-      "wrong": [
-        "Pam",
-        "Barb",
-        "Lorraine"
-      ],
-      "source": "S5E24 \"The Wedding (Part 2)\""
+      "wrong": ["Sharon", "Barb", "Lorraine"],
+      "source": "S1E8 \"Great Expectations\""
     },
     {
       "id": "rsxc5dem",
       "tier": 5,
       "prompt": "Which actress took over the role of Lily from season 3?",
       "correct": "Aubrey Anderson-Emmons",
-      "wrong": [
-        "Mckenna Grace",
-        "Brooklynn Prince",
-        "Ava Kolker"
-      ],
+      "wrong": ["Mckenna Grace", "Brooklynn Prince", "Ava Kolker"],
       "source": "https://en.wikipedia.org/wiki/Aubrey_Anderson-Emmons"
     },
     {
@@ -818,11 +538,7 @@
       "tier": 5,
       "prompt": "Who won the 2010 Emmy for Outstanding Supporting Actor in a Comedy for the show?",
       "correct": "Eric Stonestreet",
-      "wrong": [
-        "Ty Burrell",
-        "Jesse Tyler Ferguson",
-        "Ed O'Neill"
-      ],
+      "wrong": ["Ty Burrell", "Jesse Tyler Ferguson", "Ed O'Neill"],
       "source": "https://en.wikipedia.org/wiki/Primetime_Emmy_Award_for_Outstanding_Supporting_Actor_in_a_Comedy_Series"
     },
     {
@@ -830,11 +546,7 @@
       "tier": 5,
       "prompt": "How many episodes did the series run in total?",
       "correct": "250",
-      "wrong": [
-        "200",
-        "225",
-        "275"
-      ],
+      "wrong": ["200", "225", "275"],
       "source": "https://en.wikipedia.org/wiki/List_of_Modern_Family_episodes"
     },
     {
@@ -842,11 +554,7 @@
       "tier": 5,
       "prompt": "What was the show's working title during development?",
       "correct": "My American Family",
-      "wrong": [
-        "Pritchett Family Values",
-        "The Family Tree",
-        "All in the Families"
-      ],
+      "wrong": ["Pritchett Family Values", "The Family Tree", "All in the Families"],
       "source": "https://www.nbcnews.com/news/amp/wbna35297872"
     },
     {
@@ -854,11 +562,7 @@
       "tier": 5,
       "prompt": "In the series finale, where does Alex move for a new job?",
       "correct": "Switzerland",
-      "wrong": [
-        "New Zealand",
-        "Netherlands",
-        "Singapore"
-      ],
+      "wrong": ["New Zealand", "Netherlands", "Singapore"],
       "source": "https://en.wikipedia.org/wiki/Finale_(Modern_Family)"
     },
     {
@@ -866,11 +570,7 @@
       "tier": 5,
       "prompt": "Which branch of the military did Jay serve in?",
       "correct": "Navy",
-      "wrong": [
-        "Army",
-        "Marines",
-        "Air Force"
-      ],
+      "wrong": ["Army", "Marines", "Air Force"],
       "source": "S7E14 \"The Storm\"; https://m.imdb.com/title/tt2459378/characters/nm0642145/"
     }
   ]
