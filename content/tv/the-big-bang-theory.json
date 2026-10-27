@@ -21,7 +21,7 @@
       "prompt": "What does Sheldon shout after pulling a prank?",
       "correct": "\"Bazinga!\"",
       "wrong": ["\"Eureka!\"", "\"Gotcha!\"", "\"Cowabunga!\""],
-      "source": "Wikipedia: Sheldon Cooper (catchphrase \"Bazinga\")"
+      "source": "S2E23, The Monopolar Expedition (\"Bazinga!\")"
     },
     {
       "id": "fpzgktvs",
@@ -29,7 +29,7 @@
       "prompt": "What does Sheldon call his particular seat on the couch?",
       "correct": "His spot",
       "wrong": ["His throne", "His perch", "His nest"],
-      "source": "https://www.looper.com/243490/the-biggest-onscreen-mistakes-in-the-big-bang-theory"
+      "source": "S2E5, The Euclid Alternative (\"She's in my spot\")"
     },
     {
       "id": "co9k9zlp",
@@ -98,10 +98,10 @@
     {
       "id": "9ghnyiw8",
       "tier": 1,
-      "prompt": "How many times does Sheldon knock and say \"Penny\" at her door?",
+      "prompt": "In his usual routine, how many times does Sheldon knock and say \"Penny\" at her door?",
       "correct": "Three",
       "wrong": ["Two", "Four", "Five"],
-      "source": "Wikipedia: Sheldon Cooper (knocking ritual)"
+      "source": "S3E1, The Electric Can Opener Fluctuation (\"(Knock, knock, knock) Penny\" three times)"
     },
     {
       "id": "ij4k9scy",
@@ -234,14 +234,6 @@
       "wrong": ["NBC", "ABC", "Fox"]
     },
     {
-      "id": "pf1u36a1",
-      "tier": 2,
-      "prompt": "The theme song begins: \"Our whole universe was in a hot, dense…\" what?",
-      "correct": "State",
-      "wrong": ["Stew", "Haze", "Space"],
-      "source": "Theme song \"History of Everything\" by Barenaked Ladies, opening line"
-    },
-    {
       "id": "ma04ax8s",
       "tier": 3,
       "prompt": "What IQ does Sheldon claim to have?",
@@ -255,7 +247,7 @@
       "prompt": "What is Sheldon's mother's first name?",
       "correct": "Mary",
       "wrong": ["Martha", "Margaret", "Ruth"],
-      "source": "Wikipedia: Mary Cooper (The Big Bang Theory)"
+      "source": "S1E4, The Luminous Fish Effect (\"Mary Cooper, Sheldon's mom\")"
     },
     {
       "id": "oejnub6y",
@@ -271,7 +263,7 @@
       "prompt": "What is Bernadette's scientific field?",
       "correct": "Microbiology",
       "wrong": ["Neurobiology", "Astrophysics", "Geology"],
-      "source": "Wikipedia: Bernadette Rostenkowski-Wolowitz"
+      "source": "S3E5, The Creepy Candy Coating Corollary (\"Microbiology\")"
     },
     {
       "id": "418a7jce",
@@ -279,7 +271,7 @@
       "prompt": "What is Amy's scientific field?",
       "correct": "Neurobiology",
       "wrong": ["Microbiology", "Marine biology", "Botany"],
-      "source": "Wikipedia: Amy Farrah Fowler"
+      "source": "S4E1, The Robotic Manipulation (\"Neurobiologist\")"
     },
     {
       "id": "709agjxa",
@@ -287,7 +279,7 @@
       "prompt": "Which of Raj's sisters dates Leonard?",
       "correct": "Priya",
       "wrong": ["Anu", "Lakshmi", "Meera"],
-      "source": "Wikipedia: Priya Koothrappali"
+      "source": "S4E6, The Irish Pub Formulation (\"My baby sister Priya\")"
     },
     {
       "id": "q7y5dzc8",
@@ -295,7 +287,7 @@
       "prompt": "Which state is Penny from?",
       "correct": "Nebraska",
       "wrong": ["Iowa", "Kansas", "Montana"],
-      "source": "Wikipedia: Penny (The Big Bang Theory)"
+      "source": "S1E11, The Pancake Batter Anomaly (\"How was Nebraska?\")"
     },
     {
       "id": "id2kekno",
@@ -303,7 +295,7 @@
       "prompt": "After quitting the restaurant, what job does Penny take?",
       "correct": "Pharmaceutical sales rep",
       "wrong": ["Real estate agent", "Insurance broker", "Travel agent"],
-      "source": "S7E24, The Status Quo Combustion / S8E1, The Locomotion Interruption (Zangen rep)"
+      "source": "S8E1, The Locomotion Interruption (pharmaceutical sales rep interview)"
     },
     {
       "id": "ajsxihyl",
@@ -351,15 +343,15 @@
       "prompt": "Which Caltech colleague with a speech impediment is Sheldon's rival?",
       "correct": "Barry Kripke",
       "wrong": ["Bert Kibbler", "Dennis Kim", "Stuart Bloom"],
-      "source": "Wikipedia: List of The Big Bang Theory characters (Barry Kripke)"
+      "source": "S2E13, The Friendship Algorithm (\"my new friend, Barry Kripke\")"
     },
     {
       "id": "8rgn64n9",
       "tier": 3,
-      "prompt": "After his breakup with Amy, Sheldon starts collecting what?",
+      "prompt": "After he falls out with Amy, Sheldon starts collecting what?",
       "correct": "Cats",
       "wrong": ["Dogs", "Birds", "Turtles"],
-      "source": "S4E3, The Zazzy Substitution"
+      "source": "S4E3, The Zazzy Substitution (\"Sheldon now has five cats\")"
     },
     {
       "id": "gvqvftwr",
@@ -367,7 +359,7 @@
       "prompt": "What nickname does Sheldon's grandmother have for him?",
       "correct": "Moon Pie",
       "wrong": ["Sugar Bear", "Cupcake", "Sweet Pea"],
-      "source": "Wikipedia: Sheldon Cooper"
+      "source": "S2E17, The Terminator Decoupling (\"Nobody calls me Moon Pie but Meemaw!\")"
     },
     {
       "id": "5bxqptdq",
@@ -383,15 +375,15 @@
       "prompt": "Who moves in with Howard's mother?",
       "correct": "Stuart",
       "wrong": ["Raj", "Sheldon", "Kripke"],
-      "source": "Wikipedia: Stuart Bloom (moves in with Mrs. Wolowitz in season 7)"
+      "source": "S8E1, The Locomotion Interruption (Stuart staying at Howard's mom's)"
     },
     {
       "id": "06rb9uhq",
       "tier": 4,
-      "prompt": "What nickname does Howard get from the crew on his space mission?",
+      "prompt": "What nickname do Howard's fellow astronauts give him?",
       "correct": "Froot Loops",
       "wrong": ["Lucky Charms", "Cap'n Crunch", "Cocoa Puffs"],
-      "source": "S6E1, The Date Night Variable"
+      "source": "S5E24, The Countdown Reflection (Mike Massimino: \"Hey, Froot Loops\")"
     },
     {
       "id": "g8vyh3n9",
@@ -439,7 +431,7 @@
       "prompt": "What is the name of Raj's dog?",
       "correct": "Cinnamon",
       "wrong": ["Nutmeg", "Biscuit", "Peanut"],
-      "source": "Wikipedia: Raj Koothrappali"
+      "source": "S6E22, The Proton Resurgence (\"Cinnamon's here\")"
     },
     {
       "id": "dau1shlt",
@@ -455,7 +447,7 @@
       "prompt": "What is Sheldon's middle name?",
       "correct": "Lee",
       "wrong": ["Lewis", "Lyle", "Leroy"],
-      "source": "Wikipedia: Sheldon Cooper (Sheldon Lee Cooper)"
+      "source": "S7E11, The Cooper Extraction (\"Sheldon Lee Cooper\")"
     },
     {
       "id": "1bq19mqf",
@@ -463,7 +455,7 @@
       "prompt": "What do Howard and Bernadette name their daughter?",
       "correct": "Halley",
       "wrong": ["Stella", "Luna", "Nova"],
-      "source": "S10E1, The Conjugal Conjecture; Wikipedia: Howard Wolowitz"
+      "source": "S10E11, The Birthday Synchronicity (\"We have named her Halley\")"
     },
     {
       "id": "460vccwl",
@@ -471,7 +463,7 @@
       "prompt": "What is Sheldon and Leonard's apartment number?",
       "correct": "4A",
       "wrong": ["4B", "3A", "5C"],
-      "source": "Wikipedia: The Big Bang Theory (setting)"
+      "source": "S2E6, The Cooper-Nowitzki Theorem (\"4-A\")"
     },
     {
       "id": "e95n6ivm",
@@ -495,7 +487,7 @@
       "prompt": "What is the name of Sheldon's twin sister?",
       "correct": "Missy",
       "wrong": ["Sissy", "Mandy", "Becky"],
-      "source": "Wikipedia: Sheldon Cooper (twin sister Missy)"
+      "source": "S1E15, The Pork Chop Indeterminacy (\"Sheldon's twin sister, Missy\")"
     },
     {
       "id": "7kn7fwvi",
@@ -511,7 +503,7 @@
       "prompt": "Where does Bernadette work when Howard first meets her?",
       "correct": "The Cheesecake Factory",
       "wrong": ["A comic book store", "A hospital lab", "A coffee shop"],
-      "source": "S3E5, The Creepy Candy Coating Corollary"
+      "source": "S3E5, The Creepy Candy Coating Corollary; S3E9, The Vengeance Formulation"
     },
     {
       "id": "jgytjw9y",
@@ -559,7 +551,7 @@
       "prompt": "What kind of doctor is Raj's father?",
       "correct": "Gynecologist",
       "wrong": ["Cardiologist", "Dentist", "Pediatrician"],
-      "source": "Wikipedia: Raj Koothrappali"
+      "source": "S1E8, The Grasshopper Experiment (\"a gynaecologist like him\")"
     },
     {
       "id": "zqjkys5w",
@@ -575,7 +567,7 @@
       "prompt": "Why does Sheldon first hold a grudge against Wil Wheaton?",
       "correct": "He missed a fan convention",
       "wrong": ["He beat him at chess", "He mocked his paper", "He took his parking spot"],
-      "source": "S3E5, The Creepy Candy Coating Corollary"
+      "source": "S5E5, The Russian Rocket Reaction; S3E5, The Creepy Candy Coating Corollary"
     },
     {
       "id": "4axelh9u",
@@ -591,7 +583,7 @@
       "prompt": "What is Howard's mother's first name?",
       "correct": "Debbie",
       "wrong": ["Doris", "Sylvia", "Rhoda"],
-      "source": "S8E15, The Comic Book Store Regeneration; Wikipedia: Howard Wolowitz"
+      "source": "S7E24, The Status Quo Combustion (\"You call her Debbie?\")"
     },
     {
       "id": "r0bnxe0g",
@@ -599,7 +591,7 @@
       "prompt": "What is the first name of Howard and Bernadette's son?",
       "correct": "Neil",
       "wrong": ["Buzz", "John", "Alan"],
-      "source": "S11E14, The Separation Triangulation; Wikipedia: Howard Wolowitz (son Neil Michael)"
+      "source": "S11E16, The Neonatal Nomenclature"
     },
     {
       "id": "09gethm2",
@@ -607,7 +599,7 @@
       "prompt": "On which Pasadena street is Sheldon and Leonard's building?",
       "correct": "North Los Robles Avenue",
       "wrong": ["Colorado Boulevard", "South Lake Avenue", "Fair Oaks Avenue"],
-      "source": "Wikipedia: The Big Bang Theory (2311 North Los Robles Avenue)"
+      "source": "S6E2, The Decoupling Fluctuation (\"2311 North Los Robles Avenue, Pasadena\")"
     },
     {
       "id": "sepvzt16",
@@ -623,7 +615,7 @@
       "prompt": "What is the comic book store owner Stuart's last name?",
       "correct": "Bloom",
       "wrong": ["Bloch", "Stern", "Feld"],
-      "source": "Wikipedia: Stuart Bloom"
+      "source": "S7E18, The Mommy Observation (\"his last name was Bloom\")"
     },
     {
       "id": "gqwc7ge4",
