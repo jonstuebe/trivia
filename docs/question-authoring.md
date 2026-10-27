@@ -39,6 +39,8 @@ A Tier is decided by roughly what share of that Topic's players would know the a
 
 TV and Movies Questions are mostly about the story: characters, plots, quotes. Up to about a fifth are about the cast, production and awards.
 
+A story answer must be said or shown in the film or episode itself. A name or fact that appears only in the credits, a book, a script, an interview or a fan wiki does not count, however well known: the Beast's name "Adam", Andy's surname "Davis" and the "dianoga" in the trash compactor all fail. Cast, production and award Questions are the exception, since they are about the making of the film.
+
 A prompt never names its own Title. In Mixed games the game shows the Title as a label above the Question, so the prompt stays clean. The build check matches the Title's name anywhere in the prompt, so film and character names that contain it fail too. Name the film by the rest of its title, and the character by first name:
 
 | Title | Fails the check | Write instead |
