@@ -125,9 +125,10 @@
     {
       "id": "leeqv2on",
       "tier": 2,
-      "prompt": "On which island is the park built in the 1993 film?",
+      "prompt": "In Jurassic World, on which island is the theme park built?",
       "correct": "Isla Nublar",
-      "wrong": ["Isla Sorna", "Skull Island", "Isla Verde"]
+      "wrong": ["Isla Sorna", "Skull Island", "Isla Verde"],
+      "source": "Jurassic World (2015), monorail announcement: \"Welcome to Isla Nublar, home of Jurassic World\""
     },
     {
       "id": "lk5f8z2e",
@@ -354,10 +355,10 @@
     {
       "id": "n73quqs2",
       "tier": 4,
-      "prompt": "In the third film, which flying reptiles attack the group in a giant birdcage?",
-      "correct": "Pteranodons",
-      "wrong": ["Archaeopteryx", "Microraptors", "Quetzalcoatlus"],
-      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_III"
+      "prompt": "In the third film, flying reptiles attack the group inside what giant structure?",
+      "correct": "A birdcage",
+      "wrong": ["A greenhouse", "A dam", "A radio tower"],
+      "source": "Jurassic Park III (2001), Grant: \"It's a birdcage.\""
     },
     {
       "id": "t2zt0ho4",
@@ -474,10 +475,10 @@
     {
       "id": "ys1hyd2d",
       "tier": 5,
-      "prompt": "In The Lost World, what is the name of the big-game hunter?",
-      "correct": "Roland Tembo",
-      "wrong": ["Robert Muldoon", "Vic Hoskins", "Eddie Carr"],
-      "source": "https://en.wikipedia.org/wiki/The_Lost_World:_Jurassic_Park"
+      "prompt": "In The Lost World, what is the first name of the hunter who wants to bag a male T. rex?",
+      "correct": "Roland",
+      "wrong": ["Robert", "Vic", "Simon"],
+      "source": "The Lost World: Jurassic Park (1997), Roland's terms to Ludlow (\"the right to hunt a Tyrannosaurus. A male\"); \"Say that again, Roland\""
     },
     {
       "id": "0ymbos5g",

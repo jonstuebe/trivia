@@ -252,10 +252,10 @@
     {
       "id": "f6hj41tv",
       "tier": 3,
-      "prompt": "In Guardians of the Galaxy, what is the name of Peter Quill's mixtape?",
-      "correct": "Awesome Mix Vol. 1",
-      "wrong": ["Greatest Hits Vol. 1", "Road Trip Mix Vol. 1", "Mom's Favorites Vol. 1"],
-      "source": "Guardians of the Galaxy (2014), the cassette label; https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy:_Awesome_Mix_Vol._1"
+      "prompt": "In Guardians of the Galaxy, who gave Peter Quill his mixtape?",
+      "correct": "His mother",
+      "wrong": ["Yondu", "His grandfather", "Gamora"],
+      "source": "Guardians of the Galaxy (2014), Quill: \"My mother gave it to me.\"; https://www.springfieldspringfield.co.uk/movie_script.php?movie=guardians-of-the-galaxy"
     },
     {
       "id": "fc9tprsr",
@@ -348,18 +348,18 @@
     {
       "id": "rhm8wx7j",
       "tier": 3,
-      "prompt": "Who is the villain in Spider-Man: Homecoming?",
-      "correct": "The Vulture",
-      "wrong": ["Mysterio", "The Rhino", "Electro"],
-      "source": "Spider-Man: Homecoming (2017); https://en.wikipedia.org/wiki/Spider-Man:_Homecoming"
+      "prompt": "In Spider-Man: Homecoming, how is the villain related to Liz?",
+      "correct": "He's her father",
+      "wrong": ["He's her uncle", "He's her stepfather", "He's her brother"],
+      "source": "Spider-Man: Homecoming (2017), Toomes: \"I'm Liz's dad.\"; https://www.springfieldspringfield.co.uk/movie_script.php?movie=spider-man-homecoming"
     },
     {
       "id": "0e4o4v4z",
       "tier": 3,
-      "prompt": "In Iron Man, who betrays Tony and becomes the Iron Monger?",
+      "prompt": "In Iron Man, who betrays Tony and builds a giant armored suit of his own?",
       "correct": "Obadiah Stane",
       "wrong": ["Justin Hammer", "Aldrich Killian", "Ivan Vanko"],
-      "source": "Iron Man (2008); https://en.wikipedia.org/wiki/Iron_Man_(2008_film)"
+      "source": "Iron Man (2008), Pepper: \"He built the suit.\"; https://www.springfieldspringfield.co.uk/movie_script.php?movie=iron-man"
     },
     {
       "id": "hnx9ipuw",
@@ -588,10 +588,10 @@
     {
       "id": "5m0efnf8",
       "tier": 5,
-      "prompt": "What is the name of Tony Stark's mother?",
-      "correct": "Maria",
-      "wrong": ["Sarah", "Margaret", "Elaine"],
-      "source": "Captain America: Civil War (2016), the 1991 footage; https://en.wikipedia.org/wiki/Captain_America:_Civil_War"
+      "prompt": "In Civil War, in which year does the Winter Soldier kill Tony's parents?",
+      "correct": "1991",
+      "wrong": ["1989", "1993", "1995"],
+      "source": "Captain America: Civil War (2016), Zemo reads \"Mission report. December 16, 1991.\"; https://www.springfieldspringfield.co.uk/movie_script.php?movie=captain-america-civil-war"
     },
     {
       "id": "c9ai7te7",
