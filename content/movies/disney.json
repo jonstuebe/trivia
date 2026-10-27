@@ -4,7 +4,7 @@
     {
       "id": "go4urv9d",
       "tier": 1,
-      "prompt": "In The Lion King, what is the name of Simba's father?",
+      "prompt": "In The Lion King (1994), what is the name of Simba's father?",
       "correct": "Mufasa",
       "wrong": [
         "Scar",
@@ -28,7 +28,7 @@
     {
       "id": "9ziesg8v",
       "tier": 1,
-      "prompt": "In Aladdin, what kind of animal is Abu?",
+      "prompt": "In Aladdin (1992), what kind of animal is Abu?",
       "correct": "A monkey",
       "wrong": [
         "A parrot",
@@ -40,7 +40,7 @@
     {
       "id": "9olo9ooa",
       "tier": 1,
-      "prompt": "In The Little Mermaid, what does Ariel give Ursula in exchange for legs?",
+      "prompt": "In The Little Mermaid (1989), what does Ariel give Ursula in exchange for legs?",
       "correct": "Her voice",
       "wrong": [
         "Her hair",
@@ -52,7 +52,7 @@
     {
       "id": "xvovihqg",
       "tier": 1,
-      "prompt": "In Snow White and the Seven Dwarfs, what does the Queen trick Snow White into eating?",
+      "prompt": "In Snow White and the Seven Dwarfs (1937), what does the Queen trick Snow White into eating?",
       "correct": "A poisoned apple",
       "wrong": [
         "A poisoned pear",
@@ -64,7 +64,7 @@
     {
       "id": "pa3tmds8",
       "tier": 1,
-      "prompt": "In Cinderella, what does Cinderella leave behind on the palace steps?",
+      "prompt": "In Cinderella (1950), what does Cinderella leave behind on the palace steps?",
       "correct": "A glass slipper",
       "wrong": [
         "A silver tiara",
@@ -76,7 +76,7 @@
     {
       "id": "1taxplbq",
       "tier": 1,
-      "prompt": "In Beauty and the Beast, what kind of object is Lumière?",
+      "prompt": "In Beauty and the Beast (1991), what kind of object is Lumière?",
       "correct": "A candelabra",
       "wrong": [
         "A clock",
@@ -88,7 +88,7 @@
     {
       "id": "3y127p7h",
       "tier": 1,
-      "prompt": "In Moana, what is the name of the demigod who joins Moana's voyage?",
+      "prompt": "In Moana (2016), what is the name of the demigod who joins Moana's voyage?",
       "correct": "Maui",
       "wrong": [
         "Tamatoa",
@@ -112,7 +112,7 @@
     {
       "id": "qyxd4bfo",
       "tier": 1,
-      "prompt": "In Peter Pan, what is the name of Peter's fairy companion?",
+      "prompt": "In Peter Pan (1953), what is the name of Peter's fairy companion?",
       "correct": "Tinker Bell",
       "wrong": [
         "Merryweather",
@@ -124,7 +124,7 @@
     {
       "id": "lrnc5mnj",
       "tier": 1,
-      "prompt": "In Pinocchio, what happens to Pinocchio's nose when he tells a lie?",
+      "prompt": "In Pinocchio (1940), what happens to Pinocchio's nose when he tells a lie?",
       "correct": "It grows longer",
       "wrong": [
         "It glows red",
@@ -148,7 +148,7 @@
     {
       "id": "v7mzidp6",
       "tier": 1,
-      "prompt": "In The Lion King, which song's title means \"no worries\"?",
+      "prompt": "In The Lion King (1994), which song's title means \"no worries\"?",
       "correct": "Hakuna Matata",
       "wrong": [
         "Circle of Life",
@@ -160,7 +160,7 @@
     {
       "id": "unafyybq",
       "tier": 1,
-      "prompt": "In One Hundred and One Dalmatians, who wants to make a coat out of the puppies?",
+      "prompt": "In One Hundred and One Dalmatians (1961), who wants to make a coat out of the puppies?",
       "correct": "Cruella De Vil",
       "wrong": [
         "Ursula",
@@ -172,7 +172,7 @@
     {
       "id": "apnq01oj",
       "tier": 1,
-      "prompt": "In The Jungle Book, what is the name of the tiger who hunts Mowgli?",
+      "prompt": "In The Jungle Book (1967), what is the name of the tiger who hunts Mowgli?",
       "correct": "Shere Khan",
       "wrong": [
         "Kaa",
@@ -184,7 +184,7 @@
     {
       "id": "afdftzvf",
       "tier": 1,
-      "prompt": "In The Lion King, what is the name of Simba's childhood friend who later becomes his queen?",
+      "prompt": "In The Lion King (1994), what is the name of Simba's childhood friend who later becomes his queen?",
       "correct": "Nala",
       "wrong": [
         "Sarabi",
@@ -208,7 +208,7 @@
     {
       "id": "32my70y8",
       "tier": 2,
-      "prompt": "In The Lion King, what kind of animal is Pumbaa?",
+      "prompt": "In The Lion King (1994), what kind of animal is Pumbaa?",
       "correct": "A warthog",
       "wrong": [
         "A hippo",
@@ -304,7 +304,7 @@
     {
       "id": "fv7vkgdc",
       "tier": 2,
-      "prompt": "In Lilo & Stitch, what does the Hawaiian word \"ohana\" mean?",
+      "prompt": "In Lilo & Stitch (2002), what does the Hawaiian word \"ohana\" mean?",
       "correct": "Family",
       "wrong": [
         "Friendship",
@@ -340,7 +340,7 @@
     {
       "id": "fjpeej41",
       "tier": 2,
-      "prompt": "In Aladdin, what is the name of Jafar's parrot?",
+      "prompt": "In Aladdin (1992), what is the name of Jafar's parrot?",
       "correct": "Iago",
       "wrong": [
         "Rajah",
@@ -400,7 +400,7 @@
     {
       "id": "o9u5hxvo",
       "tier": 3,
-      "prompt": "In Beauty and the Beast, what is the name of Belle's father?",
+      "prompt": "In Beauty and the Beast (1991), what is the name of Belle's father?",
       "correct": "Maurice",
       "wrong": [
         "Philippe",
@@ -412,7 +412,7 @@
     {
       "id": "m9uznewq",
       "tier": 3,
-      "prompt": "In Moana, what is the name of the giant crab who loves shiny things?",
+      "prompt": "In Moana (2016), what is the name of the giant crab who loves shiny things?",
       "correct": "Tamatoa",
       "wrong": [
         "Te Kā",
@@ -472,7 +472,7 @@
     {
       "id": "honw8ntw",
       "tier": 3,
-      "prompt": "In Hercules, who narrate the story in song?",
+      "prompt": "In Hercules, who narrates the story in song?",
       "correct": "The Muses",
       "wrong": [
         "The Fates",
@@ -580,7 +580,7 @@
     {
       "id": "msu6wfvh",
       "tier": 3,
-      "prompt": "In Lilo & Stitch, what is Stitch's experiment number?",
+      "prompt": "In Lilo & Stitch (2002), what is Stitch's experiment number?",
       "correct": "626",
       "wrong": [
         "513",
@@ -676,7 +676,7 @@
     {
       "id": "o2zqi0ig",
       "tier": 4,
-      "prompt": "In Moana, what is the name of Moana's home island?",
+      "prompt": "In Moana (2016), what is the name of Moana's home island?",
       "correct": "Motunui",
       "wrong": [
         "Lalotai",

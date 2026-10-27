@@ -243,7 +243,7 @@
     {
       "id": "dkydbcde",
       "tier": 3,
-      "prompt": "In the 1993 film, Nedry's locked computer says \"Ah ah ah, you didn't say...\" what?",
+      "prompt": "In the 1993 film, complete the line on Nedry's locked computer: \"Ah ah ah, you didn't say…\"",
       "correct": "The magic word",
       "wrong": ["The password", "Open sesame", "Simon says"],
       "source": "Jurassic Park (1993), Ray Arnold tries to undo Nedry's shutdown"

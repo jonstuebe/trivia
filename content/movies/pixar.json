@@ -271,7 +271,7 @@
     {
       "id": "m90ivrti",
       "tier": 3,
-      "prompt": "In Monsters, Inc., which monster can turn invisible by changing colour?",
+      "prompt": "In Monsters, Inc., which monster can turn invisible by changing color?",
       "correct": "Randall",
       "wrong": ["Fungus", "Waternoose", "George"],
       "source": "Monsters, Inc. (2001), Randall Boggs' camouflage; https://en.wikipedia.org/wiki/Monsters,_Inc."

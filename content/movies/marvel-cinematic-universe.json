@@ -157,8 +157,8 @@
       "id": "hsn1iwvn",
       "tier": 2,
       "prompt": "In Endgame, what does Tony Stark say just before he snaps his fingers?",
-      "correct": "\"I am Iron Man\"",
-      "wrong": ["\"This ends now\"", "\"Goodbye, Thanos\"", "\"For Pepper\""],
+      "correct": "I am Iron Man",
+      "wrong": ["This ends now", "Goodbye, Thanos", "For Pepper"],
       "source": "Avengers: Endgame (2019), final battle; https://en.wikipedia.org/wiki/Avengers:_Endgame"
     },
     {
@@ -292,25 +292,25 @@
     {
       "id": "pvli2ul9",
       "tier": 3,
-      "prompt": "In The Avengers, Loki says \"I have an army.\" What does Tony Stark reply?",
-      "correct": "\"We have a Hulk\"",
-      "wrong": ["\"We have a plan\"", "\"We have a hammer\"", "\"We have Thor\""],
+      "prompt": "In The Avengers, when Loki says \"I have an army\", what does Tony Stark reply?",
+      "correct": "We have a Hulk",
+      "wrong": ["We have a plan", "We have a hammer", "We have Thor"],
       "source": "The Avengers (2012), Stark Tower scene; https://en.wikiquote.org/wiki/The_Avengers_(2012_film)"
     },
     {
       "id": "g70d5om6",
       "tier": 3,
       "prompt": "In The Avengers, what is Bruce Banner's secret for turning into the Hulk?",
-      "correct": "\"I'm always angry\"",
-      "wrong": ["\"I'm never calm\"", "\"I don't sleep\"", "\"I think of Loki\""],
+      "correct": "I'm always angry",
+      "wrong": ["I'm never calm", "I don't sleep", "I think of Loki"],
       "source": "The Avengers (2012), Battle of New York: \"That's my secret, Cap. I'm always angry.\"; https://en.wikiquote.org/wiki/The_Avengers_(2012_film)"
     },
     {
       "id": "qb26kul2",
       "tier": 3,
       "prompt": "In Endgame, what does Thanos say just before his snap fails?",
-      "correct": "\"I am inevitable\"",
-      "wrong": ["\"I am the end\"", "\"I am destiny\"", "\"I am balance\""],
+      "correct": "I am inevitable",
+      "wrong": ["I am the end", "I am destiny", "I am balance"],
       "source": "Avengers: Endgame (2019), final battle; https://en.wikiquote.org/wiki/Avengers:_Endgame"
     },
     {

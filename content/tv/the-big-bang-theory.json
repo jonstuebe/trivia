@@ -19,8 +19,8 @@
       "id": "g0qtwcaq",
       "tier": 1,
       "prompt": "What does Sheldon shout after pulling a prank?",
-      "correct": "\"Bazinga!\"",
-      "wrong": ["\"Eureka!\"", "\"Gotcha!\"", "\"Cowabunga!\""],
+      "correct": "Bazinga!",
+      "wrong": ["Eureka!", "Gotcha!", "Cowabunga!"],
       "source": "S2E23, The Monopolar Expedition (\"Bazinga!\")"
     },
     {
@@ -35,8 +35,8 @@
       "id": "co9k9zlp",
       "tier": 1,
       "prompt": "Which song does Sheldon ask to have sung to him when he's sick?",
-      "correct": "\"Soft Kitty\"",
-      "wrong": ["\"Hush, Little Baby\"", "\"Rock-a-bye Baby\"", "\"Twinkle, Twinkle\""],
+      "correct": "Soft Kitty",
+      "wrong": ["Hush, Little Baby", "Rock-a-bye Baby", "Twinkle, Twinkle"],
       "source": "S1E11, The Pancake Batter Anomaly"
     },
     {
@@ -194,7 +194,8 @@
       "tier": 2,
       "prompt": "What does Sheldon call his grandmother?",
       "correct": "Meemaw",
-      "wrong": ["Nana", "Granny", "Grams"]
+      "wrong": ["Nana", "Granny", "Grams"],
+      "source": "S9E14, The Meemaw Materialization"
     },
     {
       "id": "lpv7ermm",
@@ -209,7 +210,8 @@
       "tier": 2,
       "prompt": "Whom does Amy insist on calling her \"bestie\"?",
       "correct": "Penny",
-      "wrong": ["Bernadette", "Leonard", "Howard"]
+      "wrong": ["Bernadette", "Leonard", "Howard"],
+      "source": "S4E13, The Love Car Displacement (Amy: \"Hi, bestie.\")"
     },
     {
       "id": "h77kivwp",

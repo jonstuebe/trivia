@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { GameResult } from "../game/types";
+import { SITE_HOST } from "../site";
 import { gameOverView, shareNote } from "./game-over-view";
 
 const topic = { kind: "title", category: "tv", slug: "fixture-sitcom" } as const;
@@ -21,7 +22,7 @@ describe("Game over", () => {
         "$1,000,000 🏆",
         "✅✅✅✅✅ ✅✅✅✅✅ ✅✅✅✅✅",
         "No lifelines",
-        "trivia.jonstuebe.com/tv/fixture-sitcom",
+        `${SITE_HOST}/tv/fixture-sitcom`,
       ].join("\n"),
     });
   });

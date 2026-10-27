@@ -229,8 +229,8 @@
       "id": "7qxrfo3g",
       "tier": 2,
       "prompt": "In The Empire Strikes Back, how does Han reply when Leia says \"I love you\"?",
-      "correct": "\"I know.\"",
-      "wrong": ["\"I love you too.\"", "\"Me too.\"", "\"Same here.\""],
+      "correct": "I know",
+      "wrong": ["I love you too", "Me too", "Same here"],
       "source": "The Empire Strikes Back, before Han is frozen in carbonite"
     },
     {

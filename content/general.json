@@ -67,7 +67,7 @@
       "id": "jtwr4f9h",
       "tier": 1,
       "subject": "science",
-      "prompt": "What is the largest mammal alive today?",
+      "prompt": "What is the largest living mammal?",
       "correct": "Blue whale",
       "wrong": ["African elephant", "Sperm whale", "Hippopotamus"],
       "source": "https://en.wikipedia.org/wiki/Blue_whale"

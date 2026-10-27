@@ -29,7 +29,7 @@ export const BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js";
  * beacon.test.ts keeps the two in step.
  */
 const FIXTURE_BUILD = import.meta.env.MODE === "fixtures";
-const FIXTURE_TOKEN = "fixture-token";
+export const FIXTURE_TOKEN = "fixture-token";
 export const FIXTURE_BEACON_SRC = "/fixture-beacon.js";
 
 /** What the browser says about tracking and the network. */

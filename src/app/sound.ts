@@ -1,3 +1,4 @@
+import { SOUND_DATA } from "../content/fixture-mode";
 import { createSoundEngine, type SoundState } from "../sound/sound-engine";
 import { storage } from "./game-services";
 
@@ -46,10 +47,10 @@ export function startSound(): void {
 }
 
 function showOn(element: HTMLElement, state: SoundState): void {
-  element.dataset.sound = state.muted ? "off" : "on";
-  element.dataset.soundCues = String(state.cues);
-  if (state.lastCue) element.dataset.soundLastCue = state.lastCue;
-  else delete element.dataset.soundLastCue;
-  if (state.bed) element.dataset.soundBed = state.bed;
-  else delete element.dataset.soundBed;
+  element.dataset[SOUND_DATA.muted] = state.muted ? "off" : "on";
+  element.dataset[SOUND_DATA.cues] = String(state.cues);
+  if (state.lastCue) element.dataset[SOUND_DATA.lastCue] = state.lastCue;
+  else delete element.dataset[SOUND_DATA.lastCue];
+  if (state.bed) element.dataset[SOUND_DATA.bed] = state.bed;
+  else delete element.dataset[SOUND_DATA.bed];
 }

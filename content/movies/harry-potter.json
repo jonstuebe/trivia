@@ -104,7 +104,7 @@
     {
       "id": "nzk11mv3",
       "tier": 1,
-      "prompt": "What colour is the hair of every Weasley?",
+      "prompt": "What color is the hair of every Weasley?",
       "correct": "Red",
       "wrong": ["Blonde", "Black", "Brown"]
     },
@@ -168,7 +168,7 @@
     {
       "id": "24rgyf7p",
       "tier": 2,
-      "prompt": "In Order of the Phoenix, who is the new Defence Against the Dark Arts teacher?",
+      "prompt": "In Order of the Phoenix, who is the new Defense Against the Dark Arts teacher?",
       "correct": "Dolores Umbridge",
       "wrong": ["Gilderoy Lockhart", "Quirinus Quirrell", "Horace Slughorn"]
     },
@@ -329,7 +329,7 @@
     {
       "id": "ucieojcw",
       "tier": 3,
-      "prompt": "Asked if he still loves Lily after all this time, what one word does Snape answer?",
+      "prompt": "When Dumbledore asks \"After all this time?\" about his love for Lily, what one word does Snape answer?",
       "correct": "Always",
       "wrong": ["Forever", "Never", "Truly"],
       "source": "Deathly Hallows – Part 2 (2011), Snape's memories in the Pensieve: 'After all this time?' 'Always.'"
@@ -497,7 +497,7 @@
     {
       "id": "t0752fy6",
       "tier": 5,
-      "prompt": "In the first film, which flavour of Bertie Bott's bean does Dumbledore eat?",
+      "prompt": "In the first film, which flavor of Bertie Bott's bean does Dumbledore eat?",
       "correct": "Earwax",
       "wrong": ["Soap", "Bogey", "Sprouts"],
       "source": "Philosopher's Stone (2001), hospital wing ending: 'Alas, earwax.'"

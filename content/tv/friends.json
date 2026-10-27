@@ -252,7 +252,7 @@
     {
       "id": "0jr78wvp",
       "tier": 2,
-      "prompt": "Finish Joey's famous outburst: \"Joey doesn't share…\"",
+      "prompt": "Complete Joey's famous outburst: \"Joey doesn't share…\"",
       "correct": "Food!",
       "wrong": ["Money!", "Clothes!", "Secrets!"],
       "source": "S10E9: https://fangj.github.io/friends/season/1009.html"

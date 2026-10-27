@@ -264,7 +264,7 @@
     {
       "id": "dugerwbt",
       "tier": 3,
-      "prompt": "What honour does Alex earn at her middle school graduation?",
+      "prompt": "What honor does Alex earn at her middle school graduation?",
       "correct": "Valedictorian",
       "wrong": ["Most popular", "Best dressed", "Class clown"],
       "source": "S2E23 \"See You Next Fall\""

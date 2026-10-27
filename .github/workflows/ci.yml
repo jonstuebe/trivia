@@ -36,19 +36,15 @@ jobs:
       - run: bun run typecheck
       - run: bun run test
       - run: bun run build
-      # The real build is what deploys, so none of the test build's switches
-      # may be in it: the instant-reveal key, the sound data attributes and
-      # the stand-in analytics token and script. Each is behind a mode check
-      # that the real build folds away; this fails if one stops folding.
-      - name: The real build has no test-build switches
-        run: |
-          if grep -rlF -e trivia.fixtures.instantReveal -e data-sound -e fixture-token -e fixture-beacon dist/; then
-            echo "::error::A test-build switch is in the real build (files above)."
-            exit 1
-          fi
       # The test build on the fixture Topic set, into dist-fixtures/. It
       # checks the fixtures and regenerates their topic index first.
       - run: bun run build:fixtures
+      # The real build is what deploys, so none of the test build's switches
+      # may be in it: the instant-reveal key, the sound readout and the
+      # stand-in analytics token and script. Each is behind a mode check that
+      # the real build folds away; this fails if one stops folding, or if a
+      # switch is renamed and the test build no longer has it.
+      - run: bun run check-real-build
       - name: Committed files are up to date after build (src/routeTree.gen.ts, src/content/topic-index.gen.json, src/content/topic-index.fixtures.gen.json)
         run: git diff --exit-code
       # The Chromium build that @e2e-dev/web's Playwright expects, with its
