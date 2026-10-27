@@ -1,6 +1,37 @@
 {
-  "general": null,
-  "tv": [],
+  "general": {
+    "questionCounts": {
+      "1": 15,
+      "2": 15,
+      "3": 15,
+      "4": 15,
+      "5": 15
+    }
+  },
+  "tv": [
+    {
+      "name": "Modern Family",
+      "slug": "modern-family",
+      "questionCounts": {
+        "1": 15,
+        "2": 15,
+        "3": 15,
+        "4": 15,
+        "5": 15
+      }
+    },
+    {
+      "name": "The Big Bang Theory",
+      "slug": "the-big-bang-theory",
+      "questionCounts": {
+        "1": 16,
+        "2": 17,
+        "3": 18,
+        "4": 17,
+        "5": 15
+      }
+    }
+  ],
   "movies": [
     {
       "name": "Harry Potter",
@@ -11,6 +42,50 @@
         "3": 16,
         "4": 16,
         "5": 16
+      }
+    },
+    {
+      "name": "Jurassic Park",
+      "slug": "jurassic-park",
+      "questionCounts": {
+        "1": 15,
+        "2": 15,
+        "3": 15,
+        "4": 15,
+        "5": 15
+      }
+    },
+    {
+      "name": "Marvel Cinematic Universe",
+      "slug": "marvel-cinematic-universe",
+      "questionCounts": {
+        "1": 15,
+        "2": 15,
+        "3": 15,
+        "4": 15,
+        "5": 15
+      }
+    },
+    {
+      "name": "Pixar",
+      "slug": "pixar",
+      "questionCounts": {
+        "1": 16,
+        "2": 17,
+        "3": 16,
+        "4": 17,
+        "5": 16
+      }
+    },
+    {
+      "name": "Star Wars",
+      "slug": "star-wars",
+      "questionCounts": {
+        "1": 15,
+        "2": 15,
+        "3": 15,
+        "4": 15,
+        "5": 15
       }
     }
   ]

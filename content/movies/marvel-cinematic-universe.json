@@ -1,0 +1,605 @@
+{
+  "title": "Marvel Cinematic Universe",
+  "questions": [
+    {
+      "id": "x4iqih37",
+      "tier": 1,
+      "prompt": "What is Tony Stark's superhero name?",
+      "correct": "Iron Man",
+      "wrong": ["Ant-Man", "Hawkeye", "Star-Lord"],
+      "source": "Iron Man (2008), closing press conference; https://en.wikipedia.org/wiki/Tony_Stark_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "32itu0mu",
+      "tier": 1,
+      "prompt": "What is the name of Thor's hammer?",
+      "correct": "Mjolnir",
+      "wrong": ["Gungnir", "Hofund", "Excalibur"],
+      "source": "Thor (2011); https://en.wikipedia.org/wiki/Mjolnir_(comics)"
+    },
+    {
+      "id": "zmg6kedw",
+      "tier": 1,
+      "prompt": "Who is Thor's adopted brother?",
+      "correct": "Loki",
+      "wrong": ["Heimdall", "Volstagg", "Fandral"],
+      "source": "Thor (2011); https://en.wikipedia.org/wiki/Loki_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "su2nqyni",
+      "tier": 1,
+      "prompt": "What color is the Hulk's skin?",
+      "correct": "Green",
+      "wrong": ["Blue", "Orange", "Purple"],
+      "source": "The Avengers (2012); https://en.wikipedia.org/wiki/Bruce_Banner_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "waq738x6",
+      "tier": 1,
+      "prompt": "In Infinity War, what is Thanos trying to collect?",
+      "correct": "The Infinity Stones",
+      "wrong": ["The Dragon Balls", "The Ten Rings", "The Norn Stones"],
+      "source": "Avengers: Infinity War (2018); https://en.wikipedia.org/wiki/Avengers:_Infinity_War"
+    },
+    {
+      "id": "f8pkjtt4",
+      "tier": 1,
+      "prompt": "What is Peter Parker's superhero name?",
+      "correct": "Spider-Man",
+      "wrong": ["Ant-Man", "Iron Man", "Falcon"],
+      "source": "Captain America: Civil War (2016); https://en.wikipedia.org/wiki/Peter_Parker_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "is7ax36w",
+      "tier": 1,
+      "prompt": "Which African country does Black Panther rule?",
+      "correct": "Wakanda",
+      "wrong": ["Sokovia", "Genosha", "Latveria"],
+      "source": "Black Panther (2018); https://en.wikipedia.org/wiki/Black_Panther_(film)"
+    },
+    {
+      "id": "ea2ytvvv",
+      "tier": 1,
+      "prompt": "Which character can only say \"I am Groot\"?",
+      "correct": "Groot",
+      "wrong": ["Rocket", "Drax", "Mantis"],
+      "source": "Guardians of the Galaxy (2014); https://en.wikipedia.org/wiki/Groot"
+    },
+    {
+      "id": "ehi5lqw3",
+      "tier": 1,
+      "prompt": "What is Natasha Romanoff's superhero name?",
+      "correct": "Black Widow",
+      "wrong": ["Scarlet Witch", "Captain Marvel", "Wasp"],
+      "source": "The Avengers (2012); https://en.wikipedia.org/wiki/Natasha_Romanoff_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "iyqijfqm",
+      "tier": 1,
+      "prompt": "Which Guardian of the Galaxy is a talking raccoon?",
+      "correct": "Rocket",
+      "wrong": ["Groot", "Drax", "Yondu"],
+      "source": "Guardians of the Galaxy (2014); https://en.wikipedia.org/wiki/Rocket_Raccoon"
+    },
+    {
+      "id": "1xbxrb4u",
+      "tier": 1,
+      "prompt": "Which actor plays Tony Stark?",
+      "correct": "Robert Downey Jr.",
+      "wrong": ["Chris Evans", "Mark Ruffalo", "Jeremy Renner"],
+      "source": "https://www.imdb.com/title/tt0371746/"
+    },
+    {
+      "id": "s5ckh48v",
+      "tier": 1,
+      "prompt": "Which actor plays Steve Rogers, Captain America?",
+      "correct": "Chris Evans",
+      "wrong": ["Chris Pratt", "Chris Hemsworth", "Chris Pine"],
+      "source": "https://www.imdb.com/title/tt0458339/"
+    },
+    {
+      "id": "ulezafqm",
+      "tier": 1,
+      "prompt": "Which actor plays Nick Fury?",
+      "correct": "Samuel L. Jackson",
+      "wrong": ["Laurence Fishburne", "Morgan Freeman", "Denzel Washington"],
+      "source": "https://en.wikipedia.org/wiki/Nick_Fury_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "ppci6v1n",
+      "tier": 1,
+      "prompt": "What is the superhero team Nick Fury brings together called?",
+      "correct": "The Avengers",
+      "wrong": ["The Justice League", "The X-Men", "The Defenders"],
+      "source": "The Avengers (2012); https://en.wikipedia.org/wiki/The_Avengers_(2012_film)"
+    },
+    {
+      "id": "chri1hpx",
+      "tier": 1,
+      "prompt": "What can Ant-Man's suit do?",
+      "correct": "Change his size",
+      "wrong": ["Turn him invisible", "Read minds", "Breathe fire"],
+      "source": "Ant-Man (2015); https://en.wikipedia.org/wiki/Ant-Man_(film)"
+    },
+    {
+      "id": "zi1h3t1z",
+      "tier": 2,
+      "prompt": "What metal is Captain America's shield made of?",
+      "correct": "Vibranium",
+      "wrong": ["Adamantium", "Uru", "Titanium"],
+      "source": "Captain America: The First Avenger (2011), Howard Stark's lab scene; https://en.wikipedia.org/wiki/Captain_America%27s_shield"
+    },
+    {
+      "id": "ynmyknmk",
+      "tier": 2,
+      "prompt": "Which realm is Thor from?",
+      "correct": "Asgard",
+      "wrong": ["Xandar", "Sakaar", "Titan"],
+      "source": "Thor (2011); https://en.wikipedia.org/wiki/Thor_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "uwpg2mtr",
+      "tier": 2,
+      "prompt": "What is Doctor Strange's first name?",
+      "correct": "Stephen",
+      "wrong": ["Victor", "Richard", "Michael"],
+      "source": "Doctor Strange (2016); https://en.wikipedia.org/wiki/Stephen_Strange_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "70c8yos1",
+      "tier": 2,
+      "prompt": "Who is Thor's father?",
+      "correct": "Odin",
+      "wrong": ["Bor", "Laufey", "Heimdall"],
+      "source": "Thor (2011); https://en.wikipedia.org/wiki/Thor_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "hsn1iwvn",
+      "tier": 2,
+      "prompt": "In Endgame, what does Tony Stark say just before he snaps his fingers?",
+      "correct": "\"I am Iron Man\"",
+      "wrong": ["\"This ends now\"", "\"Goodbye, Thanos\"", "\"For Pepper\""],
+      "source": "Avengers: Endgame (2019), final battle; https://en.wikipedia.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "5mpchsxf",
+      "tier": 2,
+      "prompt": "What is Black Panther's real name?",
+      "correct": "T'Challa",
+      "wrong": ["M'Baku", "Zuri", "W'Kabi"],
+      "source": "Black Panther (2018); https://en.wikipedia.org/wiki/T%27Challa_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "ehcyc7s2",
+      "tier": 2,
+      "prompt": "What does Peter Quill call himself?",
+      "correct": "Star-Lord",
+      "wrong": ["Space-Lord", "Starboy", "Star-Man"],
+      "source": "Guardians of the Galaxy (2014), opening scene; https://en.wikipedia.org/wiki/Peter_Quill_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "n0b4oeps",
+      "tier": 2,
+      "prompt": "Which actor plays Thor?",
+      "correct": "Chris Hemsworth",
+      "wrong": ["Liam Hemsworth", "Chris Pratt", "Alexander Skarsgård"],
+      "source": "https://www.imdb.com/title/tt0800369/"
+    },
+    {
+      "id": "76oj7lhz",
+      "tier": 2,
+      "prompt": "Which actor plays Loki?",
+      "correct": "Tom Hiddleston",
+      "wrong": ["Tom Holland", "Benedict Cumberbatch", "Sebastian Stan"],
+      "source": "https://www.imdb.com/title/tt0800369/"
+    },
+    {
+      "id": "hldusszk",
+      "tier": 2,
+      "prompt": "Which hero does Brie Larson play?",
+      "correct": "Captain Marvel",
+      "wrong": ["Scarlet Witch", "Black Widow", "The Wasp"],
+      "source": "https://www.imdb.com/title/tt4154664/"
+    },
+    {
+      "id": "qpz1hds0",
+      "tier": 2,
+      "prompt": "What is Bucky Barnes called after HYDRA brainwashes him?",
+      "correct": "The Winter Soldier",
+      "wrong": ["The Red Guardian", "The Falcon", "Crossbones"],
+      "source": "Captain America: The Winter Soldier (2014); https://en.wikipedia.org/wiki/Bucky_Barnes_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "3jocq4pm",
+      "tier": 2,
+      "prompt": "In Infinity War, who does Thanos sacrifice to get the Soul Stone?",
+      "correct": "Gamora",
+      "wrong": ["Nebula", "Mantis", "Loki"],
+      "source": "Avengers: Infinity War (2018), Vormir scene; https://en.wikipedia.org/wiki/Avengers:_Infinity_War"
+    },
+    {
+      "id": "f3f82n3v",
+      "tier": 2,
+      "prompt": "In Endgame, which Avenger gives their life on Vormir for the Soul Stone?",
+      "correct": "Black Widow",
+      "wrong": ["Hawkeye", "Captain Marvel", "Scarlet Witch"],
+      "source": "Avengers: Endgame (2019), Vormir scene; https://en.wikipedia.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "ucf47wnb",
+      "tier": 2,
+      "prompt": "How many Infinity Stones are there?",
+      "correct": "Six",
+      "wrong": ["Five", "Seven", "Nine"],
+      "source": "Avengers: Infinity War (2018), Bruce Banner's warning to Doctor Strange; https://en.wikipedia.org/wiki/Infinity_Stones"
+    },
+    {
+      "id": "q9vtd590",
+      "tier": 2,
+      "prompt": "Which 2008 film was the first in the franchise?",
+      "correct": "Iron Man",
+      "wrong": ["The Incredible Hulk", "Thor", "Captain America"],
+      "source": "https://en.wikipedia.org/wiki/Iron_Man_(2008_film)"
+    },
+    {
+      "id": "sfyjgmcv",
+      "tier": 3,
+      "prompt": "Which Infinity Stone is inside the Tesseract?",
+      "correct": "Space Stone",
+      "wrong": ["Mind Stone", "Power Stone", "Time Stone"],
+      "source": "Avengers: Infinity War (2018), Loki hands Thanos the Tesseract; https://en.wikipedia.org/wiki/Infinity_Stones"
+    },
+    {
+      "id": "f6hj41tv",
+      "tier": 3,
+      "prompt": "In Guardians of the Galaxy, what is the name of Peter Quill's mixtape?",
+      "correct": "Awesome Mix Vol. 1",
+      "wrong": ["Greatest Hits Vol. 1", "Road Trip Mix Vol. 1", "Mom's Favorites Vol. 1"],
+      "source": "Guardians of the Galaxy (2014), the cassette label; https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy:_Awesome_Mix_Vol._1"
+    },
+    {
+      "id": "fc9tprsr",
+      "tier": 3,
+      "prompt": "What is the name of Tony Stark's daughter?",
+      "correct": "Morgan",
+      "wrong": ["Emma", "Lily", "Grace"],
+      "source": "Avengers: Endgame (2019); https://en.wikipedia.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "12onlfsx",
+      "tier": 3,
+      "prompt": "What is Thanos's home planet?",
+      "correct": "Titan",
+      "wrong": ["Xandar", "Vormir", "Ego"],
+      "source": "Avengers: Infinity War (2018), battle on Titan; https://en.wikipedia.org/wiki/Thanos_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "peeyfq1i",
+      "tier": 3,
+      "prompt": "In Thor: Ragnarok, on which planet does Thor fight the Hulk as a gladiator?",
+      "correct": "Sakaar",
+      "wrong": ["Xandar", "Knowhere", "Contraxia"],
+      "source": "Thor: Ragnarok (2017); https://en.wikipedia.org/wiki/Thor:_Ragnarok"
+    },
+    {
+      "id": "y5y8aixp",
+      "tier": 3,
+      "prompt": "In Infinity War, what is the name of Thor's new axe?",
+      "correct": "Stormbreaker",
+      "wrong": ["Jarnbjorn", "Gungnir", "Thunderstrike"],
+      "source": "Avengers: Infinity War (2018), Nidavellir scene; https://en.wikipedia.org/wiki/Avengers:_Infinity_War"
+    },
+    {
+      "id": "pvli2ul9",
+      "tier": 3,
+      "prompt": "In The Avengers, Loki says \"I have an army.\" What does Tony Stark reply?",
+      "correct": "\"We have a Hulk\"",
+      "wrong": ["\"We have a plan\"", "\"We have a hammer\"", "\"We have Thor\""],
+      "source": "The Avengers (2012), Stark Tower scene; https://en.wikiquote.org/wiki/The_Avengers_(2012_film)"
+    },
+    {
+      "id": "g70d5om6",
+      "tier": 3,
+      "prompt": "In The Avengers, what is Bruce Banner's secret for turning into the Hulk?",
+      "correct": "\"I'm always angry\"",
+      "wrong": ["\"I'm never calm\"", "\"I don't sleep\"", "\"I think of Loki\""],
+      "source": "The Avengers (2012), Battle of New York: \"That's my secret, Cap. I'm always angry.\"; https://en.wikiquote.org/wiki/The_Avengers_(2012_film)"
+    },
+    {
+      "id": "qb26kul2",
+      "tier": 3,
+      "prompt": "In Endgame, what does Thanos say just before his snap fails?",
+      "correct": "\"I am inevitable\"",
+      "wrong": ["\"I am the end\"", "\"I am destiny\"", "\"I am balance\""],
+      "source": "Avengers: Endgame (2019), final battle; https://en.wikiquote.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "l6h7lhro",
+      "tier": 3,
+      "prompt": "In Endgame, how many years pass between the Snap and the main story?",
+      "correct": "Five",
+      "wrong": ["Two", "Three", "Ten"],
+      "source": "Avengers: Endgame (2019), the \"Five years later\" title card; https://en.wikipedia.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "powdjclj",
+      "tier": 3,
+      "prompt": "In The Avengers' post-credits scene, what food are the heroes eating?",
+      "correct": "Shawarma",
+      "wrong": ["Pizza", "Tacos", "Burgers"],
+      "source": "The Avengers (2012), post-credits scene; https://en.wikipedia.org/wiki/The_Avengers_(2012_film)"
+    },
+    {
+      "id": "ouqinbgr",
+      "tier": 3,
+      "prompt": "Which Infinity Stone sits in Vision's forehead?",
+      "correct": "Mind Stone",
+      "wrong": ["Soul Stone", "Power Stone", "Reality Stone"],
+      "source": "Avengers: Infinity War (2018); https://en.wikipedia.org/wiki/Vision_(Marvel_Cinematic_Universe)"
+    },
+    {
+      "id": "wskvkomf",
+      "tier": 3,
+      "prompt": "In Black Panther, who throws T'Challa over the waterfall?",
+      "correct": "Killmonger",
+      "wrong": ["M'Baku", "Ulysses Klaue", "Okoye"],
+      "source": "Black Panther (2018), ritual combat at Warrior Falls; https://en.wikipedia.org/wiki/Black_Panther_(film)"
+    },
+    {
+      "id": "rhm8wx7j",
+      "tier": 3,
+      "prompt": "Who is the villain in Spider-Man: Homecoming?",
+      "correct": "The Vulture",
+      "wrong": ["Mysterio", "The Rhino", "Electro"],
+      "source": "Spider-Man: Homecoming (2017); https://en.wikipedia.org/wiki/Spider-Man:_Homecoming"
+    },
+    {
+      "id": "0e4o4v4z",
+      "tier": 3,
+      "prompt": "In Iron Man, who betrays Tony and becomes the Iron Monger?",
+      "correct": "Obadiah Stane",
+      "wrong": ["Justin Hammer", "Aldrich Killian", "Ivan Vanko"],
+      "source": "Iron Man (2008); https://en.wikipedia.org/wiki/Iron_Man_(2008_film)"
+    },
+    {
+      "id": "hnx9ipuw",
+      "tier": 4,
+      "prompt": "Who directed Avengers: Endgame?",
+      "correct": "The Russo brothers",
+      "wrong": ["Joss Whedon", "James Gunn", "Taika Waititi"],
+      "source": "https://en.wikipedia.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "do9p57s4",
+      "tier": 4,
+      "prompt": "In The Avengers, what is the name of the alien army Loki leads?",
+      "correct": "The Chitauri",
+      "wrong": ["The Skrulls", "The Kree", "The Dark Elves"],
+      "source": "The Avengers (2012); https://en.wikipedia.org/wiki/The_Avengers_(2012_film)"
+    },
+    {
+      "id": "jzg3w55a",
+      "tier": 4,
+      "prompt": "In Iron Man, which fellow captive helps Tony build his first suit?",
+      "correct": "Yinsen",
+      "wrong": ["Raza", "Rhodey", "Happy"],
+      "source": "Iron Man (2008), the cave scenes; https://en.wikipedia.org/wiki/Iron_Man_(2008_film)"
+    },
+    {
+      "id": "8s71e4lu",
+      "tier": 4,
+      "prompt": "In Iron Man 3, who is the actor hired to play the Mandarin?",
+      "correct": "Trevor Slattery",
+      "wrong": ["Justin Hammer", "Harley Keener", "Eric Savin"],
+      "source": "Iron Man 3 (2013); https://en.wikipedia.org/wiki/Iron_Man_3"
+    },
+    {
+      "id": "o9iz4x7r",
+      "tier": 4,
+      "prompt": "In Captain America: Civil War, who frames Bucky for the bombing in Vienna?",
+      "correct": "Helmut Zemo",
+      "wrong": ["Brock Rumlow", "Thaddeus Ross", "Alexander Pierce"],
+      "source": "Captain America: Civil War (2016); https://en.wikipedia.org/wiki/Captain_America:_Civil_War"
+    },
+    {
+      "id": "d0mgpe4p",
+      "tier": 4,
+      "prompt": "In The Avengers, what does Agent Coulson want Steve Rogers to sign?",
+      "correct": "Trading cards",
+      "wrong": ["A comic book", "A poster", "A baseball"],
+      "source": "The Avengers (2012), Coulson's vintage Captain America trading cards; https://www.midtowncomics.com/p/1421604-avengers-movie-coulsons-captain-america-trading-cards-set-ii"
+    },
+    {
+      "id": "mn5msxb5",
+      "tier": 4,
+      "prompt": "In Thor: The Dark World, what form does the Reality Stone take?",
+      "correct": "The Aether",
+      "wrong": ["The Orb", "The Tesseract", "The Scepter"],
+      "source": "Thor: The Dark World (2013); https://en.wikipedia.org/wiki/Thor:_The_Dark_World"
+    },
+    {
+      "id": "9cry4s38",
+      "tier": 4,
+      "prompt": "In Infinity War, what animal does Thor keep calling Rocket?",
+      "correct": "Rabbit",
+      "wrong": ["Squirrel", "Badger", "Fox"],
+      "source": "Avengers: Infinity War (2018), the Benatar scene; https://www.comicbasics.com/why-does-thor-call-rocket-rabbit-in-the-mcu/"
+    },
+    {
+      "id": "3ld87dpt",
+      "tier": 4,
+      "prompt": "In Captain America: Civil War, in which country is the airport battle?",
+      "correct": "Germany",
+      "wrong": ["Austria", "Romania", "Nigeria"],
+      "source": "Captain America: Civil War (2016), Leipzig/Halle Airport; https://en.wikipedia.org/wiki/Captain_America:_Civil_War"
+    },
+    {
+      "id": "m8ynmel3",
+      "tier": 4,
+      "prompt": "In Spider-Man: Far From Home, what is Mysterio's real name?",
+      "correct": "Quentin Beck",
+      "wrong": ["Adrian Toomes", "Otto Octavius", "Max Dillon"],
+      "source": "Spider-Man: Far From Home (2019); https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home"
+    },
+    {
+      "id": "xscjh46o",
+      "tier": 4,
+      "prompt": "Black Panther was the first superhero film nominated for which Oscar?",
+      "correct": "Best Picture",
+      "wrong": ["Best Director", "Best Actor", "Best Screenplay"],
+      "source": "https://en.wikipedia.org/wiki/Black_Panther_(film)"
+    },
+    {
+      "id": "hx0ywk5z",
+      "tier": 4,
+      "prompt": "Who plays Bruce Banner in The Incredible Hulk (2008)?",
+      "correct": "Edward Norton",
+      "wrong": ["Eric Bana", "Mark Ruffalo", "Josh Lucas"],
+      "source": "https://en.wikipedia.org/wiki/The_Incredible_Hulk_(film)"
+    },
+    {
+      "id": "63yb6ydp",
+      "tier": 4,
+      "prompt": "Who directed Iron Man (2008)?",
+      "correct": "Jon Favreau",
+      "wrong": ["Joss Whedon", "Shane Black", "Kenneth Branagh"],
+      "source": "https://en.wikipedia.org/wiki/Iron_Man_(2008_film)"
+    },
+    {
+      "id": "fr806sv1",
+      "tier": 4,
+      "prompt": "In Endgame, to which year do Tony and Steve travel to find the Tesseract?",
+      "correct": "1970",
+      "wrong": ["1965", "1977", "1983"],
+      "source": "Avengers: Endgame (2019), Camp Lehigh scene; https://en.wikipedia.org/wiki/Avengers:_Endgame"
+    },
+    {
+      "id": "d670v6ag",
+      "tier": 4,
+      "prompt": "In Captain Marvel, who scratches out Nick Fury's eye?",
+      "correct": "Goose",
+      "wrong": ["Talos", "Ronan", "Yon-Rogg"],
+      "source": "Captain Marvel (2019), closing scenes; https://en.wikipedia.org/wiki/Captain_Marvel_(film)"
+    },
+    {
+      "id": "surwna80",
+      "tier": 5,
+      "prompt": "In Infinity War, which dwarf forges Thor's new weapon?",
+      "correct": "Eitri",
+      "wrong": ["Brokk", "Sindri", "Andvari"],
+      "source": "Avengers: Infinity War (2018), Nidavellir scene; https://en.wikipedia.org/wiki/Avengers:_Infinity_War"
+    },
+    {
+      "id": "h3zlas2x",
+      "tier": 5,
+      "prompt": "In The First Avenger, which scientist gives Steve Rogers the super-soldier serum?",
+      "correct": "Abraham Erskine",
+      "wrong": ["Arnim Zola", "Howard Stark", "Hank Pym"],
+      "source": "Captain America: The First Avenger (2011); https://en.wikipedia.org/wiki/Captain_America:_The_First_Avenger"
+    },
+    {
+      "id": "zoqqpwhq",
+      "tier": 5,
+      "prompt": "In Guardians of the Galaxy Vol. 2, what is the gold-skinned race led by Ayesha?",
+      "correct": "The Sovereign",
+      "wrong": ["The Ravagers", "The Nova Corps", "The Kree"],
+      "source": "Guardians of the Galaxy Vol. 2 (2017); https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_Vol._2"
+    },
+    {
+      "id": "6gqk0tb7",
+      "tier": 5,
+      "prompt": "In Guardians of the Galaxy, what prison is the team sent to after their fight on Xandar?",
+      "correct": "The Kyln",
+      "wrong": ["The Raft", "Stonekeep", "Ravenhold"],
+      "source": "Guardians of the Galaxy (2014); https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_(film)"
+    },
+    {
+      "id": "hsk2yfdp",
+      "tier": 5,
+      "prompt": "In Black Panther, in which South Korean city is the casino fight?",
+      "correct": "Busan",
+      "wrong": ["Seoul", "Incheon", "Daegu"],
+      "source": "Black Panther (2018), the Busan casino scene; https://en.wikipedia.org/wiki/Black_Panther_(film)"
+    },
+    {
+      "id": "1fjp2n38",
+      "tier": 5,
+      "prompt": "In Black Panther, what plant gives the Black Panther his powers?",
+      "correct": "Heart-Shaped Herb",
+      "wrong": ["Lotus of Bast", "Panther Lily", "Silver Root"],
+      "source": "Black Panther (2018); https://en.wikipedia.org/wiki/Black_Panther_(film)"
+    },
+    {
+      "id": "gvhntlzb",
+      "tier": 5,
+      "prompt": "In Thor: Ragnarok, what is the name of Hela's giant wolf?",
+      "correct": "Fenris",
+      "wrong": ["Garm", "Skoll", "Hati"],
+      "source": "Thor: Ragnarok (2017); https://en.wikipedia.org/wiki/Thor:_Ragnarok"
+    },
+    {
+      "id": "vi2hz2aq",
+      "tier": 5,
+      "prompt": "In The Winter Soldier, which soundtrack album does Sam tell Steve to listen to?",
+      "correct": "Trouble Man",
+      "wrong": ["Purple Rain", "Saturday Night Fever", "Superfly"],
+      "source": "Captain America: The Winter Soldier (2014), Sam and Steve meet; https://en.wikipedia.org/wiki/Trouble_Man_(album)"
+    },
+    {
+      "id": "otptxj06",
+      "tier": 5,
+      "prompt": "In The Winter Soldier, what is S.H.I.E.L.D.'s helicarrier program called?",
+      "correct": "Project Insight",
+      "wrong": ["Project Rebirth", "Project Pegasus", "Project Overlord"],
+      "source": "Captain America: The Winter Soldier (2014); https://en.wikipedia.org/wiki/Captain_America:_The_Winter_Soldier"
+    },
+    {
+      "id": "mcsffdtt",
+      "tier": 5,
+      "prompt": "Who composed the main theme for The Avengers (2012)?",
+      "correct": "Alan Silvestri",
+      "wrong": ["Hans Zimmer", "John Williams", "Danny Elfman"],
+      "source": "https://en.wikipedia.org/wiki/The_Avengers_(soundtrack)"
+    },
+    {
+      "id": "0fujpdql",
+      "tier": 5,
+      "prompt": "Who directed Thor (2011)?",
+      "correct": "Kenneth Branagh",
+      "wrong": ["Alan Taylor", "Taika Waititi", "Joe Johnston"],
+      "source": "https://en.wikipedia.org/wiki/Thor_(film)"
+    },
+    {
+      "id": "5mnj0cyn",
+      "tier": 5,
+      "prompt": "Who plays Alexander Pierce in The Winter Soldier?",
+      "correct": "Robert Redford",
+      "wrong": ["Harrison Ford", "Michael Douglas", "Jack Nicholson"],
+      "source": "https://en.wikipedia.org/wiki/Captain_America:_The_Winter_Soldier"
+    },
+    {
+      "id": "bvv8j6gt",
+      "tier": 5,
+      "prompt": "How many films make up Marvel Studios' Infinity Saga?",
+      "correct": "23",
+      "wrong": ["20", "22", "25"],
+      "source": "Marvel Studios' Infinity Saga runs from Iron Man (2008) to Spider-Man: Far From Home (2019); https://en.wikipedia.org/wiki/Marvel_Cinematic_Universe:_Phase_Three"
+    },
+    {
+      "id": "5m0efnf8",
+      "tier": 5,
+      "prompt": "What is the name of Tony Stark's mother?",
+      "correct": "Maria",
+      "wrong": ["Sarah", "Margaret", "Elaine"],
+      "source": "Captain America: Civil War (2016), the 1991 footage; https://en.wikipedia.org/wiki/Captain_America:_Civil_War"
+    },
+    {
+      "id": "c9ai7te7",
+      "tier": 5,
+      "prompt": "In Black Panther, in which city does T'Challa open a Wakandan outreach center?",
+      "correct": "Oakland",
+      "wrong": ["Atlanta", "Chicago", "Detroit"],
+      "source": "Black Panther (2018), closing scene; https://en.wikipedia.org/wiki/Black_Panther_(film)"
+    }
+  ]
+}
