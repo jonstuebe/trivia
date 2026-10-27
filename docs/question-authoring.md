@@ -32,7 +32,7 @@ A Tier is decided by roughly what share of that Topic's players would know the a
 ## Movie franchises
 
 - A movie Title covers its theatrical films only. The Star Wars Title excludes The Mandalorian, and the Marvel Cinematic Universe Title excludes the Disney+ series.
-- The prompt names the film whenever the fact belongs to one film ("In Toy Story 3, …"), and leaves it out when the fact holds across the franchise. Pixar is one Title spanning unrelated films, so nearly every Pixar prompt names its film.
+- The prompt names the film whenever the fact belongs to one film ("In Toy Story 3, …"), and leaves it out when the fact holds across the franchise. Pixar is one Title spanning unrelated films, so nearly every Pixar prompt names its film. Disney (the Walt Disney Animation Studios films) is the same, and a fact that differs in a live-action remake is asked about the animated film by name and year ("In Mulan (1998), …").
 - Coverage is weighted toward the best-known films.
 
 ## Story vs making-of

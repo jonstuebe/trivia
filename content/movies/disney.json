@@ -1,0 +1,989 @@
+{
+  "title": "Disney",
+  "questions": [
+    {
+      "id": "go4urv9d",
+      "tier": 1,
+      "prompt": "In The Lion King, what is the name of Simba's father?",
+      "correct": "Mufasa",
+      "wrong": [
+        "Scar",
+        "Rafiki",
+        "Zazu"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lion-king-the"
+    },
+    {
+      "id": "5ldq0981",
+      "tier": 1,
+      "prompt": "In Frozen, what is the name of the talking snowman who loves warm hugs?",
+      "correct": "Olaf",
+      "wrong": [
+        "Sven",
+        "Hans",
+        "Oaken"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-2013"
+    },
+    {
+      "id": "9ziesg8v",
+      "tier": 1,
+      "prompt": "In Aladdin, what kind of animal is Abu?",
+      "correct": "A monkey",
+      "wrong": [
+        "A parrot",
+        "A tiger",
+        "A camel"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=aladdin"
+    },
+    {
+      "id": "9olo9ooa",
+      "tier": 1,
+      "prompt": "In The Little Mermaid, what does Ariel give Ursula in exchange for legs?",
+      "correct": "Her voice",
+      "wrong": [
+        "Her hair",
+        "Her crown",
+        "Her memories"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=little-mermaid-the"
+    },
+    {
+      "id": "xvovihqg",
+      "tier": 1,
+      "prompt": "In Snow White and the Seven Dwarfs, what does the Queen trick Snow White into eating?",
+      "correct": "A poisoned apple",
+      "wrong": [
+        "A poisoned pear",
+        "A cursed cupcake",
+        "A poisoned plum"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=snow-white-and-the-seven-dwarfs"
+    },
+    {
+      "id": "pa3tmds8",
+      "tier": 1,
+      "prompt": "In Cinderella, what does Cinderella leave behind on the palace steps?",
+      "correct": "A glass slipper",
+      "wrong": [
+        "A silver tiara",
+        "A pearl necklace",
+        "A satin glove"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=cinderella"
+    },
+    {
+      "id": "1taxplbq",
+      "tier": 1,
+      "prompt": "In Beauty and the Beast, what kind of object is Lumière?",
+      "correct": "A candelabra",
+      "wrong": [
+        "A clock",
+        "A teapot",
+        "A feather duster"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=beauty-and-the-beast-1991"
+    },
+    {
+      "id": "3y127p7h",
+      "tier": 1,
+      "prompt": "In Moana, what is the name of the demigod who joins Moana's voyage?",
+      "correct": "Maui",
+      "wrong": [
+        "Tamatoa",
+        "Tui",
+        "Kakamora"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=moana"
+    },
+    {
+      "id": "m08hdjz6",
+      "tier": 1,
+      "prompt": "In Zootopia, what kind of animal is Judy Hopps?",
+      "correct": "A rabbit",
+      "wrong": [
+        "A fox",
+        "A sheep",
+        "A mouse"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=zootopia"
+    },
+    {
+      "id": "qyxd4bfo",
+      "tier": 1,
+      "prompt": "In Peter Pan, what is the name of Peter's fairy companion?",
+      "correct": "Tinker Bell",
+      "wrong": [
+        "Merryweather",
+        "Fauna",
+        "Silver Wing"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=peter-pan"
+    },
+    {
+      "id": "lrnc5mnj",
+      "tier": 1,
+      "prompt": "In Pinocchio, what happens to Pinocchio's nose when he tells a lie?",
+      "correct": "It grows longer",
+      "wrong": [
+        "It glows red",
+        "It shrinks",
+        "It starts to sneeze"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=pinocchio"
+    },
+    {
+      "id": "mjwxzvw3",
+      "tier": 1,
+      "prompt": "In Frozen, which song does Elsa sing as she builds her ice palace?",
+      "correct": "Let It Go",
+      "wrong": [
+        "Love Is an Open Door",
+        "For the First Time in Forever",
+        "Do You Want to Build a Snowman?"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-2013; https://en.wikipedia.org/wiki/Frozen_(2013_film)"
+    },
+    {
+      "id": "v7mzidp6",
+      "tier": 1,
+      "prompt": "In The Lion King, which song's title means \"no worries\"?",
+      "correct": "Hakuna Matata",
+      "wrong": [
+        "Circle of Life",
+        "Be Prepared",
+        "Under the Sea"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lion-king-the"
+    },
+    {
+      "id": "unafyybq",
+      "tier": 1,
+      "prompt": "In One Hundred and One Dalmatians, who wants to make a coat out of the puppies?",
+      "correct": "Cruella De Vil",
+      "wrong": [
+        "Ursula",
+        "Maleficent",
+        "Lady Tremaine"
+      ],
+      "source": "https://en.wikipedia.org/wiki/One_Hundred_and_One_Dalmatians"
+    },
+    {
+      "id": "apnq01oj",
+      "tier": 1,
+      "prompt": "In The Jungle Book, what is the name of the tiger who hunts Mowgli?",
+      "correct": "Shere Khan",
+      "wrong": [
+        "Kaa",
+        "Bagheera",
+        "Rajah"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=jungle-book-the"
+    },
+    {
+      "id": "afdftzvf",
+      "tier": 1,
+      "prompt": "In The Lion King, what is the name of Simba's childhood friend who later becomes his queen?",
+      "correct": "Nala",
+      "wrong": [
+        "Sarabi",
+        "Shenzi",
+        "Kiara"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lion-king-the"
+    },
+    {
+      "id": "kdnf5aql",
+      "tier": 2,
+      "prompt": "In Aladdin (1992), who voices the Genie?",
+      "correct": "Robin Williams",
+      "wrong": [
+        "Eddie Murphy",
+        "Jim Carrey",
+        "Billy Crystal"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Aladdin_(1992_Disney_film)"
+    },
+    {
+      "id": "32my70y8",
+      "tier": 2,
+      "prompt": "In The Lion King, what kind of animal is Pumbaa?",
+      "correct": "A warthog",
+      "wrong": [
+        "A hippo",
+        "A hyena",
+        "A meerkat"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lion-king-the"
+    },
+    {
+      "id": "d9kul55u",
+      "tier": 2,
+      "prompt": "In Frozen, what is the name of Kristoff's reindeer?",
+      "correct": "Sven",
+      "wrong": [
+        "Olaf",
+        "Bjorn",
+        "Rudolph"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-2013"
+    },
+    {
+      "id": "06507l09",
+      "tier": 2,
+      "prompt": "In Tangled, what is the name of Rapunzel's pet chameleon?",
+      "correct": "Pascal",
+      "wrong": [
+        "Maximus",
+        "Meeko",
+        "Iago"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=tangled"
+    },
+    {
+      "id": "bzn8haa4",
+      "tier": 2,
+      "prompt": "In Mulan (1998), what kind of creature is Mushu?",
+      "correct": "A dragon",
+      "wrong": [
+        "A lizard",
+        "A snake",
+        "A cricket"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=mulan"
+    },
+    {
+      "id": "f2ayxrpw",
+      "tier": 2,
+      "prompt": "In Hercules, which god of the underworld is the film's villain?",
+      "correct": "Hades",
+      "wrong": [
+        "Zeus",
+        "Ares",
+        "Poseidon"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=hercules-1997"
+    },
+    {
+      "id": "54mbzb0e",
+      "tier": 2,
+      "prompt": "In Bambi, what is the name of the young skunk?",
+      "correct": "Flower",
+      "wrong": [
+        "Thumper",
+        "Blossom",
+        "Daisy"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=bambi"
+    },
+    {
+      "id": "3n4uyw7o",
+      "tier": 2,
+      "prompt": "In Big Hero 6, what is the name of the inflatable healthcare robot?",
+      "correct": "Baymax",
+      "wrong": [
+        "Megabot",
+        "Bolt",
+        "Gizmo"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=big-hero-6"
+    },
+    {
+      "id": "zptmwsxq",
+      "tier": 2,
+      "prompt": "In Zootopia, what kind of animal is Nick Wilde?",
+      "correct": "A fox",
+      "wrong": [
+        "A wolf",
+        "A coyote",
+        "A weasel"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=zootopia"
+    },
+    {
+      "id": "fv7vkgdc",
+      "tier": 2,
+      "prompt": "In Lilo & Stitch, what does the Hawaiian word \"ohana\" mean?",
+      "correct": "Family",
+      "wrong": [
+        "Friendship",
+        "Home",
+        "Forever"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lilo-and-stitch"
+    },
+    {
+      "id": "apj14zvc",
+      "tier": 2,
+      "prompt": "In Encanto, what is Luisa's magical gift?",
+      "correct": "Super strength",
+      "wrong": [
+        "Super hearing",
+        "Shape-shifting",
+        "Healing with food"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=encanto"
+    },
+    {
+      "id": "ivd217fy",
+      "tier": 2,
+      "prompt": "In Snow White and the Seven Dwarfs (1937), which dwarf never speaks?",
+      "correct": "Dopey",
+      "wrong": [
+        "Grumpy",
+        "Bashful",
+        "Sneezy"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=snow-white-and-the-seven-dwarfs"
+    },
+    {
+      "id": "fjpeej41",
+      "tier": 2,
+      "prompt": "In Aladdin, what is the name of Jafar's parrot?",
+      "correct": "Iago",
+      "wrong": [
+        "Rajah",
+        "Abu",
+        "Zazu"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=aladdin"
+    },
+    {
+      "id": "t5jd9r07",
+      "tier": 2,
+      "prompt": "In The Princess and the Frog, in which city does Tiana live?",
+      "correct": "New Orleans",
+      "wrong": [
+        "Baton Rouge",
+        "Memphis",
+        "Atlanta"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=princess-and-the-frog-the"
+    },
+    {
+      "id": "2s0fu15c",
+      "tier": 2,
+      "prompt": "In Tangled, what does Rapunzel first use as a weapon against Flynn?",
+      "correct": "A frying pan",
+      "wrong": [
+        "A broom",
+        "A rolling pin",
+        "A candlestick"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=tangled"
+    },
+    {
+      "id": "070uxrd5",
+      "tier": 2,
+      "prompt": "In Encanto, which family member did not receive a magical gift?",
+      "correct": "Mirabel",
+      "wrong": [
+        "Isabela",
+        "Luisa",
+        "Camilo"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=encanto"
+    },
+    {
+      "id": "9lheaa11",
+      "tier": 2,
+      "prompt": "In Frozen, who turns out to be the film's villain?",
+      "correct": "Prince Hans",
+      "wrong": [
+        "Grand Pabbie",
+        "Kristoff",
+        "Oaken"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-2013; https://en.wikipedia.org/wiki/Frozen_(2013_film)"
+    },
+    {
+      "id": "o9u5hxvo",
+      "tier": 3,
+      "prompt": "In Beauty and the Beast, what is the name of Belle's father?",
+      "correct": "Maurice",
+      "wrong": [
+        "Philippe",
+        "Henri",
+        "Jacques"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=beauty-and-the-beast-1991"
+    },
+    {
+      "id": "m9uznewq",
+      "tier": 3,
+      "prompt": "In Moana, what is the name of the giant crab who loves shiny things?",
+      "correct": "Tamatoa",
+      "wrong": [
+        "Te Kā",
+        "Te Fiti",
+        "Kakamora"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=moana"
+    },
+    {
+      "id": "n2zvbhx9",
+      "tier": 3,
+      "prompt": "In Tangled, what is Flynn Rider's real name?",
+      "correct": "Eugene Fitzherbert",
+      "wrong": [
+        "Eugene Fitzroy",
+        "Edward Fitzgerald",
+        "Edmund Fairweather"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=tangled"
+    },
+    {
+      "id": "qxp7v1i6",
+      "tier": 3,
+      "prompt": "In Zootopia, Flash the sloth works at which government office?",
+      "correct": "The DMV",
+      "wrong": [
+        "The post office",
+        "The tax office",
+        "City Hall"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=zootopia; https://en.wikipedia.org/wiki/Zootopia"
+    },
+    {
+      "id": "dfke014t",
+      "tier": 3,
+      "prompt": "In Aladdin (1992), what name does Aladdin use when the Genie makes him a prince?",
+      "correct": "Prince Ali",
+      "wrong": [
+        "Prince Achmed",
+        "Prince Naveen",
+        "Prince Hassan"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=aladdin"
+    },
+    {
+      "id": "kk92et9l",
+      "tier": 3,
+      "prompt": "In The Little Mermaid (1989), what does Scuttle call a fork?",
+      "correct": "A dinglehopper",
+      "wrong": [
+        "A snarfblatt",
+        "A thingamabob",
+        "A whatchamacallit"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=little-mermaid-the"
+    },
+    {
+      "id": "honw8ntw",
+      "tier": 3,
+      "prompt": "In Hercules, who narrate the story in song?",
+      "correct": "The Muses",
+      "wrong": [
+        "The Fates",
+        "The Furies",
+        "The Graces"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=hercules-1997"
+    },
+    {
+      "id": "4oi6n33t",
+      "tier": 3,
+      "prompt": "In Mulan (1998), what name does Mulan use while disguised as a soldier?",
+      "correct": "Ping",
+      "wrong": [
+        "Ling",
+        "Yao",
+        "Shang"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=mulan"
+    },
+    {
+      "id": "5h0qaffu",
+      "tier": 3,
+      "prompt": "In Big Hero 6, in which city does Hiro live?",
+      "correct": "San Fransokyo",
+      "wrong": [
+        "Neo Tokyo",
+        "Tokyopolis",
+        "New Kyoto"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=big-hero-6"
+    },
+    {
+      "id": "sth9on27",
+      "tier": 3,
+      "prompt": "In Wreck-It Ralph, which racing game is Vanellope from?",
+      "correct": "Sugar Rush",
+      "wrong": [
+        "Fix-It Felix Jr.",
+        "Hero's Duty",
+        "Turbo Time"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=wreck-it-ralph; https://en.wikipedia.org/wiki/Wreck-It_Ralph"
+    },
+    {
+      "id": "qofb1600",
+      "tier": 3,
+      "prompt": "In Frozen, which kingdom is Prince Hans from?",
+      "correct": "The Southern Isles",
+      "wrong": [
+        "Weselton",
+        "Corona",
+        "The Northern Isles"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-2013"
+    },
+    {
+      "id": "1fvk2e23",
+      "tier": 3,
+      "prompt": "In Sleeping Beauty, what name do the three fairies give Aurora while hiding her?",
+      "correct": "Briar Rose",
+      "wrong": [
+        "Rose Red",
+        "Wild Rose",
+        "Little Rose"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=sleeping-beauty-1959"
+    },
+    {
+      "id": "t9hjpsuv",
+      "tier": 3,
+      "prompt": "Who wrote the songs for Encanto?",
+      "correct": "Lin-Manuel Miranda",
+      "wrong": [
+        "Alan Menken",
+        "Stephen Schwartz",
+        "Robert Lopez"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Encanto_(film)"
+    },
+    {
+      "id": "j3sed5o8",
+      "tier": 3,
+      "prompt": "In The Emperor's New Groove, who does Yzma keep telling to pull the lever?",
+      "correct": "Kronk",
+      "wrong": [
+        "Pacha",
+        "Kuzco",
+        "Bucky"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=emperors-new-groove-the"
+    },
+    {
+      "id": "w8khyvde",
+      "tier": 3,
+      "prompt": "In Raya and the Last Dragon, what is the name of the last dragon?",
+      "correct": "Sisu",
+      "wrong": [
+        "Namaari",
+        "Tuk Tuk",
+        "Virana"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=raya-and-the-last-dragon"
+    },
+    {
+      "id": "msu6wfvh",
+      "tier": 3,
+      "prompt": "In Lilo & Stitch, what is Stitch's experiment number?",
+      "correct": "626",
+      "wrong": [
+        "513",
+        "747",
+        "221"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lilo-and-stitch"
+    },
+    {
+      "id": "o3q63o8k",
+      "tier": 4,
+      "prompt": "In The Lion King (1994), who voices adult Simba?",
+      "correct": "Matthew Broderick",
+      "wrong": [
+        "Jonathan Taylor Thomas",
+        "Nathan Lane",
+        "Jeremy Irons"
+      ],
+      "source": "https://en.wikipedia.org/wiki/The_Lion_King"
+    },
+    {
+      "id": "a5ydoion",
+      "tier": 4,
+      "prompt": "In The Little Mermaid (1989), what are the names of Ursula's two eels?",
+      "correct": "Flotsam and Jetsam",
+      "wrong": [
+        "Sludge and Grime",
+        "Wreck and Ruin",
+        "Bilge and Brine"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=little-mermaid-the"
+    },
+    {
+      "id": "u5giw91l",
+      "tier": 4,
+      "prompt": "In Beauty and the Beast (1991), who voices Mrs. Potts?",
+      "correct": "Angela Lansbury",
+      "wrong": [
+        "Julie Andrews",
+        "Maggie Smith",
+        "Judi Dench"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_film)"
+    },
+    {
+      "id": "y20r7bnd",
+      "tier": 4,
+      "prompt": "In 1992, which film became the first animated feature nominated for the Best Picture Oscar?",
+      "correct": "Beauty and the Beast",
+      "wrong": [
+        "The Little Mermaid",
+        "Aladdin",
+        "The Lion King"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Beauty_and_the_Beast_(1991_film)"
+    },
+    {
+      "id": "zuw2n372",
+      "tier": 4,
+      "prompt": "Which song from Aladdin (1992) won the Oscar for Best Original Song?",
+      "correct": "A Whole New World",
+      "wrong": [
+        "Friend Like Me",
+        "Prince Ali",
+        "Arabian Nights"
+      ],
+      "source": "https://en.wikipedia.org/wiki/A_Whole_New_World"
+    },
+    {
+      "id": "se8ozllc",
+      "tier": 4,
+      "prompt": "Which song from The Lion King (1994) won the Oscar for Best Original Song?",
+      "correct": "Can You Feel the Love Tonight",
+      "wrong": [
+        "Circle of Life",
+        "Hakuna Matata",
+        "I Just Can't Wait to Be King"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Can_You_Feel_the_Love_Tonight"
+    },
+    {
+      "id": "afu9dz8l",
+      "tier": 4,
+      "prompt": "In Tangled, what is the name of the pub full of thugs with secret dreams?",
+      "correct": "The Snuggly Duckling",
+      "wrong": [
+        "The Rusty Anchor",
+        "The Gilded Goose",
+        "The Prancing Pony"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=tangled; https://en.wikipedia.org/wiki/Tangled"
+    },
+    {
+      "id": "o2zqi0ig",
+      "tier": 4,
+      "prompt": "In Moana, what is the name of Moana's home island?",
+      "correct": "Motunui",
+      "wrong": [
+        "Lalotai",
+        "Te Fiti",
+        "Motukai"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=moana"
+    },
+    {
+      "id": "xv59dl5q",
+      "tier": 4,
+      "prompt": "In Zootopia, what is the name of Judy's hometown?",
+      "correct": "Bunnyburrow",
+      "wrong": [
+        "Hopsville",
+        "Carrotdale",
+        "Tundratown"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=zootopia"
+    },
+    {
+      "id": "61lah33j",
+      "tier": 4,
+      "prompt": "In Big Hero 6, who is revealed to be the man in the kabuki mask?",
+      "correct": "Professor Callaghan",
+      "wrong": [
+        "Alistair Krei",
+        "Tadashi",
+        "Fred"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=big-hero-6; https://en.wikipedia.org/wiki/Big_Hero_6_(film)"
+    },
+    {
+      "id": "l3l81ujm",
+      "tier": 4,
+      "prompt": "In Hercules, what are the names of Hades's two shape-shifting minions?",
+      "correct": "Pain and Panic",
+      "wrong": [
+        "Fear and Dread",
+        "Doom and Gloom",
+        "Grief and Woe"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=hercules-1997"
+    },
+    {
+      "id": "qcmv67bs",
+      "tier": 4,
+      "prompt": "In Mulan (1998), who leads the Hun army?",
+      "correct": "Shan Yu",
+      "wrong": [
+        "Chi Fu",
+        "Li Shang",
+        "Bori Khan"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=mulan; https://en.wikipedia.org/wiki/Mulan_(1998_film)"
+    },
+    {
+      "id": "9va9crbi",
+      "tier": 4,
+      "prompt": "In Frozen II, what is the name of the magical river of memory Elsa seeks?",
+      "correct": "Ahtohallan",
+      "wrong": [
+        "Northuldra",
+        "Weselton",
+        "Valhalla"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-ii"
+    },
+    {
+      "id": "qs14u1q5",
+      "tier": 4,
+      "prompt": "In Sleeping Beauty, which fairy softens the curse so Aurora sleeps instead of dies?",
+      "correct": "Merryweather",
+      "wrong": [
+        "Flora",
+        "Fauna",
+        "Tinker Bell"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=sleeping-beauty-1959"
+    },
+    {
+      "id": "x9rszozc",
+      "tier": 4,
+      "prompt": "In Pinocchio (1940), what is the name of the giant whale that swallows Geppetto?",
+      "correct": "Monstro",
+      "wrong": [
+        "Moby",
+        "Goliath",
+        "Titan"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=pinocchio"
+    },
+    {
+      "id": "3cvkosbt",
+      "tier": 4,
+      "prompt": "In Peter Pan (1953), what is the name of the Darlings' dog who acts as the children's nursemaid?",
+      "correct": "Nana",
+      "wrong": [
+        "Max",
+        "Pongo",
+        "Bruno"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=peter-pan"
+    },
+    {
+      "id": "239swnio",
+      "tier": 4,
+      "prompt": "In Tarzan, what is the name of the gorilla who raises Tarzan?",
+      "correct": "Kala",
+      "wrong": [
+        "Terk",
+        "Sabor",
+        "Mala"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=tarzan; https://en.wikipedia.org/wiki/Tarzan_(1999_film)"
+    },
+    {
+      "id": "bmfygfej",
+      "tier": 5,
+      "prompt": "In Hercules, who voices Hades?",
+      "correct": "James Woods",
+      "wrong": [
+        "Danny DeVito",
+        "Jeremy Irons",
+        "Tim Curry"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Hercules_(1997_film)"
+    },
+    {
+      "id": "vx77yyw1",
+      "tier": 5,
+      "prompt": "In Mulan (1998), who provides Shang's singing voice in \"I'll Make a Man Out of You\"?",
+      "correct": "Donny Osmond",
+      "wrong": [
+        "Michael Bolton",
+        "Peabo Bryson",
+        "Harry Connick Jr."
+      ],
+      "source": "https://en.wikipedia.org/wiki/Mulan_(1998_film)"
+    },
+    {
+      "id": "s9wnspya",
+      "tier": 5,
+      "prompt": "In The Princess and the Frog, which kingdom is Prince Naveen from?",
+      "correct": "Maldonia",
+      "wrong": [
+        "Montaria",
+        "Belgravia",
+        "Valdovia"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=princess-and-the-frog-the"
+    },
+    {
+      "id": "hfvkbjwm",
+      "tier": 5,
+      "prompt": "In The Princess and the Frog, what name does Ray the firefly give the star he loves?",
+      "correct": "Evangeline",
+      "wrong": [
+        "Stella",
+        "Josephine",
+        "Celestine"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=princess-and-the-frog-the"
+    },
+    {
+      "id": "ok1hq25l",
+      "tier": 5,
+      "prompt": "In The Hunchback of Notre Dame, what is the name of Esmeralda's goat?",
+      "correct": "Djali",
+      "wrong": [
+        "Hugo",
+        "Achilles",
+        "Clopin"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=hunchback-of-notre-dame-the"
+    },
+    {
+      "id": "8lfn6gjs",
+      "tier": 5,
+      "prompt": "Which song from Tarzan won the Oscar for Best Original Song?",
+      "correct": "You'll Be in My Heart",
+      "wrong": [
+        "Two Worlds",
+        "Strangers Like Me",
+        "Son of Man"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Tarzan_(1999_film)"
+    },
+    {
+      "id": "hy40j5bf",
+      "tier": 4,
+      "prompt": "In Dumbo (1941), which song plays after Dumbo drinks water spiked with champagne?",
+      "correct": "Pink Elephants on Parade",
+      "wrong": [
+        "Baby Mine",
+        "When I See an Elephant Fly",
+        "Casey Junior"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pink_Elephants_on_Parade; https://www.springfieldspringfield.co.uk/movie_script.php?movie=dumbo"
+    },
+    {
+      "id": "veu7x5j0",
+      "tier": 5,
+      "prompt": "In Pinocchio (1940), what is the name of Geppetto's cat?",
+      "correct": "Figaro",
+      "wrong": [
+        "Lucifer",
+        "Cleo",
+        "Felix"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=pinocchio"
+    },
+    {
+      "id": "2oqkfgcv",
+      "tier": 5,
+      "prompt": "In Cinderella (1950), what is the name of the stepmother's cat?",
+      "correct": "Lucifer",
+      "wrong": [
+        "Figaro",
+        "Si",
+        "Tom"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=cinderella"
+    },
+    {
+      "id": "5dvluhw3",
+      "tier": 5,
+      "prompt": "In Cinderella (1950), what is the name of the chubby mouse Cinderella names Octavius?",
+      "correct": "Gus",
+      "wrong": [
+        "Jaq",
+        "Bert",
+        "Timothy"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=cinderella"
+    },
+    {
+      "id": "6ycl6obx",
+      "tier": 5,
+      "prompt": "In Mulan (1998), what is the name of Mulan's horse?",
+      "correct": "Khan",
+      "wrong": [
+        "Shan",
+        "Ling",
+        "Tao"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=mulan"
+    },
+    {
+      "id": "atge3ayp",
+      "tier": 5,
+      "prompt": "In Frozen II, which song does Kristoff sing in a power-ballad daydream?",
+      "correct": "Lost in the Woods",
+      "wrong": [
+        "Some Things Never Change",
+        "Into the Unknown",
+        "Show Yourself"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=frozen-ii; https://en.wikipedia.org/wiki/Lost_in_the_Woods_(song)"
+    },
+    {
+      "id": "o0lt85yt",
+      "tier": 5,
+      "prompt": "In Zootopia, who voices Judy Hopps?",
+      "correct": "Ginnifer Goodwin",
+      "wrong": [
+        "Kristen Bell",
+        "Anna Kendrick",
+        "Emma Stone"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Zootopia"
+    },
+    {
+      "id": "rkd1xmrd",
+      "tier": 5,
+      "prompt": "In The Lion King (1994), what is the name of Simba's mother?",
+      "correct": "Sarabi",
+      "wrong": [
+        "Sarafina",
+        "Shenzi",
+        "Zira"
+      ],
+      "source": "https://www.springfieldspringfield.co.uk/movie_script.php?movie=lion-king-the"
+    },
+    {
+      "id": "b2k2i4mr",
+      "tier": 3,
+      "prompt": "In Pocahontas, which song won the Oscar for Best Original Song?",
+      "correct": "Colors of the Wind",
+      "wrong": [
+        "Just Around the Riverbend",
+        "Savages",
+        "Listen with Your Heart"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Pocahontas_(1995_film)"
+    },
+    {
+      "id": "vwnsi7vv",
+      "tier": 5,
+      "prompt": "In Wreck-It Ralph, who voices Ralph?",
+      "correct": "John C. Reilly",
+      "wrong": [
+        "Jack Black",
+        "Will Ferrell",
+        "Seth Rogen"
+      ],
+      "source": "https://en.wikipedia.org/wiki/Wreck-It_Ralph"
+    }
+  ]
+}
