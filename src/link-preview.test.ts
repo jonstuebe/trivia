@@ -39,8 +39,8 @@ describe("the link preview", () => {
     expect(meta(head, "og:site_name")).toBe("Trivia");
     expect(meta(head, "og:title")).toBe("Trivia");
     expect(meta(head, "og:description")).toBe("Fifteen questions. One million imaginary dollars.");
-    expect(meta(head, "og:url")).toBe("https://trivia.jonstuebe.workers.dev/");
-    expect(meta(head, "og:image")).toBe("https://trivia.jonstuebe.workers.dev/link-preview.png");
+    expect(meta(head, "og:url")).toBe("https://trivia.jonstuebe.com/");
+    expect(meta(head, "og:image")).toBe("https://trivia.jonstuebe.com/link-preview.png");
     expect(meta(head, "og:image:width")).toBe("1200");
     expect(meta(head, "og:image:height")).toBe("630");
     expect(meta(head, "og:image:alt")).toBeTruthy();
@@ -50,7 +50,7 @@ describe("the link preview", () => {
     expect(meta(head, "twitter:card")).toBe("summary_large_image");
     expect(meta(head, "twitter:title")).toBe("Trivia");
     expect(meta(head, "twitter:description")).toBe("Fifteen questions. One million imaginary dollars.");
-    expect(meta(head, "twitter:image")).toBe("https://trivia.jonstuebe.workers.dev/link-preview.png");
+    expect(meta(head, "twitter:image")).toBe("https://trivia.jonstuebe.com/link-preview.png");
   });
 
   it("points at an absolute image URL", () => {

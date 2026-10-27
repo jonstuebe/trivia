@@ -18,7 +18,7 @@ describe("shareResult", () => {
       "Movies",
     );
     expect(text).toBe(
-      ["Trivia · Movies", "$32,000", "✅✅✅✅✅ ✅✅✅✅✅ ✅❌", "✂️ 👥 🔄", "trivia.jonstuebe.workers.dev/movies"].join("\n"),
+      ["Trivia · Movies", "$32,000", "✅✅✅✅✅ ✅✅✅✅✅ ✅❌", "✂️ 👥 🔄", "trivia.jonstuebe.com/movies"].join("\n"),
     );
   });
 
@@ -39,7 +39,7 @@ describe("shareResult", () => {
         "$1,000,000 🏆",
         "✅✅✅✅✅ ✅✅✅✅✅ ✅✅✅✅✅",
         "✂️ 👥 📞 🔄",
-        "trivia.jonstuebe.workers.dev/general",
+        "trivia.jonstuebe.com/general",
       ].join("\n"),
     );
   });
@@ -56,7 +56,7 @@ describe("shareResult", () => {
       "Friends",
     );
     expect(text).toBe(
-      ["Trivia · Friends", "$2,000", "✅✅✅✅✅ ✅🚶", "📞", "trivia.jonstuebe.workers.dev/tv/friends"].join("\n"),
+      ["Trivia · Friends", "$2,000", "✅✅✅✅✅ ✅🚶", "📞", "trivia.jonstuebe.com/tv/friends"].join("\n"),
     );
   });
 
@@ -71,14 +71,13 @@ describe("shareResult", () => {
       },
       "TV Shows",
     );
-    expect(text).toBe(["Trivia · TV Shows", "$0", "❌", "No lifelines", "trivia.jonstuebe.workers.dev/tv"].join("\n"));
+    expect(text).toBe(["Trivia · TV Shows", "$0", "❌", "No lifelines", "trivia.jonstuebe.com/tv"].join("\n"));
   });
 
   it("links to the site address plus the Topic's path, for every kind of Topic", () => {
     const linkFor = (topic: Parameters<typeof shareResult>[0]["topic"]) =>
       shareResult({ topic, ending: "missed", winnings: 0, reached: ["miss"], lifelinesUsed: [] }, "Any").split("\n").at(-1);
-    // The site address is the workers.dev preview until Phase 7.
-    expect(SITE_HOST).toBe("trivia.jonstuebe.workers.dev");
+    expect(SITE_HOST).toBe("trivia.jonstuebe.com");
     expect(linkFor({ kind: "general" })).toBe(`${SITE_HOST}/general`);
     expect(linkFor({ kind: "category", category: "movies" })).toBe(`${SITE_HOST}/movies`);
     expect(linkFor({ kind: "title", category: "tv", slug: "friends" })).toBe(`${SITE_HOST}/tv/friends`);

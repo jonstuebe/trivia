@@ -7,6 +7,14 @@
   // in dist-fixtures/ is only for the e2e journeys and is never deployed.
   "name": "trivia",
   "compatibility_date": "2026-10-01",
+  // trivia.jonstuebe.com is the site address (see src/site.ts). As a Custom
+  // Domain, Cloudflare makes its DNS record and certificate on deploy. The
+  // jonstuebe.com zone must be on the Worker's account, and the deploy token
+  // needs Zone > Workers Routes > Edit on that zone.
+  "routes": [{ "pattern": "trivia.jonstuebe.com", "custom_domain": true }],
+  // Any route turns workers.dev off unless it's set here, so the preview
+  // address keeps serving the game too, with no redirect.
+  "workers_dev": true,
   "assets": {
     "directory": "./dist",
     // Unknown paths (deep links like /tv/friends) get index.html with a 200,
