@@ -63,7 +63,7 @@
       "prompt": "Which actor plays Harry in the films?",
       "correct": "Daniel Radcliffe",
       "wrong": ["Rupert Grint", "Tom Felton", "Elijah Wood"],
-      "source": "https://www.imdb.com/name/nm0705356/ (Daniel Radcliffe, Harry in all eight films)"
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (Harry: Daniel Radcliffe); https://en.wikipedia.org/wiki/List_of_Harry_Potter_films_cast_members"
     },
     {
       "id": "tt8hiwgz",
@@ -114,7 +114,7 @@
       "prompt": "Which actress plays Hermione in the films?",
       "correct": "Emma Watson",
       "wrong": ["Emma Stone", "Bonnie Wright", "Evanna Lynch"],
-      "source": "https://www.imdb.com/name/nm0914612/ (Emma Watson, Hermione Granger in all eight films)"
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (Hermione: Emma Watson); https://en.wikipedia.org/wiki/List_of_Harry_Potter_films_cast_members"
     },
     {
       "id": "hgp0sovo",
@@ -220,7 +220,7 @@
       "prompt": "Which actor plays Voldemort from Goblet of Fire onwards?",
       "correct": "Ralph Fiennes",
       "wrong": ["Jason Isaacs", "Gary Oldman", "Kenneth Branagh"],
-      "source": "https://www.imdb.com/name/nm0000146/ (Ralph Fiennes, Lord Voldemort, Goblet of Fire to Deathly Hallows – Part 2)"
+      "source": "https://en.wikipedia.org/wiki/Lord_Voldemort (Ralph Fiennes, Goblet of Fire to Deathly Hallows – Part 2)"
     },
     {
       "id": "knl5ok7w",
@@ -228,7 +228,7 @@
       "prompt": "How many films tell Harry's story?",
       "correct": "Eight",
       "wrong": ["Six", "Seven", "Nine"],
-      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (eight films, 2001–2011)"
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (the series consists of eight films)"
     },
     {
       "id": "zmuh63gu",
@@ -356,7 +356,7 @@
       "prompt": "In what year was the first film released?",
       "correct": "2001",
       "wrong": ["1999", "2000", "2003"],
-      "source": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film) (released November 2001)"
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film) (released 16 November 2001)"
     },
     {
       "id": "tko68mo4",
@@ -375,12 +375,12 @@
       "source": "Order of the Phoenix (2007), the Forbidden Forest: Hagrid introduces Grawp"
     },
     {
-      "id": "cv2kze5n",
+      "id": "ohneitlo",
       "tier": 4,
-      "prompt": "In Goblet of Fire, who does Ron take to the Yule Ball?",
-      "correct": "Padma Patil",
-      "wrong": ["Parvati Patil", "Lavender Brown", "Katie Bell"],
-      "source": "Goblet of Fire (2005): Harry goes with Parvati Patil and Ron with her twin Padma"
+      "prompt": "In Order of the Phoenix, whose family home is 12 Grimmauld Place?",
+      "correct": "Sirius Black's",
+      "wrong": ["Remus Lupin's", "Arthur Weasley's", "Alastor Moody's"],
+      "source": "Order of the Phoenix (2007), Grimmauld Place: Sirius says \"This is my parents' house\" and shows the Black family tree"
     },
     {
       "id": "ccztu5u3",
@@ -476,7 +476,7 @@
       "prompt": "Which actor plays Dumbledore in the first two films?",
       "correct": "Richard Harris",
       "wrong": ["Michael Gambon", "Ian McKellen", "Christopher Lee"],
-      "source": "https://www.imdb.com/name/nm0001321/ (Richard Harris, Dumbledore in the first two films; died 2002)"
+      "source": "https://en.wikipedia.org/wiki/Harry_Potter_(film_series) (Dumbledore: Richard Harris in films 1–2, Michael Gambon in 3–8)"
     },
     {
       "id": "6z4bqins",
@@ -484,7 +484,7 @@
       "prompt": "Who directed the first two films?",
       "correct": "Chris Columbus",
       "wrong": ["Alfonso Cuarón", "Mike Newell", "David Yates"],
-      "source": "https://en.wikipedia.org/wiki/Chris_Columbus_(filmmaker) (directed Philosopher's Stone and Chamber of Secrets)"
+      "source": "https://en.wikipedia.org/wiki/Chris_Columbus_(filmmaker) (directed the first and second films)"
     },
     {
       "id": "wvhf7xr9",
@@ -588,7 +588,7 @@
       "prompt": "Which actress plays Luna Lovegood?",
       "correct": "Evanna Lynch",
       "wrong": ["Bonnie Wright", "Katie Leung", "Jessie Cave"],
-      "source": "https://www.imdb.com/name/nm2219130/ (Evanna Lynch, Luna Lovegood)"
+      "source": "https://en.wikipedia.org/wiki/Evanna_Lynch (Luna Lovegood, from Order of the Phoenix)"
     },
     {
       "id": "lrw5dy8q",
@@ -596,7 +596,7 @@
       "prompt": "Which actor voices Dobby the house-elf?",
       "correct": "Toby Jones",
       "wrong": ["Warwick Davis", "Andy Serkis", "Timothy Spall"],
-      "source": "https://www.imdb.com/name/nm0429363/ (Toby Jones, voice of Dobby)"
+      "source": "https://en.wikipedia.org/wiki/Dobby_the_house_elf (voiced by Toby Jones in the films)"
     },
     {
       "id": "qy37r0ue",
