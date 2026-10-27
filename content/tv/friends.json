@@ -276,7 +276,7 @@
     {
       "id": "q09aa12c",
       "tier": 3,
-      "prompt": "How many seasons did the series run?",
+      "prompt": "Over how many seasons did the show originally air?",
       "correct": "10",
       "wrong": ["8", "9", "12"],
       "source": "https://en.wikipedia.org/wiki/Friends"
@@ -444,7 +444,7 @@
     {
       "id": "kep0isq0",
       "tier": 4,
-      "prompt": "In what year did the series premiere?",
+      "prompt": "In what year did the very first episode air?",
       "correct": "1994",
       "wrong": ["1992", "1996", "1998"],
       "source": "https://en.wikipedia.org/wiki/Friends (premiered September 22, 1994)"

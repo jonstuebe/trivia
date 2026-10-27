@@ -82,7 +82,7 @@ The show feel.
 Real Questions, checked, then live.
 
 - Writing the real Questions with the `write-questions` skill for General and every launch Title, about 75 per Topic. A Title ships once it has about 20 ([Launch Titles](https://github.com/jonstuebe/trivia/issues/4), [Question authoring rules](https://github.com/jonstuebe/trivia/issues/9)). This can start once phase 2 ships.
-- The manual launch checklist: iPhone install and offline play, the share sheet, the link preview, and VoiceOver and keyboard-only runs ([Testing approach](https://github.com/jonstuebe/trivia/issues/10), [Accessibility and keyboard play](https://github.com/jonstuebe/trivia/issues/14)).
+- The manual launch checklist (`docs/launch-checklist.md`): iPhone install and offline play, the share sheet, the link preview, and VoiceOver and keyboard-only runs ([Testing approach](https://github.com/jonstuebe/trivia/issues/10), [Accessibility and keyboard play](https://github.com/jonstuebe/trivia/issues/14)).
 - Deploying the real build in place of the fixture build, which the preview URL serves until then. Only from here does the analytics beacon count visits, once its site token is set: the fixture build loads a stand-in instead.
 - Attaching trivia.jonstuebe.com to the Worker, and switching the site address (the Share result link and the link preview) to it.
 
