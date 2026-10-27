@@ -39,6 +39,12 @@ jobs:
       # The test build on the fixture Topic set, into dist-fixtures/. It
       # checks the fixtures and regenerates their topic index first.
       - run: bun run build:fixtures
+      # The real build is what deploys, so none of the test build's switches
+      # may be in it: the instant-reveal key, the sound readout and the
+      # stand-in analytics token and script. Each is behind a mode check that
+      # the real build folds away; this fails if one stops folding, or if a
+      # switch is renamed and the test build no longer has it.
+      - run: bun run check-real-build
       - name: Committed files are up to date after build (src/routeTree.gen.ts, src/content/topic-index.gen.json, src/content/topic-index.fixtures.gen.json)
         run: git diff --exit-code
       # The Chromium build that @e2e-dev/web's Playwright expects, with its
@@ -58,16 +64,13 @@ jobs:
           include-hidden-files: true
           if-no-files-found: warn
           retention-days: 7
-      # The deploy job ships this exact build rather than building again.
-      # Until Phase 7 the workers.dev preview ships the fixture build: content/
-      # is empty, so the real build in dist/ has no Topics to play. It goes up
-      # under the name `dist`, so the deploy job and wrangler.jsonc are
-      # unchanged. Phase 7 switches this back to dist/ before
-      # trivia.jonstuebe.com is attached.
+      # The deploy job ships this exact build rather than building again: the
+      # real build in dist/, on the real Topics. The fixture build in
+      # dist-fixtures/ is only for the e2e journeys above and never deploys.
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: dist
-          path: dist-fixtures/
+          path: dist/
           if-no-files-found: error
           retention-days: 7
 

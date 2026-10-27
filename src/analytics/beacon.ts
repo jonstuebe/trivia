@@ -9,9 +9,9 @@
  * injects the beacon into every page itself, which skips the privacy-signal
  * check below. The token isn't secret; it only says which site a visit is for.
  *
- * Until Phase 7, setting it counts nothing: the workers.dev preview serves
- * the test build, which always uses the stand-in token and script below.
- * Visits are counted once the real build is deployed (see wrangler.jsonc).
+ * The deployed site serves the real build (see wrangler.jsonc), so visits
+ * are counted once the token is set. The test build always uses the
+ * stand-in token and script below instead.
  */
 export const SITE_TOKEN = "";
 
@@ -29,7 +29,7 @@ export const BEACON_SRC = "https://static.cloudflareinsights.com/beacon.min.js";
  * beacon.test.ts keeps the two in step.
  */
 const FIXTURE_BUILD = import.meta.env.MODE === "fixtures";
-const FIXTURE_TOKEN = "fixture-token";
+export const FIXTURE_TOKEN = "fixture-token";
 export const FIXTURE_BEACON_SRC = "/fixture-beacon.js";
 
 /** What the browser says about tracking and the network. */

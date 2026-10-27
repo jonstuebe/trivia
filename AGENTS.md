@@ -6,7 +6,7 @@ An online web app trivia game in the spirit of _Who Wants to Be a Millionaire_, 
 - **Broad topics:** e.g. **TV shows** or **Movies**, with questions drawn from many titles in that category.
 - **Subcategories:** a single specific TV show or movie.
 
-The launch Titles are Friends, The Big Bang Theory and Modern Family for TV, and the Star Wars, Harry Potter, Marvel Cinematic Universe, Jurassic Park and Pixar franchises for Movies. The concept is still taking shape, so expect this section to change.
+The launch Titles are Friends, The Big Bang Theory and Modern Family for TV, and the Star Wars, Harry Potter, Marvel Cinematic Universe, Jurassic Park, Pixar and Disney franchises for Movies (Disney is the Walt Disney Animation Studios films, without Pixar or the live-action remakes). The concept is still taking shape, so expect this section to change.
 
 How the game plays (the ladder, lifelines, topics, the question files and what's remembered on the device) is in `docs/game-design.md`. Questions follow the rules in `docs/question-authoring.md`, written with the `write-questions` skill.
 

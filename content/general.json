@@ -1,0 +1,679 @@
+{
+  "questions": [
+    {
+      "id": "loxhbzyd",
+      "tier": 1,
+      "subject": "history",
+      "prompt": "What is the capital of France?",
+      "correct": "Paris",
+      "wrong": ["Lyon", "Marseille", "Nice"],
+      "source": "https://en.wikipedia.org/wiki/Paris"
+    },
+    {
+      "id": "i6e2d0xm",
+      "tier": 1,
+      "subject": "history",
+      "prompt": "Who was the first President of the United States?",
+      "correct": "George Washington",
+      "wrong": ["Thomas Jefferson", "Abraham Lincoln", "John Adams"],
+      "source": "https://en.wikipedia.org/wiki/George_Washington"
+    },
+    {
+      "id": "vfjfwk93",
+      "tier": 1,
+      "subject": "history",
+      "prompt": "Which is the largest ocean on Earth?",
+      "correct": "Pacific Ocean",
+      "wrong": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+      "source": "https://en.wikipedia.org/wiki/Pacific_Ocean"
+    },
+    {
+      "id": "6x9mr3g8",
+      "tier": 1,
+      "subject": "history",
+      "prompt": "Which country is home to the Great Pyramid of Giza?",
+      "correct": "Egypt",
+      "wrong": ["Mexico", "Peru", "Greece"],
+      "source": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza"
+    },
+    {
+      "id": "yqs4anyz",
+      "tier": 1,
+      "subject": "science",
+      "prompt": "Which planet is known as the Red Planet?",
+      "correct": "Mars",
+      "wrong": ["Venus", "Jupiter", "Saturn"],
+      "source": "https://en.wikipedia.org/wiki/Mars"
+    },
+    {
+      "id": "x2khwpie",
+      "tier": 1,
+      "subject": "science",
+      "prompt": "How many legs does a spider have?",
+      "correct": "Eight",
+      "wrong": ["Six", "Ten", "Twelve"],
+      "source": "https://en.wikipedia.org/wiki/Spider"
+    },
+    {
+      "id": "36isfer5",
+      "tier": 1,
+      "subject": "science",
+      "prompt": "What is H2O better known as?",
+      "correct": "Water",
+      "wrong": ["Salt", "Sugar", "Vinegar"],
+      "source": "https://en.wikipedia.org/wiki/Properties_of_water"
+    },
+    {
+      "id": "jtwr4f9h",
+      "tier": 1,
+      "subject": "science",
+      "prompt": "What is the largest living mammal?",
+      "correct": "Blue whale",
+      "wrong": ["African elephant", "Sperm whale", "Hippopotamus"],
+      "source": "https://en.wikipedia.org/wiki/Blue_whale"
+    },
+    {
+      "id": "613orkwn",
+      "tier": 1,
+      "subject": "sports",
+      "prompt": "How many players does a soccer team have on the field at once?",
+      "correct": "11",
+      "wrong": ["9", "10", "12"],
+      "source": "https://en.wikipedia.org/wiki/Laws_of_the_Game_(association_football)"
+    },
+    {
+      "id": "qc72utvg",
+      "tier": 1,
+      "subject": "sports",
+      "prompt": "In which sport would you hit a home run?",
+      "correct": "Baseball",
+      "wrong": ["Golf", "Tennis", "Bowling"],
+      "source": "https://en.wikipedia.org/wiki/Home_run"
+    },
+    {
+      "id": "qr1h0169",
+      "tier": 1,
+      "subject": "sports",
+      "prompt": "How often are the Summer Olympics normally held?",
+      "correct": "Every four years",
+      "wrong": ["Every two years", "Every year", "Every five years"],
+      "source": "https://en.wikipedia.org/wiki/Summer_Olympic_Games"
+    },
+    {
+      "id": "1591j0qj",
+      "tier": 1,
+      "subject": "pop culture",
+      "prompt": "Which fruit is the main ingredient in guacamole?",
+      "correct": "Avocado",
+      "wrong": ["Banana", "Mango", "Pear"],
+      "source": "https://en.wikipedia.org/wiki/Guacamole"
+    },
+    {
+      "id": "yqus2gfz",
+      "tier": 1,
+      "subject": "pop culture",
+      "prompt": "Who painted the Mona Lisa?",
+      "correct": "Leonardo da Vinci",
+      "wrong": ["Michelangelo", "Vincent van Gogh", "Pablo Picasso"],
+      "source": "https://en.wikipedia.org/wiki/Mona_Lisa"
+    },
+    {
+      "id": "841a7d3o",
+      "tier": 1,
+      "subject": "pop culture",
+      "prompt": "Which band was John Lennon a member of?",
+      "correct": "The Beatles",
+      "wrong": ["The Rolling Stones", "The Who", "Queen"],
+      "source": "https://en.wikipedia.org/wiki/John_Lennon"
+    },
+    {
+      "id": "os63it8k",
+      "tier": 1,
+      "subject": "pop culture",
+      "prompt": "Which Disney film features a lion cub named Simba?",
+      "correct": "The Lion King",
+      "wrong": ["Bambi", "Tarzan", "The Jungle Book"],
+      "source": "https://en.wikipedia.org/wiki/The_Lion_King"
+    },
+    {
+      "id": "ycn8x2vu",
+      "tier": 2,
+      "subject": "history",
+      "prompt": "In what year did World War II end?",
+      "correct": "1945",
+      "wrong": ["1939", "1918", "1950"],
+      "source": "https://en.wikipedia.org/wiki/World_War_II"
+    },
+    {
+      "id": "iktd9ji0",
+      "tier": 2,
+      "subject": "history",
+      "prompt": "What is the longest river in Africa?",
+      "correct": "Nile",
+      "wrong": ["Congo", "Niger", "Zambezi"],
+      "source": "https://en.wikipedia.org/wiki/Nile"
+    },
+    {
+      "id": "oh9zk1na",
+      "tier": 2,
+      "subject": "history",
+      "prompt": "Which country gave the Statue of Liberty to the United States?",
+      "correct": "France",
+      "wrong": ["Britain", "Spain", "Italy"],
+      "source": "https://en.wikipedia.org/wiki/Statue_of_Liberty"
+    },
+    {
+      "id": "93kjzhq6",
+      "tier": 2,
+      "subject": "history",
+      "prompt": "Which Roman city was buried by the eruption of Mount Vesuvius in AD 79?",
+      "correct": "Pompeii",
+      "wrong": ["Rome", "Carthage", "Ravenna"],
+      "source": "https://en.wikipedia.org/wiki/Pompeii"
+    },
+    {
+      "id": "vm547nne",
+      "tier": 2,
+      "subject": "science",
+      "prompt": "What is the chemical symbol for gold?",
+      "correct": "Au",
+      "wrong": ["Ag", "Go", "Gd"],
+      "source": "https://en.wikipedia.org/wiki/Gold"
+    },
+    {
+      "id": "1redy5ov",
+      "tier": 2,
+      "subject": "science",
+      "prompt": "How many bones are in the adult human body?",
+      "correct": "206",
+      "wrong": ["186", "212", "250"],
+      "source": "https://en.wikipedia.org/wiki/List_of_bones_of_the_human_skeleton"
+    },
+    {
+      "id": "0q324j5u",
+      "tier": 2,
+      "subject": "science",
+      "prompt": "What force keeps the planets in orbit around the Sun?",
+      "correct": "Gravity",
+      "wrong": ["Magnetism", "Friction", "Static electricity"],
+      "source": "https://en.wikipedia.org/wiki/Gravity"
+    },
+    {
+      "id": "dpgf007p",
+      "tier": 2,
+      "subject": "science",
+      "prompt": "Which planet is closest to the Sun?",
+      "correct": "Mercury",
+      "wrong": ["Venus", "Mars", "Earth"],
+      "source": "https://en.wikipedia.org/wiki/Mercury_(planet)"
+    },
+    {
+      "id": "6rhfz4x5",
+      "tier": 2,
+      "subject": "sports",
+      "prompt": "In tennis, what is a score of zero called?",
+      "correct": "Love",
+      "wrong": ["Nil", "Duck", "Zip"],
+      "source": "https://en.wikipedia.org/wiki/Tennis_scoring_system"
+    },
+    {
+      "id": "t650fzb9",
+      "tier": 2,
+      "subject": "sports",
+      "prompt": "How many points is a touchdown worth in American football?",
+      "correct": "6",
+      "wrong": ["2", "3", "5"],
+      "source": "https://en.wikipedia.org/wiki/Touchdown"
+    },
+    {
+      "id": "et7u0dmj",
+      "tier": 2,
+      "subject": "sports",
+      "prompt": "Through 2022, which country had won the most men's FIFA World Cups?",
+      "correct": "Brazil",
+      "wrong": ["Germany", "Italy", "Argentina"],
+      "source": "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_finals"
+    },
+    {
+      "id": "quvoxowv",
+      "tier": 2,
+      "subject": "sports",
+      "prompt": "In golf, what is a score of one stroke under par on a hole called?",
+      "correct": "Birdie",
+      "wrong": ["Eagle", "Bogey", "Albatross"],
+      "source": "https://en.wikipedia.org/wiki/Par_(score)"
+    },
+    {
+      "id": "l9fd8uj0",
+      "tier": 2,
+      "subject": "pop culture",
+      "prompt": "Who wrote the play Romeo and Juliet?",
+      "correct": "William Shakespeare",
+      "wrong": ["Charles Dickens", "Christopher Marlowe", "Geoffrey Chaucer"],
+      "source": "https://en.wikipedia.org/wiki/Romeo_and_Juliet"
+    },
+    {
+      "id": "poccccfi",
+      "tier": 2,
+      "subject": "pop culture",
+      "prompt": "Which singer is known as the King of Pop?",
+      "correct": "Michael Jackson",
+      "wrong": ["Elvis Presley", "Prince", "Stevie Wonder"],
+      "source": "https://en.wikipedia.org/wiki/Michael_Jackson"
+    },
+    {
+      "id": "urd79vt9",
+      "tier": 2,
+      "subject": "pop culture",
+      "prompt": "Which author created the detective Sherlock Holmes?",
+      "correct": "Arthur Conan Doyle",
+      "wrong": ["Agatha Christie", "Charles Dickens", "Edgar Allan Poe"],
+      "source": "https://en.wikipedia.org/wiki/Sherlock_Holmes"
+    },
+    {
+      "id": "2oligmbw",
+      "tier": 3,
+      "subject": "history",
+      "prompt": "In what year did the Berlin Wall fall?",
+      "correct": "1989",
+      "wrong": ["1991", "1987", "1985"],
+      "source": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall"
+    },
+    {
+      "id": "3s48h1w9",
+      "tier": 3,
+      "subject": "history",
+      "prompt": "What is the capital of Australia?",
+      "correct": "Canberra",
+      "wrong": ["Sydney", "Melbourne", "Perth"],
+      "source": "https://en.wikipedia.org/wiki/Canberra"
+    },
+    {
+      "id": "an9kms01",
+      "tier": 3,
+      "subject": "history",
+      "prompt": "Which civilization built Machu Picchu?",
+      "correct": "Inca",
+      "wrong": ["Aztec", "Maya", "Olmec"],
+      "source": "https://en.wikipedia.org/wiki/Machu_Picchu"
+    },
+    {
+      "id": "ah6xn90h",
+      "tier": 3,
+      "subject": "history",
+      "prompt": "Who was the British Prime Minister for most of World War II?",
+      "correct": "Winston Churchill",
+      "wrong": ["Neville Chamberlain", "Clement Attlee", "Anthony Eden"],
+      "source": "https://en.wikipedia.org/wiki/Winston_Churchill"
+    },
+    {
+      "id": "k0c30ubm",
+      "tier": 3,
+      "subject": "science",
+      "prompt": "What is the most abundant gas in Earth's atmosphere?",
+      "correct": "Nitrogen",
+      "wrong": ["Oxygen", "Carbon dioxide", "Argon"],
+      "source": "https://en.wikipedia.org/wiki/Atmosphere_of_Earth"
+    },
+    {
+      "id": "mbpr6yf1",
+      "tier": 3,
+      "subject": "science",
+      "prompt": "Which part of a cell is known as its powerhouse?",
+      "correct": "Mitochondrion",
+      "wrong": ["Nucleus", "Ribosome", "Golgi apparatus"],
+      "source": "https://en.wikipedia.org/wiki/Mitochondrion"
+    },
+    {
+      "id": "tupgg6xn",
+      "tier": 3,
+      "subject": "science",
+      "prompt": "Which blood type is known as the universal donor for red blood cells?",
+      "correct": "O negative",
+      "wrong": ["AB positive", "A negative", "B positive"],
+      "source": "https://en.wikipedia.org/wiki/Blood_type"
+    },
+    {
+      "id": "wexu01mb",
+      "tier": 3,
+      "subject": "sports",
+      "prompt": "Which city hosted the 2012 Summer Olympics?",
+      "correct": "London",
+      "wrong": ["Beijing", "Rio de Janeiro", "Paris"],
+      "source": "https://en.wikipedia.org/wiki/2012_Summer_Olympics"
+    },
+    {
+      "id": "ssjsx9ct",
+      "tier": 3,
+      "subject": "sports",
+      "prompt": "In which sport is the Stanley Cup awarded?",
+      "correct": "Ice hockey",
+      "wrong": ["Basketball", "Baseball", "American football"],
+      "source": "https://en.wikipedia.org/wiki/Stanley_Cup"
+    },
+    {
+      "id": "8be8za45",
+      "tier": 3,
+      "subject": "sports",
+      "prompt": "How many squares are on a chessboard?",
+      "correct": "64",
+      "wrong": ["48", "72", "81"],
+      "source": "https://en.wikipedia.org/wiki/Chessboard"
+    },
+    {
+      "id": "yxfix61q",
+      "tier": 3,
+      "subject": "sports",
+      "prompt": "Which tennis Grand Slam tournament is played on grass?",
+      "correct": "Wimbledon",
+      "wrong": ["US Open", "French Open", "Australian Open"],
+      "source": "https://en.wikipedia.org/wiki/Wimbledon_Championships"
+    },
+    {
+      "id": "lydyc4ud",
+      "tier": 3,
+      "subject": "pop culture",
+      "prompt": "Who directed the 1975 film Jaws?",
+      "correct": "Steven Spielberg",
+      "wrong": ["George Lucas", "Martin Scorsese", "Francis Ford Coppola"],
+      "source": "https://en.wikipedia.org/wiki/Jaws_(film)"
+    },
+    {
+      "id": "q40r81xn",
+      "tier": 3,
+      "subject": "pop culture",
+      "prompt": "Who painted The Starry Night?",
+      "correct": "Vincent van Gogh",
+      "wrong": ["Claude Monet", "Paul Cézanne", "Edvard Munch"],
+      "source": "https://en.wikipedia.org/wiki/The_Starry_Night"
+    },
+    {
+      "id": "9hjbat2v",
+      "tier": 3,
+      "subject": "pop culture",
+      "prompt": "Who wrote the novel Nineteen Eighty-Four?",
+      "correct": "George Orwell",
+      "wrong": ["Aldous Huxley", "Ray Bradbury", "H. G. Wells"],
+      "source": "https://en.wikipedia.org/wiki/Nineteen_Eighty-Four"
+    },
+    {
+      "id": "7ezsjxu6",
+      "tier": 3,
+      "subject": "pop culture",
+      "prompt": "Which spirit is the base of a classic mojito?",
+      "correct": "Rum",
+      "wrong": ["Vodka", "Gin", "Tequila"],
+      "source": "https://en.wikipedia.org/wiki/Mojito"
+    },
+    {
+      "id": "10m40u98",
+      "tier": 4,
+      "subject": "history",
+      "prompt": "In what year did the Titanic sink?",
+      "correct": "1912",
+      "wrong": ["1905", "1915", "1921"],
+      "source": "https://en.wikipedia.org/wiki/Titanic"
+    },
+    {
+      "id": "szov7a4c",
+      "tier": 4,
+      "subject": "history",
+      "prompt": "Which river flows through Baghdad?",
+      "correct": "Tigris",
+      "wrong": ["Euphrates", "Jordan", "Nile"],
+      "source": "https://www.britannica.com/place/Tigris-River"
+    },
+    {
+      "id": "4fpe8ebi",
+      "tier": 4,
+      "subject": "history",
+      "prompt": "Who was the first Roman emperor?",
+      "correct": "Augustus",
+      "wrong": ["Julius Caesar", "Nero", "Caligula"],
+      "source": "https://en.wikipedia.org/wiki/Augustus"
+    },
+    {
+      "id": "ehnvp8jy",
+      "tier": 4,
+      "subject": "science",
+      "prompt": "What is the chemical symbol for potassium?",
+      "correct": "K",
+      "wrong": ["P", "Po", "Pt"],
+      "source": "https://en.wikipedia.org/wiki/Potassium"
+    },
+    {
+      "id": "7oen5smx",
+      "tier": 4,
+      "subject": "science",
+      "prompt": "How many hearts does an octopus have?",
+      "correct": "Three",
+      "wrong": ["One", "Two", "Eight"],
+      "source": "https://en.wikipedia.org/wiki/Octopus"
+    },
+    {
+      "id": "i04stuj2",
+      "tier": 4,
+      "subject": "science",
+      "prompt": "Who discovered penicillin in 1928?",
+      "correct": "Alexander Fleming",
+      "wrong": ["Louis Pasteur", "Joseph Lister", "Edward Jenner"],
+      "source": "https://en.wikipedia.org/wiki/Alexander_Fleming"
+    },
+    {
+      "id": "vv9r09gc",
+      "tier": 4,
+      "subject": "science",
+      "prompt": "What is the smallest prime number?",
+      "correct": "2",
+      "wrong": ["1", "3", "0"],
+      "source": "https://en.wikipedia.org/wiki/Prime_number"
+    },
+    {
+      "id": "m05p5lup",
+      "tier": 4,
+      "subject": "sports",
+      "prompt": "Which country hosted the first modern Olympic Games, in 1896?",
+      "correct": "Greece",
+      "wrong": ["France", "Britain", "United States"],
+      "source": "https://en.wikipedia.org/wiki/1896_Summer_Olympics"
+    },
+    {
+      "id": "z2pagl5r",
+      "tier": 4,
+      "subject": "sports",
+      "prompt": "In ten-pin bowling, what are three strikes in a row called?",
+      "correct": "A turkey",
+      "wrong": ["An eagle", "A hat trick", "A triple"],
+      "source": "https://www.bowling.com/bowling-blog/bowling-terms-2/what-is-a-turkey-bowling"
+    },
+    {
+      "id": "l8tu73tp",
+      "tier": 4,
+      "subject": "sports",
+      "prompt": "To one decimal place, how many miles long is a marathon?",
+      "correct": "26.2",
+      "wrong": ["24.8", "25.5", "27.3"],
+      "source": "https://en.wikipedia.org/wiki/Marathon"
+    },
+    {
+      "id": "fb4qm668",
+      "tier": 4,
+      "subject": "sports",
+      "prompt": "Which boxer was born Cassius Clay?",
+      "correct": "Muhammad Ali",
+      "wrong": ["Joe Frazier", "Sonny Liston", "George Foreman"],
+      "source": "https://en.wikipedia.org/wiki/Muhammad_Ali"
+    },
+    {
+      "id": "c3xqpfsz",
+      "tier": 4,
+      "subject": "pop culture",
+      "prompt": "Which composer wrote The Four Seasons?",
+      "correct": "Antonio Vivaldi",
+      "wrong": ["Johann Sebastian Bach", "Wolfgang Amadeus Mozart", "George Frideric Handel"],
+      "source": "https://en.wikipedia.org/wiki/The_Four_Seasons_(Vivaldi)"
+    },
+    {
+      "id": "je4uc3mz",
+      "tier": 4,
+      "subject": "pop culture",
+      "prompt": "Which spice comes from the stigmas of a crocus flower?",
+      "correct": "Saffron",
+      "wrong": ["Turmeric", "Paprika", "Cardamom"],
+      "source": "https://en.wikipedia.org/wiki/Saffron"
+    },
+    {
+      "id": "xe4737g3",
+      "tier": 4,
+      "subject": "pop culture",
+      "prompt": "In which city is Gaudí's Sagrada Família?",
+      "correct": "Barcelona",
+      "wrong": ["Madrid", "Seville", "Valencia"],
+      "source": "https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
+    },
+    {
+      "id": "u72k3313",
+      "tier": 4,
+      "subject": "pop culture",
+      "prompt": "Which band released the 1977 album Rumours?",
+      "correct": "Fleetwood Mac",
+      "wrong": ["Eagles", "The Doobie Brothers", "Steely Dan"],
+      "source": "https://en.wikipedia.org/wiki/Rumours_(album)"
+    },
+    {
+      "id": "3vz4ykz2",
+      "tier": 5,
+      "subject": "history",
+      "prompt": "Which peace treaties ended the Thirty Years' War in 1648?",
+      "correct": "Peace of Westphalia",
+      "wrong": ["Treaty of Utrecht", "Treaty of Paris", "Peace of Augsburg"],
+      "source": "https://en.wikipedia.org/wiki/Peace_of_Westphalia"
+    },
+    {
+      "id": "knrxszt3",
+      "tier": 5,
+      "subject": "history",
+      "prompt": "Which is the deepest lake in the world?",
+      "correct": "Lake Baikal",
+      "wrong": ["Lake Tanganyika", "Lake Superior", "Lake Victoria"],
+      "source": "https://en.wikipedia.org/wiki/Lake_Baikal"
+    },
+    {
+      "id": "kka4wkfj",
+      "tier": 5,
+      "subject": "history",
+      "prompt": "Who was the first emperor of a unified China?",
+      "correct": "Qin Shi Huang",
+      "wrong": ["Kublai Khan", "Sun Yat-sen", "Liu Bang"],
+      "source": "https://en.wikipedia.org/wiki/Qin_Shi_Huang"
+    },
+    {
+      "id": "hj1d9h0z",
+      "tier": 5,
+      "subject": "history",
+      "prompt": "Which country defeated Italy at the Battle of Adwa in 1896?",
+      "correct": "Ethiopia",
+      "wrong": ["Liberia", "Somalia", "Eritrea"],
+      "source": "https://en.wikipedia.org/wiki/Battle_of_Adwa"
+    },
+    {
+      "id": "osj9536g",
+      "tier": 5,
+      "subject": "science",
+      "prompt": "What is the atomic number of carbon?",
+      "correct": "6",
+      "wrong": ["4", "8", "10"],
+      "source": "https://en.wikipedia.org/wiki/Carbon"
+    },
+    {
+      "id": "173k1huf",
+      "tier": 5,
+      "subject": "science",
+      "prompt": "Which astronomer described the three laws of planetary motion?",
+      "correct": "Johannes Kepler",
+      "wrong": ["Galileo Galilei", "Nicolaus Copernicus", "Tycho Brahe"],
+      "source": "https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion"
+    },
+    {
+      "id": "mof2kprj",
+      "tier": 5,
+      "subject": "science",
+      "prompt": "By mass, what is the most abundant element in Earth's crust?",
+      "correct": "Oxygen",
+      "wrong": ["Silicon", "Iron", "Aluminum"],
+      "source": "https://en.wikipedia.org/wiki/Abundance_of_elements_in_Earth%27s_crust"
+    },
+    {
+      "id": "agh2wddj",
+      "tier": 5,
+      "subject": "science",
+      "prompt": "In web addresses, what does HTTP stand for?",
+      "correct": "HyperText Transfer Protocol",
+      "wrong": ["HyperText Transmission Protocol", "High Transfer Text Protocol", "HyperText Terminal Protocol"],
+      "source": "https://en.wikipedia.org/wiki/HTTP"
+    },
+    {
+      "id": "mhn17mz7",
+      "tier": 5,
+      "subject": "sports",
+      "prompt": "Which country won the first FIFA World Cup, in 1930?",
+      "correct": "Uruguay",
+      "wrong": ["Argentina", "Brazil", "Italy"],
+      "source": "https://en.wikipedia.org/wiki/1930_FIFA_World_Cup"
+    },
+    {
+      "id": "k2lx6euh",
+      "tier": 5,
+      "subject": "sports",
+      "prompt": "How many players per side are on the field in rugby union?",
+      "correct": "15",
+      "wrong": ["11", "12", "13"],
+      "source": "https://en.wikipedia.org/wiki/Rugby_union"
+    },
+    {
+      "id": "1o6oyq6f",
+      "tier": 5,
+      "subject": "sports",
+      "prompt": "Who was the first gymnast to score a perfect 10 at the Olympics?",
+      "correct": "Nadia Comăneci",
+      "wrong": ["Olga Korbut", "Mary Lou Retton", "Larisa Latynina"],
+      "source": "https://www.guinnessworldrecords.com/news/2015/8/60/1976-first-gymnast-to-score-a-perfect-10-at-an-olympics-games-392959"
+    },
+    {
+      "id": "u1ark80m",
+      "tier": 5,
+      "subject": "pop culture",
+      "prompt": "Who wrote the novel One Hundred Years of Solitude?",
+      "correct": "Gabriel García Márquez",
+      "wrong": ["Jorge Luis Borges", "Isabel Allende", "Mario Vargas Llosa"],
+      "source": "https://en.wikipedia.org/wiki/One_Hundred_Years_of_Solitude"
+    },
+    {
+      "id": "pnqzf9uw",
+      "tier": 5,
+      "subject": "pop culture",
+      "prompt": "Which artist painted The Persistence of Memory?",
+      "correct": "Salvador Dalí",
+      "wrong": ["René Magritte", "Joan Miró", "Max Ernst"],
+      "source": "https://en.wikipedia.org/wiki/The_Persistence_of_Memory"
+    },
+    {
+      "id": "q1fir4q9",
+      "tier": 5,
+      "subject": "pop culture",
+      "prompt": "What is the main ingredient of the dip baba ghanoush?",
+      "correct": "Eggplant",
+      "wrong": ["Chickpeas", "Lentils", "Zucchini"],
+      "source": "https://en.wikipedia.org/wiki/Baba_ghanoush"
+    },
+    {
+      "id": "6zflw392",
+      "tier": 5,
+      "subject": "pop culture",
+      "prompt": "Who composed the ballet The Rite of Spring?",
+      "correct": "Igor Stravinsky",
+      "wrong": ["Sergei Prokofiev", "Maurice Ravel", "Claude Debussy"],
+      "source": "https://en.wikipedia.org/wiki/The_Rite_of_Spring"
+    }
+  ]
+}

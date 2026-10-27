@@ -9,6 +9,7 @@
     "build": "bun run check-content && vite build",
     "build:fixtures": "bun run check-fixtures && vite build --mode fixtures",
     "check-content": "bun scripts/check-content.ts",
+    "check-real-build": "bun scripts/check-real-build.ts",
     "check-fixtures": "bun scripts/check-content.ts --content src/content/fixtures --out src/content/topic-index.fixtures.gen.json",
     "assign-ids": "bun scripts/assign-ids.ts",
     "render-link-preview": "bun scripts/render-link-preview.ts",

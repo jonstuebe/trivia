@@ -1,0 +1,580 @@
+{
+  "title": "Jurassic Park",
+  "questions": [
+    {
+      "id": "4vzzgyzi",
+      "tier": 1,
+      "prompt": "What kind of creatures does Hammond's park bring back to life?",
+      "correct": "Dinosaurs",
+      "wrong": ["Dragons", "Woolly mammoths", "Giant apes"]
+    },
+    {
+      "id": "skownzjv",
+      "tier": 1,
+      "prompt": "In the 1993 film, which huge dinosaur with tiny arms breaks out of its paddock in the rain?",
+      "correct": "Tyrannosaurus rex",
+      "wrong": ["Triceratops", "Stegosaurus", "Brachiosaurus"]
+    },
+    {
+      "id": "nlcq2hsj",
+      "tier": 1,
+      "prompt": "Who directed the 1993 film?",
+      "correct": "Steven Spielberg",
+      "wrong": ["James Cameron", "George Lucas", "Ridley Scott"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)"
+    },
+    {
+      "id": "dkuwuueg",
+      "tier": 1,
+      "prompt": "In the 1993 film, dinosaur DNA comes from blood found inside which insects?",
+      "correct": "Mosquitoes",
+      "wrong": ["Houseflies", "Termites", "Fireflies"]
+    },
+    {
+      "id": "rid3mx80",
+      "tier": 1,
+      "prompt": "In the 1993 film, what ripples to warn that the T. rex is coming?",
+      "correct": "A cup of water",
+      "wrong": ["A fish tank", "A swimming pool", "A bowl of soup"]
+    },
+    {
+      "id": "qwp6pmv8",
+      "tier": 1,
+      "prompt": "Which actor plays Owen Grady?",
+      "correct": "Chris Pratt",
+      "wrong": ["Chris Evans", "Chris Hemsworth", "Chris Pine"]
+    },
+    {
+      "id": "jtfdeivj",
+      "tier": 1,
+      "prompt": "In the 1993 film, which dinosaurs hunt Lex and Tim through the kitchen?",
+      "correct": "Velociraptors",
+      "wrong": ["Dilophosaurus", "Compsognathus", "Triceratops"]
+    },
+    {
+      "id": "0dm2qqtg",
+      "tier": 1,
+      "prompt": "In the 1993 film, who is eaten by the T. rex while sitting on a toilet?",
+      "correct": "The lawyer",
+      "wrong": ["The game warden", "The park owner", "The paleontologist"]
+    },
+    {
+      "id": "hqb3okpz",
+      "tier": 1,
+      "prompt": "What is Dr. Alan Grant's job?",
+      "correct": "Paleontologist",
+      "wrong": ["Archaeologist", "Astronaut", "Dentist"]
+    },
+    {
+      "id": "jref01ws",
+      "tier": 1,
+      "prompt": "In the 1993 film, what kind of fences keep the dinosaurs in their paddocks?",
+      "correct": "Electric fences",
+      "wrong": ["Wooden fences", "Picket fences", "Stone walls"]
+    },
+    {
+      "id": "gszyqe08",
+      "tier": 1,
+      "prompt": "In the 1993 film, who are Lex and Tim to John Hammond?",
+      "correct": "His grandchildren",
+      "wrong": ["His children", "His neighbors", "His employees"]
+    },
+    {
+      "id": "hz1a56jx",
+      "tier": 1,
+      "prompt": "In the 2015 film, what is the name of the dinosaur theme park open to the public?",
+      "correct": "Jurassic World",
+      "wrong": ["Dino Kingdom", "Raptor Island", "Prehistoric Planet"]
+    },
+    {
+      "id": "hg5e18pu",
+      "tier": 1,
+      "prompt": "In Jurassic World, what is Owen's job at the park?",
+      "correct": "Raptor trainer",
+      "wrong": ["Ticket seller", "Monorail driver", "Head chef"]
+    },
+    {
+      "id": "o6jaugtj",
+      "tier": 1,
+      "prompt": "In the 1993 film, Grant says the T. rex can't see you if you don't do what?",
+      "correct": "Move",
+      "wrong": ["Breathe", "Blink", "Speak"],
+      "source": "Jurassic Park (1993), T. rex attack on the tour cars"
+    },
+    {
+      "id": "9rzwk9ux",
+      "tier": 1,
+      "prompt": "In the 1993 film, how do the guests take the park tour?",
+      "correct": "In electric tour cars",
+      "wrong": ["On horseback", "By hot-air balloon", "On a riverboat"]
+    },
+    {
+      "id": "hddqz1yv",
+      "tier": 2,
+      "prompt": "Which actor plays Dr. Alan Grant?",
+      "correct": "Sam Neill",
+      "wrong": ["Harrison Ford", "Kevin Costner", "Tom Hanks"]
+    },
+    {
+      "id": "s0bgrqvf",
+      "tier": 2,
+      "prompt": "Which actor plays chaos theorist Ian Malcolm?",
+      "correct": "Jeff Goldblum",
+      "wrong": ["Bill Murray", "Steve Martin", "Robin Williams"]
+    },
+    {
+      "id": "leeqv2on",
+      "tier": 2,
+      "prompt": "In Jurassic World, on which island is the theme park built?",
+      "correct": "Isla Nublar",
+      "wrong": ["Isla Sorna", "Skull Island", "Isla Verde"],
+      "source": "Jurassic World (2015), monorail announcement: \"Welcome to Isla Nublar, home of Jurassic World\""
+    },
+    {
+      "id": "lk5f8z2e",
+      "tier": 2,
+      "prompt": "In the 1993 film, who created the dinosaur park?",
+      "correct": "John Hammond",
+      "wrong": ["Dennis Nedry", "Robert Muldoon", "Donald Gennaro"]
+    },
+    {
+      "id": "q0x1vquy",
+      "tier": 2,
+      "prompt": "What is the name of the lead raptor that Owen trains?",
+      "correct": "Blue",
+      "wrong": ["Rexy", "Spike", "Red"]
+    },
+    {
+      "id": "8so22uju",
+      "tier": 2,
+      "prompt": "In the 1993 film, who says \"Life, uh, finds a way\"?",
+      "correct": "Ian Malcolm",
+      "wrong": ["Alan Grant", "John Hammond", "Henry Wu"],
+      "source": "Jurassic Park (1993), lunch scene"
+    },
+    {
+      "id": "xqlhxuvl",
+      "tier": 2,
+      "prompt": "In the 1993 film, which towering long-necked dinosaur do Grant and Ellie see first?",
+      "correct": "Brachiosaurus",
+      "wrong": ["Stegosaurus", "Triceratops", "Ankylosaurus"]
+    },
+    {
+      "id": "m5m9dlrl",
+      "tier": 2,
+      "prompt": "In Jurassic World, what is the park's new hybrid dinosaur called?",
+      "correct": "Indominus rex",
+      "wrong": ["Velocirex", "Spinoraptor", "Ultimasaurus"]
+    },
+    {
+      "id": "n0eunl22",
+      "tier": 2,
+      "prompt": "In Jurassic World, which sea creature drags the Indominus rex underwater?",
+      "correct": "Mosasaurus",
+      "wrong": ["Plesiosaurus", "Megalodon", "Liopleurodon"]
+    },
+    {
+      "id": "e3qmmsry",
+      "tier": 2,
+      "prompt": "Who composed the music for the 1993 film?",
+      "correct": "John Williams",
+      "wrong": ["Hans Zimmer", "Danny Elfman", "Howard Shore"]
+    },
+    {
+      "id": "9pamy3zc",
+      "tier": 2,
+      "prompt": "In the 1993 film, why are all the park's dinosaurs bred female?",
+      "correct": "So they can't breed",
+      "wrong": ["So they stay smaller", "So they're less aggressive", "So they live longer"]
+    },
+    {
+      "id": "e086vrbz",
+      "tier": 2,
+      "prompt": "In Fallen Kingdom, what threatens to wipe out the dinosaurs on Isla Nublar?",
+      "correct": "A volcano",
+      "wrong": ["A hurricane", "A tsunami", "A meteor"]
+    },
+    {
+      "id": "rpupuk0c",
+      "tier": 2,
+      "prompt": "Who wrote the novel the 1993 film is based on?",
+      "correct": "Michael Crichton",
+      "wrong": ["Stephen King", "Tom Clancy", "John Grisham"]
+    },
+    {
+      "id": "qkcmih1i",
+      "tier": 2,
+      "prompt": "In Jurassic World, what shoes does Claire wear while running from dinosaurs?",
+      "correct": "High heels",
+      "wrong": ["Flip-flops", "Hiking boots", "Sneakers"]
+    },
+    {
+      "id": "9qpj00u4",
+      "tier": 2,
+      "prompt": "In the 1993 film, what phrase does Hammond keep repeating about his park?",
+      "correct": "Spared no expense",
+      "wrong": ["Money well spent", "Nothing but the best", "Worth every penny"],
+      "source": "Jurassic Park (1993), Hammond at the visitor center and the dinner scene"
+    },
+    {
+      "id": "u1qd5ioq",
+      "tier": 3,
+      "prompt": "Which actress plays park manager Claire Dearing?",
+      "correct": "Bryce Dallas Howard",
+      "wrong": ["Jessica Chastain", "Emma Stone", "Amy Adams"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World"
+    },
+    {
+      "id": "hbijey1l",
+      "tier": 3,
+      "prompt": "In the 1993 film, which dinosaur spits venom at Dennis Nedry?",
+      "correct": "Dilophosaurus",
+      "wrong": ["Compsognathus", "Velociraptor", "Gallimimus"],
+      "source": "Jurassic Park (1993), Nedry's escape in the storm"
+    },
+    {
+      "id": "hii39and",
+      "tier": 3,
+      "prompt": "In the third film, which big predator kills a T. rex in a fight?",
+      "correct": "Spinosaurus",
+      "wrong": ["Giganotosaurus", "Allosaurus", "Carnotaurus"],
+      "source": "Jurassic Park III (2001), Spinosaurus vs T. rex fight; https://en.wikipedia.org/wiki/Jurassic_Park_III"
+    },
+    {
+      "id": "dkydbcde",
+      "tier": 3,
+      "prompt": "In the 1993 film, complete the line on Nedry's locked computer: \"Ah ah ah, you didn't say…\"",
+      "correct": "The magic word",
+      "wrong": ["The password", "Open sesame", "Simon says"],
+      "source": "Jurassic Park (1993), Ray Arnold tries to undo Nedry's shutdown"
+    },
+    {
+      "id": "0azgd36l",
+      "tier": 3,
+      "prompt": "In the 1993 film, Nedry smuggles the embryos out in a fake can of what?",
+      "correct": "Shaving cream",
+      "wrong": ["Hairspray", "Bug spray", "Whipped cream"],
+      "source": "Jurassic Park (1993), Nedry meets Dodgson in San Jose; the Barbasol can"
+    },
+    {
+      "id": "4nkvraz7",
+      "tier": 3,
+      "prompt": "In the 1993 film, who says \"Clever girl\" just before a raptor attacks him?",
+      "correct": "Robert Muldoon",
+      "wrong": ["Dennis Nedry", "Ray Arnold", "Donald Gennaro"],
+      "source": "Jurassic Park (1993), Muldoon hunting the raptors"
+    },
+    {
+      "id": "umx0pq9m",
+      "tier": 3,
+      "prompt": "In the 1993 film, Lex recognizes the park's computers as what kind of system?",
+      "correct": "Unix",
+      "wrong": ["Windows", "Linux", "DOS"],
+      "source": "Jurassic Park (1993), \"It's a Unix system! I know this!\""
+    },
+    {
+      "id": "wf2y7gea",
+      "tier": 3,
+      "prompt": "In the 1993 film, which cartoon character explains how the dinosaurs were cloned?",
+      "correct": "Mr. DNA",
+      "wrong": ["Professor Gene", "Dr. Helix", "Captain Cell"],
+      "source": "Jurassic Park (1993), visitor center ride film"
+    },
+    {
+      "id": "cnc01kpu",
+      "tier": 3,
+      "prompt": "In the 1993 film, which animal's DNA fills the gaps in the dinosaur DNA?",
+      "correct": "Frog",
+      "wrong": ["Lizard", "Chicken", "Crocodile"],
+      "source": "Jurassic Park (1993), Mr. DNA film; Grant finds hatched eggs"
+    },
+    {
+      "id": "v24q3io4",
+      "tier": 3,
+      "prompt": "In Jurassic World, what are the names of Claire's two nephews?",
+      "correct": "Zach and Gray",
+      "wrong": ["Max and Sam", "Josh and Tyler", "Ben and Luke"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World"
+    },
+    {
+      "id": "hg92r48b",
+      "tier": 3,
+      "prompt": "In Jurassic World, what ball-shaped vehicles do Zach and Gray ride among the dinosaurs?",
+      "correct": "Gyrospheres",
+      "wrong": ["Hover pods", "Dino domes", "Bubble carts"],
+      "source": "Jurassic World (2015), Gyrosphere Valley"
+    },
+    {
+      "id": "q8yl135r",
+      "tier": 3,
+      "prompt": "In The Lost World, which city does a T. rex rampage through?",
+      "correct": "San Diego",
+      "wrong": ["Los Angeles", "San Francisco", "Seattle"],
+      "source": "https://en.wikipedia.org/wiki/The_Lost_World:_Jurassic_Park"
+    },
+    {
+      "id": "sq7u81fa",
+      "tier": 3,
+      "prompt": "In the third film, what is heard ringing inside the Spinosaurus?",
+      "correct": "A satellite phone",
+      "wrong": ["An alarm clock", "A pager", "A walkie-talkie"],
+      "source": "Jurassic Park III (2001), the ringing phone heard in the Spinosaurus"
+    },
+    {
+      "id": "vnkw2w82",
+      "tier": 3,
+      "prompt": "In Fallen Kingdom, what is the new hybrid dinosaur called?",
+      "correct": "Indoraptor",
+      "wrong": ["Raptorex", "Megaraptor", "Tyrannoraptor"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World:_Fallen_Kingdom"
+    },
+    {
+      "id": "6zue9nrw",
+      "tier": 3,
+      "prompt": "In the 1993 film, which dinosaur do the visitors find lying sick?",
+      "correct": "Triceratops",
+      "wrong": ["Stegosaurus", "Ankylosaurus", "Brachiosaurus"],
+      "source": "Jurassic Park (1993), the sick Triceratops"
+    },
+    {
+      "id": "vv61n3zn",
+      "tier": 4,
+      "prompt": "In the 1993 film, which dinosaurs stampede past Grant and the kids, \"flocking this way\"?",
+      "correct": "Gallimimus",
+      "wrong": ["Parasaurolophus", "Compsognathus", "Dilophosaurus"],
+      "source": "Jurassic Park (1993), Gallimimus stampede"
+    },
+    {
+      "id": "32icyy7h",
+      "tier": 4,
+      "prompt": "In the 1993 film, who is thrown by a shock while climbing the electric fence?",
+      "correct": "Tim",
+      "wrong": ["Lex", "Grant", "Ellie"],
+      "source": "Jurassic Park (1993), the fence climb as power is restored"
+    },
+    {
+      "id": "n73quqs2",
+      "tier": 4,
+      "prompt": "In the third film, flying reptiles attack the group inside what giant structure?",
+      "correct": "A birdcage",
+      "wrong": ["A greenhouse", "A dam", "A radio tower"],
+      "source": "Jurassic Park III (2001), Grant: \"It's a birdcage.\""
+    },
+    {
+      "id": "t2zt0ho4",
+      "tier": 4,
+      "prompt": "In Dominion, what genetically engineered creatures threaten the world's crops?",
+      "correct": "Locusts",
+      "wrong": ["Beetles", "Mosquitoes", "Termites"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World_Dominion"
+    },
+    {
+      "id": "5jtralyc",
+      "tier": 4,
+      "prompt": "In The Lost World, how does Kelly fight off a raptor?",
+      "correct": "With gymnastics",
+      "wrong": ["With a flare gun", "With karate", "With a tranquilizer gun"],
+      "source": "The Lost World: Jurassic Park (1997), worker village scene"
+    },
+    {
+      "id": "h31y8foa",
+      "tier": 4,
+      "prompt": "In the third film, who secretly takes raptor eggs from a nest?",
+      "correct": "Billy Brennan",
+      "wrong": ["Paul Kirby", "Eric Kirby", "Amanda Kirby"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_III"
+    },
+    {
+      "id": "wjhyp23j",
+      "tier": 4,
+      "prompt": "In The Lost World, what is the name of \"Site B\", where the dinosaurs were bred?",
+      "correct": "Isla Sorna",
+      "wrong": ["Isla Nublar", "Isla Verde", "Isla Bonita"],
+      "source": "https://en.wikipedia.org/wiki/The_Lost_World:_Jurassic_Park"
+    },
+    {
+      "id": "39pzrdbc",
+      "tier": 4,
+      "prompt": "In Fallen Kingdom, what is revealed about Maisie Lockwood?",
+      "correct": "She is a clone",
+      "wrong": ["She is Hammond's granddaughter", "She is Owen's daughter", "She is Wu's daughter"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World:_Fallen_Kingdom"
+    },
+    {
+      "id": "rrm61nsu",
+      "tier": 4,
+      "prompt": "What is the name of Hammond's genetics company?",
+      "correct": "InGen",
+      "wrong": ["Biosyn", "GenTech", "Helix Labs"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)"
+    },
+    {
+      "id": "7ravs66l",
+      "tier": 4,
+      "prompt": "Which scientist from the 1993 film returns in the 2015 film?",
+      "correct": "Henry Wu",
+      "wrong": ["Alan Grant", "Ellie Sattler", "Ian Malcolm"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World"
+    },
+    {
+      "id": "8vj6as0p",
+      "tier": 4,
+      "prompt": "How many Academy Awards did the 1993 film win?",
+      "correct": "Three",
+      "wrong": ["One", "Five", "Seven"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)#Accolades"
+    },
+    {
+      "id": "a8cpzyek",
+      "tier": 4,
+      "prompt": "In the 1993 film, who says \"Dinosaurs eat man. Woman inherits the earth\"?",
+      "correct": "Ellie Sattler",
+      "wrong": ["Lex Murphy", "Claire Dearing", "Sarah Harding"],
+      "source": "Jurassic Park (1993), Ellie and Malcolm with Hammond after the power fails"
+    },
+    {
+      "id": "csmvdjn7",
+      "tier": 4,
+      "prompt": "In the 1993 film, what does Ray Arnold say before rebooting the park's system?",
+      "correct": "Hold on to your butts",
+      "wrong": ["Here goes nothing", "Wish me luck, folks", "Fingers crossed"],
+      "source": "Jurassic Park (1993), control room reboot"
+    },
+    {
+      "id": "m6lq75k2",
+      "tier": 4,
+      "prompt": "Which actress plays mercenary Zora Bennett in Rebirth?",
+      "correct": "Scarlett Johansson",
+      "wrong": ["Charlize Theron", "Emily Blunt", "Jessica Chastain"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World_Rebirth"
+    },
+    {
+      "id": "ieqavd3q",
+      "tier": 4,
+      "prompt": "In Jurassic World, which dinosaur does Claire lure out with a flare to fight the Indominus rex?",
+      "correct": "Tyrannosaurus rex",
+      "wrong": ["Spinosaurus", "Brachiosaurus", "Ankylosaurus"],
+      "source": "Jurassic World (2015), the final battle"
+    },
+    {
+      "id": "q854n6nm",
+      "tier": 5,
+      "prompt": "In the third film, what kind of shop does Paul Kirby really own?",
+      "correct": "A paint and tile store",
+      "wrong": ["A car dealership", "A furniture store", "A plumbing company"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_III"
+    },
+    {
+      "id": "qn41kq07",
+      "tier": 5,
+      "prompt": "In the third film, what does Grant use to mimic raptor calls?",
+      "correct": "A resonating chamber",
+      "wrong": ["A bone whistle", "A duck call", "A tape recorder"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_III"
+    },
+    {
+      "id": "ys1hyd2d",
+      "tier": 5,
+      "prompt": "In The Lost World, what is the first name of the hunter who wants to bag a male T. rex?",
+      "correct": "Roland",
+      "wrong": ["Robert", "Vic", "Simon"],
+      "source": "The Lost World: Jurassic Park (1997), Roland's terms to Ludlow (\"the right to hunt a Tyrannosaurus. A male\"); \"Say that again, Roland\""
+    },
+    {
+      "id": "0ymbos5g",
+      "tier": 5,
+      "prompt": "In The Lost World, which nephew of Hammond takes over InGen?",
+      "correct": "Peter Ludlow",
+      "wrong": ["Lewis Dodgson", "Dennis Nedry", "Simon Masrani"],
+      "source": "https://en.wikipedia.org/wiki/The_Lost_World:_Jurassic_Park"
+    },
+    {
+      "id": "njtj759l",
+      "tier": 5,
+      "prompt": "Which character who pays off Nedry in the 1993 film returns as Biosyn's CEO in Dominion?",
+      "correct": "Lewis Dodgson",
+      "wrong": ["Peter Ludlow", "Henry Wu", "Simon Masrani"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World_Dominion"
+    },
+    {
+      "id": "ly49ki5j",
+      "tier": 5,
+      "prompt": "In Fallen Kingdom, who was Hammond's partner in creating the first dinosaurs?",
+      "correct": "Benjamin Lockwood",
+      "wrong": ["Eli Mills", "Simon Masrani", "Peter Ludlow"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World:_Fallen_Kingdom"
+    },
+    {
+      "id": "3vo0wjkm",
+      "tier": 5,
+      "prompt": "In Jurassic World, the Indominus rex can change color thanks to which animal's DNA?",
+      "correct": "Cuttlefish",
+      "wrong": ["Chameleon", "Octopus", "Squid"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World"
+    },
+    {
+      "id": "x48wd9mi",
+      "tier": 5,
+      "prompt": "In the 1993 film, which toxic plant does Ellie find near the sick Triceratops?",
+      "correct": "West Indian lilac",
+      "wrong": ["Oleander", "Foxglove", "Deadly nightshade"],
+      "source": "Jurassic Park (1993), the sick Triceratops scene"
+    },
+    {
+      "id": "orbgzspy",
+      "tier": 5,
+      "prompt": "The 1993 film's T. rex roar was built partly from the sound of which baby animal?",
+      "correct": "Elephant",
+      "wrong": ["Giraffe", "Camel", "Bear"],
+      "source": "NPR, 2013, \"Jurassic Bark\" (Gary Rydstrom on the baby elephant layer); slashfilm.com/1310511"
+    },
+    {
+      "id": "mpisc9ag",
+      "tier": 5,
+      "prompt": "Which Hawaiian island was the main filming location for the 1993 film?",
+      "correct": "Kauai",
+      "wrong": ["Maui", "Oahu", "Molokai"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)#Filming"
+    },
+    {
+      "id": "8i9w3nxp",
+      "tier": 5,
+      "prompt": "Who directed the third film?",
+      "correct": "Joe Johnston",
+      "wrong": ["Steven Spielberg", "Colin Trevorrow", "J. A. Bayona"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_III"
+    },
+    {
+      "id": "ljk2eovl",
+      "tier": 5,
+      "prompt": "In Jurassic World, what is the surname of the billionaire who owns the park?",
+      "correct": "Masrani",
+      "wrong": ["Mehta", "Sinclair", "Lockwood"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World"
+    },
+    {
+      "id": "24f2m5ga",
+      "tier": 5,
+      "prompt": "In Dominion, which giant predator fights the T. rex in the finale?",
+      "correct": "Giganotosaurus",
+      "wrong": ["Spinosaurus", "Allosaurus", "Ceratosaurus"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World_Dominion"
+    },
+    {
+      "id": "5mzajrg5",
+      "tier": 5,
+      "prompt": "In Rebirth, dinosaur DNA is sought to make a drug for which kind of disease?",
+      "correct": "Heart disease",
+      "wrong": ["Cancer", "Alzheimer's", "Diabetes"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_World_Rebirth"
+    },
+    {
+      "id": "n69qp1or",
+      "tier": 5,
+      "prompt": "Isla Nublar lies off the coast of which country?",
+      "correct": "Costa Rica",
+      "wrong": ["Panama", "Belize", "Honduras"],
+      "source": "https://en.wikipedia.org/wiki/Jurassic_Park_(film)"
+    }
+  ]
+}

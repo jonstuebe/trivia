@@ -32,12 +32,14 @@ A Tier is decided by roughly what share of that Topic's players would know the a
 ## Movie franchises
 
 - A movie Title covers its theatrical films only. The Star Wars Title excludes The Mandalorian, and the Marvel Cinematic Universe Title excludes the Disney+ series.
-- The prompt names the film whenever the fact belongs to one film ("In Toy Story 3, …"), and leaves it out when the fact holds across the franchise. Pixar is one Title spanning unrelated films, so nearly every Pixar prompt names its film.
+- The prompt names the film whenever the fact belongs to one film ("In Toy Story 3, …"), and leaves it out when the fact holds across the franchise. Pixar is one Title spanning unrelated films, so nearly every Pixar prompt names its film. Disney (the Walt Disney Animation Studios films) is the same, and a film that has a live-action remake always gets its year in the prompt, whether or not the fact differs in the remake ("In The Lion King (1994), …", "In Mulan (1998), …").
 - Coverage is weighted toward the best-known films.
 
 ## Story vs making-of
 
 TV and Movies Questions are mostly about the story: characters, plots, quotes. Up to about a fifth are about the cast, production and awards.
+
+A story answer must be said or shown in the film or episode itself. A name or fact that appears only in the credits, a book, a script, an interview or a fan wiki does not count, however well known: the Beast's name "Adam", Andy's surname "Davis" and the "dianoga" in the trash compactor all fail. Cast, production and award Questions are the exception, since they are about the making of the film.
 
 A prompt never names its own Title. In Mixed games the game shows the Title as a label above the Question, so the prompt stays clean. The build check matches the Title's name anywhere in the prompt, so film and character names that contain it fail too. Name the film by the rest of its title, and the character by first name:
 
@@ -58,6 +60,11 @@ Every General Question has a `subject`, which picks the Phone a Friend specialis
 | `science` | science, nature, the human body, technology, maths |
 | `sports` | sports, the Olympics, games |
 | `pop culture` | film, TV, music, books, art, food and drink, famous people |
+
+## Spelling and quoted lines
+
+- Use American spelling: color, honor, favorite, flavor, defense. A proper name keeps its own spelling (the album Rumours).
+- A right answer that is a line from the film or episode has no surrounding quote marks and no trailing full stop, but keeps a "!" or "?" if it is spoken that way (Bazinga!), and its wrong answers match its style. A fill-in-the-line prompt asks to complete the line and ends with its quoted start, closed by "…" inside the quote marks: Complete Leia's plea: "Help me, Obi-Wan Kenobi. You're my…"
 
 ## Avoid change and dispute
 

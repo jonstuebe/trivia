@@ -2,13 +2,19 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   // A static-assets-only Worker: no script, just the Vite build in dist/.
   //
-  // Until Phase 7 the workers.dev preview serves the fixture build: content/
-  // is empty, so the real build has no Topics to play. CI uploads
-  // dist-fixtures/ as the `dist` artifact and the deploy job downloads it
-  // here (see .github/workflows/ci.yml). Phase 7 switches the upload back to
-  // the real dist/ before trivia.jonstuebe.com is attached.
+  // CI uploads the real build in dist/ as the `dist` artifact and the deploy
+  // job downloads it here (see .github/workflows/ci.yml). The fixture build
+  // in dist-fixtures/ is only for the e2e journeys and is never deployed.
   "name": "trivia",
   "compatibility_date": "2026-10-01",
+  // trivia.jonstuebe.com is the site address (see src/site.ts). As a Custom
+  // Domain, Cloudflare makes its DNS record and certificate on deploy. The
+  // jonstuebe.com zone must be on the Worker's account, and the deploy token
+  // needs Zone > Workers Routes > Edit on that zone.
+  "routes": [{ "pattern": "trivia.jonstuebe.com", "custom_domain": true }],
+  // Any route turns workers.dev off unless it's set here, so the preview
+  // address keeps serving the game too, with no redirect.
+  "workers_dev": true,
   "assets": {
     "directory": "./dist",
     // Unknown paths (deep links like /tv/friends) get index.html with a 200,

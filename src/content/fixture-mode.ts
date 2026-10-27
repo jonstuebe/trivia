@@ -16,3 +16,15 @@ export const FIXTURE_MODE = "fixtures";
  * page; `realRevealWait` clears it to time the real wait.
  */
 export const INSTANT_REVEAL_KEY = "trivia.fixtures.instantReveal";
+
+/**
+ * The test build's sound readout: the `<html>` dataset keys `startSound`
+ * sets so the e2e journeys can see what's playing (as `data-sound`,
+ * `data-sound-cues`, `data-sound-last-cue` and `data-sound-bed`).
+ */
+export const SOUND_DATA = {
+  muted: "sound",
+  cues: "soundCues",
+  lastCue: "soundLastCue",
+  bed: "soundBed",
+} as const;

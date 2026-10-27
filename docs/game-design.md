@@ -42,7 +42,7 @@ There are two levels: a **category**, then optionally a **title** within it.
 A movie title can be a single film or a franchise (its theatrical films only). A mixed game is offered only when the category has 2 or more titles. The launch titles are:
 
 - **TV Shows:** Friends, The Big Bang Theory, Modern Family.
-- **Movies:** Star Wars, Harry Potter, Marvel Cinematic Universe, Jurassic Park, Pixar (one title covering all Pixar films).
+- **Movies:** Star Wars, Harry Potter, Marvel Cinematic Universe, Jurassic Park, Pixar (one title covering all Pixar films), Disney (one title covering the Walt Disney Animation Studios films, from Snow White and the Seven Dwarfs on; not Pixar, the live-action remakes or other live-action films).
 
 ## Questions
 
