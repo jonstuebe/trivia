@@ -32,6 +32,17 @@
       }
     },
     {
+      "name": "Seinfeld",
+      "slug": "seinfeld",
+      "questionCounts": {
+        "1": 15,
+        "2": 15,
+        "3": 15,
+        "4": 15,
+        "5": 15
+      }
+    },
+    {
       "name": "The Big Bang Theory",
       "slug": "the-big-bang-theory",
       "questionCounts": {
