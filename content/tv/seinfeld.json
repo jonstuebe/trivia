@@ -1,0 +1,636 @@
+{
+  "title": "Seinfeld",
+  "questions": [
+    {
+      "id": "evtbqy0o",
+      "tier": 1,
+      "prompt": "What does Jerry do for a living?",
+      "correct": "Stand-up comedian",
+      "wrong": ["Dentist", "Divorce lawyer", "Insurance agent"]
+    },
+    {
+      "id": "0fn2guev",
+      "tier": 1,
+      "prompt": "Who lives across the hall from Jerry?",
+      "correct": "Kramer",
+      "wrong": ["George", "Puddy", "Uncle Leo"]
+    },
+    {
+      "id": "h0kqv2sv",
+      "tier": 1,
+      "prompt": "Who has been Jerry's best friend since high school?",
+      "correct": "George",
+      "wrong": ["Kramer", "Newman", "Puddy"]
+    },
+    {
+      "id": "lc3lojuj",
+      "tier": 1,
+      "prompt": "Which city is the show set in?",
+      "correct": "New York City",
+      "wrong": ["Boston", "Chicago", "Los Angeles"]
+    },
+    {
+      "id": "7pofvrj7",
+      "tier": 1,
+      "prompt": "Which actress plays Elaine?",
+      "correct": "Julia Louis-Dreyfus",
+      "wrong": ["Jennifer Aniston", "Helen Hunt", "Courteney Cox"],
+      "source": "https://en.wikipedia.org/wiki/Elaine_Benes"
+    },
+    {
+      "id": "wz65ifz5",
+      "tier": 1,
+      "prompt": "Which mailman does Jerry greet with a cold \"Hello, …\"?",
+      "correct": "Newman",
+      "wrong": ["Kramer", "Puddy", "Bania"],
+      "source": "Recurring greeting, every season"
+    },
+    {
+      "id": "jgrtz6ts",
+      "tier": 1,
+      "prompt": "What does the Soup Nazi yell when he refuses to serve someone?",
+      "correct": "No soup for you!",
+      "wrong": ["Next in line!", "Soup is closed!", "Not today, friend!"],
+      "source": "S7 'The Soup Nazi'"
+    },
+    {
+      "id": "tglp089s",
+      "tier": 1,
+      "prompt": "Which holiday does George's father invent?",
+      "correct": "Festivus",
+      "wrong": ["Winterfest", "Thanksmas", "Chrismukkah"],
+      "source": "S9 'The Strike'"
+    },
+    {
+      "id": "ef2s6ehy",
+      "tier": 1,
+      "prompt": "Which state do Jerry's parents live in?",
+      "correct": "Florida",
+      "wrong": ["Arizona", "California", "Nevada"]
+    },
+    {
+      "id": "diplrks7",
+      "tier": 1,
+      "prompt": "What is George's surname?",
+      "correct": "Costanza",
+      "wrong": ["Benes", "Peterman", "Puddy"]
+    },
+    {
+      "id": "44oehjid",
+      "tier": 1,
+      "prompt": "How does Kramer usually come into Jerry's apartment?",
+      "correct": "Bursts in without knocking",
+      "wrong": [
+        "Climbs in the window",
+        "Knocks and waits politely",
+        "Calls up from the lobby"
+      ]
+    },
+    {
+      "id": "gyi6p3s1",
+      "tier": 1,
+      "prompt": "Which network aired the show?",
+      "correct": "NBC",
+      "wrong": ["CBS", "ABC", "Fox"],
+      "source": "https://en.wikipedia.org/wiki/Seinfeld"
+    },
+    {
+      "id": "ocy0aybz",
+      "tier": 1,
+      "prompt": "George and Jerry pitch a sitcom to NBC. What do they say it's about?",
+      "correct": "Nothing",
+      "wrong": ["A mailman", "A coffee shop", "Talking dogs"],
+      "source": "S4 'The Pitch'"
+    },
+    {
+      "id": "pwsmngbe",
+      "tier": 1,
+      "prompt": "Who is Jerry's ex-girlfriend and one of his closest friends?",
+      "correct": "Elaine",
+      "wrong": ["Susan", "Sidra", "Marla"]
+    },
+    {
+      "id": "k5mwt2cm",
+      "tier": 1,
+      "prompt": "At an office party, what does Elaine do that horrifies everyone?",
+      "correct": "Dances",
+      "wrong": ["Sings", "Juggles", "Gives a toast"],
+      "source": "S8 'The Little Kicks'"
+    },
+    {
+      "id": "jpaou7zm",
+      "tier": 2,
+      "prompt": "What do the friends call the coffee shop where they often eat?",
+      "correct": "Monk's",
+      "wrong": ["Central Perk", "Luke's", "Mel's"]
+    },
+    {
+      "id": "q27wil8b",
+      "tier": 2,
+      "prompt": "Who is Jerry's favorite superhero?",
+      "correct": "Superman",
+      "wrong": ["Batman", "Spider-Man", "The Flash"]
+    },
+    {
+      "id": "f54h0mw5",
+      "tier": 2,
+      "prompt": "Which baseball team does George work for?",
+      "correct": "New York Yankees",
+      "wrong": ["New York Mets", "Boston Red Sox", "Chicago Cubs"]
+    },
+    {
+      "id": "vakltmoa",
+      "tier": 2,
+      "prompt": "George pretends to be what, and ends up saving a beached whale?",
+      "correct": "A marine biologist",
+      "wrong": ["A lifeguard", "A veterinarian", "A park ranger"],
+      "source": "S5 'The Marine Biologist'"
+    },
+    {
+      "id": "irej2d2r",
+      "tier": 2,
+      "prompt": "How does George's fiancée Susan die?",
+      "correct": "Licking toxic envelopes",
+      "wrong": ["A car accident", "Food poisoning", "A fall down the stairs"],
+      "source": "S7 'The Invitations'"
+    },
+    {
+      "id": "8tn0cufn",
+      "tier": 2,
+      "prompt": "What does Elaine shout as she shoves someone in surprise?",
+      "correct": "Get out!",
+      "wrong": ["Go away!", "Beat it!", "No way!"]
+    },
+    {
+      "id": "7ofmwbei",
+      "tier": 2,
+      "prompt": "What does Frank Costanza yell to try to calm himself down?",
+      "correct": "Serenity now!",
+      "wrong": ["Inner peace now!", "Calm down now!", "Relax, Frank!"],
+      "source": "S9 'The Serenity Now'"
+    },
+    {
+      "id": "vsg5nyhj",
+      "tier": 2,
+      "prompt": "What is Elaine's surname?",
+      "correct": "Benes",
+      "wrong": ["Costanza", "Peterman", "Klompus"]
+    },
+    {
+      "id": "8smkoem0",
+      "tier": 2,
+      "prompt": "Which made-up name does George use for his fake alter ego?",
+      "correct": "Art Vandelay",
+      "wrong": ["Lloyd Braun", "Jack Klompus", "Kenny Bania"],
+      "source": "S1 'The Stake Out'"
+    },
+    {
+      "id": "dh5sk7vv",
+      "tier": 2,
+      "prompt": "How does the series end for the four friends?",
+      "correct": "They are sent to jail",
+      "wrong": [
+        "They all get married",
+        "They win the lottery",
+        "They move to Florida"
+      ],
+      "source": "S9 'The Finale'"
+    },
+    {
+      "id": "72pmk003",
+      "tier": 2,
+      "prompt": "Who co-created the show with its star?",
+      "correct": "Larry David",
+      "wrong": ["Garry Shandling", "Carl Reiner", "Norman Lear"],
+      "source": "https://en.wikipedia.org/wiki/Seinfeld"
+    },
+    {
+      "id": "1r2znq47",
+      "tier": 2,
+      "prompt": "Which actor plays Kramer?",
+      "correct": "Michael Richards",
+      "wrong": ["Wayne Knight", "Jason Alexander", "Patrick Warburton"],
+      "source": "https://en.wikipedia.org/wiki/Cosmo_Kramer"
+    },
+    {
+      "id": "juhyc84i",
+      "tier": 2,
+      "prompt": "Which actor plays George?",
+      "correct": "Jason Alexander",
+      "wrong": ["Michael Richards", "Danny DeVito", "Jon Lovitz"],
+      "source": "https://en.wikipedia.org/wiki/George_Costanza"
+    },
+    {
+      "id": "ioi25unt",
+      "tier": 2,
+      "prompt": "After a swim in a cold pool, what does George insist he's a victim of?",
+      "correct": "Shrinkage",
+      "wrong": ["Brain freeze", "Frostbite", "Hypothermia"],
+      "source": "S5 'The Hamptons'"
+    },
+    {
+      "id": "3s6dr23x",
+      "tier": 2,
+      "prompt": "Complete the line Jerry and George keep repeating: \"We're not gay! Not that there's…\"",
+      "correct": "anything wrong with that",
+      "wrong": ["anything we can do", "any shame in it", "anyone who'd mind"],
+      "source": "S4 'The Outing'"
+    },
+    {
+      "id": "o3qotihd",
+      "tier": 3,
+      "prompt": "What is Kramer's first name?",
+      "correct": "Cosmo",
+      "wrong": ["Calvin", "Carl", "Conrad"],
+      "source": "S6 'The Switch': https://www.seinfeldscripts.com/TheSwitch.htm"
+    },
+    {
+      "id": "762669yk",
+      "tier": 3,
+      "prompt": "What is Jerry's father's name?",
+      "correct": "Morty",
+      "wrong": ["Frank", "Leo", "Jack"],
+      "source": "S3 'The Pen': https://www.seinfeldscripts.com/ThePen.html"
+    },
+    {
+      "id": "4q5l9omu",
+      "tier": 3,
+      "prompt": "What is George's mother's name?",
+      "correct": "Estelle",
+      "wrong": ["Helen", "Marion", "Doris"],
+      "source": "S4 'The Contest': https://www.seinfeldscripts.com/TheContest.htm"
+    },
+    {
+      "id": "11wgetv8",
+      "tier": 3,
+      "prompt": "Kramer gets one line in a Woody Allen film. What is it?",
+      "correct": "These pretzels are making me thirsty!",
+      "wrong": [
+        "This coffee is making me jittery!",
+        "These peanuts are making me sleepy!",
+        "This soup is making me sweaty!"
+      ],
+      "source": "S3 'The Alternate Side': https://www.seinfeldscripts.com/TheAlternateSide.htm"
+    },
+    {
+      "id": "s67h14y7",
+      "tier": 3,
+      "prompt": "Who is the first of the four friends to drop out of the contest?",
+      "correct": "Kramer",
+      "wrong": ["Elaine", "George", "Jerry"],
+      "source": "S4 'The Contest': https://www.seinfeldscripts.com/TheContest.htm"
+    },
+    {
+      "id": "mmsdq155",
+      "tier": 3,
+      "prompt": "Jerry forgets his girlfriend's name but knows it rhymes with a body part. What is it?",
+      "correct": "Dolores",
+      "wrong": ["Mulva", "Loretta", "Celeste"],
+      "source": "S4 'The Junior Mint': https://www.seinfeldscripts.com/TheJuniorMints.htm"
+    },
+    {
+      "id": "4s5l81lv",
+      "tier": 3,
+      "prompt": "What candy falls into a patient during surgery?",
+      "correct": "A Junior Mint",
+      "wrong": ["A Tic Tac", "A Milk Dud", "A gumball"],
+      "source": "S4 'The Junior Mint': https://www.seinfeldscripts.com/TheJuniorMints.htm"
+    },
+    {
+      "id": "6nat11j5",
+      "tier": 3,
+      "prompt": "At a wake, George is caught doing what with a chip?",
+      "correct": "Double-dipping it",
+      "wrong": [
+        "Stealing the last one",
+        "Dropping it on the floor",
+        "Hiding it in a pocket"
+      ],
+      "source": "S4 'The Implant': https://www.seinfeldscripts.com/TheImplant.html"
+    },
+    {
+      "id": "vlmrnrox",
+      "tier": 3,
+      "prompt": "What does George call his planned months of leisure on severance pay?",
+      "correct": "The Summer of George",
+      "wrong": [
+        "George's Big Break",
+        "The Costanza Getaway",
+        "George's Year Off"
+      ],
+      "source": "S8 'The Summer of George': https://www.seinfeldscripts.com/TheSummerofGeorge.htm"
+    },
+    {
+      "id": "hnddsx8v",
+      "tier": 3,
+      "prompt": "Which arcade machine does George try to push across a busy street?",
+      "correct": "Frogger",
+      "wrong": ["Pac-Man", "Donkey Kong", "Galaga"],
+      "source": "S9 'The Frogger': https://www.seinfeldscripts.com/TheFrogger.htm"
+    },
+    {
+      "id": "ex77em60",
+      "tier": 3,
+      "prompt": "What puts Jerry off his girlfriend Gillian?",
+      "correct": "Her man hands",
+      "wrong": ["Her loud laugh", "Her big feet", "Her baby voice"],
+      "source": "S8 'The Bizarro Jerry': https://www.seinfeldscripts.com/TheBizarroJerry.htm"
+    },
+    {
+      "id": "4058yxik",
+      "tier": 3,
+      "prompt": "Jerry agrees to wear the puffy shirt because he couldn't hear its designer. What kind of talker is she?",
+      "correct": "A low talker",
+      "wrong": ["A close talker", "A fast talker", "A loud talker"],
+      "source": "S5 'The Puffy Shirt': https://www.seinfeldscripts.com/ThePuffyShirt.htm"
+    },
+    {
+      "id": "1msn7fqp",
+      "tier": 3,
+      "prompt": "Which lawyer does Kramer hire after he's burned by hot coffee?",
+      "correct": "Jackie Chiles",
+      "wrong": ["Marty Gold", "Sid Fields", "Lenny Bloom"],
+      "source": "S7 'The Maestro': https://www.seinfeldscripts.com/TheMaestro.htm"
+    },
+    {
+      "id": "6cqpoh4w",
+      "tier": 3,
+      "prompt": "Which hockey team does Puddy paint his face for?",
+      "correct": "New Jersey Devils",
+      "wrong": [
+        "New York Rangers",
+        "New York Islanders",
+        "Philadelphia Flyers"
+      ],
+      "source": "S6 'The Face Painter': https://www.seinfeldscripts.com/TheFacePainter.html"
+    },
+    {
+      "id": "kgiuyd9k",
+      "tier": 3,
+      "prompt": "In which year did the series finale air?",
+      "correct": "1998",
+      "wrong": ["1996", "1997", "1999"],
+      "source": "https://en.wikipedia.org/wiki/The_Finale_(Seinfeld)"
+    },
+    {
+      "id": "glxsk7qe",
+      "tier": 4,
+      "prompt": "What is George's secret ATM code?",
+      "correct": "Bosco",
+      "wrong": ["Ovaltine", "Nesquik", "Yoo-hoo"],
+      "source": "S7 'The Secret Code': https://www.seinfeldscripts.com/TheSecretCode2.htm"
+    },
+    {
+      "id": "8ebym9wk",
+      "tier": 4,
+      "prompt": "George says the Moors, but what does the Bubble Boy's Trivial Pursuit card say?",
+      "correct": "The Moops",
+      "wrong": ["The Mops", "The Moots", "The Maps"],
+      "source": "S4 'The Bubble Boy': https://www.seinfeldscripts.com/TheBubbleBoy.htm"
+    },
+    {
+      "id": "kalw3yzd",
+      "tier": 4,
+      "prompt": "Kramer's coffee table book is about what?",
+      "correct": "Coffee tables",
+      "wrong": ["Coffee shops", "Famous doors", "New York diners"],
+      "source": "S5 'The Fire': https://www.seinfeldscripts.com/TheFire.html"
+    },
+    {
+      "id": "7w0hv99q",
+      "tier": 4,
+      "prompt": "What does Kramer name his fighting rooster?",
+      "correct": "Little Jerry Seinfeld",
+      "wrong": ["Big George Costanza", "Little Cosmo Kramer", "Mighty Newman"],
+      "source": "S8 'The Little Jerry': https://www.seinfeldscripts.com/TheLittleJerry.html"
+    },
+    {
+      "id": "cgjaglkv",
+      "tier": 4,
+      "prompt": "What is the name of the library investigator who chases Jerry over an overdue book?",
+      "correct": "Mr. Bookman",
+      "wrong": ["Mr. Pageman", "Mr. Shelby", "Mr. Dewey"],
+      "source": "S3 'The Library': https://www.seinfeldscripts.com/TheLibrary.htm"
+    },
+    {
+      "id": "ontshd49",
+      "tier": 4,
+      "prompt": "Elaine's boyfriend Bob insists everyone call him by what title?",
+      "correct": "The Maestro",
+      "wrong": ["The Professor", "The Doctor", "The Captain"],
+      "source": "S7 'The Maestro': https://www.seinfeldscripts.com/TheMaestro.htm"
+    },
+    {
+      "id": "l9xpjwcq",
+      "tier": 4,
+      "prompt": "The Yankees trade George to which company?",
+      "correct": "Tyler Chicken",
+      "wrong": ["Perdue Farms", "Kenny Rogers Roasters", "Mendy's"],
+      "source": "S8 'The Muffin Tops': https://en.wikipedia.org/wiki/The_Muffin_Tops"
+    },
+    {
+      "id": "4mjvaaoz",
+      "tier": 4,
+      "prompt": "Which film's trailer promises a \"strange, erotic journey from Milan to Minsk\"?",
+      "correct": "Rochelle, Rochelle",
+      "wrong": ["Sack Lunch", "Chunnel", "Prognosis: Negative"],
+      "source": "S4 'The Movie': https://www.seinfeldscripts.com/TheMovie.htm"
+    },
+    {
+      "id": "206fdexo",
+      "tier": 4,
+      "prompt": "What was the show called when its pilot aired in 1989?",
+      "correct": "The Seinfeld Chronicles",
+      "wrong": ["Jerry's World", "Stand-Up Guys", "Jerry and Friends"],
+      "source": "https://en.wikipedia.org/wiki/The_Seinfeld_Chronicles"
+    },
+    {
+      "id": "vfr5j2db",
+      "tier": 4,
+      "prompt": "Which actor plays George's father, Frank?",
+      "correct": "Jerry Stiller",
+      "wrong": ["Barney Martin", "Len Lesser", "Larry Thomas"],
+      "source": "https://en.wikipedia.org/wiki/Jerry_Stiller"
+    },
+    {
+      "id": "xtfwwofv",
+      "tier": 4,
+      "prompt": "Jerry suspects his dentist, Tim Whatley, converted to Judaism just for what?",
+      "correct": "The jokes",
+      "wrong": ["The holidays", "The food", "The discounts"],
+      "source": "S8 'The Yada Yada': https://www.seinfeldscripts.com/TheYadaYada.htm"
+    },
+    {
+      "id": "zo7jdfa1",
+      "tier": 4,
+      "prompt": "Which real actress is George obsessed with meeting?",
+      "correct": "Marisa Tomei",
+      "wrong": ["Sandra Bullock", "Winona Ryder", "Julia Roberts"],
+      "source": "S7 'The Cadillac': https://www.seinfeldscripts.com/TheCadillac1.html"
+    },
+    {
+      "id": "kajnechg",
+      "tier": 4,
+      "prompt": "Which candy bar does Elaine's boss Mr. Pitt eat with a knife and fork?",
+      "correct": "Snickers",
+      "wrong": ["Milky Way", "Mars bar", "Twix"],
+      "source": "S6 'The Pledge Drive': https://www.seinfeldscripts.com/ThePledgeDrive.html"
+    },
+    {
+      "id": "gm1ss1bv",
+      "tier": 4,
+      "prompt": "What does Jerry snatch from an old woman on the street?",
+      "correct": "A marble rye",
+      "wrong": ["A babka", "A loaf of challah", "A cinnamon bun"],
+      "source": "S7 'The Rye': https://www.seinfeldscripts.com/TheRye.htm"
+    },
+    {
+      "id": "d71h5mqn",
+      "tier": 4,
+      "prompt": "Which New York Mets player is accused of spitting on Kramer and Newman?",
+      "correct": "Keith Hernandez",
+      "wrong": ["Darryl Strawberry", "Dwight Gooden", "Gary Carter"],
+      "source": "S3 'The Boyfriend': https://www.seinfeldscripts.com/TheBoyfriend1.htm"
+    },
+    {
+      "id": "zshn4n5z",
+      "tier": 5,
+      "prompt": "Which overdue book has Jerry kept from the library since 1971?",
+      "correct": "Tropic of Cancer",
+      "wrong": ["Lolita", "The Catcher in the Rye", "Ulysses"],
+      "source": "S3 'The Library': https://www.seinfeldscripts.com/TheLibrary.htm"
+    },
+    {
+      "id": "vluyfnyw",
+      "tier": 5,
+      "prompt": "Which alias does Kramer use when posing as a \"wealthy industrialist, philanthropist and bicyclist\"?",
+      "correct": "H.E. Pennypacker",
+      "wrong": ["Martin Van Nostrand", "Art Vandelay", "Lloyd Braun"],
+      "source": "S9 'The Puerto Rican Day': https://www.seinfeldscripts.com/ThePuertoRicanDay.htm"
+    },
+    {
+      "id": "7kn7drzn",
+      "tier": 5,
+      "prompt": "What is Kramer's mother's name?",
+      "correct": "Babs",
+      "wrong": ["Doris", "Marge", "Ruth"],
+      "source": "S6 'The Switch': https://www.seinfeldscripts.com/TheSwitch.htm"
+    },
+    {
+      "id": "9rxj1tw4",
+      "tier": 5,
+      "prompt": "What is the name of the college intern at Kramerica Industries?",
+      "correct": "Darren",
+      "wrong": ["Dennis", "Doug", "Derek"],
+      "source": "S9 'The Voice': https://www.seinfeldscripts.com/TheVoice.htm"
+    },
+    {
+      "id": "jmbg59rh",
+      "tier": 5,
+      "prompt": "In which year did the show first win the Emmy for Outstanding Comedy Series?",
+      "correct": "1993",
+      "wrong": ["1991", "1995", "1997"],
+      "source": "https://www.emmys.com/shows/seinfeld"
+    },
+    {
+      "id": "embbsfq1",
+      "tier": 5,
+      "prompt": "Uncle Leo's son Jeffrey works for which city department?",
+      "correct": "Parks Department",
+      "wrong": [
+        "Sanitation Department",
+        "Fire Department",
+        "Transit Department"
+      ],
+      "source": "S3 'The Pen': https://www.seinfeldscripts.com/ThePen.html"
+    },
+    {
+      "id": "g9zhnqsg",
+      "tier": 5,
+      "prompt": "Which hat does Elaine come up with for the Peterman catalog?",
+      "correct": "The Urban Sombrero",
+      "wrong": ["The Urban Fedora", "The Metro Beret", "The City Stetson"],
+      "source": "S8 'The Foundation': https://www.seinfeldscripts.com/TheFoundation.html"
+    },
+    {
+      "id": "g21f789q",
+      "tier": 5,
+      "prompt": "What is George's job title with the Yankees?",
+      "correct": "Assistant to the traveling secretary",
+      "wrong": [
+        "Assistant to the general manager",
+        "Deputy director of scouting",
+        "Head of stadium operations"
+      ],
+      "source": "S5 'The Opposite': https://www.seinfeldscripts.com/TheOpposite.htm"
+    },
+    {
+      "id": "q7sqopqz",
+      "tier": 5,
+      "prompt": "In which town are the four friends arrested in the series finale?",
+      "correct": "Latham, Massachusetts",
+      "wrong": [
+        "Springfield, Massachusetts",
+        "Hartford, Connecticut",
+        "Portland, Maine"
+      ],
+      "source": "S9 'The Finale': https://www.seinfeldscripts.com/TheFinale.htm"
+    },
+    {
+      "id": "y8160752",
+      "tier": 5,
+      "prompt": "After selling his life stories to Peterman, what does Kramer start running?",
+      "correct": "The Peterman Reality Tour",
+      "wrong": [
+        "The Kramer Comedy Hour",
+        "Kramerica Walking Tours",
+        "The Cosmo Book Club"
+      ],
+      "source": "S8 'The Muffin Tops': https://www.seinfeldscripts.com/TheMuffinTops.htm"
+    },
+    {
+      "id": "pm2cp75n",
+      "tier": 5,
+      "prompt": "Kramer rebuilds which talk show's set in his apartment?",
+      "correct": "The Merv Griffin Show",
+      "wrong": [
+        "The Tonight Show",
+        "The Dick Cavett Show",
+        "The Mike Douglas Show"
+      ],
+      "source": "S9 'The Merv Griffin Show': https://www.seinfeldscripts.com/TheMervGriffinShow.htm"
+    },
+    {
+      "id": "rtasybte",
+      "tier": 5,
+      "prompt": "Which publishing house does Elaine work for in the early seasons?",
+      "correct": "Pendant Publishing",
+      "wrong": ["Pinnacle Publishing", "Penrose Press", "Paragon Books"],
+      "source": "S2 'The Jacket': https://www.seinfeldscripts.com/TheJacket.htm"
+    },
+    {
+      "id": "xonfxce5",
+      "tier": 5,
+      "prompt": "What is the name of Elaine's father, a gruff novelist?",
+      "correct": "Alton",
+      "wrong": ["Morty", "Walter", "Harold"],
+      "source": "S2 'The Jacket': https://www.seinfeldscripts.com/TheJacket.htm"
+    },
+    {
+      "id": "9kxpr48l",
+      "tier": 5,
+      "prompt": "What is George's high score on Frogger?",
+      "correct": "860,630",
+      "wrong": ["640,210", "912,450", "735,980"],
+      "source": "S9 'The Frogger' (score shown on screen): https://en.wikipedia.org/wiki/The_Frogger"
+    },
+    {
+      "id": "wf6yr99k",
+      "tier": 5,
+      "prompt": "What does Elaine find in an armoire that lets her ruin the Soup Nazi?",
+      "correct": "His soup recipes",
+      "wrong": ["His tax records", "His secret diary", "His health code fines"],
+      "source": "S7 'The Soup Nazi': https://en.wikipedia.org/wiki/The_Soup_Nazi"
+    }
+  ]
+}
