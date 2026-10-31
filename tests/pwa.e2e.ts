@@ -1,7 +1,15 @@
 import { test } from "@e2e-dev/web";
 import { expect } from "e2e";
+import { checkA11y } from "./support/axe";
 import { answerRight, playToRung, questionHeading, startGame } from "./support/game";
-import { installabilityErrors, setOffline, waitForServiceWorker } from "./support/offline";
+import {
+  checkForUpdate,
+  installabilityErrors,
+  serveNewDeploy,
+  setOffline,
+  updateWaiting,
+  waitForServiceWorker,
+} from "./support/offline";
 
 // A type alias, not an interface, so it counts as JSON for `evaluate`.
 type Manifest = {
@@ -83,4 +91,53 @@ test("after one online visit to the Main menu, a deep link to a Topic never open
   // A mixed Movies Game draws on both Movies Titles' files, neither opened yet.
   await startGame(browser, screen, "/movies");
   await expect(questionHeading(screen, 1)).toBeVisible();
+});
+
+test("a new deploy shows the Update toast, off the Game screen, and Refresh switches to it", async ({
+  app,
+  screen,
+  browser,
+}) => {
+  await app.open("/");
+  await expect(screen.getByRole("heading", "Trivia", { level: 1 })).toBeVisible();
+  await waitForServiceWorker(browser);
+  const toast = screen.getByRole("complementary", "Update");
+  await expect(toast).toHaveCount(0);
+
+  // Mid-Game when the new version lands: no toast over the answers.
+  const restore = serveNewDeploy();
+  try {
+    await startGame(browser, screen, "/tv/fixture-sitcom");
+    await checkForUpdate(browser);
+    await expect.poll(() => updateWaiting(browser)).toBe(true);
+    await expect(toast).toHaveCount(0);
+
+    // Back on the Main menu it shows; Later hides it.
+    await screen.getByRole("button", "Main menu").tap();
+    await expect(toast).toBeVisible();
+    await expect(toast).toContainText("A new version of Trivia is ready.");
+    await checkA11y(browser, "Main menu, with the Update toast");
+    await screen.getByRole("button", "Later").tap();
+    await expect(toast).toHaveCount(0);
+
+    // A reload with the new worker still waiting shows it again; Refresh hands
+    // over to the new worker and reloads, with the Saved game kept.
+    await browser.reload();
+    await expect(toast).toBeVisible();
+    // A mark on this page, so the reload shows: a fresh page doesn't have it.
+    await browser.evaluate<null>(() => {
+      (window as { beforeRefresh?: boolean }).beforeRefresh = true;
+      return null;
+    });
+    await screen.getByRole("button", "Refresh").tap();
+    await expect
+      .poll(() => browser.evaluate<boolean>(() => (window as { beforeRefresh?: boolean }).beforeRefresh === undefined))
+      .toBe(true);
+    await expect(screen.getByRole("heading", "Trivia", { level: 1 })).toBeVisible();
+    expect(await updateWaiting(browser)).toBe(false);
+    await expect(toast).toHaveCount(0);
+    await expect(screen.getByRole("button", "Resume: Fixture Sitcom, question 1")).toBeVisible();
+  } finally {
+    restore();
+  }
 });

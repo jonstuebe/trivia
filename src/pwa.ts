@@ -7,14 +7,15 @@ import { STUDIO_BACKGROUND } from "./ui/studio-colours.ts";
  * worker that downloads the whole app, every Topic file included, on the
  * first visit, so any Topic plays with no connection.
  *
- * Updates: a new deploy's worker installs in the background and waits. It
- * takes over only once every tab and installed window of the app is closed,
- * so the next open gets the new version and an open Game is never reloaded.
- * Nothing asks the player to update.
+ * Updates: a new deploy's worker installs in the background and waits. The
+ * Update toast (src/screens/update-toast.tsx) then offers Refresh, which
+ * tells it to take over and reloads the page. Left alone, it takes over once
+ * every tab and installed window of the app is closed, so the next open gets
+ * the new version and an open Game is never reloaded unasked.
  *
- * Only `vite build` writes the worker (`sw.js`) and its registration script
- * (`registerSW.js`, a plain `<script>` in index.html, so no app code imports
- * it). The dev server and the unit tests never register one.
+ * Only `vite build` writes the worker (`sw.js`). The app registers it through
+ * `virtual:pwa-register/react`, which is a no-op under the dev server and the
+ * unit tests, so they never register one.
  */
 
 /**
@@ -36,9 +37,10 @@ export const FAVICON = { src: "/favicon.ico", sizes: [16, 32, 48] } as const;
 
 export const PWA_OPTIONS: Partial<VitePWAOptions> = {
   // "prompt" leaves the worker's lifecycle alone: no skipWaiting, so a new
-  // version waits for the next open. Nothing calls updateSW(), so no prompt.
+  // version waits until the Update toast's Refresh, or the next open.
   registerType: "prompt",
-  injectRegister: "script",
+  // The Update toast registers the worker itself, so no registration script.
+  injectRegister: false,
   manifest: {
     name: SITE_NAME,
     short_name: SITE_NAME,

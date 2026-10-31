@@ -345,6 +345,57 @@ button.lozenge:focus-visible {
   background: rgba(12, 17, 70, 0.7);
 }
 
+/* ---- The Update toast: a new version is ready ---- */
+
+.update-toast {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min(420px, calc(100% - 32px));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 12px 16px;
+  border: 2px solid var(--line);
+  border-radius: var(--r-tile);
+  background: var(--panel);
+  box-shadow: 0 8px 30px rgba(2, 3, 16, 0.6);
+}
+
+/* Room below the screen, so the toast never covers its last control. */
+.stage:has(.update-toast) {
+  padding-bottom: 110px;
+}
+
+.update-toast__buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.update-toast .lozenge--button {
+  width: auto;
+  padding: 8px 22px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .update-toast {
+    animation: update-toast-in 0.3s ease-out;
+  }
+}
+
+@keyframes update-toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+}
+
 /* Text for screen readers only. */
 .visually-hidden {
   position: absolute;

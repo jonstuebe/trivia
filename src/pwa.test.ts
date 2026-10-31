@@ -31,7 +31,6 @@ const BUILD_FILES = [
   "pwa-192x192.png",
   "link-preview.png",
   "fixture-beacon.js",
-  "registerSW.js",
 ];
 
 describe("what the service worker downloads on the first visit", () => {
@@ -62,7 +61,6 @@ describe("what the service worker downloads on the first visit", () => {
       "favicon.ico",
       "index.html",
       "pwa-192x192.png",
-      "registerSW.js",
     ]);
   });
 
@@ -87,9 +85,13 @@ describe("the service worker", () => {
     expect(PWA_OPTIONS.workbox?.runtimeCaching).toBeUndefined();
   });
 
-  it("waits for every tab to close before a new version takes over", () => {
+  it("waits for Refresh in the Update toast, or every tab to close, before a new version takes over", () => {
     expect(PWA_OPTIONS.registerType).toBe("prompt");
     expect(PWA_OPTIONS.workbox?.skipWaiting).toBe(false);
+  });
+
+  it("is registered by the app (the Update toast), not by an injected script", () => {
+    expect(PWA_OPTIONS.injectRegister).toBe(false);
   });
 
   it("isn't registered by the dev server", async () => {
