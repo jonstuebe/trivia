@@ -1,0 +1,585 @@
+{
+  "title": "Gilmore Girls",
+  "questions": [
+    {
+      "id": "p1kxsjjg",
+      "tier": 1,
+      "prompt": "In which town do Lorelai and Rory live?",
+      "correct": "Stars Hollow",
+      "wrong": ["Willow Creek", "Maple Falls", "Cedar Grove"]
+    },
+    {
+      "id": "wdd1k1fs",
+      "tier": 1,
+      "prompt": "In which state is the show set?",
+      "correct": "Connecticut",
+      "wrong": ["Vermont", "Massachusetts", "Maine"]
+    },
+    {
+      "id": "4j0zlsfw",
+      "tier": 1,
+      "prompt": "Who owns the diner where Lorelai and Rory eat almost every day?",
+      "correct": "Luke",
+      "wrong": ["Kirk", "Taylor", "Jackson"]
+    },
+    {
+      "id": "b1yogopy",
+      "tier": 1,
+      "prompt": "Which drink is Lorelai famously hooked on?",
+      "correct": "Coffee",
+      "wrong": ["Tea", "Diet soda", "Hot chocolate"]
+    },
+    {
+      "id": "fitgo55s",
+      "tier": 1,
+      "prompt": "Who is Rory's best friend in Stars Hollow?",
+      "correct": "Lane",
+      "wrong": ["Kirk", "Babette", "Miss Patty"]
+    },
+    {
+      "id": "j4rwabd0",
+      "tier": 1,
+      "prompt": "Which university does Rory attend?",
+      "correct": "Yale",
+      "wrong": ["Harvard", "Princeton", "Columbia"]
+    },
+    {
+      "id": "ysylttob",
+      "tier": 1,
+      "prompt": "What are the first names of Lorelai's parents?",
+      "correct": "Richard and Emily",
+      "wrong": ["Robert and Ellen", "Charles and Evelyn", "William and Grace"]
+    },
+    {
+      "id": "9a9jbjva",
+      "tier": 1,
+      "prompt": "Who is Lorelai's best friend and the chef at her inn?",
+      "correct": "Sookie",
+      "wrong": ["Paris", "Lane", "Babette"]
+    },
+    {
+      "id": "9a564lz7",
+      "tier": 1,
+      "prompt": "Which actress plays Lorelai?",
+      "correct": "Lauren Graham",
+      "wrong": ["Sarah Jessica Parker", "Calista Flockhart", "Jennifer Garner"],
+      "source": "https://en.wikipedia.org/wiki/Lauren_Graham"
+    },
+    {
+      "id": "zoixmr7z",
+      "tier": 1,
+      "prompt": "Which actress plays Rory?",
+      "correct": "Alexis Bledel",
+      "wrong": ["Keri Russell", "Mandy Moore", "Katie Holmes"],
+      "source": "https://en.wikipedia.org/wiki/Alexis_Bledel"
+    },
+    {
+      "id": "6eqkuunz",
+      "tier": 1,
+      "prompt": "Which private school does Rory transfer to in the first season?",
+      "correct": "Chilton",
+      "wrong": ["Westbrook Prep", "Stanton Hall", "Hartford Academy"],
+      "source": "S1E1 'Pilot'"
+    },
+    {
+      "id": "73d2dvv2",
+      "tier": 1,
+      "prompt": "Who is Rory's fiercely competitive classmate at Chilton?",
+      "correct": "Paris",
+      "wrong": ["Lane", "Madeline", "Louise"]
+    },
+    {
+      "id": "s35xh0js",
+      "tier": 1,
+      "prompt": "Rory is a nickname. What is her real first name?",
+      "correct": "Lorelai",
+      "wrong": ["Rosemary", "Laura", "Lauren"],
+      "source": "S1E2 'The Lorelais' First Day at Chilton'"
+    },
+    {
+      "id": "wsin970k",
+      "tier": 1,
+      "prompt": "Where do Lorelai and Rory have dinner every Friday night?",
+      "correct": "At Richard and Emily's",
+      "wrong": ["At Luke's diner", "At Sookie's house", "At Miss Patty's"],
+      "source": "S1E1 'Pilot'"
+    },
+    {
+      "id": "535fe1kh",
+      "tier": 1,
+      "prompt": "Who is Rory's first boyfriend?",
+      "correct": "Dean",
+      "wrong": ["Jess", "Logan", "Tristan"]
+    },
+    {
+      "id": "q1ny4v39",
+      "tier": 2,
+      "prompt": "How old was Lorelai when Rory was born?",
+      "correct": "16",
+      "wrong": ["18", "19", "21"],
+      "source": "S1E1 'Pilot'"
+    },
+    {
+      "id": "kucp3gp0",
+      "tier": 2,
+      "prompt": "Which instrument does Lane play in her band?",
+      "correct": "Drums",
+      "wrong": ["Bass guitar", "Keyboard", "Saxophone"],
+      "source": "S5E4"
+    },
+    {
+      "id": "dm4240ub",
+      "tier": 2,
+      "prompt": "Which inn do Lorelai and Sookie open together?",
+      "correct": "The Dragonfly Inn",
+      "wrong": ["The Firefly Inn", "The Bluebird Inn", "The Hollow Pines Inn"]
+    },
+    {
+      "id": "65mc8n8m",
+      "tier": 2,
+      "prompt": "What is the name of the sour French concierge who works with Lorelai?",
+      "correct": "Michel",
+      "wrong": ["Jacques", "Philippe", "Henri"]
+    },
+    {
+      "id": "e21a5err",
+      "tier": 2,
+      "prompt": "Which of Rory's boyfriends is Luke's nephew?",
+      "correct": "Jess",
+      "wrong": ["Dean", "Logan", "Tristan"]
+    },
+    {
+      "id": "0qv670dm",
+      "tier": 2,
+      "prompt": "Which of Rory's boyfriends is heir to a newspaper empire?",
+      "correct": "Logan",
+      "wrong": ["Dean", "Jess", "Marty"]
+    },
+    {
+      "id": "su21yhjz",
+      "tier": 2,
+      "prompt": "Who is Rory's father?",
+      "correct": "Christopher",
+      "wrong": ["Max Medina", "Jason Stiles", "Alex Lesman"],
+      "source": "S1E15 'Christopher Returns'"
+    },
+    {
+      "id": "30w7389q",
+      "tier": 2,
+      "prompt": "Which rule-loving townsperson runs the town meetings?",
+      "correct": "Taylor",
+      "wrong": ["Kirk", "Jackson", "Andrew"]
+    },
+    {
+      "id": "1s9wkig2",
+      "tier": 2,
+      "prompt": "Which townsperson works a seemingly endless string of odd jobs?",
+      "correct": "Kirk",
+      "wrong": ["Taylor", "Jackson", "Andrew"]
+    },
+    {
+      "id": "yoo09o6v",
+      "tier": 2,
+      "prompt": "Who runs the town's dance studio?",
+      "correct": "Miss Patty",
+      "wrong": ["Babette", "Sookie", "Gypsy"]
+    },
+    {
+      "id": "4kqkfvwh",
+      "tier": 2,
+      "prompt": "What is Lane's strict, devout mother called?",
+      "correct": "Mrs. Kim",
+      "wrong": ["Mrs. Lee", "Mrs. Park", "Mrs. Chang"]
+    },
+    {
+      "id": "hqrdwu1f",
+      "tier": 2,
+      "prompt": "Which business is Richard in?",
+      "correct": "Insurance",
+      "wrong": ["Banking", "Law", "Real estate"]
+    },
+    {
+      "id": "g43mneq6",
+      "tier": 2,
+      "prompt": "At which inn does Lorelai work as manager in the early seasons?",
+      "correct": "The Independence Inn",
+      "wrong": ["The Liberty Inn", "The Heritage Inn", "The Patriot Inn"]
+    },
+    {
+      "id": "ig1388ri",
+      "tier": 2,
+      "prompt": "In return for Friday night dinners, what do Richard and Emily pay for?",
+      "correct": "Rory's school tuition",
+      "wrong": ["Lorelai's house", "Rory's first car", "Lorelai's inn"],
+      "source": "S1E1 'Pilot'"
+    },
+    {
+      "id": "n6z0a35s",
+      "tier": 2,
+      "prompt": "Which Chilton teacher does Lorelai get engaged to?",
+      "correct": "Max",
+      "wrong": ["Jason", "Alex", "Peter"],
+      "source": "S1E21 'Love, Daisies and Troubadours'"
+    },
+    {
+      "id": "fiwv7wk0",
+      "tier": 3,
+      "prompt": "Which Chilton classmate teases Rory by calling her \"Mary\"?",
+      "correct": "Tristan",
+      "wrong": ["Brad", "Henry", "Duncan"],
+      "source": "S1E2 'The Lorelais' First Day at Chilton'"
+    },
+    {
+      "id": "jj3hac1i",
+      "tier": 3,
+      "prompt": "What is the name of Lane's band?",
+      "correct": "Hep Alien",
+      "wrong": ["Mighty Pumpkins", "Hollow Point", "Seoul Patrol"],
+      "source": "https://gilmoregirls.fandom.com/wiki/Hep_Alien"
+    },
+    {
+      "id": "lny9xd7y",
+      "tier": 3,
+      "prompt": "Lorelai's dog is named after which singer?",
+      "correct": "Paul Anka",
+      "wrong": ["Frank Sinatra", "Tony Bennett", "Dean Martin"],
+      "source": "S6E2; S6E19 'The Real Paul Anka'"
+    },
+    {
+      "id": "jtx0aw3l",
+      "tier": 3,
+      "prompt": "Who sings the theme song, \"Where You Lead\"?",
+      "correct": "Carole King",
+      "wrong": ["Joni Mitchell", "Carly Simon", "Linda Ronstadt"],
+      "source": "https://en.wikipedia.org/wiki/Gilmore_Girls"
+    },
+    {
+      "id": "eq9h1uva",
+      "tier": 3,
+      "prompt": "At Yale, which paper does Rory become editor of?",
+      "correct": "The Yale Daily News",
+      "wrong": ["The Yale Herald", "The Yale Record", "The Yale Review"],
+      "source": "S6E11; S6E14 'You've Been Gilmored'"
+    },
+    {
+      "id": "wz727ocx",
+      "tier": 3,
+      "prompt": "At the end of season 5, what does Rory steal, leading to her arrest?",
+      "correct": "A yacht",
+      "wrong": ["A car", "A painting", "A horse"],
+      "source": "S5E21 'Blame Booze and Melville'"
+    },
+    {
+      "id": "tthlf94g",
+      "tier": 3,
+      "prompt": "In season 6, where at her grandparents' house does Rory live?",
+      "correct": "The pool house",
+      "wrong": ["The attic", "The guest room", "The basement"],
+      "source": "S5E22 'A House Is Not a Home'; S6E1"
+    },
+    {
+      "id": "1ss3vq0c",
+      "tier": 3,
+      "prompt": "What is the name of Luke's sister, Jess's mother?",
+      "correct": "Liz",
+      "wrong": ["Jen", "Amy", "Kate"],
+      "source": "S2E5 'Nick & Nora/Sid & Nancy'"
+    },
+    {
+      "id": "48skv3ju",
+      "tier": 3,
+      "prompt": "What is the name of the daughter Luke learns about in season 6?",
+      "correct": "April",
+      "wrong": ["Abby", "Allison", "Annie"],
+      "source": "S6E12 'Just Like Gwen and Gavin'"
+    },
+    {
+      "id": "muktlxps",
+      "tier": 3,
+      "prompt": "Who tells Rory she doesn't have what it takes to be a journalist?",
+      "correct": "Mitchum Huntzberger",
+      "wrong": ["Richard Gilmore", "Jason Stiles", "Doyle McMaster"],
+      "source": "S5E20 'How Many Kropogs to Cape Cod?'; https://en.wikipedia.org/wiki/Gilmore_Girls_(season_5)"
+    },
+    {
+      "id": "0uc7n7gx",
+      "tier": 3,
+      "prompt": "Which university rejects Paris, sending her to Yale?",
+      "correct": "Harvard",
+      "wrong": ["Princeton", "Stanford", "Brown"],
+      "source": "S3E16 'The Big One'"
+    },
+    {
+      "id": "9oittut3",
+      "tier": 3,
+      "prompt": "In season 7, whom does Lorelai marry in France?",
+      "correct": "Christopher",
+      "wrong": ["Max Medina", "Jason Stiles", "Alex Lesman"],
+      "source": "S7E7 'French Twist'; S7E8"
+    },
+    {
+      "id": "ny4npl8l",
+      "tier": 3,
+      "prompt": "Which actor plays Dean?",
+      "correct": "Jared Padalecki",
+      "wrong": ["Jensen Ackles", "Paul Wesley", "Ian Somerhalder"],
+      "source": "https://en.wikipedia.org/wiki/Gilmore_Girls"
+    },
+    {
+      "id": "p5p6wbly",
+      "tier": 3,
+      "prompt": "What kind of shop does Mrs. Kim run?",
+      "correct": "An antiques shop",
+      "wrong": ["A bakery", "A flower shop", "A bookstore"],
+      "source": "S1 onward (Kim's Antiques)"
+    },
+    {
+      "id": "f0i4fmi9",
+      "tier": 3,
+      "prompt": "What is Luke's last name?",
+      "correct": "Danes",
+      "wrong": ["Davis", "Daniels", "Doyle"],
+      "source": "S1E21 onward"
+    },
+    {
+      "id": "iggje5l4",
+      "tier": 4,
+      "prompt": "What is the nickname of Jason Stiles, Lorelai's boyfriend in season 4?",
+      "correct": "Digger",
+      "wrong": ["Bucky", "Chip", "Skip"],
+      "source": "S4E3 'The Hobbit, the Sofa and Digger Stiles'"
+    },
+    {
+      "id": "psbdbac5",
+      "tier": 4,
+      "prompt": "Which subject does Richard teach at Yale in season 7?",
+      "correct": "Economics",
+      "wrong": ["History", "Philosophy", "Law"],
+      "source": "S7E4 ''S Wonderful, 'S Marvelous'; S7E13"
+    },
+    {
+      "id": "w23juise",
+      "tier": 4,
+      "prompt": "Where did Lorelai and baby Rory live when they first came to Stars Hollow?",
+      "correct": "The inn's potting shed",
+      "wrong": ["Above Luke's diner", "Miss Patty's studio", "Sookie's garage"],
+      "source": "S1E19"
+    },
+    {
+      "id": "h6ivt0x1",
+      "tier": 4,
+      "prompt": "Who created the show?",
+      "correct": "Amy Sherman-Palladino",
+      "wrong": ["Shonda Rhimes", "Kevin Williamson", "Greg Berlanti"],
+      "source": "https://en.wikipedia.org/wiki/Gilmore_Girls"
+    },
+    {
+      "id": "u9vrzadu",
+      "tier": 4,
+      "prompt": "Which actor plays Jess?",
+      "correct": "Milo Ventimiglia",
+      "wrong": ["Chad Michael Murray", "Penn Badgley", "Adam Brody"],
+      "source": "https://en.wikipedia.org/wiki/Gilmore_Girls"
+    },
+    {
+      "id": "qlwpaip2",
+      "tier": 4,
+      "prompt": "Where do Lorelai and Rory go backpacking after Rory finishes Chilton?",
+      "correct": "Europe",
+      "wrong": ["South America", "Australia", "Southeast Asia"],
+      "source": "S3E22 'Those Are Strings, Pinocchio'; S4E1 'Ballrooms and Biscotti'"
+    },
+    {
+      "id": "mizm5mn9",
+      "tier": 4,
+      "prompt": "What does Dean build for Rory as a gift?",
+      "correct": "A car",
+      "wrong": ["A bookshelf", "A jewelry box", "A treehouse"],
+      "source": "S2E12"
+    },
+    {
+      "id": "x5a1o9lr",
+      "tier": 4,
+      "prompt": "Who is driving when Rory breaks her wrist in a car crash?",
+      "correct": "Jess",
+      "wrong": ["Dean", "Lane", "Paris"],
+      "source": "S2E19 'Teach Me Tonight'"
+    },
+    {
+      "id": "crx6oftf",
+      "tier": 4,
+      "prompt": "Which Chilton secret sorority does Rory join?",
+      "correct": "The Puffs",
+      "wrong": ["The Vixens", "The Swans", "The Pearls"],
+      "source": "S2E7 'Like Mother, Like Daughter'"
+    },
+    {
+      "id": "o1kibd04",
+      "tier": 4,
+      "prompt": "What is Paris's last name?",
+      "correct": "Geller",
+      "wrong": ["Gold", "Glass", "Goodman"],
+      "source": "S1E2 onward"
+    },
+    {
+      "id": "uvzy3m01",
+      "tier": 4,
+      "prompt": "What is the name of Kirk's girlfriend?",
+      "correct": "Lulu",
+      "wrong": ["Lola", "Lily", "Lucy"],
+      "source": "S3E13 onward"
+    },
+    {
+      "id": "u4phg9ax",
+      "tier": 4,
+      "prompt": "Which singer does Michel adore?",
+      "correct": "Celine Dion",
+      "wrong": ["Madonna", "Cher", "Barbra Streisand"],
+      "source": "S4E14; S6E19"
+    },
+    {
+      "id": "5bgtpqeb",
+      "tier": 4,
+      "prompt": "Which secret Yale society does Logan belong to?",
+      "correct": "The Life and Death Brigade",
+      "wrong": ["Skull and Bones", "The Midnight Club", "The Order of the Owl"],
+      "source": "S5E7 'You Jump, I Jump, Jack'"
+    },
+    {
+      "id": "ky5kyzfx",
+      "tier": 4,
+      "prompt": "Whom does Lane marry?",
+      "correct": "Zack",
+      "wrong": ["Brian", "Gil", "Dave"],
+      "source": "S6E19"
+    },
+    {
+      "id": "wdfd84qm",
+      "tier": 4,
+      "prompt": "In which city is Chilton?",
+      "correct": "Hartford",
+      "wrong": ["New Haven", "Stamford", "Bridgeport"],
+      "source": "S1E1 'Pilot'"
+    },
+    {
+      "id": "832hgmc1",
+      "tier": 5,
+      "prompt": "What does Luke build for Lorelai's planned wedding to Max?",
+      "correct": "A chuppah",
+      "wrong": ["A gazebo", "A dance floor", "A rocking chair"],
+      "source": "S2E4; S2E8"
+    },
+    {
+      "id": "6gw3zptr",
+      "tier": 5,
+      "prompt": "What is the name of the town's combined movie theater and bookstore?",
+      "correct": "Black, White & Read",
+      "wrong": ["Page & Screen", "Hollow Reels", "The Book Nook"],
+      "source": "S5E5"
+    },
+    {
+      "id": "pbnlk6jq",
+      "tier": 5,
+      "prompt": "Which older Yale professor does Paris date?",
+      "correct": "Asher Fleming",
+      "wrong": ["Daniel Holloway", "Martin Reese", "Edward Pratt"],
+      "source": "S4E9–S4E21; https://en.wikipedia.org/wiki/Gilmore_Girls_(season_4)"
+    },
+    {
+      "id": "hpu6f54g",
+      "tier": 5,
+      "prompt": "What is the name of Logan's sister?",
+      "correct": "Honor",
+      "wrong": ["Grace", "Faith", "Hope"],
+      "source": "S5E19"
+    },
+    {
+      "id": "cvcbe65u",
+      "tier": 5,
+      "prompt": "What is the name of Sookie and Jackson's first child?",
+      "correct": "Davey",
+      "wrong": ["Danny", "Jamie", "Tommy"],
+      "source": "S4E5"
+    },
+    {
+      "id": "jqdfmpgb",
+      "tier": 5,
+      "prompt": "Which actor plays Richard?",
+      "correct": "Edward Herrmann",
+      "wrong": ["Ed Asner", "Hal Holbrook", "John Mahoney"],
+      "source": "https://en.wikipedia.org/wiki/Gilmore_Girls"
+    },
+    {
+      "id": "9nodisy2",
+      "tier": 5,
+      "prompt": "What is Richard's pet name for his mother?",
+      "correct": "Trix",
+      "wrong": ["Bunny", "Mimi", "Kiki"],
+      "source": "S1E18"
+    },
+    {
+      "id": "9d3kzj5y",
+      "tier": 5,
+      "prompt": "What is the name of Chilton's headmaster?",
+      "correct": "Charleston",
+      "wrong": ["Pemberton", "Whitfield", "Ashford"],
+      "source": "S1E2 onward"
+    },
+    {
+      "id": "p7aijz1e",
+      "tier": 5,
+      "prompt": "Before it became Luke's diner, what was the building?",
+      "correct": "A hardware store",
+      "wrong": ["A bakery", "A barbershop", "A bookstore"],
+      "source": "S2E15"
+    },
+    {
+      "id": "k8ob4g9u",
+      "tier": 5,
+      "prompt": "What is the Life and Death Brigade's motto?",
+      "correct": "In omnia paratus",
+      "wrong": ["Carpe diem", "Semper fidelis", "Veni, vidi, vici"],
+      "source": "S5E7 'You Jump, I Jump, Jack'"
+    },
+    {
+      "id": "sgrmixr0",
+      "tier": 5,
+      "prompt": "Which school does Rory attend before transferring to Chilton?",
+      "correct": "Stars Hollow High",
+      "wrong": ["Hartford Public High", "Woodbridge High", "Litchfield High"],
+      "source": "S1E1 'Pilot'"
+    },
+    {
+      "id": "m64p2ej6",
+      "tier": 5,
+      "prompt": "What is Gypsy's job in Stars Hollow?",
+      "correct": "Mechanic",
+      "wrong": ["Florist", "Mail carrier", "Bartender"],
+      "source": "S2E12; S3E6"
+    },
+    {
+      "id": "nqg2b0hk",
+      "tier": 5,
+      "prompt": "Which rock singer plays Gil, the guitarist in Lane's band?",
+      "correct": "Sebastian Bach",
+      "wrong": ["Bret Michaels", "Axl Rose", "Vince Neil"],
+      "source": "https://en.wikipedia.org/wiki/Gilmore_Girls"
+    },
+    {
+      "id": "mazwuifl",
+      "tier": 5,
+      "prompt": "What is the name of Christopher's daughter with Sherry?",
+      "correct": "Georgia",
+      "wrong": ["Gracie", "Ginny", "Gemma"],
+      "source": "S3E6 'Take the Deviled Eggs'"
+    },
+    {
+      "id": "zzjgw09m",
+      "tier": 5,
+      "prompt": "Which Yale Daily News editor does Paris date?",
+      "correct": "Doyle",
+      "wrong": ["Marty", "Colin", "Finn"],
+      "source": "S6E11"
+    }
+  ]
+}

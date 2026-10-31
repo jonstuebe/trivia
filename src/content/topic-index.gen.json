@@ -21,6 +21,17 @@
       }
     },
     {
+      "name": "Gilmore Girls",
+      "slug": "gilmore-girls",
+      "questionCounts": {
+        "1": 15,
+        "2": 15,
+        "3": 15,
+        "4": 15,
+        "5": 15
+      }
+    },
+    {
       "name": "Modern Family",
       "slug": "modern-family",
       "questionCounts": {
