@@ -1,3 +1,5 @@
+import { readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { surfaceOf, type Browser } from "@e2e-dev/web";
 import { expect } from "e2e";
 import { chromium } from "./engine";
@@ -32,6 +34,33 @@ export async function waitForServiceWorker(browser: Browser): Promise<void> {
   await expect
     .poll(() => browser.evaluate<boolean>(() => navigator.serviceWorker.controller !== null))
     .toBe(true);
+}
+
+/**
+ * Makes the server look like it has a new deploy: `sw.js` in the fixture
+ * build gets one byte more, so the browser's next update check installs it as
+ * a new worker, which then waits. (A Playwright route can't stand in: the
+ * browser fetches a worker update past it.) `vite preview` reads files afresh
+ * on each request. Call the returned function to put the file back.
+ */
+export function serveNewDeploy(): () => void {
+  const file = join("dist-fixtures", "sw.js");
+  const original = readFileSync(file, "utf8");
+  writeFileSync(file, `${original}\n// a new deploy\n`);
+  return () => writeFileSync(file, original);
+}
+
+/** Asks the browser to look for a new service worker now, as it does on a page load. */
+export async function checkForUpdate(browser: Browser): Promise<void> {
+  await browser.evaluate<null>(async () => {
+    await (await navigator.serviceWorker.ready).update();
+    return null;
+  });
+}
+
+/** Whether a new worker has installed and is waiting to take over. */
+export async function updateWaiting(browser: Browser): Promise<boolean> {
+  return browser.evaluate<boolean>(async () => !!(await navigator.serviceWorker.getRegistration())?.waiting);
 }
 
 /** Why Chromium won't offer to install the page: empty when it would. */
